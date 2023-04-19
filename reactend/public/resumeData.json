@@ -1,0 +1,146 @@
+{
+  "main": {
+    "name": "Kuldeep Dhillon",
+    "occupation": "Full Stack Developer",
+    "description": "I eat, sleep and breathe Coding",
+    "image": "profilepic.jpg",
+    "bio":  " I aspired to become a software developer while pursuing my Bachelor of Computer Application degree a few years back. My first experience with coding was at the university, and I found myself drawn to it. After completing my Post Graduation Diploma in Computer Application, and teaching as a computer teacher in India for about one and a half years, I moved to Australia in 2007 to pursue my Master of Information Technology. However, due to financial constraints and other obstacles, I struggled to focus on my studies and resorted to other work that was not related to my field. Fortunately, I eventually took charge of my education, began studying on my own, and attending online courses since 2017. To cut a long story short, I have been working as a software developer since 2019. I am confident in my abilities as a developer, and my responsibilities include working on coding tasks or stories for developing mobile applications and websites. I enjoy the diversity of my work, as I get to work on both front-end and back-end development with servers and databases. I always strive to learn something new, whether through my own research or by taking online courses, and I take great pleasure in the fact that there are always opportunities to broaden my knowledge in this dynamic field.",
+    "contactmessage": "Get in touch to solve your business problems!",
+    "email": "deedhillon82@gmail.com",
+    "phone": "+61 434035024",
+    "address": {
+      "street": "Alira way",
+      "city": "Greater Geelong",
+      "state": "Vic",
+      "zip": "3211"
+    },
+    "website": "https://deedeveloper.herokuapp.com",
+    "resumedownload": "http://resumeindeedeveloper.com",
+    "social": [
+      {
+        "name": "facebook",
+        "url": "",
+        "className": "fa fa-facebook"
+      },
+      {
+        "name": "github",
+        "url": "https://github.com/deep-dot",
+        "className": "fa fa-github"
+      },
+      {
+        "name": "stackoverflow",
+        "url": "https://github.com/deep-dot",
+        "className": "fa fa-stack-overflow"
+      }
+    ]
+  },
+  "resume": {
+    "skillmessage": "My Programming Language Proficiency",
+    "education": [
+      {
+        "school": "Punjabi University Patiala - Punjab, India",
+        "degree": "Bachelor's Degree, Computer Aplication",
+        "graduated": "April 2003",
+        "description": "Graduated with First Class Honours"
+      },
+      {
+        "school": "Rohatk University - Haryana, India",
+        "degree": "Master of Computer Aplication",
+        "graduated": "April 2005 (Completed 1st Year)"
+      },
+      {
+        "school": "Federation University - Ballarat, Australia",
+        "degree": "Master of Information Technology",
+        "graduated": "April 2007-2008 (Completed 1st Semester)"
+      },
+      {
+        "school": " - HeidleBurg, Vic, Australia",
+        "degree": "Certificate III in Aged Care",
+        "graduated": "Aug 2015 "
+      }
+    ],
+    "work": [
+      {
+        "company": "Government High School, Punjab, India",
+        "title": "Computer Teacher",
+        "years": "April 2006 - September 2006"
+      },
+      {
+        "company": "AppOnPress",
+        "title": "Founder and CEO",
+        "years": "May 2020 - Present",
+        "description": "Cloning all the apps possible. On the way to clone the world! Building the AppOnPress as large as possible."
+      }
+    ],
+    "skills": [
+      {
+        "name": "ReactJs",
+        "level": "70%"
+      },
+      {
+        "name": "NodeJs",
+        "level": "70%"
+      },
+      {
+        "name": "React Native",
+        "level": "70%"
+      },
+      {
+        "name": "Git",
+        "level": "50%"
+      },
+      {
+        "name": "JavaScript",
+        "level": "70%"
+      },
+      {
+        "name": "Web Development",
+        "level": "80%"
+      },
+      {
+        "name": "Mobile App Development",
+        "level": "80%"
+      }
+    ]
+  },
+  "portfolio": {
+    "projects": [
+      {
+        "title": "WageFigurer IOS",
+        "category": "Mobile App",
+        "image": "wfios.png",
+        "url": "https://apps.apple.com/au/app/wagefigurer/id1560790850"
+      },
+      {
+        "title": "WageFigurer ANDROID",
+        "category": "Mobile App",
+        "image": "wfandroid.png",
+        "url": "https://play.google.com/store/apps/details?id=com.wagefigurer"
+      },
+      {
+        "title": "AppOnPress.com",
+        "category": "",
+        "image": "apponpress.png",
+        "url": "https://apponpress.herokuapp.com"
+      },
+      {
+        "title": "E-commerce",
+        "category": "",
+        "image": "ecommerce.png",
+        "url": "https://our-e-commerce.herokuapp.com"
+      }
+    ]
+  },
+  "testimonials": {
+    "testimonials": [
+      {
+        "text": "Kuldeep is absolutely excellent, his depth of knowledge & his service really meant a lot to us... I would definitely recommend",
+        "user": "Jason Jack"
+      },
+      {
+        "text": "Getting things done with Kuldeep has been AWESOME, he makes things happen and affordable, you'll finally feel like you know what's going on!",
+        "user": "Denial Andrew"
+      }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+.edit-post {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .edit-post p {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .edit-post form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-post input[type="text"],
+  .edit-post textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .edit-post textarea {
+    height: 200px;
+  }
+  
+  .edit-post img {
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .edit-post input[type="file"] {
+    margin-bottom: 10px;
+  }
+  
+  .edit-post button[type="submit"] {
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .edit-post button[type="submit"]:hover {
+    background-color: #0069d9;
+  }
+  

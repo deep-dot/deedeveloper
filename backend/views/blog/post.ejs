@@ -1,0 +1,159 @@
+<div class="showPost">
+  <div class="btns">
+    <div class="button-container">
+      <% if(userExist) { %>
+        <a class="" href="/post/<%= blogpost._id %>/edit">
+          <i class="fa fa-edit" aria-hidden="true"></i>
+        </a>
+        <form method="POST" action="/post/<%= blogpost._id %>?_method=DELETE">
+          <button type="submit" class="btn">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+        </form>
+        <% } %>
+          <a class="like" href="#writeCommentOnPost">
+            <i class="fa fa-comment" aria-hidden="true"></i>
+            <ins>
+              <%= blogpost.comments.length %>
+            </ins>
+          </a>
+          <div id="postCard" blog-post-id="<%= blogpost._id %>">
+            <!-- <a href="#" class="btn">
+          <i class=" iconColor fas fa-thumbs-up" aria-hidden="true"></i>
+          </a> -->
+          </div>
+    </div>
+  </div>
+
+  <div class="postDetail hidden">
+    <h2>
+      <%= blogpost.title %>
+    </h2>
+    <img class="userImg" src="<%= blogpost.createrImage %>" alt=" ">
+    <p style="margin-top: 1rem;">
+      Creater name: <%= blogpost.username %> <br><br>
+        Posted on: <%= blogpost.createdAt.toDateString() %> <br>
+          Updated on: <%= blogpost.updatedAt.toDateString() %> <br>
+    </p>
+    <img class="postImg" src="<%= blogpost.image %>" alt=" " width="100%" height="100%">
+    <p>
+      <%- blogpost.post %>
+    </p>
+  </div>
+
+  <div id="#comment" class="commentsOnPost hidden">
+    <h2>Responses (<%= blogpost.comments.length %>)</h2>
+    <form method="POST" action="/post/<%= blogpost._id %>/comment?_method=PUT">
+      <textarea id="writeCommentOnPost" type="text" name="content" placeholder="What are your thoughts?"></textarea>
+      <button id="submitButton" type="submit">Submit</button>
+    </form>
+    <% for(var i=0; i < blogpost.comments.length; i++) {%>
+      <div class="card">
+        <div class="cardContent">
+          <img src="<%= blogpost.comments[i].commenterImage %>" alt=" " style=" border-radius:50%" width="50px"
+            height="50%" />
+          <p class="">
+            <%= blogpost.comments[i].username %><br>
+              <%= blogpost.comments[i].datePosted.toDateString() %>
+          </p>
+          <blockquote>
+            <%= blogpost.comments[i].content %>
+          </blockquote>
+
+          <% if(blogpost.comments[i].userId.equals(userid)) { %>
+            <form method="POST" action="/post/<%= blogpost.comments[i]._id %>/comment?_method=DELETE">
+              <input type="hidden" name="postId" value="<%= blogpost._id %>" />
+              <button type="submit" class="btn">
+                <i class="fa fa-trash"></i>
+              </button>
+            </form>
+            <% } %>
+        </div>
+      </div>
+      <% } %>
+  </div>
+
+</div>
+
+
+<script>
+  var postCard = document.getElementById('postCard')
+  var id = postCard.getAttribute('blog-post-id');
+  //console.log('id===', id);
+  axios.get('/getPostLikes/' + id).then(res => {
+    // console.log("e=====", res.data.post)
+    var User = res.data.user;
+    var post = res.data.post;
+
+    var likers = post.likers;
+    // console.log('likers===', likers);
+    var isLiked = false;
+    for (var j = 0; j < post.likers.length; j++) {
+      if (post.likers[j].userid == User._id) {
+        isLiked = true;
+        break;
+      }
+    }
+    //console.log('isLiked', isLiked);
+    var className = "";
+    if (isLiked) {
+      className = "like";
+    } else {
+      className = "unlike";
+    }
+    var html = ''
+    html += '<span class="' + className + ' " onclick="toggleLikePost(this)" id="' + post._id + '">'
+    html += '<i class=" mr-1 fa fa-thumbs-up"></i>'
+    html += '<ins>' + post.likers.length + '</ins>'
+    html += '</span>'
+    //  console.log(html)
+    document.getElementById('postCard').innerHTML = html;
+  });
+</script>
+<script>
+  function toggleLikePost(self) {
+    //  console.log(self.id);
+    axios.post('/toggleLikePost/' + self.id).then(res => {
+      //    console.log(res.data)
+      if (res.data.status == 'success') {
+        self.className = "like";
+        var likes = parseInt(self.querySelector("ins").innerHTML);
+        likes++;
+        self.querySelector("ins").innerHTML = likes;
+      }
+      if (res.data.status == 'unliked') {
+        self.className = "unlike";
+        var likes = parseInt(self.querySelector("ins").innerHTML);
+        likes--;
+        self.querySelector("ins").innerHTML = likes;
+      }
+      if (res.data.status == 'error') {
+        //alert(res.message);
+      }
+    });
+  }
+</script>
+
+<script>
+  const section = document.querySelector('.showPost .commentsOnPost');
+  const sectionPosition = section.offsetTop;
+  // console.log('sectionPosition', sectionPosition);
+  const buttons = document.querySelectorAll('.showPost .btns .button-container');
+  // console.log('sectionPosition', buttons);
+  window.addEventListener('scroll', function () {
+    if (window.matchMedia('(max-width: 867px)').matches) {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition >= sectionPosition) {
+        buttons.forEach(function (button) {
+          button.style.transition = 'opacity 0.3s ease-in-out';
+          button.style.opacity = '0';
+        });
+      } else {
+        buttons.forEach(function (button) {
+          button.style.transition = 'opacity 0.3s ease-in-out';
+          button.style.opacity = '1';
+        });
+      }
+    }
+  });
+</script>

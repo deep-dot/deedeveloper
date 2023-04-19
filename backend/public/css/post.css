@@ -1,0 +1,210 @@
+h2 {
+  align-self: center;
+}
+
+.showPost {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-gap: 1rem;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.showPost .btns {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.showPost .btns .button-container {
+  position: fixed;
+  top: 20%;
+  left: 5%;
+  width: 100px;
+  height: 400px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.showPost .btns .button-container .like,
+.showPost .btns .button-container .unlike,
+.showPost .btns .button-container .fa-edit,
+.showPost .btns .button-container .fa-trash {
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0.3rem 0.8rem;
+  border-radius: 16px;
+  border: none;
+  background-color: rgb(238, 236, 236);
+  transition: 0.3s;
+  /* position: absolute;   */
+}
+
+.showPost .btns .button-container .like {
+  color: green;
+}
+
+.showPost .btns .button-container .unlike {
+  color: blue;
+}
+
+.showPost .btns .button-container .fa-edit {
+  color: #007bff;
+}
+
+.showPost .btns .button-container .fa-trash {
+  color: #dc3545;
+}
+
+.showPost .postDetail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-top: 2rem;
+  margin-bottom: 4rem;
+  max-height: 100vh;
+}
+
+.showPost .postDetail .userImg {
+  width: 100px;
+  height: 50px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.showPost .postDetail .postImg {
+  max-width: 100%;
+  margin: 2rem 0 4rem 0;
+}
+
+.showPost .commentsOnPost {
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.showPost .commentsOnPost .card {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #17a2b8;
+  background-color: transparent;
+}
+
+.showPost .commentsOnPost .card .cardContent {
+  padding: 1rem 0 1rem 0;
+}
+
+.commentsOnPost h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.commentsOnPost textarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+
+.showPost .commentsOnPost #submitButton {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #333333;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.showPost .commentsOnPost #submitButton:hover {
+  background-color: #f6d365;
+}
+
+.commentsOnPost img {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.commentsOnPost p {
+  display: inline-block;
+  font-size: 0.8em;
+  margin: 0;
+}
+
+.commentsOnPost blockquote {
+  color: var(--lightOne);
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+
+.commentsOnPost #editButton,
+.commentsOnPost form button[type="submit"] {
+  background-color: #ddd;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 0.8em;
+  transition: background-color 0.3s ease;
+}
+
+.commentsOnPost #editButton:hover,
+.commentsOnPost form button[type="submit"]:hover {
+  background-color: #bbb;
+}
+
+
+.showPost .commentsOnPost .fa-trash {
+  color: #dc3545;
+}
+
+
+@media screen and (max-width: 867px) {
+  .showPost {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .showPost .btns {
+    align-items: center;
+  }
+
+  .showPost .btns .button-container {
+    top:90%;
+    width: 100vw;
+    height: 10vh;
+    flex-direction: row;
+  }
+
+  .showPost .btns .button-container .like,
+.showPost .btns .button-container .unlike,
+.showPost .btns .button-container .fa-edit,
+.showPost .btns .button-container .fa-trash {
+  background-color: transparent;
+}
+
+}
+
+@media screen and (max-width: 467px) {
+  .showPost {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

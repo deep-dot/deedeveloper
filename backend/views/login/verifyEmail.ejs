@@ -1,0 +1,39 @@
+<style>
+    html,
+    body {
+        height: 700px;
+    }
+
+    .parent {
+        width: 100%;
+        height: 100%;
+        display: table;
+        text-align: center;
+    }
+
+    .parent>.child {
+        display: table-cell;
+        vertical-align: middle;
+    }
+</style>
+
+<div class="parent">
+    <div class="child">
+        <h3>Account confirmed!</h3>
+        <div>
+            <p class="text-center text-danger pt-5">
+                <%= error %>
+            </p>
+        </div>
+        <div>
+            <p class="text-center text-success pt-5">
+                <%= success %>
+            </p>
+        </div>
+        <form id="verifyAccount" method="post" action="/auth/verifyEmail/<%= token %>?_method=POST"
+            contenttype="application/json">
+            <input type="hidden" name="token" value="<%= token %>" id="token" />
+            <button type="submit" class="btn btn-success">Be active</button>
+        </form>
+    </div>
+</div>

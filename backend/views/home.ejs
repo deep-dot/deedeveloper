@@ -1,0 +1,148 @@
+<section class="H hidden">
+  <h1 class="english">Looking to address your business challenges?</h1>
+  <h1 class="punjabi">ਤੁਹਾਡੇ ਵਪਾਰ ਦੀਆਂ ਚੁਣੌਤੀਆਂ ਨੂੰ ਹੱਲ ਕਰਨ ਦੀ ਭਾਲ ਵਿੱਚ ਹੋ?</h1>
+  <div class="home">
+    <p class="english">Start exploring now and find solutions that can help you overcome obstacles and achieve your goals.</p>
+    <p class="punjabi">ਹੁਣ ਤੱਕ ਖੋਜ ਸ਼ੁਰੂ ਕਰੋ ਅਤੇ ਉਹ ਹੱਲ ਲੱਭੋ ਜੋ ਤੁਹਾਨੂੰ ਰੁਕਾਵਟਾਂ ਨੂੰ ਦੂਰ ਕਰਨ ਅਤੇ ਆਪਣੇ ਉਦੇਸ਼ ਨੂੰ ਪ੍ਰਾਪਤ ਕਰਨ ਵਿੱਚ ਮਦਦ ਕਰ ਸਕਦੇ ਹਨ।</p>
+    <p class="english">Let me help you uncover your business challenge and solve it as quickly as possible.</p>
+    <p class="punjabi">ਮੈਂ ਤੁਹਾਡੇ ਵਪਾਰ ਦੀ ਚੁਣੌਤੀ ਨੂੰ ਪਛਾਣ ਕਰਵਾਉਣ ਵਿੱਚ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦਾ ਹਾਂ ਅਤੇ ਇਸਨੂੰ ਜਲਦੀ ਤੋਂ ਜਲਦੀ ਹੱਲ ਕਰਨ ਵਿੱਚ ਮਦਦ ਕਰਦਾ ਹਾਂ।</p>
+  </div>
+  <a class="quote" href="/quote">
+    <i class="fas fa-edit"></i> Quote
+  </a>
+  <img class="home-img" src="../img/person.svg" alt="Home">
+</section>
+
+<section class="A hidden" id="aboutSection">
+  <h1>About</h1>
+  <div class="about">
+    <img src="../img/hello.svg" alt="About Me">
+    <p>
+      As a professional software developer, I am equipped to assist you in growing your business through the
+      creation of full stack software applications that are capable of running on both mobile and desktop devices.
+      My services are designed to help small businesses achieve significant online success by establishing an
+      effective online presence and increasing their visibility. I am committed to delivering exceptional software
+      development solutions that are tailored to meet your specific needs and objectives, and to help you achieve
+      your business goals.
+    </p>
+  </div>
+</section>
+
+
+<section class="S hidden" id="servicesSection">
+  <h1>Services</h1>
+  <div class="services">
+    <ul>
+      <li>
+        <p>
+          Mobile app development for IOS and Android
+        </p>
+      </li>
+      <li>
+        <p>
+          Website design and development
+        </p>
+      </li>
+      <li>
+        <a href="https://en.wikipedia.org/wiki/Search_engine_optimization">
+          <p> Search Engine Optimisation </p>
+        </a>
+      </li>
+      <li>
+        <a href="https://en.wikipedia.org/wiki/Advertising_management">
+          <p> Google Ads Management </p>
+        </a>
+      </li>
+      <li>
+        <p> logo design </p>
+      </li>
+      <li>
+        <p> Future maintenance </p>
+      </li>
+    </ul>
+    <img src="../img/services.png" alt="About Me">
+  </div>
+</section>
+
+<section class="T hidden" id="testimonial">
+  <h1>Customer Feedback</h1>
+  <% if(error) {%>
+    <p style="color:red"><%- error -%></p>
+    <%} else {%>
+      <p style="color:green"><%- success -%></p>
+      <% } %>
+        <div class="testimonial">
+          <div id="reviewCard"></div>
+          <a id="write-review-button">
+           <span>Write Review</span>  <i class="fas fa-pencil-alt"></i>
+          </a>
+          <button id="see-more-button"></button>
+        </div>
+</section>
+
+<!-- reviews -->
+<script src="/js/home/reviews.js"></script>
+
+<!-- write review modal -->
+<script src="/js/home/writeReviewModal.js"></script>
+
+<!-- edit review modal -->
+<script src="/js/home/editReviewModal.js"></script>
+
+<!-- toggle like button -->
+<script src="/js/home/toggleReviewLikeBtn.js"></script>
+
+<!-- delete review -->
+<script>
+  function deleteReview(self) {
+    axios.delete('/reviews/' + self.id).then(res => { console.log(res) })
+    window.location.reload();
+  }
+</script>
+
+<section class="C hidden" id="contactSection">
+  <h1>Contact me</h1>
+  <div class="contact">
+    <form id="contact-form" method="post">
+      <p>I will get back to you as soon as possible</p>
+      <div class="form-group">
+        <label for="name"><i class="fa fa-user"></i> Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+      </div>
+      <div class="form-group">
+        <label for="email"><i class="fa fa-envelope"></i> Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="message"><i class="fa fa-comment"></i> Message:</label>
+        <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+      </div>
+      <button id="submit-button" class="btnn" type="submit">Submit</button>
+    </form>
+    <img src="../img/contact.png" alt="ContactImage" />
+  </div>
+</section>
+
+<!-- contact-form -->
+<script src="/js/home/contactForm.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    contactMe();
+  });
+</script>
+
+<section class="M hidden" id="mapSection">
+  <h1>Location</h1>
+  <div class="map">
+    <iframe style="border:0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB0JGlpuvMu3U3qDgcBH4n6XQ97qKzWmAM
+    &q=Geelong,Vic,Aus">
+    </iframe>
+  </div>
+</section>
+
+<script>
+  // smooth scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    smoothScroll();
+  });
+</script>

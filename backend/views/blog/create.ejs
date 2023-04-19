@@ -1,0 +1,50 @@
+<div class="create-blog">
+    <img src="/img/blog.svg" alt="Person Image" />
+    <div>
+        <h1>Write a post</h1>
+        <% if(error) {%>
+            <p>
+                <%= error %>
+            </p>
+            <% } %>
+                <% if(success) {%>
+                    <p>
+                        <%= success %>
+                    </p>
+                    <% } %>
+                        <form method="POST" action="/posts/store" enctype="multipart/form-data">
+                            <input type="text" placeholder="Title" name="title" id="title" required />
+                            <textarea type="text" name="post" required></textarea>
+                            <input type="file" placeholder="Image" id="image" name="image" />
+                            <br>
+                            <button id="submitButton" type="submit">Send</button>
+                        </form>
+    </div>
+</div>
+
+<script>
+    const form = document.querySelector('form');
+    const titleInput = document.querySelector('#title');
+    const postInput = document.querySelector('textarea');
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        if (!titleInput.value) {
+            titleInput.style.border = '1px solid red';
+            titleInput.setAttribute('placeholder', 'Please enter a title');
+            titleInput.focus();
+            return;
+        }
+
+        if (!postInput.value) {
+            postInput.style.border = '1px solid red';
+            postInput.setAttribute('placeholder', 'Please enter a post');
+            postInput.focus();
+            return;
+        }
+
+        form.submit();
+    });
+
+</script>

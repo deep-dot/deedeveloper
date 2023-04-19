@@ -1,0 +1,179 @@
+.login_wrapper {
+    position: relative;
+    background-color: var(--backgroundColor);
+    box-shadow: 2px 2px 15px 0 rgba(0, 0, 0, 0.1);
+    padding: 4rem;
+    margin-bottom: 4rem;
+}
+
+.login_wrapper h1 {
+    margin: 2rem;
+    font: 800 4vmax "Roboto";
+    color: #17a2b8;
+}
+
+.login_wrapper h2 {
+    margin: 2rem;
+    font-size: 1rem;
+}
+
+.login_wrapper_grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    grid-gap: 2rem;
+    width:inherit;
+}
+
+.facebook, .google {
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.facebook {
+    background-color: cornflowerblue;
+}
+
+.google {
+    background-color: crimson;
+}
+
+.facebook a, .google a {
+    align-self: center;
+    color: white;
+    font-size: 1rem
+}
+
+.login-error p {
+    color: red;
+}
+
+.login-success p {
+    color: green;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    max-width: inherit;
+}
+
+.loginForm .email {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.fa-envelope,
+.fa-lock,
+.fa-unlock, .fa-user {
+    color: var(--lightOne);
+}
+
+
+input[type="file"], input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    margin-bottom: 2rem;
+    height: 2rem;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid black;
+}
+
+input[type="file"] { 
+    margin-top: 1rem;
+}
+
+.loginForm .password {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.showPass {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    margin-right: 1rem;
+}
+
+.showPass a {
+    color:black;
+}
+
+.g-recaptcha {
+    margin-top: 2rem;
+}
+
+.login-btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .login-btn:hover {
+    background-color: #3e8e41; 
+  }
+
+@media screen and (max-width: 867px) {
+
+    .login_wrapper{
+        padding: 4rem 1rem 4rem 1rem;
+    }
+
+    .login_wrapper_grid {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .facebook, .google {
+        width: 90%;
+    }
+
+    .showPass {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+
+    .showPass a {
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 467px) {
+
+    .login_wrapper {
+        width: 100% ;
+    }
+
+    .facebook, .google {
+        width: 100%;
+    }
+
+}
+
+/* <!-- login page end --> */

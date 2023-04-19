@@ -1,0 +1,57 @@
+{
+  "name": "deedeveloper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "backend/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix reactend && npm run build --prefix reactend"
+  },
+  "engines": {
+    "node": "19.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deep-dot/deedeveloper.git"
+  },
+  "author": "kuldeep",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deep-dot/deedeveloper/issues"
+  },
+  "homepage": "https://github.com/deep-dot/deedeveloper#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "cjs-module": "^1.5.0",
+    "cloudinary": "^1.30.1",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^4.6.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.14.2",
+    "handlebars-dateformat": "^1.1.2",
+    "jsonwebtoken": "^8.5.1",
+    "method-override": "^3.0.0",
+    "moment": "^2.29.4",
+    "mongoose": "^6.4.4",
+    "mongoose-unique-validator": "^3.1.0",
+    "multer": "^1.4.5-lts.1",
+    "multer-storage-cloudinary": "^4.0.0",
+    "node-fetch": "^2.6.7",
+    "nodemailer": "^6.7.7",
+    "nodemon": "^2.0.19",
+    "passport": "^0.6.0",
+    "passport-facebook": "^3.0.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0"
+  }
+}

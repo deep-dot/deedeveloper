@@ -1,0 +1,84 @@
+<footer class=" hidden footer">
+  <section class="footer-container">
+    <div class="cell">
+      <img href="#" src="../../img/logoDeeDev.svg" alt="Logo" />
+      <p>Dee Dhillon - Freelance Developer & Consultant</br>High Quality is our first priority</p>
+      <div class="social-icons">
+        <div>
+          <a href="https://www.facebook.com/">
+            <i class="fab fa-facebook"></i>
+          </a>
+        </div>
+        <div>
+          <a href="https://www.linkedin.com/">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
+        <div>
+          <a href="https://www.instagram.com/">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+      <div class="cell">
+        <div class="webLinks">
+          <div class="webMain">Website Links</div>
+          <a href="/quote">Quote</a>
+          <!-- <a href="http://localhost:3000/quote">Quote</a> -->
+          <a href="/process">Process</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/faq">FAQs</a>
+        </div>
+      </div>
+      <!-- <div class="divider"></div> -->
+      <div class="cell">
+        <div class="servicesLinks">
+          <div class="serviceMain">Services</div>
+          <div>
+            Mobile app development for IOS and Android
+          </div>
+          <div>
+            Website design and development
+          </div>
+          <div>
+            Search Engine Optimisation
+          </div>
+          <div>
+            Google Ads Managemeng
+          </div>
+          <div>
+            logo design
+          </div>
+          <div>
+            Future maintenance
+          </div>
+        </div>
+      </div>
+      <div class="cell">
+        <div class="contactLinks">
+          <div class="contactMain">Contact</div>
+          <div> <i class="fa fa-envelope"></i> dee@deedeveloper.com
+          </div>
+          <div><i class="fa fa-phone"></i> +61432000123
+          </div>
+        </div>
+      </div>
+    <!-- <img src="../img/shape1.svg" alt="Thinking"> -->
+  </section>
+  <p class="copyrights">Copyrights 2023 &copy; KuldeepDhillon</p>
+</footer>
+
+<script>
+  const backToTopButton = document.querySelector('.back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 100) { // adjust the threshold as needed
+      backToTopButton.classList.add('visible');
+    } else {
+      backToTopButton.classList.remove('visible');
+    }
+  });
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // smooth scroll to top of page
+  });
+</script>

@@ -1,0 +1,118 @@
+<script type="text/javascript">
+    function setcookie() {
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        document.cookie = "useremail=" + email + ";path = http://localhost:4000/auth/login";
+        document.cookie = "password=" + password + ";path = http://localhost:4000/auth/login";
+        document.cookie = "useremail=" + email + ";path = http://apponpress.herokuapp.com/auth/login";
+        document.cookie = "password=" + password + ";path = http://apponpress.herokuapp.com/auth/login";
+    }
+
+    function getcookiedata() {
+        var user = getCookie('useremail');
+        var password = getCookie('password');
+        if (user != "" && password != "") {
+            //alert("Welcome again " + user);
+            document.getElementById('email').value = user;
+            document.getElementById('password').value = password;
+        }
+    }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+</script>
+
+
+
+<div class="login_wrapper">
+    <h1>SIGN IN</h1>
+    <div class="login_wrapper_grid">
+        <div class="facebook">
+            <a href="/auth/facebook">
+                <span>Login with Facebook</span>
+                <i class="fab fa-facebook"></i>
+            </a>
+        </div>
+        <div class="google">
+            <a href="/auth/google">
+                <span>Login with Google</span>
+                <i class="fab fa-google-plus"></i>
+            </a>
+        </div>
+    </div>
+
+    <h2>or</h2>
+    <div class="login-error">
+        <p>
+            <%= error %>
+        </p>
+    </div>
+    <div class="login-success">
+        <p>
+            <%= success %>
+        </p>
+    </div>
+
+    <form id="loginForm" method="post" action="/auth/login" content-type="application/json">
+        <div class="email">
+            <i class="fas fa-envelope"></i>
+            <input name="email" type="email" required id="email" placeholder="Email Address *" />
+        </div>
+        <div class="password">
+            <span class="icon">
+                <i class="fas fa-lock"></i>
+            </span>
+            <input name="password" id="password" type="password" required placeholder="Password" />
+        </div>
+        <div class="showPass">
+            <div>
+                <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
+                <label class="" for="showPassword">
+                    Show Password
+                </label>
+            </div>
+            <div>
+                <input type="checkbox" id="rememberme" name="rememberme" onclick="setcookie()" />
+                <label class="form-check-label" for="rememberme">
+                    Remember me
+                </label>
+            </div>
+            <a class="forgotPass" href="/auth/passwordforgot">Forgot password</a>
+        </div>
+        <div class="g-recaptcha" data-sitekey="<%= sitekey %>"></div>
+        <button class="login-btn" id="send" type="submit">Login</button>
+        <div class="login-register">
+            <p>Don't have an account? <a href="/auth/newuser">Register</a></p>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    function togglePasswordVisibility() {
+        var passwordField = document.getElementById("password");
+        var showPasswordCheckbox = document.getElementById("showPassword");
+        var icon = document.querySelector(".password .icon i");
+        if (showPasswordCheckbox.checked) {
+            passwordField.type = "text";
+            icon.classList.remove("fa-lock");
+            icon.classList.add("fa-unlock");
+        } else {
+            passwordField.type = "password";
+            icon.classList.remove("fa-unlock");
+            icon.classList.add("fa-lock");
+        }
+    }
+</script>

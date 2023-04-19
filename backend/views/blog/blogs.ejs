@@ -1,0 +1,54 @@
+<div class="hidden">
+  <div class="blogMainImg">
+    <img src="/img/blog.svg" alt="Person Image" />
+  </div>
+
+  <div class="search-box">
+    <form method="POST" action="/searchPost">
+      <input type="text" placeholder="Search..." name="title" id="title" required>
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+
+
+  <% if(error) { %>
+    <p style="text-align: center; font-size:14px; color:red">
+      <%= error %>
+    </p>
+    <% } %>
+      <% if(success) { %>
+        <p style="text-align: center; font-size:14px; color:green">
+          <%= success %>
+        </p>
+        <% } %>
+
+          <div class="blog-container">
+            <input type="hidden" blogs-length="<%= blogposts.length %>">
+            <% for(var i=0; i < blogposts.length; i++) {%>
+              <div class="card-container">
+                <a href="/post/<%= blogposts[i]._id %>" class="blog-card">
+                  <img src="<%= blogposts[i].image %>" alt="Blog Photo">
+                  <h2 class="blog-title">
+                    <%= blogposts[i].title %>
+                  </h2>
+                  <p class="blog-meta">Posted <%= blogposts[0].createdAt.toDateString() %> by <%= blogposts[i].username
+                        %>
+                  </p>
+                </a>
+              </div>
+              <% } %>
+          </div>
+          <a id="see-more-button"></a>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const blogsLengthInput = document.querySelector('input[blogs-length]');
+    const blogsLength = parseInt(blogsLengthInput.getAttribute('blogs-length'));
+    var numOfBlogs = 0;
+    if (blogsLength > 0) {
+      numOfBlogs = blogsLength;
+    }
+    seeNumOfCardsLessOrMore(numOfBlogs);
+  });
+</script>

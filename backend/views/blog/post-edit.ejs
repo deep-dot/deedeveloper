@@ -1,0 +1,10 @@
+<div class="edit-post hidden">
+    <p>Edit post</p>
+    <form method="POST" action="/post/<%- blogpost._id %>?_method=PUT" enctype="multipart/form-data">
+        <input type="text" name="title" id="title" value="<%- blogpost.title %>" />
+        <textarea type="text" title="post" name="post"><%- blogpost.post %></textarea>
+        <img src="<%- blogpost.image %>" alt="me" />
+        <input type="file" placeholder="Image" id="image" name="image" />
+        <button type="submit">Update</button>
+    </form>
+</div>

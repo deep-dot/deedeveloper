@@ -1,0 +1,72 @@
+<div class="pt-5 col-lg-8 col-md-8 offset-lg-2 offset-md-2">
+    <div class="col-lg-8 col-md-8">
+        <p style=" font-size:14px; color:red">
+            <%= error %>
+        </p>
+    </div>
+    <div class="col-lg-8 col-md-8">
+        <p style=" font-size:14px; color:green">
+            <%= success %>
+        </p>
+    </div>
+    <div class="login_wrapper">
+        <h3 class="text-center">Welcome <%= name %>
+        </h3>
+        <div class="d-flex justify-content-center m-5">
+            <img class="profileimg" href="#" src="<%= image %>" alt=" " />
+        </div>
+        <form id="loginForm" class="formsix-pos">
+            <div class="formsix-e">
+                <div class="form-group i-password">
+                    <i class="fas fa-id-card icon"></i>
+                    <input name="id" id="id" type="text" value="<%= id %>" class="form-control" />
+                </div>
+            </div>
+            <div class="formsix-pos">
+                <div class="form-group ">
+                    <i class="fas fa-user icon"></i>
+                    <input name="name" type="text" value="<%= name %>" class="form-control" id="name" />
+                </div>
+            </div>
+            <div class="formsix-pos">
+                <div class="form-group ">
+                    <i class="fas fa-envelope icon"></i>
+                    <input name="email" type="email" value="<%= email %>" class="form-control" required id="email" />
+                </div>
+            </div>
+            <div class="formsix-e">
+                <div class="form-group i-password">
+                    <i class="fas fa-battery-full icon"></i>
+                    <input name="status" id="status" type="text" value="<%= status %>" class="form-control" />
+                </div>
+            </div>
+            <div class="formsix-e">
+                <div class="form-group i-password">
+                    <p class="icon pt-3 mb-0">Status</p>
+                    <input name="role" id="role" type="text" value="<%= role %>" class="form-control" />
+                </div>
+            </div>
+        </form>
+        <div class="d-flex justify-content-around">
+            <div>
+                <a href="/" class="w3-text-grey">
+                    <i id="iconColor" class="fa fa-home" aria-hidden="true"> Home</i>
+                </a>
+            </div>
+            <div>
+                <a href="/" class="w3-text-grey">
+                    <i id="iconColor" class="fa fa-edit" aria-hidden="true"> Edit</i>
+                </a>
+            </div>
+            <div>
+                <form method="POST" action="/auth/deleteUser/<%= id %>?_method=DELETE">
+                    <button type="submit" class="btn" title="Delete">
+                        <a>
+                            <i id="iconColor" class="fa fa-trash" aria-hidden="true"> Delete</i>
+                        </a>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
