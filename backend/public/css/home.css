@@ -134,8 +134,7 @@
 
 
 .services h1 {
-  font: 300 1.1em "Roboto";
-  text-transform: uppercase;
+  font: 500 2.2em "Roboto";
   text-align: start;
   color: var(--colorOnBackgroundColor);
   margin: 2rem 0;
@@ -144,6 +143,158 @@
 .services ul {
   list-style-type: none;
 }
+
+.services ul li {
+  margin-bottom: 20px;
+  font: 100 1.6em 'Roboto';
+  color: var(--colorOnBackgroundColor);
+}
+
+.services .contact-button {
+  position: relative;
+  background: var(--background);
+  font-size: 1.6em;
+  font-weight: bold;
+  height: auto;
+  padding: 7.5px 30px;
+  text-transform: uppercase;
+  user-select: none;
+  margin-top: 20px;
+  color: var(--colorOnBackground);
+  border-radius: 5;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  line-height: 40px;
+}
+
+.services .contact-button:hover {
+  background: var(--hoverColor);
+}
+
+.services .services-icons {
+  display: inline-flex;
+  gap: 30px;
+  margin-top: 2rem;
+}
+
+.services .services-icons i {
+  font-size: 5rem;
+  opacity: 0.1;
+}
+
+
+.contact-me-box {
+  background: var(--background);
+  width: 100%;
+  min-height: 30vh;
+  border-radius: 10px;
+  border: 5px solid rgb(23, 162, 184);
+  box-shadow: 0px 0px 5px 5px var(--colorOnBackgroundColor);
+  margin: 8rem 0;
+}
+
+.sub-contact-me-box {
+  padding: 2rem;
+}
+
+.contact-me-box .sub-contact-me-box h2 {
+  font: 800 2vmax 'Roboto';
+  margin-bottom: 2rem;
+  color: var(--colorOnBackground);
+}
+
+.contact-me-box .sub-contact-me-box p {
+  font: 200 1.4vmax 'Roboto';
+  margin-bottom: 2rem;
+  color: var(--colorOnBackground);
+}
+
+.contact-me-box .contact-button {
+  position: relative;
+  background: var(--backgroundColor);
+  font-size: 1.6em;
+  font-weight: bold;
+  height: auto;
+  padding: 7.5px 30px;
+  text-transform: uppercase;
+  user-select: none;
+  margin-top: 20px;
+  color: var(--colorOnBackgroundColor);
+  border-radius: 5;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  line-height: 40px;
+}
+
+.contact-me-box .contact-button:hover {
+  background: var(--hoverColor);
+}
+
+
+.skill p {
+  color: var(--colorOnBackgroundColor);
+  font: 400 1.5vmax 'Roboto';
+}
+
+.skill h2 {
+  color: var(--colorOnBackgroundColor);
+  font: 900 2vmax 'Roboto';
+  margin: 2rem 0;
+}
+
+.skill-box {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 20px;
+  width: 100%;
+  min-height: 40vh;
+}
+
+.skill-box .child {
+  border: none;
+  background: var(--background);
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.skill-box .sub-child {
+  padding: 1rem;
+}
+
+.skill-box .sub-child h2 {
+  font: 800 1.3em 'Roboto';
+  color: var(--colorOnBackground);
+  text-align: left;
+}
+
+.skill-box .sub-child p {
+  font: 200 1.2em 'Roboto';
+  color: var(--colorOnBackground);
+  text-align: left;
+  line-height: 26px;
+}
+
+@media (max-width: 768px) {
+  .skill-box {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .skill-box {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+  }
+}
+
+
 
 .testimonial {
   display: flex;

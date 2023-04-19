@@ -42,17 +42,17 @@ body {
   --mainColor: #17a2b8;
   --hoverColor: #5bacdf;
   --backgroundColor: #f1f8fc;
-  --background: #2a4657;
-  --colorOnBackground: #f1f8fc;
   --colorOnBackgroundColor: #2a4657;
+  --background: #2a4657;
+  --colorOnBackground: #f1f8fc;  
 }
 
 .dark {
   --mainColor: #17a2b8;
   --hoverColor: #5bacdf;
   --backgroundColor: #2a4657;
-  --background: #f1f8fc;
   --colorOnBackgroundColor: #f1f8fc;
+  --background: #f1f8fc;  
   --colorOnBackground: #2a4657;
 }
 
