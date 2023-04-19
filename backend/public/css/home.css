@@ -8,28 +8,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: auto;
+  min-height: 100vh;
 }
 
 .H h1,
-.A h1,
-.S h1,
 .T h1,
 .C h1,
 .M h1 {
   font: 800 3vmax "Roboto";
   align-self: center;
   color: #17a2b8;
-  margin: 4rem 0 4rem 0;
 }
 
-.A h1,
-.S h1,
-.T h1,
-.C h1,
-.M h1 {
-  margin: 12rem 0 4rem 0;
-}
 
 .home,
 .about,
@@ -42,7 +32,6 @@
 }
 
 .home p,
-.about p,
 .services p {
   font: 400 2vmax "Roboto";
   text-align: justify;
@@ -93,6 +82,65 @@
   }
 }
 
+.about h1 {
+  font: 300 1.1em "Roboto";
+  text-transform: uppercase;
+  text-align: start;
+  color: var(--colorOnBackgroundColor);
+  margin: 2rem 0;
+}
+
+.about h2 {
+  margin-bottom: 20px;
+  line-height: 30px;
+  font-size: 1.5em;
+  color: var(--colorOnBackgroundColor);
+}
+
+.about p {
+  font-size: 1em;
+  line-height: 26px;
+  margin: 15px 0;
+  color: var(--colorOnBackgroundColor);
+}
+
+.about-me-icons {
+  display: inline-flex;
+  gap: 10px;
+}
+
+.about-me-icons .fa-react,
+.about-me-icons .fa-node-js,
+.about-me-icons .fa-js {
+  background-color: #17a2b8;
+  padding: 5px;
+  color: #fff;
+}
+
+.aboiut-me-social-icons {
+  display: inline-flex;
+  gap: 25px;
+}
+
+.aboiut-me-social-icons a {
+  font-size: 30px;
+  text-decoration: none;
+  color: var(--background);
+}
+
+.aboiut-me-social-icons a:hover {
+  color: #17a2b8;
+}
+
+
+.services h1 {
+  font: 300 1.1em "Roboto";
+  text-transform: uppercase;
+  text-align: start;
+  color: var(--colorOnBackgroundColor);
+  margin: 2rem 0;
+}
+
 .services ul {
   list-style-type: none;
 }
@@ -130,7 +178,7 @@
   object-fit: cover;
 }
 
- #see-more-button {
+#see-more-button {
   display: block;
   margin: 10px auto;
   padding: 10px 20px;
@@ -144,7 +192,7 @@
   transition: background-color 0.2s ease-in-out;
 }
 
- #see-more-button:hover {
+#see-more-button:hover {
   background-color: #555555;
 }
 
@@ -354,7 +402,7 @@ textarea:focus {
   width: 80vw;
 }
 
-
+/* 
 @media screen and (min-width: 480px) and (max-width: 867px) {
 
   .Container {
@@ -419,9 +467,9 @@ textarea:focus {
     width: 80vw;
   }
 
-}
+} */
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 1000px) {
 
   .Container {
     padding: calc(var(--navheight) + 2rem) 0.5rem 0 0.5rem;
@@ -444,7 +492,7 @@ textarea:focus {
   }
 
   .H h1 {
-    font: 800 4vmax "Roboto";
+    font: 800 2vmax "Roboto";
   }
 
   .A h1,
@@ -452,8 +500,7 @@ textarea:focus {
   .T h1,
   .C h1,
   .M h1 {
-    margin: 8rem 0 4rem 0;
-    font: 800 4vmax "Roboto";
+    font: 800 2vmax "Roboto";
   }
 
   .home p,
@@ -493,11 +540,11 @@ textarea:focus {
     font-size: 10px;
   }
 
-   #write-review-button span {
+  #write-review-button span {
     display: none;
   }
 
-   #write-review-button i {
+  #write-review-button i {
     display: block;
   }
 
