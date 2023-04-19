@@ -6,7 +6,7 @@
 .M {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-around;
   min-height: 100vh;
 }
@@ -31,18 +31,11 @@
   justify-content: space-between;
 }
 
-.home p,
-.services p {
+.home p {
   font: 400 2vmax "Roboto";
-  text-align: justify;
+  text-align: left;
   line-height: 1.5;
   color: var(--colorOnBackgroundColor);
-}
-
-.services ul li a:hover {
-  color: #17a2b8 !important;
-  text-decoration: none;
-  cursor: pointer;
 }
 
 .about img,
@@ -91,9 +84,9 @@
 }
 
 .about h2 {
+  font: 600 1.5em 'Roboto';
   margin-bottom: 20px;
   line-height: 30px;
-  font-size: 1.5em;
   color: var(--colorOnBackgroundColor);
 }
 
@@ -101,6 +94,7 @@
   font-size: 1em;
   line-height: 26px;
   margin: 15px 0;
+  text-align: left;
   color: var(--colorOnBackgroundColor);
 }
 
@@ -146,7 +140,7 @@
 
 .services ul li {
   margin-bottom: 20px;
-  font: 100 1.6em 'Roboto';
+  font: 500 1.6em 'Roboto';
   color: var(--colorOnBackgroundColor);
 }
 
@@ -200,13 +194,13 @@
 }
 
 .contact-me-box .sub-contact-me-box h2 {
-  font: 800 2vmax 'Roboto';
+  font: 800 1.5em 'Roboto';
   margin-bottom: 2rem;
   color: var(--colorOnBackground);
 }
 
 .contact-me-box .sub-contact-me-box p {
-  font: 200 1.4vmax 'Roboto';
+  font: 400 1em 'Roboto';
   margin-bottom: 2rem;
   color: var(--colorOnBackground);
 }
@@ -263,10 +257,6 @@
   border-radius: 5px;
 }
 
-.skill-box .sub-child {
-  padding: 1rem;
-}
-
 .skill-box .sub-child h2 {
   font: 800 1.3em 'Roboto';
   color: var(--colorOnBackground);
@@ -274,16 +264,32 @@
 }
 
 .skill-box .sub-child p {
-  font: 200 1.2em 'Roboto';
+  font: 400 1em 'Roboto';
   color: var(--colorOnBackground);
   text-align: left;
   line-height: 26px;
 }
 
 @media (max-width: 768px) {
+
+  .about h2 {
+    font: 500 1em 'Roboto';
+  }
+
   .skill-box {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
+  }
+  .contact-me-box .contact-button {
+    font-size: 1em;
+  }
+
+  .services div h1 {
+    font: 500 1.2em "Roboto";
+  }
+  
+  .services ul li {
+    font: 500 0.8em 'Roboto';
   }
 }
 
@@ -291,6 +297,9 @@
   .skill-box {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, 1fr);
+  }
+  .contact-me-box .contact-button {
+    font-size: 1em;
   }
 }
 

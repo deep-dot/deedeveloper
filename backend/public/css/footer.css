@@ -3,7 +3,7 @@
 
 .footer {
   width: 100%;
-  background-color: #fff;
+  /* background: #fff; */
 }
 
 .footer .footer-container {
@@ -36,25 +36,26 @@
 }
 
 .footer .footer-container .cell:nth-child(1) p {
-  font: 400 1vmax "Roboto";
-  color: var(--lightOne);
+  font: 700 2vmax "Roboto";
+  text-align: center;
+  color: var(--colorOnBackgroundColor);
   margin: 0;
 }
 
 .footer .footer-container .webMain,
 .footer .footer-container .serviceMain,
 .footer .footer-container .contactMain {
-  font: 400 1.5vmax "Roboto";
-  margin-bottom: 1rem;
-  color: var(--lightOne);
+  font: 800 2.5vmax "Roboto";
+  margin: 1rem 0;
+  color: var(--colorOnBackgroundColor);
 }
 
 .footer .footer-container .webLinks a,
 .footer .footer-container .servicesLinks div:not(.serviceMain),
 .footer .footer-container .contactLinks div:not(.contactMain) {
-  font: 100 1vmax "Roboto";
+  font: 600 1.8vmax "Roboto";
   margin-bottom: 0.6rem;
-  color: var(--lightOne);
+  color: var(--colorOnBackgroundColor);
 }
 
 .footer .footer-container .cell:nth-child(1) .social-icons {
@@ -64,6 +65,7 @@
 .footer .footer-container .cell:nth-child(1) .social-icons a,
 .footer .footer-container .contactLinks i {
   color: black;
+  background: var(--backround);
   text-decoration: none;
   cursor: pointer;
 }
@@ -90,6 +92,7 @@
 .footer .copyrights {
   font-size: 0.8rem;
   align-self: center;
+  color: var(--colorOnBackgroundColor);
 }
 
 @media screen and (max-width: 768px) {
