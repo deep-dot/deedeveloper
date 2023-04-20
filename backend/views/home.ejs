@@ -10,10 +10,17 @@
     <p class="punjabi">ਮੈਂ ਤੁਹਾਡੇ ਵਪਾਰ ਦੀ ਚੁਣੌਤੀ ਨੂੰ ਪਛਾਣ ਕਰਵਾਉਣ ਵਿੱਚ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦਾ ਹਾਂ ਅਤੇ ਇਸਨੂੰ ਜਲਦੀ ਤੋਂ ਜਲਦੀ ਹੱਲ
       ਕਰਨ ਵਿੱਚ ਮਦਦ ਕਰਦਾ ਹਾਂ।</p>
   </div>
-  <a class="quote" href="/quote">
-    <i class="fas fa-edit"></i> Quote
-  </a>
-  <img class="home-img" src="../img/person.svg" alt="Home">
+
+  <!-- <img src="../img/person.svg" alt="Home"> -->
+
+  <div class="quote-me-box">
+    <div class="sub-quote-me-box">
+      <h2>Dont shy🙈 !  Share your thoughts. </h2>
+      <p>I will provide you with all of the information, answer all your questions, and finally, will get you a free quote.</p>
+      <a class="quote-button" href="/quote">Get your free Quote</a><br>
+    </div>
+  </div>
+  
 </section>
 
 <section class="A hidden" id="aboutSection">
@@ -140,23 +147,20 @@
       </div>
     </div>
   </div>
-
 </section>
 
-<section class="T hidden" id="testimonial">
-  <h1>Customer Feedback</h1>
+<section class="T hidden testimonial" id="testimonial">
   <% if(error) {%>
     <p style="color:red"><%- error -%></p>
     <%} else {%>
       <p style="color:green"><%- success -%></p>
       <% } %>
-        <div class="testimonial">
-          <div id="reviewCard"></div>
-          <a id="write-review-button">
-            <span>Write Review</span> <i class="fas fa-pencil-alt"></i>
-          </a>
-          <button id="see-more-button"></button>
-        </div>
+        <h2>I guarantee 100% satisfaction to my clients. 🤩 </h2>
+        <div id="reviewCard"></div>
+        <a id="write-review-button">
+          <span>Write Review</span> <i class="fas fa-pencil-alt"></i>
+        </a>
+        <button id="see-more-button"></button>
 </section>
 
 <!-- reviews -->
@@ -210,13 +214,11 @@
   });
 </script>
 
-<section class="M hidden" id="mapSection">
+<section class="map hidden" id="mapSection">
   <h1>Location</h1>
-  <div class="map">
-    <iframe style="border:0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB0JGlpuvMu3U3qDgcBH4n6XQ97qKzWmAM
+  <iframe style="border:0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB0JGlpuvMu3U3qDgcBH4n6XQ97qKzWmAM
     &q=Geelong,Vic,Aus">
-    </iframe>
-  </div>
+  </iframe>
 </section>
 
 <script>

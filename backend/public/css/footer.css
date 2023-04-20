@@ -30,22 +30,26 @@
   z-index: -1;
 }
 
+.footer .footer-container .cell:nth-child(1){
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
 .footer .footer-container .cell:nth-child(1) img {
   width: 250px;
   height: 80px;
 }
 
 .footer .footer-container .cell:nth-child(1) p {
-  font: 700 2vmax "Roboto";
-  text-align: center;
+  font: 400 1.5vmax "Roboto";
   color: var(--colorOnBackgroundColor);
-  margin: 0;
 }
 
 .footer .footer-container .webMain,
 .footer .footer-container .serviceMain,
 .footer .footer-container .contactMain {
-  font: 800 2.5vmax "Roboto";
+  font: 500 2vmax "Roboto";
   margin: 1rem 0;
   color: var(--colorOnBackgroundColor);
 }
@@ -53,7 +57,7 @@
 .footer .footer-container .webLinks a,
 .footer .footer-container .servicesLinks div:not(.serviceMain),
 .footer .footer-container .contactLinks div:not(.contactMain) {
-  font: 600 1.8vmax "Roboto";
+  font: 400 1.5vmax "Roboto";
   margin-bottom: 0.6rem;
   color: var(--colorOnBackgroundColor);
 }
@@ -90,7 +94,7 @@
 }
 
 .footer .copyrights {
-  font-size: 0.8rem;
+  font-size: 1em;
   align-self: center;
   color: var(--colorOnBackgroundColor);
 }

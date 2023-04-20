@@ -26,7 +26,7 @@ axios.get('/getJsonData').then(res => {
         }
 
         var html = ''
-        html += '<div class="card-container">'
+       // html += '<div class="card-container">'
         html += '<div class="card">'
 
         html += '<div class="cardRow">'
@@ -84,11 +84,10 @@ axios.get('/getJsonData').then(res => {
         }
         html += '</div>'
 
-        html += '<div class=" morelessmore">'
-        html += '</div>'
+        html += '<div class=" morelessmore"></div>'
 
-        html += '</div>'
-        html += '</div>'
+         html += '</div>'
+        // html += '</div>'
 
         reviewRender.push(html);
     });
