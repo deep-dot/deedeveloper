@@ -53,30 +53,27 @@ function toggleAnimation() {
   }
 }
 
+// function hideMoreLessBtn() {
+//   const containers = document.querySelectorAll('.card');
+//   console.log('content.scrollHeight==', containers.length);
+//   for (let i = 0; i < containers.length; i++) {
+//     const seeMoreLessBtn = containers[i].querySelector('.morelessmore');
+//     const content = containers[i].querySelector('.contents');
+//     const contentStyle = getComputedStyle(content);
+//     const contentMaxHeight = contentStyle.getPropertyValue('max-height');
+//     const contentMaxHeightNumber = parseFloat(contentMaxHeight);
 
-
-
-function hideMoreLessBtn() {
-  const containers = document.querySelectorAll('.card');
-  console.log('content.scrollHeight==', containers.length);
-  for (let i = 0; i < containers.length; i++) {
-    const seeMoreLessBtn = containers[i].querySelector('.morelessmore');
-    const content = containers[i].querySelector('.contents');
-    const contentStyle = getComputedStyle(content);
-    const contentMaxHeight = contentStyle.getPropertyValue('max-height');
-    const contentMaxHeightNumber = parseFloat(contentMaxHeight);
-
-    console.log('content max-height:', contentMaxHeightNumber, content.offsetHeight, seeMoreLessBtn);
-    if (content.offsetHeight >= contentMaxHeightNumber) {
-      seeMoreLessBtn.style.display = 'block';
-    } else {
-      seeMoreLessBtn.style.display = 'none';
-    }
-  }
-}
-document.addEventListener('DOMContentLoaded', function () {
-  hideMoreLessBtn();
-});
+//     console.log('content max-height:', contentMaxHeightNumber, content.offsetHeight, seeMoreLessBtn);
+//     if (content.offsetHeight >= contentMaxHeightNumber) {
+//       seeMoreLessBtn.style.display = 'block';
+//     } else {
+//       seeMoreLessBtn.style.display = 'none';
+//     }
+//   }
+// }
+// document.addEventListener('DOMContentLoaded', function () {
+//   hideMoreLessBtn();
+// });
 
 function morelessmore() {
   const moreless = document.querySelectorAll(".morelessmore");
@@ -88,9 +85,10 @@ function morelessmore() {
     })
   }
 }
+window.morelessmore = morelessmore
 
 function showMoreLess(totalLength, numOfVisibleCards, showAllCards, button) {
-   console.log('function called', totalLength, showAllCards,numOfVisibleCards);
+  // console.log('function called', totalLength, showAllCards,numOfVisibleCards);
   for (let i = 0; i < totalLength; i++) {
     cards = document.querySelectorAll(".card-container");
     if (i < numOfVisibleCards) {
@@ -100,7 +98,7 @@ function showMoreLess(totalLength, numOfVisibleCards, showAllCards, button) {
       cards[i].style.display = "none";
     }
   }
-  //console.log('see more button===', button);
+  console.log('see more button===', totalLength, numOfVisibleCards);
   if (totalLength >= numOfVisibleCards) {
     button.textContent = showAllCards ? "See less" : "See more";
     button.style.display = "block";
@@ -109,18 +107,18 @@ function showMoreLess(totalLength, numOfVisibleCards, showAllCards, button) {
   }
 }
 
-function seeNumOfCardsLessOrMore(numOfCards) {
+function seeNumOfCardsLessOrMore(numOfReviews) {
   let showAllCards = false;
-  var numOfVisibleCards = 2;
+  let numOfVisibleCards = 2;
   let seeMoreButton = document.querySelector("#see-more-button");
   seeMoreButton.addEventListener("click", () => {
     showAllCards = !showAllCards;
-    numOfVisibleCards = showAllCards ? numOfCards : 2;
-    showMoreLess(numOfCards, numOfVisibleCards, showAllCards, seeMoreButton);
+    numOfVisibleCards = showAllCards ? numOfReviews : 2;
+    showMoreLess(numOfReviews, numOfVisibleCards, showAllCards, seeMoreButton);
   });
-  showMoreLess(numOfCards, numOfVisibleCards, showAllCards, seeMoreButton);
+  showMoreLess(numOfReviews, numOfVisibleCards, showAllCards, seeMoreButton);
 }
-window.seeNumOfCardsLessOrMore = seeNumOfCardsLessOrMore;
+//window.seenumOfReviewsLessOrMore = seeNumOfCardsLessOrMore;
 
 
 document.addEventListener("DOMContentLoaded", () => {

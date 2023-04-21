@@ -2,16 +2,17 @@
 /* Footer */
 
 .footer {
-  width: 100%;
-  /* background: #fff; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer .footer-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: row;  
+  padding: 2rem 0 2rem 0;
+  align-items:flex-start;
   justify-content: space-around;
-  align-items:center;  
-  padding: 8rem 0 8rem 0;
 }
 
 /* background image opacity */
@@ -33,6 +34,7 @@
 .footer .footer-container .cell:nth-child(1){
 display: flex;
 flex-direction: column;
+justify-content: center;
 align-items: center;
 }
 
@@ -42,14 +44,14 @@ align-items: center;
 }
 
 .footer .footer-container .cell:nth-child(1) p {
-  font: 400 1.5vmax "Roboto";
+  font: 500 1.5vmax "Roboto";
   color: var(--colorOnBackgroundColor);
 }
 
 .footer .footer-container .webMain,
 .footer .footer-container .serviceMain,
 .footer .footer-container .contactMain {
-  font: 500 2vmax "Roboto";
+  font: 600 2vmax "Roboto";
   margin: 1rem 0;
   color: var(--colorOnBackgroundColor);
 }
@@ -57,7 +59,7 @@ align-items: center;
 .footer .footer-container .webLinks a,
 .footer .footer-container .servicesLinks div:not(.serviceMain),
 .footer .footer-container .contactLinks div:not(.contactMain) {
-  font: 400 1.5vmax "Roboto";
+  font: 500 1.7vmax "Roboto";
   margin-bottom: 0.6rem;
   color: var(--colorOnBackgroundColor);
 }
@@ -89,11 +91,10 @@ align-items: center;
 .footer .footer-container .contactLinks {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: flex-start;
 }
 
-.footer .copyrights {
+p {
   font-size: 1em;
   align-self: center;
   color: var(--colorOnBackgroundColor);
@@ -103,7 +104,8 @@ align-items: center;
 
   .footer .footer-container {
     flex-direction: column;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
     padding: 2rem 0 2rem 0;
   }
 

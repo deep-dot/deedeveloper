@@ -9,6 +9,7 @@
   font: 800 2.9em "Roboto";
   color: var(--colorOnBackgroundColor);
   margin: 2rem 0;
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -67,14 +68,15 @@
 }
 
 .quote-me-box .sub-quote-me-box h2 {
-  font: 800 1.5em 'Roboto';
+  font: 800 2em 'Roboto';
   margin-bottom: 2rem;
   color: var(--colorOnBackgroundColor);
 }
 
 .quote-me-box .sub-quote-me-box p {
-  font: 400 1em 'Roboto';
+  font: 400 1.8em 'Roboto';
   margin-bottom: 2rem;
+  line-height: 1.5;
   color: var(--colorOnBackgroundColor);
 }
 
@@ -92,7 +94,6 @@
   cursor: pointer;
   display: inline-block;
   text-decoration: none;
-  line-height: 40px;
 }
 
 .quote-me-box .quote-button:hover {
@@ -145,6 +146,7 @@
   font: 500 1.2em 'Roboto';
   line-height: 26px;
   margin: 15px 0;
+  line-height: 1.5;
   text-align: left;
   color: var(--colorOnBackgroundColor);
 }
@@ -218,6 +220,7 @@
   padding: 7.5px 30px;
   text-transform: uppercase;
   user-select: none;
+  border-radius: 5px;
   margin-top: 20px;
   color: var(--colorOnBackground);
   border-radius: 5;
@@ -281,6 +284,7 @@
   padding: 7.5px 30px;
   text-transform: uppercase;
   user-select: none;
+  border-radius: 5px;
   margin-top: 20px;
   color: var(--colorOnBackgroundColor);
   border-radius: 5;
@@ -463,9 +467,7 @@ blockquote::before {
   position: absolute;
   font: 800 6em 'Roboto';
   top: -20px;
-  /* Adjust the position as needed */
   left: 0px;
-  /* Adjust the position as needed */
 }
 
 .like {
@@ -489,7 +491,7 @@ blockquote::before {
 }
 
 .card .morelessmore {
-  display: none;
+  display: block;
   position: relative;
   padding: 3px 5px;
   background: #17e78c;
@@ -517,7 +519,7 @@ blockquote::before {
 }
 
 #see-more-button {
-  display: block;
+  display: none;
   margin: 10px auto;
   padding: 10px 20px;
   background-color: #333333;
@@ -657,8 +659,8 @@ blockquote::before {
 .C {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
+  justify-content: space-between;
+  min-height: 60vh;
 }
 
 .contact {
@@ -669,11 +671,15 @@ blockquote::before {
 }
 
 .C h1 {
-  font: 600 1.9em "Roboto";
+  font: 600 1.5em "Roboto";
   text-transform: uppercase;
-  text-align: start;
+  text-align: left;
   color: var(--colorOnBackgroundColor);
   margin: 2rem 0;
+}
+
+.contact form {
+  width: 50vw;
 }
 
 .contact form p {
@@ -761,15 +767,14 @@ textarea:focus {
 .map {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  min-height: 60vh;
+  min-height: 50vh;
   min-width: 80vw;
 }
 
 .map h1 {
-  font: 600 1.9em "Roboto";
+  font: 600 1.5em "Roboto";
   text-transform: uppercase;
-  text-align: start;
+  text-align: flex-start;
   color: var(--colorOnBackgroundColor);
   margin: 2rem 0;
 }
@@ -787,7 +792,7 @@ textarea:focus {
 }
 
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 867px) {
 
   .Container {
     padding: calc(var(--navheight) + 2rem) 0.5rem 0 0.5rem;
@@ -811,13 +816,17 @@ textarea:focus {
   }
 
   .home p {
-    font-size: 2em;
-    text-align: justify;
+    font-size: 1.5em;
+    text-align: center;
     padding: 0;
   }
 
+  .home>p:first-child {
+    text-align: center;
+  }
+
   .quote-me-box {
-    width: 70%;
+    width: 100%;
   }
 
   .about {
@@ -887,12 +896,21 @@ textarea:focus {
     font-size: 10px;
   }
 
+  blockquote::before {
+    font: 600 6em 'Roboto';
+    top: -20px;
+  }
+
   #write-review-button span {
     display: none;
   }
 
   #write-review-button i {
     display: block;
+  }
+
+  .contact form {
+    width: 90vw;
   }
 
   button[type="submit"] {
@@ -924,8 +942,20 @@ textarea:focus {
     align-items: center;
   }
 
+  .home p {
+    font: 400 1.5em "Roboto";
+  }
+
   .quote-me-box {
     width: 100%;
+  }
+
+  .sub-quote-me-box {
+    padding: 1rem;
+  }
+
+  .quote-me-box .quote-button {
+    font: 500 1.2em 'Roboto';
   }
 
   .about h1 {
@@ -937,7 +967,8 @@ textarea:focus {
   }
 
   .about p {
-    font: 500 1.2em 'Roboto';
+    font: 500 1em 'Roboto';
+    text-align: justify;
   }
 
 
@@ -950,7 +981,11 @@ textarea:focus {
   }
 
   .services .contact-button {
-    font: 500 1.3em 'Roboto';
+    font: 500 1.2em 'Roboto';
+  }
+
+  .sub-contact-me-box {
+    padding: 1rem;
   }
 
   .skill-box {
@@ -980,8 +1015,28 @@ textarea:focus {
     width: 60px;    
   }
 
-  .contact-me-box .contact-button {
-    font: 500 1.3em 'Roboto';
+  .card blockquote {
+    font: 500 1em 'Roboto';
+    line-height: 1.2;
+    margin: 10px 0;
+    text-align: justify;
+  }
+
+  blockquote::before {
+    font: 800 4em 'Roboto';
+    top: -10px;
+  }
+
+  .C h1 {
+    font: 500 1.3em "Roboto";
+  }
+
+  .contact form {
+    width: 95vw;
+  }
+
+  .map h1 {
+    font: 500 1.3em "Roboto";
   }
 
 }

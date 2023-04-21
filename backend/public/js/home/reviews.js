@@ -93,10 +93,10 @@ axios.get('/getJsonData').then(res => {
     if (reviews) {
         numOfReviews = reviews.length;
     }
-    //document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
     seeNumOfCardsLessOrMore(numOfReviews);
     morelessmore();
-    //});
+    });
 
 }).catch(error => {
     console.log('Error fetching number of reviews:', error);

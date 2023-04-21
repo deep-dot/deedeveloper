@@ -15,12 +15,13 @@
 
   <div class="quote-me-box">
     <div class="sub-quote-me-box">
-      <h2>Dont shy🙈 !  Share your thoughts. </h2>
-      <p>I will provide you with all of the information, answer all your questions, and finally, will get you a free quote.</p>
+      <h2>Dont shy🙈 ! Share your thoughts. </h2>
+      <p>I will provide you with all of the information, answer all your questions, and finally, will get you a free
+        quote.</p>
       <a class="quote-button" href="/quote">Get your free Quote</a><br>
     </div>
   </div>
-  
+
 </section>
 
 <section class="A hidden" id="aboutSection">
@@ -147,21 +148,23 @@
       </div>
     </div>
   </div>
+
+
+  <div class="testimonial" id="testimonial">
+    <% if(error) {%>
+      <p style="color:red"><%- error -%></p>
+      <%} else {%>
+        <p style="color:green"><%- success -%></p>
+        <% } %>
+          <h2>I guarantee 100% satisfaction to my clients. 🤩 </h2>
+          <div id="reviewCard"></div>
+          <a id="write-review-button">
+            <span>Write Review</span> <i class="fas fa-pencil-alt"></i>
+          </a>
+          <button id="see-more-button"></button>
+  </div>
 </section>
 
-<section class="T hidden testimonial" id="testimonial">
-  <% if(error) {%>
-    <p style="color:red"><%- error -%></p>
-    <%} else {%>
-      <p style="color:green"><%- success -%></p>
-      <% } %>
-        <h2>I guarantee 100% satisfaction to my clients. 🤩 </h2>
-        <div id="reviewCard"></div>
-        <a id="write-review-button">
-          <span>Write Review</span> <i class="fas fa-pencil-alt"></i>
-        </a>
-        <button id="see-more-button"></button>
-</section>
 
 <!-- reviews -->
 <script src="/js/home/reviews.js"></script>
