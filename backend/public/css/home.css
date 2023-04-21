@@ -357,6 +357,117 @@
   margin: 2rem 0;
 }
 
+
+#reviewCard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 4rem;
+}
+
+.card {
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: transparent !important;
+  height: auto;
+  max-width: 650px;
+  border: none !important;
+  border-radius: 5px;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 10px;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  border: 20px solid transparent;
+  border-top: 5px solid #17e78c;
+  border-right: 10px solid #17e78c;
+}
+
+.card.active::before {
+  border-top: 5px solid #bd4033;
+  border-right: 20px solid #bd4033;
+}
+
+
+.cardRow {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cardRow img {
+  margin-right: 20px;
+  height: 80px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.cardRow .stars {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.stars {
+  display: flex;
+  list-style: none;
+  color: grey;
+}
+
+.stars .fa-stars {
+  font-size: 15px;
+}
+
+.star {
+  margin-left: 7px;
+}
+
+.orange {
+  color: orange;
+}
+
+.clicked {
+  color: orange;
+}
+
+.card .contents {
+  max-height: 100px;
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.card.active .contents {
+  max-height: 100%;
+}
+
+.card blockquote {
+  position: relative;
+  padding: 10px;
+  font: 200 1.2em 'Roboto';
+  line-height: 1.6;
+  margin: 20px 0;
+}
+
+blockquote::before {
+  content: '“';
+  opacity: 0.2;
+  position: absolute;
+  font: 800 6em 'Roboto';
+  top: -20px;
+  /* Adjust the position as needed */
+  left: 0px;
+  /* Adjust the position as needed */
+}
+
 .like {
   float: right;
   color: blue;
@@ -377,57 +488,8 @@
   cursor: pointer;
 }
 
-#reviewCard {
-  align-items: center;
-  gap: 20px;
-}
-
-.card {
-  padding: 10px;
-  box-sizing: border-box;
-  /* max-width: 80%; */
-  min-height: 100px;
-  border-radius: 5px;
-  display: grid;
-  grid-template-rows: repeat(4, 1fr);
-  grid-gap: 10px;
-}
-
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  border: 20px solid transparent;
-  border-top: 20px solid #17e78c;
-  border-right: 20px solid #17e78c;
-}
-
-
-.stars {
-  display: flex;
-  list-style: none;
-  color: grey;
-}
-
-.stars i {
-  font-size: 15px;
-}
-
-.star {
-  margin-left: 7px;
-}
-
-.orange {
-  color: orange;
-}
-
-.clicked {
-  color: orange;
-}
-
-
 .card .morelessmore {
+  display: none;
   position: relative;
   padding: 3px 5px;
   background: #17e78c;
@@ -438,6 +500,7 @@
   text-transform: uppercase;
   border-radius: 5px;
   width: 80px;
+  align-self: center;
 }
 
 .card .morelessmore::before {
@@ -451,51 +514,6 @@
 
 .card.active .morelessmore::before {
   content: 'Read less';
-}
-
-.card.active::before {
-  border-top: 20px solid #bd4033;
-  border-right: 20px solid #bd4033;
-}
-
-.card .reviewcontent {
-  position: relative;
-  height: 25px;
-  overflow: hidden;
-}
-
-.card.active .reviewcontent {
-  height: auto;
-}
-
-.card.active .reviewcontent::before {
-  display: none;
-}
-
-.card .reviewcontent::before {
-  content: '';
-  position: absolute;
-  width: 100px;
-  height: 100px;
-}
-
-.cardRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.cardRow div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.card .reviewDesc {
-  display: flex;
-  align-items: flex-start;
 }
 
 #see-more-button {
@@ -938,6 +956,28 @@ textarea:focus {
   .skill-box {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, 1fr);
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .cardRow .stars {
+    margin-right: 5px;
+  }
+
+  .stars .fa-stars {
+    font-size: 10px;
+  }
+
+  .star {
+  margin-left: 4px;
+}
+
+  .cardRow img {
+    margin-right: 10px;
+    height: 60px;
+    width: 60px;    
   }
 
   .contact-me-box .contact-button {

@@ -3,8 +3,8 @@ var toggle_btn;
 var main_wrapper;
 var hamburger_menu;
 var main;
-let dark = false, cards, blog, blog_menu, hiddenElements, 
-obsever, currentLocation, menuItems;
+let dark = false, cards, blog, blog_menu, hiddenElements,
+  obsever, currentLocation, menuItems;
 
 
 function declare() {
@@ -19,7 +19,7 @@ function declare() {
 }
 declare();
 
-function switchLanguage (){
+function switchLanguage() {
 
 }
 
@@ -53,18 +53,44 @@ function toggleAnimation() {
   }
 }
 
+
+
+
+function hideMoreLessBtn() {
+  const containers = document.querySelectorAll('.card');
+  console.log('content.scrollHeight==', containers.length);
+  for (let i = 0; i < containers.length; i++) {
+    const seeMoreLessBtn = containers[i].querySelector('.morelessmore');
+    const content = containers[i].querySelector('.contents');
+    const contentStyle = getComputedStyle(content);
+    const contentMaxHeight = contentStyle.getPropertyValue('max-height');
+    const contentMaxHeightNumber = parseFloat(contentMaxHeight);
+
+    console.log('content max-height:', contentMaxHeightNumber, content.offsetHeight, seeMoreLessBtn);
+    if (content.offsetHeight >= contentMaxHeightNumber) {
+      seeMoreLessBtn.style.display = 'block';
+    } else {
+      seeMoreLessBtn.style.display = 'none';
+    }
+  }
+}
+document.addEventListener('DOMContentLoaded', function () {
+  hideMoreLessBtn();
+});
+
 function morelessmore() {
-  let moreless = document.getElementsByClassName("morelessmore");
+  const moreless = document.querySelectorAll(".morelessmore");
+  // console.log('morelessmore', moreless);
   for (let i = 0; i < moreless.length; i++) {
     moreless[i].addEventListener('click', function () {
       moreless[i].parentNode.classList.toggle('active')
+      console.log(moreless[i].parentNode.classList.contains('active'));
     })
   }
 }
-window.morelessmore = morelessmore;
 
 function showMoreLess(totalLength, numOfVisibleCards, showAllCards, button) {
-  // console.log('function called', totalLength, numOfVisibleCards);
+   console.log('function called', totalLength, showAllCards,numOfVisibleCards);
   for (let i = 0; i < totalLength; i++) {
     cards = document.querySelectorAll(".card-container");
     if (i < numOfVisibleCards) {
@@ -74,19 +100,18 @@ function showMoreLess(totalLength, numOfVisibleCards, showAllCards, button) {
       cards[i].style.display = "none";
     }
   }
-   console.log('see more button===', button);
-  if (totalLength > numOfVisibleCards) {
+  //console.log('see more button===', button);
+  if (totalLength >= numOfVisibleCards) {
     button.textContent = showAllCards ? "See less" : "See more";
     button.style.display = "block";
   } else {
     button.style.display = "none";
-    button.style.backGround = "none";
   }
 }
 
 function seeNumOfCardsLessOrMore(numOfCards) {
   let showAllCards = false;
-  let numOfVisibleCards = 2;
+  var numOfVisibleCards = 2;
   let seeMoreButton = document.querySelector("#see-more-button");
   seeMoreButton.addEventListener("click", () => {
     showAllCards = !showAllCards;
@@ -103,42 +128,42 @@ document.addEventListener("DOMContentLoaded", () => {
   const en = document.getElementById("en");
   const pa = document.getElementById("pa");
   let p = document.getElementsByClassName('punjabi'),
-   e = document.getElementsByClassName('english');
-   pa.style.display= 'none';
+    e = document.getElementsByClassName('english');
+  pa.style.display = 'none';
   //  convert the HTMLCollection to an array using Array.from() before using forEach
-   Array.from(p).forEach((el) => {
-    console.log('languageToggle.checked==',languageToggle.checked)
-    el.style.display= 'none';    
+  Array.from(p).forEach((el) => {
+   // console.log('languageToggle.checked==', languageToggle.checked)
+    el.style.display = 'none';
   });
   languageToggle.addEventListener("change", () => {
-      if (languageToggle.checked) {
-          // Switch to Punjabi
-          en.style.display = "none";
-          pa.style.display = "inline";
-          Array.from(p).forEach((el) => {
-            el.style.display= 'block'
-          });
-          Array.from(e).forEach((el) => {
-            el.style.display= 'none'
-          });
+    if (languageToggle.checked) {
+      // Switch to Punjabi
+      en.style.display = "none";
+      pa.style.display = "inline";
+      Array.from(p).forEach((el) => {
+        el.style.display = 'block'
+      });
+      Array.from(e).forEach((el) => {
+        el.style.display = 'none'
+      });
 
-      } else {
-          // Switch to English
-          en.style.display = "inline";
-          pa.style.display = "none";
-          Array.from(p).forEach((el) => {
-            el.style.display= 'none'
-          });
-          Array.from(e).forEach((el) => {
-            el.style.display= 'block'
-          });
-      }
+    } else {
+      // Switch to English
+      en.style.display = "inline";
+      pa.style.display = "none";
+      Array.from(p).forEach((el) => {
+        el.style.display = 'none'
+      });
+      Array.from(e).forEach((el) => {
+        el.style.display = 'block'
+      });
+    }
   });
 });
 
 
 function events() {
-  
+
   // dark and light mode
   toggle_btn.addEventListener("click", toggleAnimation);
 

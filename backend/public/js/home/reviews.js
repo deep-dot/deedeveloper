@@ -26,15 +26,12 @@ axios.get('/getJsonData').then(res => {
         }
 
         var html = ''
-       // html += '<div class="card-container">'
-        html += '<div class="card">'
+        html += '<div class="card-container">' //for see more and see less button
+        html += '<div class="card">' 
 
         html += '<div class="cardRow">'
-        html += '<div>'
-        html += `<img src="'${review.image}" alt=" " />`
-        html += `<p>'${review.username}'</p>`
-        html += '</div>'
-        html += '<div>'
+        html += `<img src=${review.image} alt=" " />`
+        html += `<p>${review.username}</p>`
         html += '<ul class="stars">'
         for (var k = 0; k < 5; k++) {
             // console.log('stars in home.ejs', review.stars);
@@ -45,12 +42,11 @@ axios.get('/getJsonData').then(res => {
             }
         }
         html += '</ul>'
-        html += `<p> Created on  '${review.createdAt.slice(0, 10)}'</p>`
-        html += '</div>'
+        html += `<p>${review.createdAt.slice(0, 10)}</p>`
         html += '</div>'
 
-        html += '<div class="reviewDesc">'
-        html += `<blockquote class="reviewcontent">'${review.review}'</blockquote>`
+        html += '<div class="contents">'
+        html += `<blockquote> ${review.review}</blockquote>`
         html += '</div>'
 
         html += '<div class="cardRow">'
@@ -58,14 +54,14 @@ axios.get('/getJsonData').then(res => {
         html += '<div id="reviewComment">'
         html += `<a href="/review/${review._id}/comment" style="float:right;" class="btnn">`
         html += '<i class="fa fa-comment"></i>'
-        html += `<span>'${review.comments.length}'</span>`
+        html += `<span style="margin-left:4px">${review.comments.length}</span>`
         html += '</a>'
         html += '</div>'
 
         html += '<div>';
         html += `<span class="${className}" onclick="toggleLikeReview(this)" id="${review._id}">`;
         html += '<i class="fa fa-thumbs-up"></i>';
-        html += `<ins>${review.likers.length}</ins>`;
+        html += `<ins style="text-decoration: none; margin-left:4px">${review.likers.length}</ins>`;
         html += '</span>';
         html += '</div>';
 
@@ -84,27 +80,23 @@ axios.get('/getJsonData').then(res => {
         }
         html += '</div>'
 
-        html += '<div class=" morelessmore"></div>'
+        html += '<div class="morelessmore"></div>'
 
          html += '</div>'
-        // html += '</div>'
+         html += '</div>'
 
         reviewRender.push(html);
     });
     $('#reviewCard').html(reviewRender);
 
-    document.addEventListener('DOMContentLoaded', () => {
-        window.morelessmore();
-    });
-
-
     var numOfReviews = 0;
     if (reviews) {
         numOfReviews = reviews.length;
     }
-    document.addEventListener('DOMContentLoaded', () => {
+    //document.addEventListener('DOMContentLoaded', () => {
     seeNumOfCardsLessOrMore(numOfReviews);
-    });
+    morelessmore();
+    //});
 
 }).catch(error => {
     console.log('Error fetching number of reviews:', error);
