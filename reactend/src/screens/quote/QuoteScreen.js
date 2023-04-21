@@ -34,7 +34,7 @@ function Quote() {
 
     return (
         <>
-            <div className="container">
+            <div className="main-wrapper">
                 <Header />
                 <section>
                     <h1 style={{ color: '#11ABB0' }}>Understand the Costs of Building your New Website</h1>

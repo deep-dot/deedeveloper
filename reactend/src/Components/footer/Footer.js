@@ -35,12 +35,13 @@ const Footer = () => {
 
   return (
     <footer className="footer" >
-      <section className="footer-container">        
+      <section className="footer-container">
         <div className="cell">
           <img href="#" src={`${process.env.PUBLIC_URL}/images/logoDeeDev.svg`} alt="Logo" />
           <p>
             Dee Dhillon - Freelance Developer & Consultant
-            <br />
+          </p>
+          <p>
             High Quality is our first priority
           </p>
           <div className="social-icons">

@@ -1,10 +1,10 @@
 /* styles.css */
   
-  .container {
+  /* .main-wrapper {
     max-width: 1200px;
     margin: var(--navheight) auto;
     padding: 0 15px;
-  }
+  } */
   
   section {
     padding: 30px 0;
@@ -106,9 +106,9 @@
 }
   
   @media (max-width: 867px) {
-    .container {
+    /* .main-wrapper {
       padding: 0 10px;
-    }
+    } */
   
     section h1 {
       font-size: 1.75rem;

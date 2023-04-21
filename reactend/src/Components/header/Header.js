@@ -2,12 +2,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faUser, faClone, faComment, faPhone, faCaretDown, faSignInAlt, faUserPlus, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faUser, faClone, faComment, faPhone, faCaretDown, faSignInAlt, faUserPlus, faSignOutAlt, faHamburger } from '@fortawesome/free-solid-svg-icons';
 
 const Header = ({ loggedIn }) => {
   const blogRef = useRef(null);
   const blogMenuRef = useRef(null);
   const headerRef = useRef(null);
+  const hamBurgerMenu = useRef(null);
+  const mainWrapper = document.querySelector('.main-wrapper');
   const [lastScroll, setLastScroll] = useState(0);
 
   useEffect(() => {
@@ -21,7 +23,13 @@ const Header = ({ loggedIn }) => {
       }
     };
 
+    const hamBurgerMenuClick = () => {
+      console.log('hamburgermenu clicked==',mainWrapper)
+      mainWrapper.classList.toggle("active");
+    }
+
     blogRef.current.addEventListener('click', handleBlogClick);
+    hamBurgerMenu.current.addEventListener('click', hamBurgerMenuClick)
 
     // Hide navbar while scrolling down
     const handleScroll = () => {
@@ -37,8 +45,9 @@ const Header = ({ loggedIn }) => {
     window.addEventListener('scroll', handleScroll);
 
     return () => {
-     // blogRef.current.removeEventListener('click', handleBlogClick);
+      blogRef.current.removeEventListener('click', handleBlogClick);
       window.removeEventListener('scroll', handleScroll);
+      hamBurgerMenu.current.removeEventListener('click', hamBurgerMenuClick)
     };
   }, [lastScroll]);
 
@@ -122,7 +131,7 @@ const Header = ({ loggedIn }) => {
         </ul>
       </nav>
 
-      <div className="hamburger-menu">
+      <div ref={hamBurgerMenu} className="hamburger-menu">
         <div className="bar"></div>
       </div>
     </header>
