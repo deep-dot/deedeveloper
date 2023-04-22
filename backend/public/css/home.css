@@ -223,7 +223,7 @@
   border-radius: 5px;
   margin-top: 20px;
   color: var(--colorOnBackground);
-  border-radius: 5;
+  border-radius: 5px;
   border: none;
   cursor: pointer;
   display: inline-block;
@@ -287,7 +287,7 @@
   border-radius: 5px;
   margin-top: 20px;
   color: var(--colorOnBackgroundColor);
-  border-radius: 5;
+  border-radius: 5px;
   border: none;
   cursor: pointer;
   display: inline-block;
@@ -774,7 +774,7 @@ textarea:focus {
 .map h1 {
   font: 600 1.5em "Roboto";
   text-transform: uppercase;
-  text-align: flex-start;
+  text-align: left;
   color: var(--colorOnBackgroundColor);
   margin: 2rem 0;
 }
@@ -968,7 +968,7 @@ textarea:focus {
 
   .about p {
     font: 500 1em 'Roboto';
-    text-align: justify;
+    text-align: center;
   }
 
 
@@ -1019,7 +1019,7 @@ textarea:focus {
     font: 500 1em 'Roboto';
     line-height: 1.2;
     margin: 10px 0;
-    text-align: justify;
+    text-align: center;
   }
 
   blockquote::before {

@@ -19,10 +19,6 @@ function declare() {
 }
 declare();
 
-function switchLanguage() {
-
-}
-
 function smoothScroll() {
   const menuLinks = document.querySelectorAll('.nav li a[href^="/#"]');
   //console.log('menuLinks===', menuLinks);
