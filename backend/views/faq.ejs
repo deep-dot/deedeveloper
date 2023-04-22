@@ -1,360 +1,180 @@
 <style>
-    h3 {
-        font-size: 0.8rem;
-        font-weight: 800;
-    }
-
     .faq {
-        margin-left: 1rem;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin: 0 auto;
     }
 
-    ul {
-        /* list-style: none; */
+    h1,
+    h2,
+    span {
+        color: var(--colorOnBackgroundColor);
     }
+
+    p,
+    em {
+        color: var(--colorOnBackground);
+    }
+
+    .faq h1 {
+        font: 600 1.9em 'Roboto';
+        margin: 2rem 0;
+    }
+
+    .faq h2 {
+        font: 500 1.5em 'Roboto';
+        margin: 2rem 0;
+    }
+
+    p {
+        font: 400 1.2em 'Roboto';
+    }
+
+    span {
+        font: 500 1.5em 'Roboto';
+    }
+
+    .faq-item {
+        background: var(--backgroundColor);
+        border-bottom: 0.5px solid #d4d4d4;
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+
+    .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        background: var(--background);
+        transition: max-height 0.4s ease-in-out;
+        margin-top: 1rem;
+        border-radius: 5px;
+    }
+
+    .sub-faq-answer {
+        padding: 1rem;
+    }
+
+    .faq-answer.open {
+        max-height: 10em;
+    }
+
+    .toggle-icon {
+        font-size: 1.2rem;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .toggle-icon.open {
+        transform: rotate(180deg);
+    }
+
+    @media (max-width: 768px) {
+    .faq {
+      width: 100%;
+    }
+  }
+
 </style>
 
 <div class="faq">
-    <h1>FAQ</h1>
-    <a href="http://192.168.43.36:5000/#testimonial">Link to other page</a>
+    <h1>F.A.Q.</h1>
+    <h2>Here are answers to the most frequently asked questions.</h2>
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(event)">
+            <span>How much does it cost to build a web application?</span>
+            <span class="toggle-icon">+</span>
+        </div>
+        <div class="faq-answer">
+            <div class="sub-faq-answer">
+                <p>It depends. A web application can cost between: <strong>4,000$ and 50,000$.</strong></p>
+                <p>A very big application can cost even more.</p>
+                <em>Everything</em>
+                <em> depends on your needs and the scope of the project.</em>
+                <p>The best way to get a fair estimate of the cost of your application is to book a free consultation
+                    with me or to send me a message.</p>
+            </div>
+        </div>
+    </div>
 
-    <hr />
-    <blockquote>
-        <p>For small company owners, DeeDeveloper demystifies responsive web design, online and mobile app development, and Search Engine Optimization (SEO).</p>
-    </blockquote>
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(event)">
+            <span>What is your process of web application development?</span>
+            <span class="toggle-icon">+</span>
+        </div>
+        <div class="faq-answer">
+            <div class="sub-faq-answer">
+                <p>Here is a brief description of the process:</p>
+                <ol style="margin-left: 30px">
+                    <li>Free Consultation & quote</li>
+                    <li>Discovery & competitor analysis</li>
+                    <li>High-level planning</li>
+                    <li>Architecture of the application (database, sitemap)</li>
+                    <li>UI/UX design</li>
+                    <li>Prototyping</li>
+                    <li>Development (Front-end, Back-end)</li>
+                    <li>QA Testing</li>
+                    <li>Deployment & launch</li>
+                    <li>Maintenance & support</li>
+                </ol>
+                <p>The process is the same for single-page applications and cross-platform web applications.</p>
+            </div>
+        </div>
+    </div>
 
-    <h3>What are you guys up to?</h3>
-    <p> I first and foremost create functional websites. That is the basis of everything i do. <a href="#">&nbsp;
-        Working websites</a> are meticulously designed and presented with enthusiasm, knowledge, and attention to detail.
-    </p>
-    <p>
-        After your website is operational, i assist you while urging you to take control of your internet marketing and
-        advance it. Blogging on your website, publishing to social media, delivering e-newsletters to your database, and
-        other activities can all be considered part of your online marketing strategy.
-    </p>
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(event)">
+            <span>What programming languages & technologies do you use to build applications?</span>
+            <span class="toggle-icon">+</span>
+        </div>
+        <div class="faq-answer">
+            <div class="sub-faq-answer">
+                <p>I use a variety of languages & web technologies to build applications.</p>
+                <ul style="margin-left: 25px">
+                    <li>On the front-end, I use React with TypeScript.</li>
+                    <li>On the back-end, I use Node.js.</li>
+                    <li>For the database, I use either MariaDB, MySQL, or MongoDB.</li>
+                    <li>For the infrastructure, I use docker, docker-compose, and Kubernetes.</li>
+                    <li>For cross-platform applications, I use Electron.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-    <h3>Are you the right website developer for my price range?</h3>
-    <p> Certainly, i can talk about the features you want on your website, and then we'll offer you a quote. For the
-        record, my starting price is $500.
-    </p>
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(event)">
+            <span>What are the different types of web applications that you make?</span>
+            <span class="toggle-icon">+</span>
+        </div>
+        <div class="faq-answer">
+            <div class="sub-faq-answer">
+                <p>I can create single-page applications, dynamic applications, and cross-platform applications using Electron.</p>
+            </div>
+        </div>
+    </div>
 
-    <h3>Where are you and where do you service?</h3>
-    <p>I based in Geelong but i can provide service all over Australia.
-    </p>
-
-    <h3>What’s included in a DeeDeveloper website?</h3>
-    <ul class="text">
-        <li>strategic planning and research</li>
-        <li>Search Engine Optimisation (SEO)&nbsp;copywriting</li>
-        <li>responsive design</li>
-        <li>development</li>
-        <li>Google Analytics</li>
-        <li>support/training.</li>
-    </ul>
-    <h3>What exactly is “SEO” and does my website need it?</h3>
-    <p>SEO stands for Search Engine Optimisation and&nbsp;yes,&nbsp;your
-        website needs it if
-        you want your website to rank well in Google. SEO has an impact on your website's exposure in Google without
-        costing you anything. AdWords is the name of Google's paid advertising programme. When someone searches for your
-        goods or services using key words or phrases along with the place where you conduct business, this is referred
-        to be "organic visibility," which means Google likes your material, finds it simple to index, and consequently
-        pushes it up high in the search results list..</p>
-
-    <h3>What is responsive web design?</h3>
-    <p> A responsive website is made to function on various screen sizes. The layout "reacts" to the screen being used
-        to see it. Online customers won't need to scroll or zoom in order to comfortably access your website on a
-        smartphone, tablet, or desktop computer. To accommodate any user's screen, anywhere, images, text, and other
-        design components expand and contract without distorting. Since more people access the Internet from mobile
-        devices, responsive design is now regarded as the industry standard. Because my site developers are responsive
-        design experts, you can be confident that customers will easily locate you and understand what you're all about.
-    </p>
-
-    <h3>I want a website, but I need first get a logo. Are you a logo designer?</h3>
-    <p>Quick response: Sure! Please get in touch with us so i can discuss your needs.</p>
-
-    <h3> My new website's plan and design have my approval, but I now want to make a few tweaks. Are there any chances?
-    </h3>
-    <p>This occurs more frequently than you may imagine, and while it can be problematic, if you let us know in time, it
-        won't be the end of the world.</p>
-    <p>Yes, both circumstances and people's opinions can change. Remember, we're only human.
-        If you notify us in advance, i might be able to accommodate your modifications with the least amount of
-        difficulty and without charging you more. Nevertheless, once your website build reaches a certain stage—and
-        definitely take note of this—making modifications becomes extremely difficult and takes a lot of time and
-        effort. Since no two adjustments are ever the same, please let us know as soon as possible if you need to make
-        changes to your website's structure or design. We'll be able to cover the expense of the changes up to a point,
-        but please be aware that i will need to talk about it once the procedure has advanced to that point.</p>
-
-    <h3>I want you to incorporate a lot of my files and photographs on my website. How can I deliver these to you the
-        best way possible?</h3>
-    <p>You may quickly upload your files to the online file sharing system provided by DeeDeveloper. We'll create a
-        folder for you and give you log-in information. This is the ideal option because it doesn't matter how big your
-        files are, unlike emails, which frequently fail to send if the attached files are too big.
-        Images submitted as attachments to individual emails are not accepted, but data on flash drives or CDs are. Ask
-        for help if you're unsure about what to do.</p>
-
-    <h3> Is there a prefered image format or size that can be used on my website? </h3>
-    <p>
-        Great question! Naturally, the outcomes when your site is online will be better the better the quality of the
-        image files i get. </p>
-    <p>
-        Here is an example of what i need:
-    </p>
-    <ul class="text">
-        <li> Pictures: In this instance, more is better! i will resize your photographs for best display, but while we
-            can decrease file sizes, i are unable to increase them. Send photos in the highest resolution possible; 250
-            KB is a decent minimum size. The following image file types are accepted by our
-            system:.jpg,.psd,.ai,.eps,.png, and tiff. i won't accept images that have been pasted into Word documents
-            from PowerPoint presentations or PDFs. Moreover, keep in mind that you can post your photographs directly to
-            my online file share, eliminating the need for you to send emails with enormous attachments. </li>
-        <li> If you don't have any images, i can get some for you, but they will cost you. Before making a purchase, we
-            will talk with you about the cost of the stock photos. </li>
-        <li>Illustrations: If you have any, please provide them to us as vector images. A file with a vector image
-            extension, such as.ai,.eps, or.svg, offers great freedom in how it can be used. </li>
-        <li> i need your logo in a vector file with a translucent backdrop so that i can utilise it in a variety of
-            ways. i are restricted in how i can use logos that are provided to us in.jpg or.psd format with a
-            non-transparent backdrop, and you will be charged if you want us to recreate the logo with a transparent
-            background. </li>
-    </ul>
-
-    <h3>What if, once I've approved the estimate, I want to add extra features to my project?</h3>
-    <p>Although it's not impossible, it will undoubtedly make the process of building your website much easier if you
-        have given it some serious thought before ever contacting us.</p>
-    <p> In particular, if the features you're adding are in line with my general concept and style, i may add new
-        pieces to your website with no problem. But, if you diverge from what we've discussed and planned or if we've
-        already made significant progress on your website, we'll need to talk to you about additional expenses for the
-        additional work required. Apologies, but the different team members working on your website put in weeks of
-        work, and additional work that is not part of the original plan might easily exceed the budget. </p>
-    <p> Consider carefully what you want your website to accomplish, but also pay attention to and act upon the advise
-        of my site planners. They are skilled at what they do. </p>
-
-    <h3> Why did you tremble when I advised you to utilise text and graphics from another website? </h3>
-    <p>
-        I'm terribly sorry. We're still getting over that one, phew. You are not allowed to copy text or pictures from
-        other websites. That's all there is to it. I assume you've heard about copyright. Copying text and images from
-        other websites is against copyright, as you can see. Furthermore, Google penalises duplicate copy, so if you use
-        stolen language on your website, there is little chance for it to rank highly. </p>
-    <p> Let us assist you in lawfully locating photographs for your website. Even better, engage a photographer to get
-        original photos. i collaborate with a number of exceptional photographers who capture breathtaking images for
-        affordable pricing. Or, if you're confident with a camera, you could take the pictures. </p>
-    <p>
-        And as for the website text, just provide us a tonne of information about your company, and my qualified
-        copywriters will produce unique content for your website. More original content and a higher likelihood of
-        appearing prominently in Google are two benefits of more information. </p>
-    <p>
-        Don't try to violate the copyright and plagiarism laws because no one likes a cheater.
-    </p>
-
-    <h3> There should be a face-to-face meeting, please. Could i do that? </h3>
-    <p>
-        You can, of course. i adore getting to know my customers in person. Meetings are a terrific way to put a face
-        to the name, as well as to ask and answer questions regarding the purpose, layout, and content of your website.
-        They also serve to develop relationships. </p>
-    <p>
-        But if you can't make it to a face-to-face meeting with DeeDeveloper, don't worry. i can still have a virtual
-        face-to-face meeting on Skype, and if all else fails, there's always the good ol' telephone.
-    </p>
-    <p>
-        Although DeeDeveloper is situated in Geelong, i frequently travel throughout Victoria and interstate to visit
-        with my clients, so there is a good potential that i will cross paths.
-    </p>
-
-    <h3> Even if I already have one, it is worthless. Could you repair it? </h3>
-    <p>
-        Sorry. Always, no is the response. my bitter experience has taught us that starting over is simpler and
-        significantly more efficient from a time and money standpoint. If you truly like, i can create a website that
-        resembles your old site, but we'll start from zero. </p>
-
-    <h3> You are adamant about hosting websites for your clientele. Why? </h3>
-    <p>
-        To guarantee that my clients' websites remain live, as secure as possible, and updated, DeeDeveloper is adamant
-        about hosting. In order to maintain it, i host your website. </p>
-    <p>
-        DeeDeeDeveloper will handle all of your server-related difficulties if you choose managed hosting. That is
-        comparable to receiving a full warranty together with cost-free oil changes and maintenance when purchasing a
-        new vehicle. If i don't host a website, i can't guarantee that it will continue to function and i can't offer
-        the support you need for a legitimate website. </p>
-    <p>
-        Nevertheless, much more than continuity, security, and currency are provided by my hosting price.
-        This is an example of what you receive with managed hosting from DeeDeveloper:
-    </p>
-
-    <h4>Hosting [h4][ul class="text"][li][h4] Your website is kept on a server made just for DeeDeveloper, with each
-        site getting 1.5 gigabytes of storage space. This implies there's ample of area for your website and its files.
-        </li>\s <li> Because of the Australian location of my servers, planned server updates and maintenance can be
-            done outside of busy periods. </li>\s <li> The servers for DeeDeveloper are constantly being watched, and if
-            any problems do occur, i fix them right away. DeeDeveloper tries to avoid being reactive and instead be
-            proactive.
-        </li>
-        <li> my servers are regularly backed up, so if issues develop, your site may be restored with little downtime.
-        </li>\s <li> To protect your CMS and content, my servers are constantly under observation. </li>\s <li>
-            Specifically, info[at]yourdomainname.com.au, i can host POP3 domain emails. Please be aware that POP3 is
-            quite limited and can only transfer emails from my server to your machine. It is unable to sync with
-            numerous devices. </li>\s <li> i offer basic email support as well as an email monitoring service. </li>\s
-        <li> i can make sure that your website's storage needs expand along with your company. </li>\s <li>
-            DeeDeveloper monitors the effectiveness of the many keywords connected to your website until it achieves a
-            respectable level of popularity in Google. </li>
-        </ul>
-
-        <h4>WordPress [h4][ul class="text"][li][h4] WordPress, one of the most well-liked content management systems in
-            the world, is installed by DeeDee for your website. </li>
-            <li> If applicable, i offer a document library with comprehensive guides for WordPress and social media.
-            </li>
-            <li> Backing up your WordPress database and files is done frequently. </li>
-            <li> During business hours, DeeDeveloper staff members are immediately ready to take your calls and address
-                your questions on the information on your website.
-            </li>
-            <li>
-                For my clients, my service is intended to be "set and forget," but not for DeeDeveloper. To guarantee
-                that they provide the best performance around the world and around the clock, i are continually
-                checking on my servers. </li>
-            </ul>
-
-            <h3> By next week, I must have a website. Can you construct me one in that amount of time? </h3>
-            <p>
-                Yeah, you ought to have begun your preparations a little earlier. Unfortunately, i can't construct you
-                a website of a professional calibre in that amount of time in good faith. i could put up a usable
-                website in a day or two, but neither of us would be pleased with the final product. </p>
-            <p> i request that my clients give us roughly eight weeks from the date the contract is signed until the
-                site is finished due to the amount of meticulous planning and meticulous effort that goes into building
-                a GOOP Digital website. </p>
-            <p>
-                Naturally, the timeline can vary depending on the layout, functionality, and content of the website, but
-                once i are aware of the work your website needs, i can provide you a more precise timeline.
-            </p>
-
-            <h3> I need a breakdown of the work that will be done to make my website. That seems possible.
-            </h3>\s <p>
-                Actually, no. With a dash of common sense, website design and development is a blend of science, art,
-                and common sense. While i can estimate the length of time needed to develop your website at around
-                eight weeks, i are unable to provide specific days and dates for each stage. </p>
-            <p> Sometimes an idea just comes to you, other times it takes hours of laborious investigation and thinking.
-                Sometimes the words dribble out slowly while the design flows freely, and other times they come out in a
-                flood while the design develops in fits and starts. Rushing the creative process is one thing that
-                DeeDeveloper will not do. We'll meet the eventual date, but during the build phase, i won't put
-                individuals under needless or excessive pressure to adhere to schedules.
-            </p>
-            <p>
-                The only timeline i can commit to is the eight weeks following the original signing of your contract
-                since you want the best finished product and i want to give the best finished product.
-            </p>
-
-            <h3> I need an email that links to my website and that functions on all of my gadgets. Can you set up my
-                emails and assist me if anything goes wrong with them? </h3>
-            <p>
-                If you already have an email provider, DeeDeveloper will create you a website that integrates it, or
-                they will suggest the finest email solutions for you. Although i can offer POP3 emails for your
-                website, most clients are not advised to use them. The usability and adaptability of POP3 emails are
-                constrained. They work best if you only need one email address on one device, like a desktop computer,
-                and do not let you read your emails across several devices. </p>
-
-            <p> The email service provided by Google Apps is something i at DeeDeeveloper advise clients to use if they
-                need several email accounts or the ability to access emails on different devices. With Google Apps,
-                users may create custom, business-like email addresses that include their domain name, such as
-                boss@yourbusinessname.com.au. Messages can be seen on a variety of devices and are kept on a central
-                server at Google. A charge is made straight to Google. </p>
-            <p> An online marketing firm called DeeDeveloper specialises in building websites that generate traffic and
-                rank highly in Google. i only provide basic POP3 emails and limited email support because i are not an
-                IT support or computer repair company.
-                We'll be happy to point you in the direction of an IT business that can assist with setting up the most
-                suitable email for you and offering you continuous assistance.
-            </p>
-
-            <h4> The email service provided by GOOP Digital consists of: </h4>\s <ul li class="text"> POP3 email account
-                setup on your computer. For you to have a copy of your emails on your computer, POP3 emails must
-                permanently download onto a designated main/central device (often your desktop or laptop). POP3 emails
-                sent to a single address cannot be accessed across several devices. </li>\s <li> i advise you to set up
-                    your own backup processes because i do not keep emails on my server indefinitely. </li>\s <li> To
-                    check your emails while you're away from your workplace, i offer remote email access. i offer
-                    guidance on how to use Webmail. </li>\s </ul>
-
-            <h3> I already have a website and a domain, but the login information is still in the possession of my
-                former developer, who won't give it up. Can you assist? </h3>\s <p> Regrettably, i encounter this
-                circumstance all too frequently. The password for your domain name should be available to you, and it
-                should be your property. Since no two instances are ever the identical, i must first talk with you
-                about the specifics of your issue before determining the appropriate course of action. Please contact us
-                so i can provide you advice. </p>
-
-            <h3> Are you able to walk me through using my new WordPress website? </h3>
-            <p>
-                The appeal of using DeeDeveloper lies in this. i want you to be able to take control of your website
-                once we've created one for you that functions and has been well-known in Google so you can make sure it
-                keeps performing. </p>
-            <p>
-                Each brand-new DeeDeveloper website includes training on how to effectively market your company online.
-                WordPress is accessible to everyone who can operate a computer, and we'll spend an hour after your
-                website is live teaching you how to blog, add images, and use other tools. Contacting GOOP will enable
-                you to plan your training session. </p>
-            <p> Don't worry; i can lock down specific areas of your website to prevent easy hacking.
-            </p>
-
-            Do you offer any further services? </h3>\s <p> DeeDeveloper offers a variety of online marketing services to
-                go along with the creation of websites, including support, personalised blog training, the setup of
-                e-newsletters and social media accounts, e-commerce setup, and comprehensive online marketing
-                strategies. Find out which of my goods best meets your needs by speaking with us. </p>
-
-            <h3> What are the terms of payment? </h3>\s <p> Upon your acceptance of the contract, i request a 50% down
-                payment, with the remaining amount due when the job is finished. </p>
-
-            <h3> Why do you want a deposit before beginning work on my website? </h3>
-            <p>
-                Many people put in a lot of effort to create websites. As much as i love creating websites that
-                function, i have to compensate my team members. From keyword analysis to planning the site structure
-                to design, development, and copywriting, there are literally months of labour put into your website.
-                After all, they do enjoy eating and making ends meet. </p>
-            <p>
-                You show us your commitment by paying half the money up front, ensuring that i finish your website
-                while also holding us responsible and ensuring that i uphold my end of the bargain.
-            </p>
-
-            <h3> Your planners never stop asking me for details regarding my company. Why do you need to be aware of
-                everything? Why can't you create my website without it, though? </h3>
-            <p>
-                i need as much information as i can get in order to create a website that effectively represents and
-                markets your company, its goods, and services. The final product will be better the more information we
-                have. Without initially understanding the specifics, i can't really tell your narrative, can we? You'll
-                be delighted with your finished website if you provide my planners, designers, copywriters, and
-                developers as much information as possible. </p>
-            <p> Also, i need all of your information before i get started so that i can make sure the building
-                process is seamless and free of surprises. Experience has shown us that if i don't gather all the
-                necessary data before beginning work on a new website, i wind up missing deadlines and the entire
-                project can go awry. </p>
-            <p>
-                i give my clients thorough build forms that walk them through the process of obtaining information.
-                Everything will happen according to schedule and smoothly if you follow those instructions and contact
-                us if you have any questions. </p>
-
-            <h3> I've heard WordPress upgrades happen rather frequently. Will I need to update the CMS on my website?
-            </h3>
-            <p>
-                No. We'll take care of the updates for you so that i can make sure your website and all of its features
-                continue to function properly. i manage website administration, including updates, because i don't
-                want my clients to worry about their websites malfunctioning, and the cost is included in your hosting
-                charge. </p>
-
-            <h3> I am aware that you answer the phone during business hours, but what if there are issues with my
-                website after hours? </h3>
-            <p>
-                The convenience of modern communications is that assistance is always nearby.
-                Send an email to my support desk if you need assistance after regular business hours, and we'll
-                evaluate your issue and decide whether it requires immediate attention or can wait until the following
-                business day.
-            </p>
-            <p>
-                i will pay the expenses if the emergency is brought on by something i did, which is doubtful. But, if
-                you are to blame for the issue with your website, which is also unusual but not impossible, i will have
-                to charge for the repairs as well as an overtime fee if they need to be done right away and outside of
-                regular business hours. </p>
-
-            Please be aware that i cannot assist you with email issues involving emails that are not POP3 emails
-            provided by GOOP&nbsp;Digital and that i cannot guarantee that i will be available after hours. </p>
-            <h3>
-                I want to learn more about the web development services you offer. How can I reach you the most
-                effectively? </h3>
-            <p>
-                During business hours, you can reach my Geelong headquarters at (03) 5222 4220 with general questions.
-                i will pick up the phone and not keep you on hold for the majority of the day. If you'd prefer, you can
-                also use my a title="Contact" href="#">contact form/a> or send us an email. </p>
-            <p> i really hope that i have addressed some of your frequently asked questions regarding my web building
-                procedure. i encourage you to a href="#">contact us/a> to learn more about SEO, bespoke site design,
-                and Internet marketing and how they might benefit your company if you have any remaining questions.
-                Sometimes all you need is a customised response. </p>
+    <!-- Add more FAQ items as needed -->
 </div>
+
+<script>
+    function toggleFaq(event) {
+      const questionElement = event.currentTarget;
+      const answerElement = questionElement.nextElementSibling;
+      const toggleIcon = questionElement.querySelector(".toggle-icon");
+  
+      if (answerElement.style.maxHeight) {
+        answerElement.style.maxHeight = null;
+      } else {
+        answerElement.style.maxHeight = answerElement.scrollHeight + "px";
+      }
+  
+      toggleIcon.classList.toggle("open");
+      toggleIcon.textContent = answerElement.style.maxHeight ? "-" : "+";
+    }
+  </script>
