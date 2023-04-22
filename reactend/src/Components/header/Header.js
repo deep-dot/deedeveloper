@@ -9,7 +9,6 @@ const Header = ({ loggedIn }) => {
   const blogMenuRef = useRef(null);
   const headerRef = useRef(null);
   const hamBurgerMenu = useRef(null);
-  const mainWrapper = document.querySelector('.main-wrapper');
   const [lastScroll, setLastScroll] = useState(0);
 
   useEffect(() => {
@@ -23,8 +22,10 @@ const Header = ({ loggedIn }) => {
       }
     };
 
+    const mainWrapper = document.querySelector('.main-wrapper');
+
     const hamBurgerMenuClick = () => {
-      console.log('hamburgermenu clicked==',mainWrapper)
+      console.log('hamburgermenu clicked==', mainWrapper)
       mainWrapper.classList.toggle("active");
     }
 
@@ -54,58 +55,58 @@ const Header = ({ loggedIn }) => {
   return (
     // Add ref={headerRef} to the header element
     <header ref={headerRef}>
-       <nav className="nav">
-       <img href="#" src={`${process.env.PUBLIC_URL}/images/logoDeeDev.svg`} alt="Logo" />
+      <nav className="nav">
+        <img href="#" src={`${process.env.PUBLIC_URL}/images/logoDeeDev.svg`} alt="Logo" />
         <ul className="nav_list">
           <li>
             <a href="/">
-            <FontAwesomeIcon icon={faHome} className="icon-margin-right" />Home
+              <FontAwesomeIcon icon={faHome} className="icon-margin-right" />Home
             </a>
           </li>
           <li>
             <a href="/#aboutSection">
-            <FontAwesomeIcon icon={faUser} className="icon-margin-right" />About
+              <FontAwesomeIcon icon={faUser} className="icon-margin-right" />About
             </a>
           </li>
           <li>
             <a href="/#servicesSection">
-            <FontAwesomeIcon icon={faClone} className="icon-margin-right" />Services
+              <FontAwesomeIcon icon={faClone} className="icon-margin-right" />Services
             </a>
           </li>
           <li>
             <a href="/#testimonial">
-            <FontAwesomeIcon icon={faComment} className="icon-margin-right" />Testimonial
+              <FontAwesomeIcon icon={faComment} className="icon-margin-right" />Testimonial
             </a>
           </li>
           <li>
             <a href="/#contactSection">
-            <FontAwesomeIcon icon={faPhone} className="icon-margin-right" />Contact
+              <FontAwesomeIcon icon={faPhone} className="icon-margin-right" />Contact
             </a>
           </li>
-      <li ref={blogRef} className="blog">
-      <a href="#">
-      <FontAwesomeIcon icon={faCaretDown} className="icon-margin-right" />
+          <li ref={blogRef} className="blog">
+            <a href="#">
+              <FontAwesomeIcon icon={faCaretDown} className="icon-margin-right" />
               Blog
             </a>
-        <ul ref={blogMenuRef} className="blog-menu">
-        <li>
+            <ul ref={blogMenuRef} className="blog-menu">
+              <li>
                 <a href="/blogs">Home</a>
               </li>
               <li className="write-review">
                 <a href="/posts/new">Write blog</a>
               </li>
-        </ul>
-      </li>
-      {!loggedIn ? (
+            </ul>
+          </li>
+          {!loggedIn ? (
             <>
               <li id="loggedIn">
                 <a href="/auth/login">
-                <FontAwesomeIcon icon={faSignInAlt} className="icon-margin-right" />Sign In
+                  <FontAwesomeIcon icon={faSignInAlt} className="icon-margin-right" />Sign In
                 </a>
               </li>
               <li id="reg">
                 <a href="/auth/newuser">
-                <FontAwesomeIcon icon={faUserPlus} className="icon-margin-right" />Sign Up
+                  <FontAwesomeIcon icon={faUserPlus} className="icon-margin-right" />Sign Up
                 </a>
               </li>
             </>
@@ -113,7 +114,7 @@ const Header = ({ loggedIn }) => {
             <>
               <li id="loggedOut">
                 <a href="/auth/logout">
-                <FontAwesomeIcon icon={faSignOutAlt} className="icon-margin-right" />Sign Out
+                  <FontAwesomeIcon icon={faSignOutAlt} className="icon-margin-right" />Sign Out
                 </a>
               </li>
               <li>
