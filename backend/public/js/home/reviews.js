@@ -27,7 +27,7 @@ axios.get('/getJsonData').then(res => {
 
         var html = ''
         html += '<div class="card-container">' //for see more and see less button
-        html += '<div class="card">' 
+        html += '<div class="card">'
 
         html += '<div class="cardRow">'
         html += `<img src=${review.image} alt=" " />`
@@ -82,8 +82,8 @@ axios.get('/getJsonData').then(res => {
 
         html += '<div class="morelessmore"></div>'
 
-         html += '</div>'
-         html += '</div>'
+        html += '</div>'
+        html += '</div>'
 
         reviewRender.push(html);
     });
@@ -94,10 +94,41 @@ axios.get('/getJsonData').then(res => {
         numOfReviews = reviews.length;
     }
     document.addEventListener('DOMContentLoaded', () => {
-    seeNumOfCardsLessOrMore(numOfReviews);
-    morelessmore();
+        seeNumOfCardsLessOrMore(numOfReviews);
+        morelessmore();
     });
 
 }).catch(error => {
     console.log('Error fetching number of reviews:', error);
 });
+
+
+function morelessmore() {
+    const moreless = document.querySelectorAll(".morelessmore");
+    const maxHeight = 20; // Set the maxHeight to match the CSS max-height for .card .contents
+  
+    for (let i = 0; i < moreless.length; i++) {
+      const content = moreless[i].parentNode.querySelector('.contents');
+      
+      // Create a temporary div to calculate the actual height of the content
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = content.innerHTML;
+      tempDiv.style.width = getComputedStyle(content).width;
+      tempDiv.style.position = 'absolute';
+      tempDiv.style.visibility = 'hidden';
+      tempDiv.style.whiteSpace = 'nowrap';
+      document.body.appendChild(tempDiv);
+      console.log('tempDiv.offsetHeight==', tempDiv.offsetHeight);
+      // If the content's actual height is less than maxHeight, hide the button
+      if (tempDiv.offsetHeight <= maxHeight) {
+        moreless[i].style.display = 'none';
+      }
+      
+      // Remove the temporary div from the DOM
+      document.body.removeChild(tempDiv);
+  
+      moreless[i].addEventListener('click', function () {
+        moreless[i].parentNode.classList.toggle('active');
+      });
+    }
+  }

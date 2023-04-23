@@ -2,13 +2,17 @@
   <h1 class="english">Looking to address your business challenges?</h1>
   <h1 class="punjabi">ਤੁਹਾਡੇ ਵਪਾਰ ਦੀਆਂ ਚੁਣੌਤੀਆਂ ਨੂੰ ਹੱਲ ਕਰਨ ਦੀ ਭਾਲ ਵਿੱਚ ਹੋ?</h1>
   <div class="home">
+    <div class="home1">
     <p class="english">Start exploring now and find solutions that can help you overcome obstacles and achieve your
       goals.</p>
     <p class="punjabi">ਹੁਣ ਤੱਕ ਖੋਜ ਸ਼ੁਰੂ ਕਰੋ ਅਤੇ ਉਹ ਹੱਲ ਲੱਭੋ ਜੋ ਤੁਹਾਨੂੰ ਰੁਕਾਵਟਾਂ ਨੂੰ ਦੂਰ ਕਰਨ ਅਤੇ ਆਪਣੇ ਉਦੇਸ਼ ਨੂੰ ਪ੍ਰਾਪਤ
       ਕਰਨ ਵਿੱਚ ਮਦਦ ਕਰ ਸਕਦੇ ਹਨ।</p>
+    </div>
+    <div class="home2">
     <p class="english">Let me help you uncover your business challenge and solve it as quickly as possible.</p>
     <p class="punjabi">ਮੈਂ ਤੁਹਾਡੇ ਵਪਾਰ ਦੀ ਚੁਣੌਤੀ ਨੂੰ ਪਛਾਣ ਕਰਵਾਉਣ ਵਿੱਚ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦਾ ਹਾਂ ਅਤੇ ਇਸਨੂੰ ਜਲਦੀ ਤੋਂ ਜਲਦੀ ਹੱਲ
       ਕਰਨ ਵਿੱਚ ਮਦਦ ਕਰਦਾ ਹਾਂ।</p>
+    </div>
   </div>
 
   <!-- <img src="../img/person.svg" alt="Home"> -->
@@ -27,10 +31,10 @@
 <section class="A hidden" id="aboutSection">
   <div class="about">
     <img src="../img/hello.svg" alt="About Me">
-    <div>
+    <div class="sub-about">
       <h1>About me</h1>
       <h2>Dee Dhillon - Freelance Developer & Consultant</h2>
-      <div>
+      <div class="sub-sub-about">
         <p>Hello, my name is Dee. I am a Developer & Consultant from Melbourne, Australia.</p>
         <p>I specilize in&nbsp;<strong>"React, Node.js & TypeScript"</strong>&nbsp;application development.
         </p>
@@ -85,7 +89,7 @@
           ✅ 100% Satisfaction Guaranteed 😁
         </li>
       </ul>
-      <a class="contact-button" href="#contactSection">book your free call</a><br>
+      <a class="contact-button" href="#contactSection">Send me an Email</a><br>
       <span class="services-icons">
         <i class="fab fa-react"></i>
         <i class="fab fa-node-js"></i>
@@ -186,9 +190,10 @@
   }
 </script>
 
-<section class="C hidden" id="contactSection">
-  <h1>Contact me</h1>
+<section class="C hidden" id="contactSection">  
   <div class="contact">
+    <div>
+    <h1>Contact me</h1>
     <form id="contact-form" method="post">
       <p>I will get back to you as soon as possible</p>
       <div class="form-group">
@@ -205,6 +210,7 @@
       </div>
       <button id="submit-button" class="btnn" type="submit">Submit</button>
     </form>
+  </div>
     <img src="../img/contact.png" alt="ContactImage" />
   </div>
 </section>
@@ -216,6 +222,90 @@
     contactMe();
   });
 </script>
+
+<section class="F hidden" id="faq-section">
+  <div class="faq">
+    <h1>F.A.Q.</h1>
+    <h2>Here are answers to the most frequently asked questions.</h2>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(event)">
+        <span>How much does it cost to build a web application?</span>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <div class="sub-faq-answer">
+          <p>It depends. A web application can cost between: <strong>4,000$ and 50,000$.</strong></p>
+          <p>A very big application can cost even more.</p>
+          <em>Everything</em>
+          <em> depends on your needs and the scope of the project.</em>
+          <p>The best way to get a fair estimate of the cost of your application is to book a free consultation
+            with me or to send me a message.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(event)">
+        <span>What is your process of web application development?</span>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <div class="sub-faq-answer">
+          <p>Here is a brief description of the process:</p>
+          <ol style="margin-left: 30px">
+            <li>Free Consultation & quote</li>
+            <li>Discovery & competitor analysis</li>
+            <li>High-level planning</li>
+            <li>Architecture of the application (database, sitemap)</li>
+            <li>UI/UX design</li>
+            <li>Prototyping</li>
+            <li>Development (Front-end, Back-end)</li>
+            <li>QA Testing</li>
+            <li>Deployment & launch</li>
+            <li>Maintenance & support</li>
+          </ol>
+          <p>The process is the same for single-page applications and cross-platform web applications.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(event)">
+        <span>What programming languages & technologies do you use to build applications?</span>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <div class="sub-faq-answer">
+          <p>I use a variety of languages & web technologies to build applications.</p>
+          <ul style="margin-left: 25px">
+            <li>On the front-end, I use React with TypeScript.</li>
+            <li>On the back-end, I use Node.js.</li>
+            <li>For the database, I use either MariaDB, MySQL, or MongoDB.</li>
+            <li>For the infrastructure, I use docker, docker-compose, and Kubernetes.</li>
+            <li>For cross-platform applications, I use Electron.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(event)">
+        <span>What are the different types of web applications that you make?</span>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <div class="sub-faq-answer">
+          <p>I can create single-page applications, dynamic applications, and cross-platform applications using
+            Electron.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add more FAQ items as needed -->
+  </div>
+</section>
+<!-- faq -->
+<script src="/js/home/faq.js"></script>
 
 <section class="map hidden" id="mapSection">
   <h1>Location</h1>

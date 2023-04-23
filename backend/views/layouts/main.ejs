@@ -22,57 +22,58 @@
                                     <% } %>
             </div>
         </main>
-
-        <div id="cookie-consent" class="cookie-consent">
-            <div class="cookie-consent-content">
-                <p>We use cookies to enhance your experience on our website. By continuing to browse, you consent to our
-                    use of cookies.</p>
-            </div>
-            <button id="cookie-consent-close" class="cookie-consent-close">&times;</button>
-            <button id="cookie-consent-accept" class="cookie-consent-accept">Accept</button>
-        </div>
-
         <script src="/js/scripts.js"></script>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                var cookieConsent = document.getElementById("cookie-consent");
-                var acceptButton = document.getElementById("cookie-consent-accept");
-                var closeButton = document.getElementById("cookie-consent-close");
+        <% if (bodyId ==="HomePage" ) { %>
+            <div id="cookie-consent" class="cookie-consent">
+                <div class="cookie-consent-content">
+                    <p>We use cookies to enhance your experience on our website. By continuing to browse, you consent to
+                        our
+                        use of cookies.</p>
+                </div>
+                <button id="cookie-consent-close" class="cookie-consent-close">&times;</button>
+                <button id="cookie-consent-accept" class="cookie-consent-accept">Accept</button>
+            </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    var cookieConsent = document.getElementById("cookie-consent");
+                    var acceptButton = document.getElementById("cookie-consent-accept");
+                    var closeButton = document.getElementById("cookie-consent-close");
 
-                function setCookie(name, value, days) {
-                    var date = new Date();
-                    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-                    var expires = "expires=" + date.toUTCString();
-                    document.cookie = name + "=" + value + "; " + expires + "; path=/";
-                }
-
-                function getCookie(name) {
-                    var value = "; " + document.cookie;
-                    var parts = value.split("; " + name + "=");
-                    if (parts.length == 2) return parts.pop().split(";").shift();
-                }
-
-                function checkCookieConsent() {
-                    var consent = getCookie("cookie-consent");
-                    if (!consent) {
-                        cookieConsent.style.display = "block";
+                    function setCookie(name, value, days) {
+                        var date = new Date();
+                        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+                        var expires = "expires=" + date.toUTCString();
+                        document.cookie = name + "=" + value + "; " + expires + "; path=/";
                     }
-                }
 
-                acceptButton.addEventListener("click", function () {
-                    setCookie("cookie-consent", "accepted", 365);
-                    cookieConsent.style.display = "none";
+                    function getCookie(name) {
+                        var value = "; " + document.cookie;
+                        var parts = value.split("; " + name + "=");
+                        if (parts.length == 2) return parts.pop().split(";").shift();
+                    }
+
+                    function checkCookieConsent() {
+                        var consent = getCookie("cookie-consent");
+                        if (!consent) {
+                            cookieConsent.style.display = "block";
+                        }
+                    }
+
+                    acceptButton.addEventListener("click", function () {
+                        setCookie("cookie-consent", "accepted", 365);
+                        cookieConsent.style.display = "none";
+                    });
+
+                    checkCookieConsent();
+
+                    closeButton.addEventListener("click", function () {
+                        cookieConsent.style.display = "none";
+                    });
                 });
+            </script>
+            <% } %>
 
-                checkCookieConsent();
-
-                closeButton.addEventListener("click", function () {
-                    cookieConsent.style.display = "none";
-                });
-            });
-
-        </script>
     </body>
 
 </html>

@@ -27,19 +27,23 @@ header {
   height: var(--navheight);
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav {
+  position: relative;
   margin: 0px 50px 0px 50px;
   display: flex;
+  align-items: center;
   flex-grow: 1;
   height: inherit;
 }
 
-nav img {
-  width: 200px;
-  height: inherit;
-  fill:red;
+.nav img {
+  position: relative;
+width: 200px;
+height: inherit;
 }
 
 /* language slider */
@@ -168,11 +172,9 @@ input[type="checkbox"]:checked + .slider:before {
   display: none;
 }
 
-.hamburger-menu {
-  position: relative;
+.hamburger-menu {  
   z-index: 99;
   width: 1.5rem;
-  height: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -273,7 +275,7 @@ input[type="checkbox"]:checked + .slider:before {
   .hamburger-menu {
     display: flex;
     position: absolute;
-    top: 1rem;
+    top: 50%;
     right: 2rem;
   }
 
@@ -367,13 +369,6 @@ input[type="checkbox"]:checked + .slider:before {
 
   nav img {
     width: 150px;
-  }
-
-  .hamburger-menu {
-    display: flex;
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
   }
 
   .nav_list {

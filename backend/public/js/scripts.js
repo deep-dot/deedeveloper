@@ -49,74 +49,6 @@ function toggleAnimation() {
   }
 }
 
-// function hideMoreLessBtn() {
-//   const containers = document.querySelectorAll('.card');
-//   console.log('content.scrollHeight==', containers.length);
-//   for (let i = 0; i < containers.length; i++) {
-//     const seeMoreLessBtn = containers[i].querySelector('.morelessmore');
-//     const content = containers[i].querySelector('.contents');
-//     const contentStyle = getComputedStyle(content);
-//     const contentMaxHeight = contentStyle.getPropertyValue('max-height');
-//     const contentMaxHeightNumber = parseFloat(contentMaxHeight);
-
-//     console.log('content max-height:', contentMaxHeightNumber, content.offsetHeight, seeMoreLessBtn);
-//     if (content.offsetHeight >= contentMaxHeightNumber) {
-//       seeMoreLessBtn.style.display = 'block';
-//     } else {
-//       seeMoreLessBtn.style.display = 'none';
-//     }
-//   }
-// }
-// document.addEventListener('DOMContentLoaded', function () {
-//   hideMoreLessBtn();
-// });
-
-function morelessmore() {
-  const moreless = document.querySelectorAll(".morelessmore");
-  // console.log('morelessmore', moreless);
-  for (let i = 0; i < moreless.length; i++) {
-    moreless[i].addEventListener('click', function () {
-      moreless[i].parentNode.classList.toggle('active')
-      console.log(moreless[i].parentNode.classList.contains('active'));
-    })
-  }
-}
-window.morelessmore = morelessmore
-
-function showMoreLess(totalLength, numOfVisibleCards, showAllCards, button) {
-  // console.log('function called', totalLength, showAllCards,numOfVisibleCards);
-  for (let i = 0; i < totalLength; i++) {
-    cards = document.querySelectorAll(".card-container");
-    if (i < numOfVisibleCards) {
-      cards[i].style.display = "block";
-      cards[i].style.margin = "10px";
-    } else {
-      cards[i].style.display = "none";
-    }
-  }
-  console.log('see more button===', totalLength, numOfVisibleCards);
-  if (totalLength >= numOfVisibleCards) {
-    button.textContent = showAllCards ? "See less" : "See more";
-    button.style.display = "block";
-  } else {
-    button.style.display = "none";
-  }
-}
-
-function seeNumOfCardsLessOrMore(numOfReviews) {
-  let showAllCards = false;
-  let numOfVisibleCards = 2;
-  let seeMoreButton = document.querySelector("#see-more-button");
-  seeMoreButton.addEventListener("click", () => {
-    showAllCards = !showAllCards;
-    numOfVisibleCards = showAllCards ? numOfReviews : 2;
-    showMoreLess(numOfReviews, numOfVisibleCards, showAllCards, seeMoreButton);
-  });
-  showMoreLess(numOfReviews, numOfVisibleCards, showAllCards, seeMoreButton);
-}
-//window.seenumOfReviewsLessOrMore = seeNumOfCardsLessOrMore;
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const languageToggle = document.getElementById("language-toggle");
   const en = document.getElementById("en");
@@ -220,5 +152,40 @@ function events() {
   });
 }
 events();
+
+
+
+function showMoreLess(numOfReviews, numOfVisibleCards, showAllCards, seeMoreButton) {
+  // console.log('function called', numOfReviews, showAllCards,numOfVisibleCards);
+  for (let i = 0; i < numOfReviews; i++) {
+      cards = document.querySelectorAll(".card-container");
+      if (i < numOfVisibleCards) {
+          cards[i].style.display = "block";
+          cards[i].style.margin = "10px";
+      } else {
+          cards[i].style.display = "none";
+      }
+  }
+  console.log('see more button===', numOfReviews, numOfVisibleCards);
+  if (numOfReviews >= numOfVisibleCards) {
+      seeMoreButton.textContent = showAllCards ? "See less" : "See more";
+      seeMoreButton.style.display = "block";
+  } else {
+      seeMoreButton.style.display = "none";
+  }
+}
+
+function seeNumOfCardsLessOrMore(numOfReviews) {
+  let showAllCards = false;
+  let numOfVisibleCards = 2;
+  let seeMoreButton = document.querySelector("#see-more-button");
+  seeMoreButton.addEventListener("click", () => {
+      showAllCards = !showAllCards;
+      numOfVisibleCards = showAllCards ? numOfReviews : 2;
+      showMoreLess(numOfReviews, numOfVisibleCards, showAllCards, seeMoreButton);
+  });
+  showMoreLess(numOfReviews, numOfVisibleCards, showAllCards, seeMoreButton);
+}
+
 
 
