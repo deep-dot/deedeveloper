@@ -61,7 +61,7 @@
   min-height: 30vh;
   border-radius: 10px;
   border: 5px solid var(--colorOnBackground);
-  box-shadow: 0px 0px 5px 5px var(--background);
+  box-shadow: 0px 0px 15px 2px var(--background);
   margin: 8rem 0;
 }
 
@@ -115,7 +115,7 @@
 .A {
   display: flex;
   align-items: center;
-  min-height: 100vh;
+  min-height: 60vh;
 }
 
 .about {
@@ -192,6 +192,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   min-height: 100vh;
 }
 
@@ -202,56 +203,57 @@
   align-items: center;
 }
 
-.services h1 {
+.services-div1 {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+}
+
+.services-div1 h1 {
   font: 600 1.5em "Roboto";
   color: var(--colorOnBackgroundColor);
   line-height: 1.5;
   margin: 2rem 0;
 }
 
-.services ul {
+.services-div1 ul {
   list-style-type: none;
 }
 
-.services ul li {
+.services-div1 ul li {
   margin-bottom: 20px;
   line-height: 1.5;
   font: 500 1.3em 'Roboto';
   color: var(--colorOnBackgroundColor);
 }
 
-.services .contact-button {
-  position: relative;
+.services-div1 .contact-button {
   background: var(--background);
   font: 500 1.6em 'Roboto';
-  height: auto;
   padding: 7.5px 30px;
+  max-width: 55%;
   text-transform: uppercase;
   user-select: none;
   border-radius: 5px;
   margin-top: 20px;
   color: var(--colorOnBackground);
-  border-radius: 5px;
   border: none;
   cursor: pointer;
-  display: inline-block;
-  text-decoration: none;
-  line-height: 40px;
 }
 
-.services .contact-button:hover {
+.services-div1 .contact-button:hover {
   background: var(--hoverColor);
 }
 
-.services .services-icons {
+.services-div1 .services-icons {
   display: inline-flex;
-  gap: 30px;
+  gap: 50px;
   margin-top: 2rem;
 }
 
-.services .services-icons i {
+.services-div1 .services-icons i {
   font-size: 5rem;
-  opacity: 0.1;
+  opacity: 0.5;
   line-height: 1.5;
 }
 
@@ -260,12 +262,11 @@
 }
 
 .contact-me-box {
-  background: var(--background);
+  background: var(--backgroundColor);
   width: 100%;
   min-height: 30vh;
   border-radius: 10px;
-  border: 5px solid rgb(23, 162, 184);
-  box-shadow: 0px 0px 5px 5px var(--colorOnBackgroundColor);
+  box-shadow: 0px 0px 15px 2px var(--colorOnBackgroundColor);
   margin: 8rem 0;
 }
 
@@ -274,22 +275,22 @@
 }
 
 .contact-me-box .sub-contact-me-box h2 {
-  font: 800 1.5em 'Roboto';
+  font: 800 2em 'Roboto';
   margin-bottom: 2rem;
-  color: var(--colorOnBackground);
+  color: var(--colorOnBackgroundColor);
   line-height: 1.5;
 }
 
 .contact-me-box .sub-contact-me-box p {
-  font: 400 1em 'Roboto';
+  font: 400 1.5em 'Roboto';
   margin-bottom: 2rem;
-  color: var(--colorOnBackground);
+  color: var(--colorOnBackgroundColor);
   line-height: 1.5;
 }
 
 .contact-me-box .contact-button {
   position: relative;
-  background: var(--backgroundColor);
+  background: var(--background);
   font: 500 1.6em 'Roboto';
   height: auto;
   padding: 7.5px 30px;
@@ -297,7 +298,7 @@
   user-select: none;
   border-radius: 5px;
   margin-top: 20px;
-  color: var(--colorOnBackgroundColor);
+  color: var(--colorOnBackground);
   border-radius: 5px;
   border: none;
   cursor: pointer;
@@ -387,13 +388,12 @@
 }
 
 .card {
-  padding: 10px;
+  padding: 20px;
   box-sizing: border-box;
   background-color: transparent !important;
   height: auto;
   max-width: 650px;
   border: none !important;
-  border-radius: 5px;
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   grid-gap: 10px;
@@ -407,12 +407,14 @@
   left: 0;
   border: 20px solid transparent;
   border-top: 5px solid #17e78c;
-  border-right: 10px solid #17e78c;
+  border-right: 20px solid #17e78c;
+  /* border: 5px solid var(--colorOnBackground); */
+  /* box-shadow: 0px 0px 15px 2px #17e78c; */
 }
 
 .card.active::before {
   border-top: 5px solid #bd4033;
-  border-right: 20px solid #bd4033;
+  border-right: 10px solid #bd4033;
 }
 
 
@@ -677,93 +679,88 @@ blockquote::before {
 /* contact section */
 
 .C {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 70vh;
+   display: flex;
+   flex-direction: column;
+  align-items: center;
 }
 
-.contact {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
-  justify-content: space-between;
+.C .contact {
+  padding: 4rem;
 }
 
-.C h1 {
+.C .contact h1 {
   font: 600 1.5em "Roboto";
   text-transform: uppercase;
-  text-align: left;
   color: var(--colorOnBackgroundColor);
   margin: 2rem 0;
-  line-height: 1.5;
 }
 
-.contact form {
-  width: 50vw;
+.C .contact #contact-form {
+  width: 100%;
+  padding: 20px;
+  border-radius: 5px;
+   border: 5px solid var(--colorOnBackground);
+  box-shadow: 0px 0px 15px 2px var(--background);
 }
 
-.contact form p {
+.C .contact #contact-form p {
   font-size: 1rem;
   margin-bottom: 2rem;
   line-height: 1.5;
+  color: var(--colorOnBackgroundColor);
 }
 
-.contact form {
-  background-color: #f2f2f2;
-  padding: 20px;
-  border-radius: 5px;
-}
-
-.contact .form-group {
+.contact #contact-form .form-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
 }
 
-.contact label {
+.contact #contact-form .form-group label {
   margin-bottom: 5px;
-  font-weight: bold;
+  font: 600 1.5em 'Roboto';
   text-align: start;
+  color: var(--colorOnBackgroundColor);
 }
 
-input[type="text"],
-input[type="email"],
-textarea {
+.contact #contact-form .form-group input[type="text"],
+.contact #contact-form .form-group input[type="email"],
+.contact #contact-form .form-group textarea {
   padding: 10px;
   border-radius: 5px;
   border: none;
   margin-bottom: 10px;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-textarea:focus {
+.contact #contact-form .form-group input[type="text"]:focus,
+.contact #contact-form .form-group input[type="email"]:focus,
+.contact #contact-form .form-group textarea:focus {
   outline: none;
-  box-shadow: 0 0 5px #4CAF50;
+  box-shadow: 0 0 5px var(--colorOnBackgroundColor);
+  background-color: var(--backgroundColor);
 }
 
-.contact button {
-  background-color: #4CAF50;
-  color: white;
+.contact #contact-form #submit-button {
+  background-color: var(--background);
+  color: var(--colorOnBackground);
   padding: 5px 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.contact button:hover {
-  background-color: #3e8e41;
+.contact #contact-form #submit-button:hover {
+  background-color: var(--hoverColor);
 }
 
-.contact #submit-button.loading:before {
+.contact #contact-form #submit-button.loading:before {
   content: "Sending...";
   display: inline-block;
   margin-right: 5px;
   font-weight: bold;
 }
 
-.contact #submit-button.loading:after {
+.contact #contact-form #submit-button.loading:after {
   content: "";
   display: inline-block;
   width: 16px;
@@ -777,9 +774,9 @@ textarea:focus {
   margin-right: 5px;
 }
 
-.contact img {
+.contact .contact-img img {
+  height: auto;
   width: 100%;
-  align-self: center;
 }
 
 /* contact section end */
@@ -997,7 +994,7 @@ textarea:focus {
     font-size: 1em;
   }
 
-  .contact {
+  .C {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1030,10 +1027,6 @@ textarea:focus {
 
   #write-review-button i {
     display: block;
-  }
-
-  .contact form {
-    width: 90vw;
   }
 
   button[type="submit"] {
@@ -1157,12 +1150,12 @@ textarea:focus {
     top: -10px;
   }
 
+  .C .contact {
+  padding: 0;
+}
+
   .C h1 {
     font: 500 1.3em "Roboto";
-  }
-
-  .contact form {
-    width: 95vw;
   }
 
   .map h1 {

@@ -247,16 +247,11 @@ input[type="checkbox"]:checked + .slider:before {
 }
 
 /* phone's landscape mode */
-@media screen and (min-width: 480px) and (max-width: 867px) {
-
-  header {
-    height: calc(var(--navheight) + 1rem);    
-  }
+@media screen and (max-width: 867px) {
 
   .nav {
     margin: 0;
     padding: 0;   
-    height: inherit; 
   }
 
 
@@ -276,7 +271,7 @@ input[type="checkbox"]:checked + .slider:before {
     display: flex;
     position: absolute;
     top: 50%;
-    right: 2rem;
+    right: 1rem;
   }
 
   .nav_list {
@@ -347,7 +342,7 @@ input[type="checkbox"]:checked + .slider:before {
 
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 576px) {
 
   .nav {
     margin: 0;
@@ -369,73 +364,6 @@ input[type="checkbox"]:checked + .slider:before {
 
   nav img {
     width: 150px;
-  }
-
-  .nav_list {
-    display: none;
-  }
-
-  .main-wrapper.active .nav_list {
-    display: block;
-    height: auto;
-    padding: 1rem 8rem;
-    /* transform: translateY(var(--navheight)); */
-    transition: 1s;
-    /* box-shadow: 0 2px 20px 0 var(--background); */
-    background: var(--background);
-  }
-
-  .main-wrapper.active .nav_list a {
-    font: 600 2.5vmax "Roboto";
-    color: var(--colorOnBackground);
-  }
-
-  .main-wrapper.active .nav_list li:not(:last-child) {
-    text-align: center;
-    margin-bottom: 3em;
-    border-bottom: 0.5px dotted var(--colorOnBackground);
-  }
-
-  .main-wrapper.active .nav_list li:last-child {
-    text-align: center;
-  }
-
-  .main-wrapper.active .nav_list li i:not(.fa-caret-down) {
-    display: none;
-  }
-
-  .blog {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    position: relative;
-    list-style: none;
-    margin-top: 0;
-    box-shadow: none;  
-  }
-
-  .blog > a i {
-    margin-right: 10px;
-    /* transform: rotate(90deg); */
-  }
-
-  .overlay {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--backgroundColor);
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.5s;
-  }
-
-  .main-wrapper.active .overlay {
-    pointer-events: all;
-    opacity: 1;
   }
 
 }
