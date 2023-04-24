@@ -694,7 +694,7 @@ blockquote::before {
   margin: 2rem 0;
 }
 
-.C .contact #contact-form {
+.C .contact #contact-form-viewhome {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -705,44 +705,81 @@ blockquote::before {
   box-shadow: 0px 0px 15px 2px var(--background);
 }
 
-.C .contact #contact-form p {
+.C .contact #contact-form-viewhome p {
   font-size: 1rem;
   margin-bottom: 2rem;
   line-height: 1.5;
   color: var(--colorOnBackgroundColor);
 }
 
-.contact #contact-form .form-group {
+.contact #contact-form-viewhome .form-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
 }
 
-.contact #contact-form .form-group label {
+.contact #contact-form-viewhome .form-group label {
   margin-bottom: 5px;
   font: 600 1.5em 'Roboto';
   text-align: start;
   color: var(--colorOnBackgroundColor);
 }
 
-.contact #contact-form .form-group input[type="text"],
-.contact #contact-form .form-group input[type="email"],
-.contact #contact-form .form-group textarea {
+.contact #contact-form-viewhome .form-group input[type="text"],
+.contact #contact-form-viewhome .form-group input[type="email"],
+.contact #contact-form-viewhome .form-group textarea {
   padding: 10px;
   border-radius: 5px;
   border: none;
   margin-bottom: 10px;
 }
 
-.contact #contact-form .form-group input[type="text"]:focus,
-.contact #contact-form .form-group input[type="email"]:focus,
-.contact #contact-form .form-group textarea:focus {
+.contact #contact-form-viewhome .form-group input[type="text"]:focus,
+.contact #contact-form-viewhome .form-group input[type="email"]:focus,
+.contact #contact-form-viewhome .form-group textarea:focus {
   outline: none;
   box-shadow: 0 0 5px var(--colorOnBackgroundColor);
   background-color: var(--backgroundColor);
 }
 
-.contact #contact-form #submit-button {
+.contact #contact-form-viewhome #verify-code-button{
+   align-self: flex-end;
+  background-color: var(--background);
+  color: var(--colorOnBackground);
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact #contact-form-viewhome #verify-code-button:hover {
+  background-color: var(--hoverColor);
+}
+
+
+.contact #contact-form-viewhome #verify-code-button.loading:before {
+  content: "Verifying...";
+  display: inline-block;
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.contact #contact-form-viewhome #verify-code-button.loading:after {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid #ccc;
+  border-top-color: #333;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+  margin-top: -2px;
+  margin-right: 5px;
+}
+
+
+.contact #contact-form-viewhome #submit-button {
   align-self: flex-end;
   background-color: var(--background);
   color: var(--colorOnBackground);
@@ -752,18 +789,18 @@ blockquote::before {
   cursor: pointer;
 }
 
-.contact #contact-form #submit-button:hover {
+.contact #contact-form-viewhome #submit-button:hover {
   background-color: var(--hoverColor);
 }
 
-.contact #contact-form #submit-button.loading:before {
+.contact #contact-form-viewhome #submit-button.loading:before {
   content: "Sending...";
   display: inline-block;
   margin-right: 5px;
   font-weight: bold;
 }
 
-.contact #contact-form #submit-button.loading:after {
+.contact #contact-form-viewhome #submit-button.loading:after {
   content: "";
   display: inline-block;
   width: 16px;
@@ -939,7 +976,7 @@ blockquote::before {
   }
 
   .sub-quote-me-box {
-    padding: 1.3rem;
+    padding: 1rem;
     text-align: center;
   }
 
@@ -1030,18 +1067,22 @@ blockquote::before {
   }
 
   .testimonial p {
-    font-size: 0.7rem;
+    font:400 0.8em 'Roboto';
     margin-bottom: 10px;
   }
 
   .testimonial h3 {
-    font-size: 9px;
+    font: 400 1em 'Roboto';
     margin-bottom: 5px;
   }
 
   .testimonial #write-review-button {
     padding: 5px 10px;
     font-size: 10px;
+  }
+
+  .card {
+    padding: 10px;
   }
 
   blockquote::before {
@@ -1100,44 +1141,66 @@ blockquote::before {
   }
 
   .sub-quote-me-box {
-    padding: 1rem;
+    padding: 0.5rem;
   }
 
   .quote-me-box .sub-quote-me-box h2 {
-    font: 800 1.3em 'Roboto';
+    font: 600 1em 'Roboto';
     }
   
   .quote-me-box .sub-quote-me-box p {
-    font: 400 1em 'Roboto';
+    font: 400 0.8em 'Roboto';
    }
 
   .quote-me-box .quote-button {
-    font: 500 1.2em 'Roboto';
+    font: 500 1em 'Roboto';
   }
 
   .about h1 {
-    font: 600 1.5em 'Roboto';
-  }
-
-  .about h2 {
     font: 600 1.3em 'Roboto';
   }
 
+  .about h2 {
+    font: 600 1em 'Roboto';
+  }
+
   .about p {
-    font: 500 1em 'Roboto';
+    font: 500 0.8em 'Roboto';
   }  
 
-  .services h1 {
-    font: 600 1.5em "Roboto";
+  .S .services .services-div1 h1 {
+    font: 600 1em "Roboto";
   }
 
   .services ul li {
-    font: 500 1.3em 'Roboto';
+    font: 500 0.8em 'Roboto';
   }
 
   .S .services .services-div1 .contact-button {
-    font: 500 1.2em 'Roboto';
+    font: 500 0.8em 'Roboto';
     align-self: center;
+  }
+
+  .contact-me-box .sub-contact-me-box{
+    padding: 0.5rem;
+  }
+
+  .contact-me-box .sub-contact-me-box h2 {
+      font-size: 1em;
+    } 
+    .contact-me-box .sub-contact-me-box p {
+      font-size: 0.8em;
+    }
+
+  .contact-me-box .sub-contact-me-box .contact-button {
+    font-size: 0.8em;
+    align-self: center;
+  }
+
+  /* skill box */
+
+  .skill h2 {
+    font: 500 1em 'Roboto';
   }
 
   .skill-box {
@@ -1145,20 +1208,23 @@ blockquote::before {
     grid-template-rows: repeat(6, 1fr);
   }
 
-  .contact-me-box .sub-contact-me-box h2 {
-      font-size: 1.5em;
-    } 
-    .contact-me-box .sub-contact-me-box p {
-      font-size: 1.1em;
-    }
+  .skill-box .sub-child h2 {
+    font: 500 1em 'Roboto';
+  }
+  
+  .skill-box .sub-child p {
+    font: 400 0.8em 'Roboto';
+  }
 
-  .contact-me-box .sub-contact-me-box .contact-button {
-    font-size: 1em;
-    align-self: center;
+  /* .testimonial */
+
+  .testimonial h2 {
+    font: 600 1em "Roboto";
   }
 
   .card {
     width: 100%;
+    padding: 15px 5px;
   }
 
   .cardRow .stars {
@@ -1197,6 +1263,29 @@ blockquote::before {
 
   .C h1 {
     font: 500 1.3em "Roboto";
+  }
+
+  .contact #contact-form-viewhome .form-group label {
+    font: 500 1em 'Roboto';
+  }
+
+  /* faq */
+  .faq h1 {
+    font: 600 1.5em 'Roboto';
+    margin: 2rem 0;
+  }
+  
+  .faq h2 {
+    font: 500 1.2em 'Roboto';
+    margin: 2rem 0;
+  }
+  
+  .faq p {
+    font: 400 1em 'Roboto';
+  }
+  
+  .faq span {
+    font: 500 1em 'Roboto';
   }
 
   .map h1 {

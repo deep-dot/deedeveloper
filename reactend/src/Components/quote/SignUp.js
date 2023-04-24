@@ -2,6 +2,9 @@ import React, { useState } from "react";
 
 function SignUp({ quoteFormData }) {
 
+  const [inputVerificationCode, setInputVerificationCode] = useState('');
+  const [showVerificationCodeInput, setShowVerificationCodeInput] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -10,40 +13,29 @@ function SignUp({ quoteFormData }) {
 
   const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   console.log(quoteFormData);
-  // }, [quoteFormData]);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
 
-    const { name, email, message } = event.target.elements;
+    const { name, email, message, inputVerificationCode } = event.target.elements;
 
-    // Format quoteFormData as a string
     const quoteFormDataString = Object.values(quoteFormData)
       .map(({ question, answer }) => `${question}: ${answer}`)
       .join('\n');
 
-    // Append quoteFormDataString to the message
     const fullMessage = `${message.value}\n\n Hi, \n i am ${name.value} and this is my email address ${email.value} \n Quote Form Data:\n ${quoteFormDataString}`;
-
-    console.log('full message in sign up info===', fullMessage);
-    const verificationCode = Math.floor(Math.random() * 900000) + 100000;
-    console.log('contact me form====', email.value, name.value);
 
     try {
       const response = await fetch('/verifyUserEmail', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name.value, email: email.value, verificationCode }),
+        body: JSON.stringify({ name: name.value, email: email.value, formId: 'contact-form-reactend' }),
       });
 
       const data = await response.json();
-      console.log('front verify in contactMe ===', data.success);
+      console.log('verify code react end ===', data.verificationCode);
 
-      const inputVerificationCode = prompt(`Please enter the verification code that was sent to your email: ${email.value}`);
-      if (inputVerificationCode == verificationCode) {
+      if (inputVerificationCode == data.verificationCode) {
         console.log('matched');
 
         const emailResponse = await fetch('/UserEmail', {
@@ -105,6 +97,16 @@ function SignUp({ quoteFormData }) {
               ...formData,
               message: e.target.value,
             });
+          }}
+        />
+         <input
+          id="verification-code"
+          type="text"
+          required
+          placeholder="Verification Code"
+          style={{ display: showVerificationCodeInput ? "block" : "none" }}
+          onChange={(e) => {
+            setInputVerificationCode (e.target.value);
           }}
         />
         <button id="submit-button" type="submit"> 

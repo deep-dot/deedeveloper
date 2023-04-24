@@ -3,15 +3,15 @@
   <h1 class="punjabi">ਤੁਹਾਡੇ ਵਪਾਰ ਦੀਆਂ ਚੁਣੌਤੀਆਂ ਨੂੰ ਹੱਲ ਕਰਨ ਦੀ ਭਾਲ ਵਿੱਚ ਹੋ?</h1>
   <div class="home">
     <div class="home1">
-    <p class="english">Start exploring now and find solutions that can help you overcome obstacles and achieve your
-      goals.</p>
-    <p class="punjabi">ਹੁਣ ਤੱਕ ਖੋਜ ਸ਼ੁਰੂ ਕਰੋ ਅਤੇ ਉਹ ਹੱਲ ਲੱਭੋ ਜੋ ਤੁਹਾਨੂੰ ਰੁਕਾਵਟਾਂ ਨੂੰ ਦੂਰ ਕਰਨ ਅਤੇ ਆਪਣੇ ਉਦੇਸ਼ ਨੂੰ ਪ੍ਰਾਪਤ
-      ਕਰਨ ਵਿੱਚ ਮਦਦ ਕਰ ਸਕਦੇ ਹਨ।</p>
+      <p class="english">Start exploring now and find solutions that can help you overcome obstacles and achieve your
+        goals.</p>
+      <p class="punjabi">ਹੁਣ ਤੱਕ ਖੋਜ ਸ਼ੁਰੂ ਕਰੋ ਅਤੇ ਉਹ ਹੱਲ ਲੱਭੋ ਜੋ ਤੁਹਾਨੂੰ ਰੁਕਾਵਟਾਂ ਨੂੰ ਦੂਰ ਕਰਨ ਅਤੇ ਆਪਣੇ ਉਦੇਸ਼ ਨੂੰ ਪ੍ਰਾਪਤ
+        ਕਰਨ ਵਿੱਚ ਮਦਦ ਕਰ ਸਕਦੇ ਹਨ।</p>
     </div>
     <div class="home2">
-    <p class="english">Let me help you uncover your business challenge and solve it as quickly as possible.</p>
-    <p class="punjabi">ਮੈਂ ਤੁਹਾਡੇ ਵਪਾਰ ਦੀ ਚੁਣੌਤੀ ਨੂੰ ਪਛਾਣ ਕਰਵਾਉਣ ਵਿੱਚ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦਾ ਹਾਂ ਅਤੇ ਇਸਨੂੰ ਜਲਦੀ ਤੋਂ ਜਲਦੀ ਹੱਲ
-      ਕਰਨ ਵਿੱਚ ਮਦਦ ਕਰਦਾ ਹਾਂ।</p>
+      <p class="english">Let me help you uncover your business challenge and solve it as quickly as possible.</p>
+      <p class="punjabi">ਮੈਂ ਤੁਹਾਡੇ ਵਪਾਰ ਦੀ ਚੁਣੌਤੀ ਨੂੰ ਪਛਾਣ ਕਰਵਾਉਣ ਵਿੱਚ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦਾ ਹਾਂ ਅਤੇ ਇਸਨੂੰ ਜਲਦੀ ਤੋਂ ਜਲਦੀ ਹੱਲ
+        ਕਰਨ ਵਿੱਚ ਮਦਦ ਕਰਦਾ ਹਾਂ।</p>
     </div>
   </div>
 
@@ -88,17 +88,17 @@
         <li>
           ✅ 100% Satisfaction Guaranteed 😁
         </li>
-      </ul>   
-       <a class="contact-button" href="#contactSection">Send me an Email</a><br>   
+      </ul>
+      <a class="contact-button" href="#contactSection">Send me an Email</a><br>
       <span class="services-icons">
         <i class="fab fa-react"></i>
         <i class="fab fa-node-js"></i>
         <i class="fab fa-js"></i>
       </span>
-    </div>   
+    </div>
     <div class="services-div2">
       <img src="../img/services.png" alt="About Me">
-    </div>    
+    </div>
   </div>
 
   <div class="contact-me-box">
@@ -192,10 +192,10 @@
   }
 </script>
 
-<section class="C hidden" id="contactSection"> 
-  <div class="contact">      
-    <h1>Contact me</h1>   
-    <form id="contact-form" method="post">
+<section class="C hidden" id="contactSection">
+  <div class="contact">
+    <h1>Contact me</h1>
+    <form id="contact-form-viewhome" method="post">
       <p>I will get back to you as soon as possible</p>
       <div class="form-group">
         <label for="name"><i class="fa fa-user"></i> Name:</label>
@@ -209,11 +209,17 @@
         <label for="message"><i class="fa fa-comment"></i> Message:</label>
         <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
       </div>
+      <div class="form-group">
+        <label for="verification-code" id="verification-code-label" hidden>Verification Code:</label>
+        <input type="text" id="verification-code" hidden>
+      </div>
+      <p id="message-to-user" hidden></p>
+      <button type="button" id="verify-code-button" hidden>Verify Code</button>
       <button id="submit-button" class="btnn" type="submit">Submit</button>
     </form>
     <div class="contact-img">
       <img src="../img/contact.png" alt="ContactImage" />
-    </div>    
+    </div>
   </div>
 </section>
 
@@ -241,7 +247,7 @@
           <em>Everything</em>
           <em> depends on your needs and the scope of the project.</em>
           <p>The best way to get a fair estimate of the cost of your application is to book a free consultation
-            with me or to send me a message.</p>
+            with me or to send me a message <a href="#contactSection">here.</a></p>
         </div>
       </div>
     </div>
@@ -271,7 +277,7 @@
       </div>
     </div>
 
-    <div class="faq-item">
+    <!-- <div class="faq-item">
       <div class="faq-question" onclick="toggleFaq(event)">
         <span>What programming languages & technologies do you use to build applications?</span>
         <span class="toggle-icon">+</span>
@@ -288,21 +294,122 @@
           </ul>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="faq-item">
       <div class="faq-question" onclick="toggleFaq(event)">
-        <span>What are the different types of web applications that you make?</span>
+        <span>What are the different types of applications that you make?</span>
         <span class="toggle-icon">+</span>
       </div>
       <div class="faq-answer">
         <div class="sub-faq-answer">
-          <p>I can create single-page applications, dynamic applications, and cross-platform applications using
-            Electron.</p>
+          <p>Web development: I can create single-page applications, dynamic applications, and cross-platform
+            applications.</p>
+          <p>Mobile app development: I can create cross-platform apps for Android & IOS.</p>
         </div>
       </div>
     </div>
 
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(event)">
+        <span>Where are you and where do you service?</span>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <div class="sub-faq-answer">
+          <p>We are physically based in Geelong but we provide services Australia-wide! You do not have to live in or
+            near Geelong to take advantage of our web and mobile app development. Online goes everywhere and that is the
+            beauty of what we do. Our focus is small businesses in regional areas. We can meet on Google meet or can use
+            any other adequate service</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(event)">
+        <span>I know I want a website but I don’t know what should be in it or how it should look. Can you help?</span>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <div class="sub-faq-answer">
+          <p>Here’s the thing – you’re an expert at what it is you do. We’re the experts when it comes to websites. As
+            part of our website development process we work with you to gather as much information as we can about what
+            it is you do and where you do it. We then analyse all that information to create the structure of your
+            website, from design and pages, through to key search words and content. Importantly, we extensively
+            research Google to find out the key words people are using when searching for the products and/or services
+            you provide. We then use those key words in our strategy to boost the search engine optimisation of your
+            site.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(event)">
+        <span>What if I want to add more features to my project after I approve the estimate?</span>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <div class="sub-faq-answer">
+          <p>Look, it’s not impossible but obviously your website build will go much smoother if you’ve thought long and
+            hard about what it is you hope to achieve with your website before even approaching us.
+
+            If you need to add new elements to your website, it can certainly be done, particularly if the features
+            you’re adding are consistent with our overall plan and design. But if you’re heading off on a different
+            tangent from what we’ve discussed and planned or we’re well advanced in the development of your website,
+            then we’ll need to talk to you about additional fees for the extra work involved. Sorry, but we invest weeks
+            of labour in your website and out-of-scope work can quickly blow the budget.
+
+            Think long and hard about what you want from your website.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(event)">
+        <span>I’ve already got a website but it’s useless. Can you fix it?</span>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <div class="sub-faq-answer">
+          <p>Sorry. The answer is always no. Bitter experience has taught us that it’s easier and much more effective –
+            from both financial and time perspectives – to start from scratch. We can produce a website that will look
+            like your original site if you really want, but we’ll do it from scratch.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(event)">
+        <span>What are your payment terms?</span>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <div class="sub-faq-answer">
+          <p>We require a deposit of 50% upon your acceptance of the contract and the balance at the completion of the
+            project.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(event)">
+        <span>I know you answer the phones during working hours, but what if my website has problems out of
+          hours?</span>
+        <span class="toggle-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <div class="sub-faq-answer">
+          <p>The beauty of modern-day communications is that help is never far away. If you need help outside regular
+            hours, send an email to our support desk and we’ll assess your problem and determine whether it’s urgent or
+            can wait until the next business day.
+
+            If the emergency is the result of something we’ve done – and that’s unlikely – then we’ll cover the cost.
+            But if the problem with your website is something you’ve done – and that’s also unlikely but not impossible
+            – we will have to charge for the repairs, as well as an out-of-hours fee if the repairs are urgent and
+            outside traditional working hours.</p>
+        </div>
+      </div>
+    </div>
     <!-- Add more FAQ items as needed -->
   </div>
 </section>
