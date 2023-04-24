@@ -204,9 +204,9 @@
 }
 
 .services-div1 {
- display: flex;
- flex-direction: column;
- justify-content: center;
+  display: flex;
+  flex-direction: column;
+ padding: 5px;
 }
 
 .services-div1 h1 {
@@ -227,18 +227,19 @@
   color: var(--colorOnBackgroundColor);
 }
 
-.services-div1 .contact-button {
+.S .services .services-div1 .contact-button {
+  align-self: flex-start;
   background: var(--background);
   font: 500 1.6em 'Roboto';
   padding: 7.5px 30px;
-  max-width: 55%;
   text-transform: uppercase;
   user-select: none;
   border-radius: 5px;
-  margin-top: 20px;
   color: var(--colorOnBackground);
+  border-radius: 5px;
   border: none;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .services-div1 .contact-button:hover {
@@ -247,13 +248,13 @@
 
 .services-div1 .services-icons {
   display: inline-flex;
-  gap: 50px;
-  margin-top: 2rem;
+  gap: 50px;  
 }
 
 .services-div1 .services-icons i {
-  font-size: 5rem;
-  opacity: 0.5;
+  font-size: 4rem;
+  opacity: 0.3;
+  color: var(--colorOnBackgroundColor);
   line-height: 1.5;
 }
 
@@ -271,6 +272,10 @@
 }
 
 .sub-contact-me-box {
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
   padding: 2rem;
 }
 
@@ -289,22 +294,18 @@
 }
 
 .contact-me-box .contact-button {
-  position: relative;
+  align-self: flex-start;
   background: var(--background);
   font: 500 1.6em 'Roboto';
-  height: auto;
   padding: 7.5px 30px;
   text-transform: uppercase;
   user-select: none;
   border-radius: 5px;
-  margin-top: 20px;
   color: var(--colorOnBackground);
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  display: inline-block;
   text-decoration: none;
-  line-height: 40px;
 }
 
 .contact-me-box .contact-button:hover {
@@ -679,9 +680,7 @@ blockquote::before {
 /* contact section */
 
 .C {
-   display: flex;
-   flex-direction: column;
-  align-items: center;
+   display: block;
 }
 
 .C .contact {
@@ -696,6 +695,9 @@ blockquote::before {
 }
 
 .C .contact #contact-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   width: 100%;
   padding: 20px;
   border-radius: 5px;
@@ -741,6 +743,7 @@ blockquote::before {
 }
 
 .contact #contact-form #submit-button {
+  align-self: flex-end;
   background-color: var(--background);
   color: var(--colorOnBackground);
   padding: 5px 10px;
@@ -916,7 +919,7 @@ blockquote::before {
   }
 
   .H h1 {
-    font-size: 2em;
+    font: 400 1.9em "Roboto";
   }
 
   .home p {
@@ -976,6 +979,13 @@ blockquote::before {
     text-align: center;
   }
 
+  .services-div1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
+
   .services h1 {
     font: 600 1.5em "Roboto";
   }
@@ -990,8 +1000,26 @@ blockquote::before {
     grid-template-rows: repeat(3, 1fr);
   }
 
-  .contact-me-box .contact-button {
-    font-size: 1em;
+  .contact-me-box .sub-contact-me-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .contact-me-box .sub-contact-me-box h2 {
+    font-size: 1.9em;
+    text-align: center;
+  } 
+  .contact-me-box .sub-contact-me-box p {
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  .contact-me-box .sub-contact-me-box .contact-button {
+    font-size: 1.3em;
+    align-self: center;
   }
 
   .C {
@@ -1058,6 +1086,10 @@ blockquote::before {
     border-right: none;
   }
 
+  .home h1 {
+    font: 400 1.5em "Roboto";
+  }
+
   .home p {
     font: 400 1.1em "Roboto";
   }
@@ -1072,11 +1104,11 @@ blockquote::before {
   }
 
   .quote-me-box .sub-quote-me-box h2 {
-    font: 800 1.5em 'Roboto';
+    font: 800 1.3em 'Roboto';
     }
   
   .quote-me-box .sub-quote-me-box p {
-    font: 400 1.1em 'Roboto';
+    font: 400 1em 'Roboto';
    }
 
   .quote-me-box .quote-button {
@@ -1103,17 +1135,26 @@ blockquote::before {
     font: 500 1.3em 'Roboto';
   }
 
-  .services .contact-button {
+  .S .services .services-div1 .contact-button {
     font: 500 1.2em 'Roboto';
-  }
-
-  .sub-contact-me-box {
-    padding: 1rem;
+    align-self: center;
   }
 
   .skill-box {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, 1fr);
+  }
+
+  .contact-me-box .sub-contact-me-box h2 {
+      font-size: 1.5em;
+    } 
+    .contact-me-box .sub-contact-me-box p {
+      font-size: 1.1em;
+    }
+
+  .contact-me-box .sub-contact-me-box .contact-button {
+    font-size: 1em;
+    align-self: center;
   }
 
   .card {
