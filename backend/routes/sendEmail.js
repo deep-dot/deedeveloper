@@ -6,7 +6,7 @@ const sendEmail = require("../utils/sendEmail");
 
 router.post('/verifyUserEmail', async (req, res) => {
     const { name, email, formId } = req.body;
-    console.log('req body in verifyUserEmail ==', req.body);
+   // console.log('req body in verifyUserEmail ==', req.body);
     const verificationCode = Math.floor(Math.random() * 900000) + 100000;
     var message = `Hi ${name}, 
     Please verify your email by putting this ${verificationCode} code in deedeveloper.com website's prompted input field.
@@ -58,9 +58,8 @@ router.post('/verifyUserEmail', async (req, res) => {
 });
 
 router.post('/UserEmail', async (req, res) => {
-    //console.log('response email', req.body);
     const { name, email, msg, formId } = req.body;
-    console.log('req body in useremail ==', req.body);
+    //console.log('req body in useremail ==', req.body);
     var message = `Hi Dhillon, 
     You have got email from ${name}.
     ${msg}.`;

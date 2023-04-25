@@ -8,12 +8,13 @@ import Footer from '../../Components/footer/Footer';
 function Quote() {
     const [page, setPage] = useState(0);
     const [quoteFormData, setQuoteFormData] = useState({});
+    const [formCompleted, setFormCompleted] = useState(false);
 
     const FormTitles = ["What should your website include?", "Please send your detail so i can get back to you asap 😀"];
 
     const PageDisplay = () => {
         if (page === 0) {
-          return <QuoteForm quoteFormData={quoteFormData} setQuoteFormData={setQuoteFormData} />;
+          return <QuoteForm quoteFormData={quoteFormData} setQuoteFormData={setQuoteFormData} setFormCompleted={setFormCompleted} />;
         } else {
           return <SignUp quoteFormData={quoteFormData} />;
         }
@@ -21,7 +22,7 @@ function Quote() {
       
 
     const nextPage = () => {
-        if (page < FormTitles.length - 1) {
+        if (page < FormTitles.length - 1 && formCompleted) {
             setPage(page + 1);
         }
     };
@@ -45,12 +46,18 @@ function Quote() {
                         <h1>{FormTitles[page]}</h1>
                         <div className="body">{PageDisplay()}</div>
                         {page > 0 && (
-                            <button className="previous-button" onClick={previousPage}>
+                            <button id="previous-button" className="previous-button" onClick={previousPage}>
                                 Previous
                             </button>
                         )}
                         {page < FormTitles.length - 1 && (
-                            <button className="next-button" onClick={nextPage}>
+                            <button 
+                            id="next-button" 
+                            className="next-button" 
+                            disabled={!formCompleted}
+                            style={{ opacity: formCompleted ? 1 : 0.3 }}
+                            onClick={nextPage}
+                            >
                                 Next
                             </button>
                         )}
