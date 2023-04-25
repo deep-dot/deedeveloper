@@ -3,7 +3,10 @@ import React, { useState } from "react";
 function SignUp({ quoteFormData }) {
 
   const [inputVerificationCode, setInputVerificationCode] = useState('');
+  const [verificationCode, setVerificationCode] = useState('');
+  const [showVerificationCodeSubmitBtn, setShowVerificationCodeSubmitBtn] = useState(false);
   const [showVerificationCodeInput, setShowVerificationCodeInput] = useState(false);
+  const [showSubmitBtn, setShowSubmitBtn] = useState(true);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -13,58 +16,85 @@ function SignUp({ quoteFormData }) {
 
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (event) => {
+  const verifyEmail = async (event) => {
     event.preventDefault();
     setLoading(true);
 
-    const { name, email, message, inputVerificationCode } = event.target.elements;
+    const { name, email } = event.target.elements;
+
+    if (!verificationCode) {
+      try {
+        const response = await fetch('/verifyUserEmail', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: name.value, email: email.value, formId: 'contact-form-reactend' }),
+        });
+        const data = await response.json();
+        if (data.success) {
+          setVerificationCode(data.verificationCode);
+          console.log('verify code react end ===', data.verificationCode);
+          alert(`A verification code has been sent to your email: ${email.value}. Please check your email and enter the code.`)
+          setShowVerificationCodeInput(true);
+          setShowVerificationCodeSubmitBtn(true);
+          setShowSubmitBtn(false)
+          setLoading(false);
+        } else {
+          console.log('Verification code sending failed');
+          setLoading(false);
+          setShowVerificationCodeInput(false);
+          setShowVerificationCodeSubmitBtn(false);
+          setShowSubmitBtn(true);
+        }
+      } catch (e) { console.log(e) }
+    }
+  }
+
+  const emailToDev = async (event) => {
+    console.log('inputVerificationCode, verificationCode ==', event.target);
+    event.preventDefault();
+    setLoading(true);
+    const { name, email, message } = formData;
 
     const quoteFormDataString = Object.values(quoteFormData)
       .map(({ question, answer }) => `${question}: ${answer}`)
       .join('\n');
 
-    const fullMessage = `${message.value}\n\n Hi, \n i am ${name.value} and this is my email address ${email.value} \n Quote Form Data:\n ${quoteFormDataString}`;
+    const fullMessage = `${message}\n\n Hi, \n i am ${name} and this is my email address ${email} \n Quote Form Data:\n ${quoteFormDataString}`;
+    if (inputVerificationCode == verificationCode) {
+      console.log('matched');
 
-    try {
-      const response = await fetch('/verifyUserEmail', {
+      const emailResponse = await fetch('/UserEmail', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name.value, email: email.value, formId: 'contact-form-reactend' }),
+        body: JSON.stringify({ name, email, msg: fullMessage, formId: 'contact-form-reactend' }),
       });
 
-      const data = await response.json();
-      console.log('verify code react end ===', data.verificationCode);
-
-      if (inputVerificationCode == data.verificationCode) {
-        console.log('matched');
-
-        const emailResponse = await fetch('/UserEmail', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: name.value, email: email.value, message: fullMessage }),
-        });
-
-        const emailData = await emailResponse.json();
-        if (emailData.success) {
-          alert('Email sent successfully');
-          setLoading(false);
-          event.target.reset();
-        } else {
-          alert('Email sending failed');
-          setLoading(false);
-        }
-      } else {
-        alert('Incorrect verification code. Please try again.');
+      const emailData = await emailResponse.json();
+      if (emailData.success) {
+        alert('Email sent successfully');
         setLoading(false);
+        setShowVerificationCodeInput(false);
+        setShowVerificationCodeSubmitBtn(false);
+        setShowSubmitBtn(true);
+      } else {
+        alert('Email sending failed, please try again');
+        setLoading(false);
+        setShowVerificationCodeInput(false);
+        setShowVerificationCodeSubmitBtn(false);
+        setShowSubmitBtn(true);
       }
-    } catch (error) {
-      console.log('Verification code sending failed', error);
+    } else {
+      alert('Incorrect verification code. Please submit your details again.');
       setLoading(false);
+      setShowVerificationCodeInput(false);
+      setShowVerificationCodeSubmitBtn(false);
+      setShowSubmitBtn(true);
     }
-  };
+  }
+
   return (
-     <div className="form-container"> 
-      <form onSubmit={handleSubmit}>
+    <div className="form-container">
+      <form onSubmit={verifyEmail}>
         <input
           id="name"
           type="text"
@@ -99,17 +129,29 @@ function SignUp({ quoteFormData }) {
             });
           }}
         />
-         <input
+        <input
           id="verification-code"
           type="text"
-          required
+          required={showVerificationCodeInput}
           placeholder="Verification Code"
           style={{ display: showVerificationCodeInput ? "block" : "none" }}
           onChange={(e) => {
-            setInputVerificationCode (e.target.value);
+            setInputVerificationCode(e.target.value);
           }}
         />
-        <button id="submit-button" type="submit"> 
+        <button
+          id="verify-code-button"
+          type="button"
+          onClick={emailToDev}
+          style={{ display: showVerificationCodeSubmitBtn ? "block" : "none" }}
+        >
+          {loading ? 'Veryfying...' : 'Verify'}
+        </button>
+        <button
+          id="submit-button"
+          type="submit"
+          style={{ display: showSubmitBtn ? "block" : "none" }}
+        >
           {loading ? 'Sending...' : 'Submit'}
         </button>
       </form>

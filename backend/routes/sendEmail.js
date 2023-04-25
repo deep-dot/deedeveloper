@@ -6,9 +6,10 @@ const sendEmail = require("../utils/sendEmail");
 
 router.post('/verifyUserEmail', async (req, res) => {
     const { name, email, formId } = req.body;
+    console.log('req body in verifyUserEmail ==', req.body);
     const verificationCode = Math.floor(Math.random() * 900000) + 100000;
     var message = `Hi ${name}, 
-    Please verify your email by putting this ${verificationCode} code in deedeveloper website's prompted input field.
+    Please verify your email by putting this ${verificationCode} code in deedeveloper.com website's prompted input field.
     Best wishes,
     deedeveloper.com`;
 
@@ -27,8 +28,13 @@ router.post('/verifyUserEmail', async (req, res) => {
             });
         } catch (error) {
             console.log(error);
+            res.status(500).json({
+                success: false,
+                message: 'Failed to send verification code',
+              });
         }
-    } else if (formId === "contact-form-reactend") {
+    }
+    if (formId === "contact-form-reactend") {
         try {
             await sendEmail({
                 email: email,
@@ -43,6 +49,10 @@ router.post('/verifyUserEmail', async (req, res) => {
             });
         } catch (error) {
             console.log(error);
+            res.status(500).json({
+                success: false,
+                message: 'Failed to send verification code',
+              });
         }
     }
 });
@@ -50,6 +60,7 @@ router.post('/verifyUserEmail', async (req, res) => {
 router.post('/UserEmail', async (req, res) => {
     //console.log('response email', req.body);
     const { name, email, msg, formId } = req.body;
+    console.log('req body in useremail ==', req.body);
     var message = `Hi Dhillon, 
     You have got email from ${name}.
     ${msg}.`;
@@ -66,7 +77,10 @@ router.post('/UserEmail', async (req, res) => {
                 success: true,
             });
         } catch (error) {
-            return next(new ErrorHandler(error.message, 500));
+            res.status(500).json({
+                success: false,
+                message: 'Failed to send email',
+              });
         }
     } else if (formId === "contact-form-reactend") {
         try {
@@ -80,7 +94,10 @@ router.post('/UserEmail', async (req, res) => {
                 success: true,
             });
         } catch (error) {
-            return next(new ErrorHandler(error.message, 500));
+            res.status(500).json({
+                success: false,
+                message: 'Failed to send email',
+              });
         }
     }
 });
