@@ -49,45 +49,6 @@ function toggleAnimation() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const languageToggle = document.getElementById("language-toggle");
-  const en = document.getElementById("en");
-  const pa = document.getElementById("pa");
-  let p = document.getElementsByClassName('punjabi'),
-    e = document.getElementsByClassName('english');
-  pa.style.display = 'none';
-  //  convert the HTMLCollection to an array using Array.from() before using forEach
-  Array.from(p).forEach((el) => {
-   // console.log('languageToggle.checked==', languageToggle.checked)
-    el.style.display = 'none';
-  });
-  languageToggle.addEventListener("change", () => {
-    if (languageToggle.checked) {
-      // Switch to Punjabi
-      en.style.display = "none";
-      pa.style.display = "inline";
-      Array.from(p).forEach((el) => {
-        el.style.display = 'block'
-      });
-      Array.from(e).forEach((el) => {
-        el.style.display = 'none'
-      });
-
-    } else {
-      // Switch to English
-      en.style.display = "inline";
-      pa.style.display = "none";
-      Array.from(p).forEach((el) => {
-        el.style.display = 'none'
-      });
-      Array.from(e).forEach((el) => {
-        el.style.display = 'block'
-      });
-    }
-  });
-});
-
-
 function events() {
 
   // dark and light mode

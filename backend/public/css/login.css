@@ -1,15 +1,18 @@
 .login_wrapper {
     position: relative;
     background-color: var(--backgroundColor);
-    box-shadow: 2px 2px 15px 0 rgba(0, 0, 0, 0.1);
-    padding: 4rem;
-    margin-bottom: 4rem;
+    box-shadow: 2px 2px 15px 0 var(--background);
+    margin: 4rem 0 4rem 0;
+}
+
+.sub_login_wrapper {
+    padding: 2rem;
 }
 
 .login_wrapper h1 {
     margin: 2rem;
-    font: 800 4vmax "Roboto";
-    color: #17a2b8;
+    font: 800 3vmax "Roboto";
+    color: var(--colorOnBackgroundColor);
 }
 
 .login_wrapper h2 {

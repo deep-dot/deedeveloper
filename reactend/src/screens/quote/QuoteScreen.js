@@ -8,28 +8,15 @@ import Footer from '../../Components/footer/Footer';
 function Quote() {
     const [page, setPage] = useState(0);
     const [quoteFormData, setQuoteFormData] = useState({});
-    const [formCompleted, setFormCompleted] = useState(false);
+    const [formCompleted, setFormCompleted] = useState(true);
 
     const FormTitles = ["What should your website include?", "Please send your detail so i can get back to you asap 😀"];
 
     const PageDisplay = () => {
         if (page === 0) {
-          return <QuoteForm quoteFormData={quoteFormData} setQuoteFormData={setQuoteFormData} setFormCompleted={setFormCompleted} />;
+            return <QuoteForm quoteFormData={quoteFormData} setQuoteFormData={setQuoteFormData} setFormCompleted={setFormCompleted} />;
         } else {
-          return <SignUp quoteFormData={quoteFormData} />;
-        }
-      };
-      
-
-    const nextPage = () => {
-        if (page < FormTitles.length - 1 && formCompleted) {
-            setPage(page + 1);
-        }
-    };
-
-    const previousPage = () => {
-        if (page > 0) {
-            setPage(page - 1);
+            return <SignUp quoteFormData={quoteFormData} />;
         }
     };
 
@@ -46,17 +33,21 @@ function Quote() {
                         <h1>{FormTitles[page]}</h1>
                         <div className="body">{PageDisplay()}</div>
                         {page > 0 && (
-                            <button id="previous-button" className="previous-button" onClick={previousPage}>
+                            <button
+                                id="previous-button"
+                                className="previous-button"
+                                onClick={() => { setPage(page - 1) }}
+                                >
                                 Previous
                             </button>
                         )}
                         {page < FormTitles.length - 1 && (
-                            <button 
-                            id="next-button" 
-                            className="next-button" 
-                            disabled={!formCompleted}
-                            style={{ opacity: formCompleted ? 1 : 0.3 }}
-                            onClick={nextPage}
+                            <button
+                                id="next-button"
+                                className="next-button"
+                                //disabled={!formCompleted}
+                                style={{ opacity: formCompleted ? 1 : 0.3 }}
+                                onClick={() => { setPage(page + 1) }}
                             >
                                 Next
                             </button>

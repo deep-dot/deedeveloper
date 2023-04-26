@@ -1,11 +1,4 @@
-/* styles.css */
-  
-  /* .main-wrapper {
-    max-width: 1200px;
-    margin: var(--navheight) auto;
-    padding: 0 15px;
-  } */
-  
+
   section {
     padding: 30px 0;
   }
@@ -87,7 +80,7 @@
     background-color: #555555;
   }
   
-  #submit-button {
+  #submit-button, #verify-code-button {
     display: block;
     margin: 10px auto;
     padding: 10px 20px;
@@ -101,7 +94,7 @@
     transition: background-color 0.2s ease-in-out;
 }
 
- #submit-button:hover{
+ #submit-button:hover, #verify-code-button:hover{
   background-color: rgb(225, 97, 74);
 }
   
