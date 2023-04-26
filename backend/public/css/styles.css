@@ -188,7 +188,7 @@ body {
   .toggle-btn {
     display: block;
     position: absolute; /* toggle button in navbar */
-    top: 35%;
+    top: 30%;
     left: 50%;
     width: 30px;
     height: 30px;

@@ -1,13 +1,13 @@
 .login_wrapper {
     position: relative;
-    background-color: var(--backgroundColor);
     box-shadow: 0px 0px 5px 0 var(--background);
-    margin: 2rem 0 2rem 0;
+    margin: 2rem auto; 
     border-radius: 5px;
+    max-width: 1000px;
 }
 
-.sub_login_wrapper {
-    padding: 2rem;
+.login_wrapper .sub_login_wrapper {
+    padding: 2rem 1rem 2rem 1rem;
 }
 
 .login_wrapper .sub_login_wrapper h1 {
@@ -24,15 +24,15 @@
 }
 
 .login_wrapper_grid {
-    position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     grid-gap: 2rem;
-    width:inherit;
+    padding: 1rem;
 }
 
-.facebook, .google {
+ .facebook, 
+ .google {
     padding: 1rem;
     border-radius: 5px;
     text-align: center;
@@ -65,7 +65,6 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
-    max-width: inherit;
 }
 
 .loginForm .email {
@@ -144,6 +143,28 @@ input[type="checkbox"] {
     background-color: #3e8e41; 
   }
 
+  /* sign up */
+
+  #registerForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  #registerForm .signUpElements1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+  }
+
+   #registerForm .signUpElements2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+  }
+
   /* profile */
   
   .profileDetail{
@@ -178,10 +199,10 @@ input[type="checkbox"] {
         text-align: center;
     }
 
-    .sub_login_wrapper {
-        padding: 2rem;
+    .login_wrapper .sub_login_wrapper {
+        padding: 2rem 1rem 2rem 1rem;
     }
-    .login_wrapper_grid {
+    .login_wrapper .sub_login_wrapper .login_wrapper_grid {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -189,7 +210,7 @@ input[type="checkbox"] {
     }
 
     .facebook, .google {
-        width: 90%;
+        width: 100%;
     }
 
     .showPass {
@@ -203,25 +224,43 @@ input[type="checkbox"] {
         margin-top: 1rem;
     }
 
-    .profileDetail{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-      }
+   /* profile */
+
+   .profileDetail {
+    grid-template-columns: 1fr;
+    gap: 0;
+    }
 
       .profileBtns{
         flex-direction: row;
         justify-content: space-between;
         width: 100%;
       }
+
+        /* sign up */
+
+    #registerForm {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    #registerForm .signUpElements1,
+    #registerForm .signUpElements2 {
+        width: 100%;
+        
+    }
+
 }
 
 @media screen and (max-width: 467px) {
 
-    .login_wrapper {
-        display: flex;
-        width: 100% ;
+    .login_wrapper_grid {
+        grid-template-columns: 1fr;
+        padding:0;
+    }
+
+    .login_wrapper .sub_login_wrapper {
+        padding: 1rem;
     }
 
     .facebook, .google {
@@ -229,6 +268,7 @@ input[type="checkbox"] {
     }
   
     .facebook a, .google a {
+        position: relative;
         font:500 1.3rem 'Roboto';
     }
 
@@ -243,11 +283,5 @@ input[type="checkbox"] {
     .login-btn {
         font: 500 1.2rem 'Roboto'; 
       }
-
-      .profileBtns{
-        flex-direction: row;
-        justify-content: space-between;
-        width: 100%;
-      }
-
+    
 }

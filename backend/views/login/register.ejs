@@ -1,63 +1,68 @@
 <div class="login_wrapper">
     <div class="sub_login_wrapper">
-    <h1>SIGN UP</h1>
-    <div class="login-error">
-        <p>
-            <%= error %>
-        </p>
-    </div>
-    <div class="login-success">
-        <p>
-            <%= success %>
-        </p>
-    </div>
+        <h1>SIGN UP</h1>
+        <div class="login-error">
+            <p>
+                <%= error %>
+            </p>
+        </div>
+        <div class="login-success">
+            <p>
+                <%= success %>
+            </p>
+        </div>
 
-    <form id="registerForm" method="post" action="/auth/registerUser" enctype="multipart/form-data">
-        <div class="name">
-            <i class="fas fa-user icon"></i>
-            <input name="name" type="text" required id="name" placeholder="Name *" />
-        </div>
-        <div class="email">
-            <i class="fas fa-envelope"></i>
-            <input name="email" type="email" required id="email" placeholder="Email Address *" />
-        </div>
-        <div class="password">
-            <span class="icon">
-                <i class="fas fa-lock"></i>
-            </span>
-            <input name="password" id="password" type="password" required placeholder="Password" />
-        </div>
-        <div class="showPass">
-            <div>
-                <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
-                <label class="" for="showPassword">
-                    Show Password
-                </label>
+        <form id="registerForm" method="post" action="/auth/registerUser" enctype="multipart/form-data">
+            <div class="signUpElements1">
+                <div class="name">
+                    <i class="fas fa-user icon"></i>
+                    <input name="name" type="text" required id="name" placeholder="Name *" />
+                </div>
+                <div class="email">
+                    <i class="fas fa-envelope"></i>
+                    <input name="email" type="email" required id="email" placeholder="Email Address *" />
+                </div>
+                <div class="password">
+                    <span class="icon">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                    <input name="password" id="password" type="password" required placeholder="Password" />
+                </div>
+                <div class="showPass">
+                    <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
+                    <label class="" for="showPassword">
+                        Show Password
+                    </label>
+                </div>
+                <div>
+                    <input type="file" class="form-control" id="image" name="image" />
+                </div>
             </div>
-        </div>
-        <input type="file" class="form-control" id="image" name="image" />
-        <div class="g-recaptcha" data-sitekey="<%= sitekey %>"></div>
-        <button class="login-btn" type="submit">Register</button>
-        <div class="login-register">
-            <p>Do you have an account ? <a href="/auth/login"> Login</a> </p>
-        </div>
-    </form>
 
-    <script type="text/javascript">
-        function togglePasswordVisibility() {
-            var passwordField = document.getElementById("password");
-            var showPasswordCheckbox = document.getElementById("showPassword");
-            var icon = document.querySelector(".password .icon i");
-            if (showPasswordCheckbox.checked) {
-                passwordField.type = "text";
-                icon.classList.remove("fa-lock");
-                icon.classList.add("fa-unlock");
-            } else {
-                passwordField.type = "password";
-                icon.classList.remove("fa-unlock");
-                icon.classList.add("fa-lock");
+            <div class="signUpElements2">
+                <div class="g-recaptcha" data-sitekey="<%= sitekey %>"></div>
+                <button class="login-btn" type="submit">Register</button>
+                <div class="login-register">
+                    <p>Do you have an account ? <a href="/auth/login"> Login</a> </p>
+                </div>
+            </div>
+        </form>
+
+        <script type="text/javascript">
+            function togglePasswordVisibility() {
+                var passwordField = document.getElementById("password");
+                var showPasswordCheckbox = document.getElementById("showPassword");
+                var icon = document.querySelector(".password .icon i");
+                if (showPasswordCheckbox.checked) {
+                    passwordField.type = "text";
+                    icon.classList.remove("fa-lock");
+                    icon.classList.add("fa-unlock");
+                } else {
+                    passwordField.type = "password";
+                    icon.classList.remove("fa-unlock");
+                    icon.classList.add("fa-lock");
+                }
             }
-        }
-    </script>
+        </script>
     </div>
 </div>

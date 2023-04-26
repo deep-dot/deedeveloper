@@ -218,6 +218,10 @@ height: inherit;
 
 @media screen and (max-width: 867px) {
 
+  header {
+    height: calc(var(--navheight) + 1rem);
+  }
+
   .nav {
     margin: 0;
     padding: 0;   
@@ -229,6 +233,10 @@ height: inherit;
     top: 50%;
     right: 1rem;
   }
+
+    .nav img {
+    width: 150px;
+    }
 
   .nav_list{
     display: none;
@@ -307,13 +315,17 @@ height: inherit;
 
 @media screen and (max-width: 576px) {
 
+  header {
+    height: var(--navheight);
+  }
+
   .nav {
     margin: 0;
     padding: 0;
   }
 
   nav img {
-    width: 150px;
+    width: 100px;
   }
 
 }
