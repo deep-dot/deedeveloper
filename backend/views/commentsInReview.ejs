@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page 2</title>
+  <link rel="stylesheet" href="/css/<%= style %>">
+</head>
+
+<body>
+  <div class="review-show">
+    <div class="review">
+      <form class="comment-form" action="/review/<%= review._id %>/comment" method="POST"
+        content-type='application/json'>
+        <div>
+          <p class="title">Review </p>
+          <p>Created on: <%= dateFormat(review.createdAt, "dddd, MMMM Do YYYY" ) %>
+          </p>
+          <p> "<%= review.review %>"</p>
+          <textarea id="summernote" type="text" name="comment"></textarea>
+        </div>
+        <div class="comment-form-btns">
+          <div>
+            <button type="submit">Save</button>
+          </div>
+          <div class="cancel">
+            <a href="/#testimonial">Cancel</a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="comment">
+      <p class="title">Total comments: <%= review.comments.length %>
+      </p>
+      <hr>
+      <% review.comments.forEach(function(comment) { %>
+        <p><%- comment.content %></p>
+        <p>Created on: <%= dateFormat(comment.createdAt, "dddd, MMMM Do YYYY" ) %>
+            by <%= comment.username %>
+        </p>
+        <form method="POST" action="/deleteComment/<%= comment._id %>?_method=DELETE">
+          <input type="hidden" value="<%= comment.reviewId %>" name="reviewId">
+          <input type="hidden" value="<%= comment.userId %>" name="userId">
+          <button type="submit">Delete</button>
+        </form>
+        <hr>
+        <% }); %>
+    </div>
+  </div>
+</body>
+
+</html>

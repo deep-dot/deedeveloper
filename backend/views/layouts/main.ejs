@@ -4,27 +4,23 @@
 
     <body>
         <main>
-            <div class="main-wrapper dark">
-                <% if (bodyId !="ReviewPage" && bodyId !="CreateReviewComment" ) { %>
+            <div class="main-wrapper light">
+                <% if ( bodyId !="CreateReviewComment" ) { %>
                     <%- include('../partials/navbar');-%>
                         <% } %>
                             <div id="<%- bodyId %>" class="Container">
-                                <!-- <button class="toggle-btn">
-                                    <i class="far fa-moon"></i>
-                                    <i class="far fa-sun"></i>
-                                </button> -->
                                 <div class="overlay"></div>
                                 <%- body %>
                                     <button class="back-to-top" title="Go to top">&#9650;</button>
                             </div>
-                            <% if (bodyId !="ReviewPage" && bodyId !="CreateReviewComment" ) { %>
+                            <% if ( bodyId !="CreateReviewComment" ) { %>
                                 <%- include('../partials/footer');-%>
                                     <% } %>
             </div>
         </main>
         <script src="/js/scripts.js"></script>
 
-        <% if (bodyId ==="HomePage" ) { %>
+        <% if (bodyId==="HomePage" ) { %>
             <div id="cookie-consent" class="cookie-consent">
                 <div class="cookie-consent-content">
                     <p>We use cookies to enhance your experience on our website. By continuing to browse, you consent to

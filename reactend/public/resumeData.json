@@ -66,10 +66,10 @@
         "years": "April 2006 - September 2006"
       },
       {
-        "company": "AppOnPress",
+        "company": "Dee Developer",
         "title": "Founder and CEO",
-        "years": "May 2020 - Present",
-        "description": "Cloning all the apps possible. On the way to clone the world! Building the AppOnPress as large as possible."
+        "years": "March 2020 - Present",
+        "description": "Cloning all the apps possible. On the way to clone the world! Building the Dee Developer as large as possible."
       }
     ],
     "skills": [
@@ -118,10 +118,10 @@
         "url": "https://play.google.com/store/apps/details?id=com.wagefigurer"
       },
       {
-        "title": "AppOnPress.com",
+        "title": "Deedeveloper.com",
         "category": "",
-        "image": "apponpress.png",
-        "url": "https://apponpress.herokuapp.com"
+        "image": "Deedeveloper.png",
+        "url": "https://deedeveloper.herokuapp.com"
       },
       {
         "title": "E-commerce",

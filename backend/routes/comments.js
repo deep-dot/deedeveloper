@@ -25,19 +25,18 @@ router.post('/review/:id/comment', ensureAuth, async (req, res) => {
 
 // Get comments with review
 router.get('/review/:id/comment',ensureAuth, async (req, res) => {
+  console.log('comment under review id===', req.params.id);
   const review = await Review.findById(req.params.id).lean();
-  //console.log('review-id-comment===', review);
-  //comments.reverse();
-  res.render('reviews/reviews-show.handlebars', {
+
+  res.render('commentsInReview', {
     review: review,
-    style: 'review-show.css',
+    style: 'commentsInReview.css',
     bodyId: 'CreateReviewComment',
     name: req.user.username || req.user.displayName,
     email: req.user.email,
     error: res.locals.error
   });
 });
-
 
 // DELETE
 router.delete('/deleteComment/:id', ensureAuth, async (req, res) => {

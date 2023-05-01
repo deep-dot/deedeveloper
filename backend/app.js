@@ -6,7 +6,6 @@ const app = express();
 const path = require('path');
 const cookieParser = require("cookie-parser");
 const methodOverride = require('method-override');
-const exphbs = require('express-handlebars');
 const Session = require('express-session');
 const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
@@ -42,7 +41,6 @@ app.use(
 );
 
 // Set up view engine
-app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }));
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
@@ -79,28 +77,23 @@ app.use('/auth', require('./routes/auth'));
 app.use('/', require('./routes/reviews'));
 app.use('/', require('./routes/comments'));
 app.use('/', require('./routes/sendEmail'));
-// Set up serving React build files
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "..", "reactend", "build"))); 
-}
-// app.get("/aboutdev", (req, res) => {    
-//   res.sendFile(path.join(__dirname, "..", "frontend", "build", "index.html"));
-// });
-app.get("/quote", (req, res) => {  
-  console.log('quote btn is clicked')
-  res.sendFile(path.join(__dirname, "..", "reactend", "build", "index.html"));
-});
-
-// 404 Not Found route
 app.use((req, res) => res.render('notfound.ejs', {
   style: '',
   bodyId: 'PageNotFound',
 }));
 
+// Set up serving React build files
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "..", "reactend", "build"))); 
+}
+app.get("/quote", (req, res) => {  
+  console.log('quote btn is clicked')
+  res.sendFile(path.join(__dirname, "..", "reactend", "build", "index.html"));
+});
+
 // Middleware for Errors
 app.use(errorMiddleware);
 
-// Export the app
 module.exports = app;
 
 

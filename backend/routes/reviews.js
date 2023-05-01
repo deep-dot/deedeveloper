@@ -1,55 +1,9 @@
 
 const Review = require('../models/review');
 const User = require('../models/User');
-const moment = require('moment');
 const express = require('express');
 const router = express.Router();
-const hb = require('handlebars');
-hb.registerHelper('dateFormat', require('handlebars-dateformat'));
-hb.registerHelper('ifCond', function (v1, v2, options) {
-  if (v1 < v2) {
-    return options.fn(this);
-  }
-  return options.inverse(this);
-});
-hb.registerHelper('if', function (login, options) {
-  login = login || global.loggedIn
-  if (login) {
-    return options.fn(this);
-  } else {
-    return options.inverse(this);
-  }
-});
-hb.registerHelper('for', function (from, to, incr, stars, block) {
-  var accum = '';
-  for (var i = from; i < to; i += incr)
-    if (i < stars) {
-      accum += `<i class="fa fa-star" style='color:orange; margin:5px; font-size:14px'></i>`
-    } else {
-      accum += `<i class="fa fa-star" style='color:grey; margin:5px; font-size:14px'></i>`
-    }
-  return accum;
-});
 const { ensureAuth, ensureGuest } = require('../middleware/auth');
-const { json } = require('body-parser');
-
-// router.get('/home', async (req, res) => {
-//   let numOfReviews = await Review.countDocuments();
-//  // console.log('numof reviews==',numOfReviews);
-//   res.render('home.ejs', {
-//     style: 'home.css',
-//     bodyId: 'HomePage',
-//     numOfReviews,
-//     error: res.locals.error,
-//     success: res.locals.success
-//   });
-//   // res.render('reviews/reviews-index.handlebars', {
-//   //   style:'review-index.css',
-//   //   bodyId:'ReviewPage',
-//   //   error: res.locals.error,
-//   //   success: res.locals.success
-//   // });
-// });
 
 // Send JSON data
 router.get('/getJsonData', async (req, res) => {
@@ -61,26 +15,6 @@ router.get('/getJsonData', async (req, res) => {
   return res.json({ reviews: reviews, userid: userid });
 });
 
-//new review
-router.get('/reviews/new', ensureAuth, async (req, res) => {
-  console.log('req.user.id===', req.user._id);
-  const review = await Review.find({
-    userid: req.user._id,
-  }).lean();
-  if (review != "") {
-    const error = `You already had shared your views. Thank You.`;
-    req.flash('error', error);
-    return res.redirect('/');
-  }
-  res.render('reviews/reviews-new.handlebars', {
-    style: 'review-index.css',
-    title: "New Review",
-    bodyId: 'ReviewPage',
-    error: res.locals.error,
-    name: req.user.username || req.user.displayName,
-    email: req.user.email
-  });
-})
 
 // create & save review
 router.post('/reviews', ensureAuth, async (req, res) => {
@@ -116,30 +50,6 @@ router.post('/reviews', ensureAuth, async (req, res) => {
     return res.redirect('/#testimonial');
   }
 });
-
-// EDIT 
-// router.get('/reviews/:id/edit', ensureAuth, async (req, res) => {
-//   const review = await Review.findById(req.params.id).lean();
-//   if (review) {
-//     //console.log('reviews..', review, req.user._id);
-//     if (JSON.stringify(review.userid) === JSON.stringify(req.user.id)) {
-//       res.render('reviews/reviews-edit.handlebars', {
-//         style:'review-index.css',
-//         review: review,
-//         name: req.user.username,
-//         email: req.user.email
-//       });
-//     } else {
-//       const error = `Sorry, this Review does not belong to you.`;
-//       req.flash('error', error);
-//       res.redirect('/home');
-//     }
-//   } else {
-//     const error = `Something wrong.`;
-//     req.flash('error', error);
-//     res.redirect('/home');
-//   }
-// })
 
 // UPDATE
 router.put('/reviews/edit', async (req, res) => {

@@ -1,9 +1,4 @@
 
-.container {
-    overflow-y: auto;
-    min-height: 100vh;
-}
-
 .review-show {
     position: relative;
     display: grid;

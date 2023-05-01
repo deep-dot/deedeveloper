@@ -4,6 +4,7 @@ const cors = require('cors');
 const connectDatabase = require('./config/database');
 const cloudinary = require('cloudinary').v2;
 const config = require('./config/config');
+const env = process.env.NODE_ENV || 'development';
 
 // Config
   require('dotenv').config({ path: 'backend/config/config.env' });
@@ -27,7 +28,6 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-const env = process.env.NODE_ENV || 'development';
 const server = app.listen(process.env.PORT || 5000, () => {
   const url = config.urls[process.env.NODE_ENV || 'development'];
   if (url) {
@@ -43,7 +43,6 @@ const server = app.listen(process.env.PORT || 5000, () => {
   } else {
     console.error('Failed to retrieve URL from config file');
   }
-  console.log(config.google_url[env], config.fb_url[env])
 });
 
 
@@ -51,6 +50,10 @@ const server = app.listen(process.env.PORT || 5000, () => {
 process.on('unhandledRejection', (err) => {
   console.log(`Error: ${err}`);
   console.log('Shutting down the server due to Unhandled Promise Rejection');
+
+  // Close the MongoDB connection if you're using Mongoose
+  require('mongoose').connection.close();
+  
   server.close(() => {
     process.exit(1);
   });
