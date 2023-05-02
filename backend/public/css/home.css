@@ -381,23 +381,22 @@
 
 
 #reviewCard {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  gap: 4rem;
+ display: block;
+}
+
+#reviewCard .card-container {
+  max-width: 850px;
+  /* border: 1px solid #17a2b8; */
+  grid-gap: 10px;
+  min-height: 300px;
 }
 
 .card {
+  display: block;
+  position: relative;
   padding: 20px;
   box-sizing: border-box;
-  background-color: transparent !important;
-  height: auto;
-  max-width: 650px;
-  border: none !important;
-  display: grid;
-  grid-template-rows: repeat(4, 1fr);
-  grid-gap: 10px;
+  height: auto;  
 }
 
 .card::before {
@@ -425,6 +424,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  max-height: 85px;
 }
 
 .cardRow img {
@@ -461,35 +461,41 @@
   color: orange;
 }
 
+.cardbtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
 .like {
-  float: right;
   color: blue;
   font-size: 15px;
   cursor: pointer;
 }
 
 .unlike {
-  float: right;
   color: green;
   font-size: 15px;
   cursor: pointer;
 }
 
 .btnn {
-  float: right;
   font-size: 15px;
   cursor: pointer;
 }
 
+/* .card .morelessmore { */
 
-.card .contents {
+.contents {
   max-height: 100px;
   overflow: hidden;
   position: relative;
   transition: max-height 0.3s ease-in-out;
+  margin-bottom: 20px;
 }
 
-.card.active .contents {
+.contents.active {
   max-height: 100%;
 }
 
@@ -510,10 +516,11 @@ blockquote::before {
   top: -20px;
   left: 0px;
 }
-
-.card .morelessmore {
+  .contents .morelessmore {
   display: block;
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  left: 40%;
   padding: 3px 5px;
   background: #17e78c;
   cursor: pointer;
@@ -521,21 +528,19 @@ blockquote::before {
   letter-spacing: 2px;
   color: #383838;
   text-transform: uppercase;
-  border-radius: 5px;
-  width: 80px;
-  align-self: center;
+  border-radius: 5px;  
 }
 
-.card .morelessmore::before {
+.contents .morelessmore::before {
   content: 'Read more';
 }
 
-.card.active .morelessmore {
+.contents.active .morelessmore {
   background: #bd4033;
   color: #fff;
 }
 
-.card.active .morelessmore::before {
+.contents.active .morelessmore::before {
   content: 'Read less';
 }
 

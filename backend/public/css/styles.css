@@ -19,7 +19,11 @@
 }
 
 body {
- --navheight: 11vh
+ --navheight: 11vh;
+}
+
+body a {
+  text-decoration: none;
 }
 
 .light {
