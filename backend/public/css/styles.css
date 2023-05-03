@@ -63,7 +63,9 @@ body a {
 
 .toggle-btn {
   display: block;
-  margin-left: 10px;
+  position: absolute;
+  top:35%;
+  right: 5%;
   border: none;
   background-color: var(--backgroundColor);
   color: var(--colorOnBackgroundColor);
@@ -74,7 +76,6 @@ body a {
   border-radius: 50%;
   font-size: 1rem;
   transition: 0.3s;
-  z-index: 10;
 }
 
 .toggle-btn i {
@@ -183,19 +184,20 @@ body a {
   cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 867px) {
 
   .Container {
-    padding: var(--navheight) 2rem 2rem 2rem;
+    padding: calc(var(--navheight) + 2rem) 2rem 2rem 2rem;
   }
 
   .toggle-btn {
     display: block;
     position: absolute; /* toggle button in navbar */
-    top: 30%;
-    left: 50%;
+    top: 35%;
+    left: 40%;
     width: 30px;
     height: 30px;
+    z-index: 10;
   }
 
   .toggle-btn i {
@@ -219,6 +221,10 @@ body a {
   .cookie-consent-close {
     top: 5px;
     right: 5px;
+  }
+
+  .toggle-btn {
+    left: 45%;
   }
 
 }

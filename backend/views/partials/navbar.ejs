@@ -1,29 +1,38 @@
 <header>
+  <img class="logo_image" href="#" src="../../img/logoDeeDev.svg" alt="Logo" />
+  <button class="toggle-btn">
+    <i class="far fa-moon"></i>
+    <i class="far fa-sun"></i>
+  </button>
   <nav class="nav">
-    <img href="#" src="../../img/logoDeeDev.svg" alt="Logo" />
     <ul class="nav_list">
       <li>
         <a href="/">
           <i class="fas fa-home"></i>Home
         </a>
       </li>
-      <li><a href="/#aboutSection">
+      <li>
+        <a href="/#aboutSection">
           <i class="fas fa-user"></i>About
         </a>
       </li>
-      <li><a href="/#servicesSection">
+      <li>
+        <a href="/#servicesSection">
           <i class="fas fa-clone"></i>Services
         </a>
       </li>
-      <li><a href="/#testimonial">
+      <li>
+        <a href="/#testimonial">
           <i class="fas fa-comment"></i>Testimonial
         </a>
       </li>
-      <li><a href="/#contactSection">
+      <li>
+        <a href="/#contactSection">
           <i class="fas fa-phone"></i>Contact
         </a>
       </li>
-      <li class="blog"><a href="#">
+      <li class="blog">
+        <a href="#">
           <i class="fa fa-caret-down"></i>
           Blog
         </a>
@@ -52,17 +61,13 @@
               <i class="fas fa-sign-out-alt"></i>Sign Out
             </a>
           </li>
-          <li>
+          <li class="profileImage">
             <a href="/auth/profile">
               <img href="#" src="<%- loggedIn.image %>" alt="" style="width:40px; border-radius: 100%;" />
             </a>
           </li>
           <% } %>
     </ul>
-    <button class="toggle-btn">
-      <i class="far fa-moon"></i>
-      <i class="far fa-sun"></i>
-  </button>
   </nav>
 
   <div class="hamburger-menu">

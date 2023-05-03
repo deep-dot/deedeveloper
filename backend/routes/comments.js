@@ -24,18 +24,22 @@ router.post('/review/:id/comment', ensureAuth, async (req, res) => {
 });
 
 // Get comments with review
-router.get('/review/:id/comment',ensureAuth, async (req, res) => {
-  console.log('comment under review id===', req.params.id);
-  const review = await Review.findById(req.params.id).lean();
-
-  res.render('commentsInReview', {
-    review: review,
-    style: 'commentsInReview.css',
-    bodyId: 'CreateReviewComment',
-    name: req.user.username || req.user.displayName,
-    email: req.user.email,
-    error: res.locals.error
-  });
+router.get('/review/:id/comment', ensureAuth, async (req, res) => {
+  try {
+    console.log('comment under review id===', req.params.id);
+    const review = await Review.findById(req.params.id).lean();
+    res.render('commentsInReview', {
+      review: review,
+      style: 'commentsInReview.css',
+      bodyId: 'CreateReviewComment',
+      name: req.user.username || req.user.displayName,
+      email: req.user.email,
+      error: res.locals.error
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 // DELETE

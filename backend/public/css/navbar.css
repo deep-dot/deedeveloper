@@ -24,28 +24,24 @@ header {
   height: var(--navheight);
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
 }
 
 .nav {
   position: relative;
-  margin: 0px 50px 0px 50px;
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-  height: inherit;
 }
 
-.nav img {
-  position: relative;
-width: 200px;
-height: inherit;
+header .logo_image {
+  position: absolute;
+  left: 20px;
+  top: 0%;
+  width: 200px;
+  height: inherit;
 }
 
 .nav_list {
   display: flex;
-  height: inherit;
   align-items: center;
   list-style: none;
   flex-grow: 1;
@@ -55,10 +51,6 @@ height: inherit;
 }
 
 .nav .nav_list {
-  margin-left: auto;
-}
-
-.nav .nav_list li:nth-of-type(1) {
   margin-left: auto;
 }
 
@@ -202,7 +194,7 @@ height: inherit;
     display: flex;
   }
 
-  nav img {
+  header .logo_image {
     width: 120px;
   }
 
@@ -219,10 +211,12 @@ height: inherit;
 @media screen and (max-width: 867px) {
 
   header {
-    height: calc(var(--navheight) + 1rem);
+    display: block;
+    height: var(--navheight);
   }
 
-  .nav {
+  .nav {    
+    display: block;
     margin: 0;
     padding: 0;   
   }
@@ -234,18 +228,29 @@ height: inherit;
     right: 1rem;
   }
 
-    .nav img {
+  header .logo_image {
     width: 150px;
     }
 
-  .nav_list{
-    display: none;
-  }
+    .nav_list .profileImage {
+      position: fixed;
+      top:30%;
+      right:40%;
+    }
+
+    .nav_list > li:not(.profileImage) {
+      display: none;
+    }
+    
+    .main-wrapper.active .nav_list > li {
+      display: block;      
+    }
 
   .main-wrapper.active .nav_list {
     display: block;
     height: auto;
-    padding: 1rem 8rem 3rem 8rem;
+    margin-top: var(--navheight);     
+    padding: 1rem 2rem 3rem 2rem;
     width: 100vw;
     transition: 1s;
     background: var(--background);    
@@ -324,8 +329,12 @@ height: inherit;
     padding: 0;
   }
 
-  nav img {
-    width: 100px;
-  }
+  header .logo_image {
+    left: 5px;
+    }
+
+    .nav_list .profileImage {
+      right:30%;
+    }
 
 }

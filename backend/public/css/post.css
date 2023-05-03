@@ -7,13 +7,21 @@ h2 {
   grid-template-columns: 1fr 2fr 1fr;
   grid-gap: 1rem;
   justify-content: space-around;
-  align-items: center;
+}
+
+.showPost button {
+  border: none;
 }
 
 .showPost .btns {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+
+ .postContent {
+  height: auto;
+  display: block
 }
 
 .showPost .btns .button-container {
@@ -35,12 +43,7 @@ h2 {
 .showPost .btns .button-container .fa-trash {
   font-size: 20px;
   cursor: pointer;
-  padding: 0.3rem 0.8rem;
-  border-radius: 16px;
-  border: none;
-  background-color: rgb(238, 236, 236);
-  transition: 0.3s;
-  /* position: absolute;   */
+  border: none;  
 }
 
 .showPost .btns .button-container .like {
@@ -82,6 +85,7 @@ h2 {
 }
 
 .showPost .commentsOnPost {
+  display: block;
   background-color: transparent;
   border-radius: 5px;
   padding: 20px;
@@ -174,10 +178,7 @@ h2 {
 
 @media screen and (max-width: 867px) {
   .showPost {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    grid-template-columns: 1fr;
   }
 
   .showPost .btns {
@@ -198,13 +199,4 @@ h2 {
   background-color: transparent;
 }
 
-}
-
-@media screen and (max-width: 467px) {
-  .showPost {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
 }

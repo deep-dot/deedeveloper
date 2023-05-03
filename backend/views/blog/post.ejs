@@ -36,9 +36,11 @@
           Updated on: <%= blogpost.updatedAt.toDateString() %> <br>
     </p>
     <img class="postImg" src="<%= blogpost.image %>" alt=" " width="100%" height="100%">
-    <p>
-      <%- blogpost.post %>
-    </p>
+    <div class="postContent">
+      <p>
+        <%- blogpost.post %>
+      </p>
+    </div>
   </div>
 
   <div id="#comment" class="commentsOnPost hidden">
