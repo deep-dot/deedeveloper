@@ -5,9 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function fetchJsonDataAndRenderReviews() {
     axios.get('/getJsonData').then(res => {
-        var reviews = res.data.reviews;
-        var userid = res.data.userid;
-        var reviewRender = [];
+        //console.log('get reviews ===', res.data.reviews);
+        const reviews = res.data.reviews;
+        const userid = res.data.userid;
+        const reviewRender = [];
         let likers = 0, canEdit = false, isLiked = false;
         reviews.forEach((review, index) => {
             var className = "";
@@ -61,7 +62,9 @@ function fetchJsonDataAndRenderReviews() {
             html += '<div id="reviewComment">'
             html += `<a href="/review/${review._id}/comment" style="float:right;" class="btnn">`
             html += '<i class="fa fa-comment"></i>'
+            if(review.comments){
             html += `<span style="margin-left:4px">${review.comments.length}</span>`
+            }
             html += '</a>'
             html += '</div>'
 
@@ -86,9 +89,6 @@ function fetchJsonDataAndRenderReviews() {
                 html += '</div>'
             }
             html += '</div>'
-
-            
-
             html += '</div>'
             html += '</div>'
 
@@ -108,13 +108,26 @@ function fetchJsonDataAndRenderReviews() {
     });
 }
 
+
+function seeNumOfCardsLessOrMore(numOfReviews) {
+    let showAllCards = false;
+    let numOfVisibleCards = 2;
+    let seeMoreButton = document.querySelector("#see-more-button");
+    seeMoreButton.addEventListener("click", () => {
+        showAllCards = !showAllCards;
+        numOfVisibleCards = showAllCards ? numOfReviews : 2;
+        showMoreLess(numOfReviews, numOfVisibleCards, showAllCards, seeMoreButton);
+    });
+    showMoreLess(numOfReviews, numOfVisibleCards, showAllCards, seeMoreButton);
+  }
+  
+
 function morelessmore() {
     const moreless = document.querySelectorAll(".morelessmore");
     const maxHeight = 20; //this hieght is equal to max-height mentioned in contents class in css
     for (let i = 0; i < moreless.length; i++) {
         const content = moreless[i].parentNode;
         const card = moreless[i].closest('.card');
-
         // Clone the content element because we want to see contents heights of hidden reviews as well 
         const contentClone = content.cloneNode(true);
         // Set the clone's styles to match the original
@@ -124,20 +137,15 @@ function morelessmore() {
         contentClone.style.width = getComputedStyle(content).width;
         // Add the clone to the DOM
         document.body.appendChild(contentClone);
-
         // Calculate the actual height
         const actualHeight = contentClone.offsetHeight;
-        console.log('contents actual height out click==', actualHeight);
-
+        //console.log('contents actual height out click==', actualHeight);
         // Remove the cloned element from the DOM
         document.body.removeChild(contentClone);
-
         // If the content's actual height is less than maxHeight, hide the button
         if (actualHeight < maxHeight) {
             moreless[i].style.display = 'none';
         }
-
-
        // console.log('contents offset height out click==', content.offsetHeight) ; 
         moreless[i].addEventListener('click', function() {           
             content.classList.toggle('active');

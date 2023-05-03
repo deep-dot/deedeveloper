@@ -1,21 +1,23 @@
 const mongoose = require('mongoose');
-var uniqueValidator = require('mongoose-unique-validator');
 
-// const Review = mongoose.model('Review', {
-const ReviewSchema = mongoose.Schema({
+const ReviewSchema = new mongoose.Schema({
   username: String,
   image: String,
   review: String,
   stars: {
     type: Number
   },
-  likers:[{
+  likers: [{
     name: String,
     userid: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
     },
   }],
+  // comments: [{
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'Comment',
+  // }],
   comments: [{
     username: String,
     title: String,
@@ -27,10 +29,8 @@ const ReviewSchema = mongoose.Schema({
     reviewId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Review',
-    }
-  },
-  {
-    timestamps: true
+    },
+    createdOn: String
   }],
   userid: {
     type: mongoose.Schema.Types.ObjectId,
@@ -39,10 +39,9 @@ const ReviewSchema = mongoose.Schema({
     unique: true
   },
 },
-  { timestamps: true });
-//  ReviewSchema.plugin(uniqueValidator, { message: 'This {PATH} already existing.' });
-// ReviewSchema.plugin(uniqueValidator, { 
-//    message: "Can't submit because you already had shared your views. Thank You." 
-// });
-//module.exports = Review;
+  { timestamps: true }
+);
+
 module.exports = mongoose.model('Review', ReviewSchema);
+
+

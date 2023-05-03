@@ -1,0 +1,50 @@
+<div class="review-show">
+    <div class="review">
+        <form class="comment-form" action="/review/<%= review._id %>/comment" method="POST"
+            content-type='application/json'>
+            <div>
+                <p class="title">Review</p>
+                <p>Created on: <%- review.createdAt %></p>
+                <p>"<%= review.review %>"</p>
+                <textarea id="summernote" type="text" name="comment"></textarea>
+            </div>
+            <div class="comment-form-btns">
+                <div>
+                    <button type="submit">Save</button>
+                </div>
+                <div class="cancel">
+                    <a href="/#testimonial">Back</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="comment">
+        <p class="title">Total comments: <%- review.comments.length %></p>
+        <hr>
+        <% if (review.comments.length> 0) { %>
+            <% review.comments.forEach(function(comment) { %>
+                <p><%- comment.content %></p>
+
+                <form method="POST" action="/deleteComment/<%= comment._id %>?_method=DELETE">
+                    <input type="hidden" value="<%= comment.reviewId %>" name="reviewId">
+                    <input type="hidden" value="<%= comment.userId %>" name="userId">
+                    <button type="submit">Delete</button>
+                </form>
+                <hr>
+                <% }); %>
+                    <% } else { %>
+                        <p>No comments found.</p>
+                        <% } %>
+    </div>
+</div>
+<!-- Summernote Lite JS -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#summernote').summernote({
+            height: 200, 
+        width: '100%',
+        });
+    });
+</script>

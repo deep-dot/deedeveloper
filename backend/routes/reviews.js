@@ -8,6 +8,7 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth');
 // Send JSON data
 router.get('/getJsonData', async (req, res) => {
   const reviews = await Review.find();
+  console.log('reviews===', reviews.length, reviews[0].comments);
   let userid = '';
   if (req.user) {
     userid = req.user._id;

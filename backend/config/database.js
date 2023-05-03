@@ -1,6 +1,7 @@
 
 const mongoose = require('mongoose');
 const config = require('./config.js');
+mongoose.set('strictQuery', false);
 
 const connectDatabase = async () => {
   const env = process.env.NODE_ENV || 'development';

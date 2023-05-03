@@ -1,0 +1,54 @@
+.review-show {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .review,
+  .comment {
+    background-color: #f8f8f8;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .review p {
+    margin-bottom: 1rem;
+  }
+  
+  .comment-form {
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .comment-form textarea {
+    width: 100%;
+    height: 200px;
+    resize: vertical;
+  }
+  
+  .comment-form-btns {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .cancel a {
+    color: #777;
+    text-decoration: none;
+  }
+  
+  .comment p {
+    margin-bottom: 0.5rem;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .review-show {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+  

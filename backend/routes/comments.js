@@ -7,12 +7,14 @@ const router = express.Router();
 const { ensureAuth, ensureGuest } = require('../middleware/auth');
 
 // Create and review comments,
-router.post('/review/:id/comment', ensureAuth, async (req, res) => {
+router.post('/review/:id/comment', async (req, res) => {
+  //console.log('comment under review id in post route===', req.params.id);
   const new_comment = {
     reviewId: req.params.id,
     userId: req.user.id,
     content: req.body.comment,
-    username: req.user.username || req.user.displayName
+    username: req.user.username || req.user.displayName,
+    createdOn: new Date(),
   };
   //console.log('review', new_comment);
   await Review.findByIdAndUpdate(
@@ -28,10 +30,10 @@ router.get('/review/:id/comment', ensureAuth, async (req, res) => {
   try {
     console.log('comment under review id===', req.params.id);
     const review = await Review.findById(req.params.id).lean();
-    res.render('commentsInReview', {
+    res.render('review_comments', {
       review: review,
-      style: 'commentsInReview.css',
-      bodyId: 'CreateReviewComment',
+      style: 'review_comments.css',
+      bodyId: 'review_comments',
       name: req.user.username || req.user.displayName,
       email: req.user.email,
       error: res.locals.error

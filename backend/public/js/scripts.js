@@ -105,12 +105,6 @@ function events() {
     }
     lastScroll = currentScroll;
   });
-
-  $('#summernote').summernote({
-    placeholder: 'Message',
-    // tabsize: 2,
-    height: 200
-  });
 }
 events();
 
@@ -134,18 +128,6 @@ function showMoreLess(numOfReviews, numOfVisibleCards, showAllCards, seeMoreButt
   } else {
       seeMoreButton.style.display = "none";
   }
-}
-
-function seeNumOfCardsLessOrMore(numOfReviews) {
-  let showAllCards = false;
-  let numOfVisibleCards = 2;
-  let seeMoreButton = document.querySelector("#see-more-button");
-  seeMoreButton.addEventListener("click", () => {
-      showAllCards = !showAllCards;
-      numOfVisibleCards = showAllCards ? numOfReviews : 2;
-      showMoreLess(numOfReviews, numOfVisibleCards, showAllCards, seeMoreButton);
-  });
-  showMoreLess(numOfReviews, numOfVisibleCards, showAllCards, seeMoreButton);
 }
 
 

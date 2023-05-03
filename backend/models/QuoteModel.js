@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const QuoteSchema = mongoose.Schema({
+const QuoteSchema = new mongoose.Schema({
     name: {
         type: String,
         // required: [true, 'Plese enter your name.']

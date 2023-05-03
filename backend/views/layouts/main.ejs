@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/header.ejs') %>
-
     <body>
         <main>
             <div class="main-wrapper light">
-                <% if ( bodyId !="CreateReviewComment" ) { %>
-                    <%- include('../partials/navbar');-%>
+                <% if ( bodyId !="review_comments" ) { %>
+                    <%- include('../partials/navbar.ejs');-%>
                         <% } %>
                             <div id="<%- bodyId %>" class="Container">
                                 <%- body %>
                                 <div class="overlay"></div>                                
                                     <button class="back-to-top" title="Go to top">&#9650;</button>
                             </div>
-                            <% if ( bodyId !="CreateReviewComment" ) { %>
-                                <%- include('../partials/footer');-%>
+                            <% if ( bodyId !="review_comments" ) { %>
+                                <%- include('../partials/footer.ejs');-%>
                                     <% } %>
             </div>
         </main>

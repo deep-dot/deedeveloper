@@ -49,6 +49,7 @@ body a {
   overflow: hidden;
   background-color: var(--backgroundColor);
   width: 100vw;
+  min-height: 100vh;
   /* background: linear-gradient(to bottom, #878484, #fff); */
 }
 
