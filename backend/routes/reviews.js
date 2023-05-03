@@ -8,7 +8,7 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth');
 // Send JSON data
 router.get('/getJsonData', async (req, res) => {
   const reviews = await Review.find();
-  console.log('reviews===', reviews.length, reviews[0].comments);
+ // console.log('reviews===', reviews.length, reviews[0].comments);
   let userid = '';
   if (req.user) {
     userid = req.user._id;
@@ -20,7 +20,7 @@ router.get('/getJsonData', async (req, res) => {
 // create & save review
 router.post('/reviews', ensureAuth, async (req, res) => {
   const { testimonial, Stars } = req.body;
-  console.log('req.boby', req.body);
+ // console.log('req.boby', req.body);
   if (Stars === "") {
     const error = `Please give us star rating. Thank you`;
     req.flash('error', error)

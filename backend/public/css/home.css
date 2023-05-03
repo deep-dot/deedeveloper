@@ -61,7 +61,7 @@
   min-height: 30vh;
   border-radius: 10px;
   border: 5px solid var(--colorOnBackground);
-  box-shadow: 0px 0px 15px 2px var(--background);
+  box-shadow: 0px 0px 10px 1px var(--background);
   margin: 8rem 0;
 }
 
@@ -684,12 +684,14 @@ blockquote::before {
 
 /* contact section */
 
-.C {
-   display: block;
+.C {   
+   width: 95vw;
+  margin: auto;
 }
 
 .C .contact {
-  padding: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .C .contact h1 {
@@ -703,11 +705,12 @@ blockquote::before {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 100%;
+  max-width: 900px;
+  margin: auto;
   padding: 20px;
   border-radius: 5px;
    border: 5px solid var(--colorOnBackground);
-  box-shadow: 0px 0px 15px 2px var(--background);
+  box-shadow: 0px 0px 10px 1px var(--background);
 }
 
 .C .contact #contact-form-viewhome p {
@@ -792,7 +795,7 @@ blockquote::before {
 }
 
 .contact .contact-img img {
-  height: auto;
+  height: 100%;
   width: 100%;
 }
 
@@ -848,7 +851,7 @@ blockquote::before {
 }
 
 .faq p,
-.faq em {
+.faq em, .faq ol {
   color: var(--colorOnBackground);
   line-height: 1.5;
 }
@@ -859,7 +862,7 @@ blockquote::before {
 }
 
 .faq h2 {
-  font: 500 1.5em 'Roboto';
+  font: 800 1.5em 'Roboto';
   margin: 2rem 0;
 }
 
@@ -1034,11 +1037,8 @@ blockquote::before {
     align-self: center;
   }
 
-  .C {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  .C .contact {
+    grid-template-columns: 1fr;
   }
 
   .testimonial p {
@@ -1223,10 +1223,6 @@ blockquote::before {
     font: 800 4em 'Roboto';
     top: -10px;
   }
-
-  .C .contact {
-  padding: 0;
-}
 
   .C h1 {
     font: 500 1.3em "Roboto";
