@@ -1,0 +1,183 @@
+.H {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 60vh;
+  }
+  
+  .H h1 {
+    font: 800 2.9em "Roboto";
+    line-height: 1.5;
+    color: var(--colorOnBackgroundColor);
+    margin: 2rem 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  .home {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;  
+    width: 100%;
+  }
+  
+  .home .home1, .home .home2 {
+    display: flex;
+    align-items: center;/* Vertically center content */
+    justify-content: center; /* Horizontally center content */
+    height: auto;
+    padding: 10px;
+  }
+  
+  .home p {
+    font: 400 2em "Roboto";  
+    line-height: 1.5;
+    color: var(--colorOnBackgroundColor);
+  }
+  
+  .home .home1 {
+    border-right: 1px solid var(--colorOnBackgroundColor);
+  }
+  
+  .home::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background-image: url("../img/person.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.08;
+    z-index: -1;
+  }
+  
+  
+  .quote-me-box {
+    width: 50%;
+    min-height: 30vh;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px var(--background);
+    margin: 8rem 0;
+  }
+  
+  .sub-quote-me-box {
+    padding: 2rem;
+  }
+  
+  .quote-me-box .sub-quote-me-box h2 {
+    font: 800 2em 'Roboto';
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    color: var(--colorOnBackgroundColor);
+  }
+  
+  .quote-me-box .sub-quote-me-box p {
+    font: 400 1.8em 'Roboto';
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    color: var(--colorOnBackgroundColor);
+  }
+  
+  .quote-me-box .quote-button {
+    background: var(--background);
+    font: 500 1.6em 'Roboto';
+    height: auto;
+    padding: 7.5px 30px;
+    text-transform: uppercase;
+    user-select: none;
+    margin-top: 20px;
+    color: var(--colorOnBackground);
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+  }
+  
+  .quote-me-box .quote-button:hover {
+    background: var(--hoverColor);
+  }
+  
+  
+  @keyframes blink-animation {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @media screen and (max-width: 867px) {
+
+    .H {
+      min-height: 100vh;
+    }
+  
+    .home>p:first-child {
+      border-right: none;
+    }
+  
+    .H h1 {
+      font: 400 1.9em "Roboto";
+    }
+  
+    .home p {
+      font-size: 1.5em;
+      text-align: center;
+      padding: 0;
+    }
+  
+    .home>p:first-child {
+      font-size: 1.5em;
+      text-align: center;
+      padding: 0;
+    }
+  
+    .quote-me-box {
+      width: 100%;
+    }
+  
+    .sub-quote-me-box {
+      text-align: center;
+    }
+
+  }
+
+  @media screen and (max-width: 576px) {
+
+    .home {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    
+      .home .home1 {
+        border-right: none;
+      }
+    
+      .home h1 {
+        font: 400 1.5em "Roboto";
+      }
+    
+      .home p {
+        font: 400 1.1em "Roboto";
+      }
+    
+      .quote-me-box {
+        width: 100%;
+        margin: 4rem 0;
+      }
+    
+      .quote-me-box .sub-quote-me-box h2 {
+        font: 600 1em 'Roboto';
+        }
+      
+      .quote-me-box .sub-quote-me-box p {
+        font: 400 0.8em 'Roboto';
+       }
+    
+      .quote-me-box .quote-button {
+        font: 500 1em 'Roboto';
+      }
+  }

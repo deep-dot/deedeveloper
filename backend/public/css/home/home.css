@@ -1,0 +1,13 @@
+
+@media screen and (max-width: 867px) {
+
+  .Container {
+    padding: calc(var(--navheight) + 2rem) 0.5rem 0 0.5rem;
+  }
+
+}
+
+@media screen and (max-width: 576px) {
+
+ 
+}

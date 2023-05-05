@@ -10,20 +10,26 @@
 
   <link href="/css/styles.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="/css/navbar.css">
-  <link href="/css/<%= style %>" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="/css/footer.css">
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-  <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+  <% let styleFiles=style.split(',').map(file=> file.trim());
+    %>
+    <% for (let file of styleFiles) { %>
+      <link rel="stylesheet" href="/css/<%= file %>">
+      <% } %>
 
-  <!-- Summernote Lite CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css">
-  
+        <link rel="stylesheet" type="text/css" href="/css/footer.css">
 
-  <!-- axios -->
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <!-- recaptcha -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <!-- jquery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+        <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+        <!-- Summernote Lite CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css">
+
+
+        <!-- axios -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <!-- recaptcha -->
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <!-- jquery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
