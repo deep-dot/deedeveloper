@@ -1,0 +1,99 @@
+.why-me {
+   position: relative;
+    /* background: bisque; */
+}
+
+.project-sub-section .h2 {
+    font: 700 clamp(16px, 2vw, 36px) 'Roboto';
+    color: var(--colorOnBackgroundColor);  
+}
+
+.project-sub-section {
+    /* background: cadetblue; */
+    position: relative;
+    margin-inline: auto;
+    padding: clamp(0, 2vw, 1em);
+    max-width: 1200px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    /* background-color: coral; */
+    grid-gap: clamp(1rem,calc(3vw + 1vh), 3rem);
+    margin: 2rem 0;
+}
+
+.project-img {
+    position: relative;
+    background-color:blue;
+    margin: clamp(1px, 2vw, 5px);
+    border-radius: 10px;
+    min-height: 400px;
+}
+
+.project-detail {
+    position: relative;
+    /* background-color:blueviolet; */
+    margin: 5px;
+}
+
+.project-subtitle {
+    font: 300 clamp(10px, 2vw, 20px) 'Roboto';
+    color: var(--colorOnBackgroundColor);  
+}
+
+.project-title {
+    font: 800 clamp(12px, 2vw, 24px) 'Roboto';
+    margin: 1rem 0 1.5rem 0;
+    color: var(--colorOnBackgroundColor);  
+}
+
+.project-content {
+    font: clamp(14px, calc(1vw + 1vh), 20px) 'Roboto';
+    line-height: 1.5;
+    color: var(--colorOnBackgroundColor);  
+}
+
+.project-technologies {
+    margin: 1rem 0;
+    display: inline-flex;
+    gap: clamp( 1rem, calc(1vw + 1vh), 2rem);
+}
+
+.project-technologies div:nth-child(n) {
+    background-color: #fff;    
+    border-radius: 4px;    
+    background-color: var(--background);
+}
+
+.project-technologies div:nth-child(n) .p {   
+    font: 400 clamp(10px, 2vw, 20px) 'Roboto';
+    margin: clamp(10px, 1vh, 20px) clamp(10px, 2vw, 10px); 
+    color: var(--colorOnBackground);
+}
+
+.project-url {
+    margin: clamp(0rem, 2vh, 1rem) 0;    
+}
+
+.project-url a {
+    font: 300 clamp(12px, 2vw, 24px) 'Roboto';
+    color: var(--colorOnBackgroundColor);  
+}
+
+@media screen and (max-width: 867px) {
+    
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-img{
+        order: 1;
+    }
+     .project-detail{
+        order: 2;
+    }
+}
+
