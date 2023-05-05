@@ -16,6 +16,7 @@ const searchPostController = require('../controllers/blog/searchPost')
 const processController = require('../controllers/process')
 const privacyPostController = require('../controllers/privacy')
 const faqPostController = require('../controllers/faq')
+const projectDetail = require('../controllers/projects/project-detail');
 
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const cloudinary = require("cloudinary").v2;
@@ -65,5 +66,7 @@ router.put('/post/:id', ensureAuth, upload, updatePostController);
 router.get('/privacy', privacyPostController);
 router.get('/process', processController);
 router.get('/faq', faqPostController);
+
+router.get('/project-detail', projectDetail);
 
 module.exports = router

@@ -4,7 +4,7 @@ module.exports = async (req, res) => {
     var name = "";
     const blogposts = await BlogPost.find({});
     res.render('pages/blog/blogs.ejs', {
-        style: 'blog.css',
+        style: 'blog/blog.css',
         bodyId:'BlogPage',
         blogposts,
         error: res.locals.error,

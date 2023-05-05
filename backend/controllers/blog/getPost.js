@@ -10,7 +10,7 @@ module.exports = async(req, res) => {
     }
     BlogPost.findById(req.params.id).lean().then(blogpost => {       
         res.render('pages/blog/post.ejs', {
-            style: 'post.css',
+            style: 'blog/post.css',
             bodyId: 'BlogPage',
             blogpost,  
             userExist,          

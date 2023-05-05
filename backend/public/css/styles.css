@@ -18,7 +18,7 @@
    transform: translateY(0);
 }
 
-body {
+:root {
  --navheight: 11vh;
 }
 
