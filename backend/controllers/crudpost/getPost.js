@@ -9,7 +9,7 @@ module.exports = async(req, res) => {
         userExist = true; 
     }
     BlogPost.findById(req.params.id).lean().then(blogpost => {       
-        res.render('blog/post.ejs', {
+        res.render('pages/blog/post.ejs', {
             style: 'post.css',
             bodyId: 'BlogPage',
             blogpost,  

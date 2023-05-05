@@ -77,7 +77,7 @@ app.use('/auth', require('./routes/auth'));
 app.use('/', require('./routes/reviews'));
 app.use('/', require('./routes/comments'));
 app.use('/', require('./routes/sendEmail'));
-app.use((req, res) => res.render('notfound.ejs', {
+app.use((req, res) => res.render('pages/notfound.ejs', {
   style: '',
   bodyId: 'PageNotFound',
 }));

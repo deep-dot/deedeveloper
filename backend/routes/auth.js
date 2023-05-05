@@ -117,7 +117,7 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
 }));
 
 router.get('/newuser', (req, res) => {
-  res.render('login/register.ejs', {
+  res.render('pages/auth/register.ejs', {
     style:'login.css',
     bodyId:'',
     sitekey: process.env.CAPTCHA_SITE_KEY,
@@ -128,7 +128,7 @@ router.get('/newuser', (req, res) => {
 
 router.get('/verifyEmail/:token', (req, res) => {
   var token = req.params.token;
-  res.render('login/verifyEmail.ejs', {
+  res.render('pages/auth/verifyEmail.ejs', {
     style:'login.css',
     bodyId:'',
     error: res.locals.error,
@@ -182,9 +182,9 @@ router.get('/profile', ensureAuth, (req, res) => {
     image = req.user.image;
     role = req.user.role;
   }
-  res.render('login/profile.ejs', {
+  res.render('pages/profile.ejs', {
     style:'login.css',
-    bodyId:'',
+    bodyId:'profileId',
     name,
     email,
     status,
@@ -232,7 +232,7 @@ router.get('/login', (req, res) => {
   if (loggedIn) {
     res.redirect('/');
   } else {
-    res.render('login/login.ejs', {
+    res.render('pages/auth/login.ejs', {
       style:'login.css',
       bodyId:'',
       sitekey: process.env.CAPTCHA_SITE_KEY,
@@ -243,7 +243,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/passwordforgot', (req, res) => {
-  res.render('forgotpassword/forgotpassword.ejs', {
+  res.render('pages/auth/forgotpassword/forgotpassword.ejs', {
     style:'login.css',
     bodyId:'',
     error: res.locals.error,
@@ -289,7 +289,7 @@ router.post('/password/forgot', ensureAuth, async (req, res, next) => {
 
 router.get("/password/reset/:token", (req, res) => {
   var token = req.params.token;
-  res.render('forgotpassword/resetpassword.ejs', {
+  res.render('pages/auth/forgotpassword/resetpassword.ejs', {
     style:'login.css',
     bodyId:'',
     token,

@@ -1,0 +1,33 @@
+<section class="testimonial" id="testimonial">
+    <% if(error) {%>
+        <p style="color:red"><%- error -%></p>
+        <%} else {%>
+            <p style="color:green"><%- success -%></p>
+            <% } %>
+                <h2>I guarantee 100% satisfaction to my clients. 🤩 </h2>
+                <div id="reviewCard"></div>
+                <button id="see-more-button"></button>
+                <a id="write-review-button">
+                    <span>Write Review</span> <i class="fas fa-pencil-alt"></i>
+                </a>
+</section>
+
+
+
+<!-- reviews -->
+<script src="/js/home/reviews.js"></script>
+
+<!-- write review modal -->
+<script src="/js/home/writeReviewModal.js"></script>
+
+<!-- edit review modal -->
+<script src="/js/home/editReviewModal.js"></script>
+
+
+<!-- delete review -->
+<script>
+    function deleteReview(self) {
+        axios.delete('/reviews/' + self.id).then(res => { console.log(res) })
+        window.location.reload();
+    }
+</script>

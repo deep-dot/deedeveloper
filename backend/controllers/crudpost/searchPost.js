@@ -15,7 +15,7 @@ module.exports = async (req, res) => {
         } 
         if (searchedpost) {
             console.log('searchpostId===', searchedpost._id);
-            res.render('blog/post.ejs', {
+            res.render('pages/blog/post.ejs', {
                 style: 'post.css',
                 bodyId: 'SearchPost',
                 blogpost: searchedpost,

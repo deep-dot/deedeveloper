@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
             // if (blogpost.userid === req.user._id) {
                 if (blogpost.userid.toString().trim() === req.user._id.toString().trim()) {
                 console.log('editpost===', blogpost);
-                res.render('blog/post-edit.ejs', {
+                res.render('pages/blog/post-edit.ejs', {
                     style: 'post-edit.css',
                     bodyId: 'EditPost',
                     blogpost,

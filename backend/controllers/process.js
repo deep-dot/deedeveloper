@@ -1,6 +1,6 @@
 module.exports = async(req, res) => {
 
-    res.render('process.ejs', {
+    res.render('pages/process/process.ejs', {
         style: 'process.css',
         bodyId: 'ProcessPage'
     });

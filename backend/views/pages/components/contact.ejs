@@ -1,0 +1,40 @@
+<section class="C hidden" id="contactSection">
+    <div class="contact">
+      <div>
+        <h1>Contact me</h1>
+        <form id="contact-form-viewhome" method="post">
+          <p>I will get back to you as soon as possible</p>
+          <div class="form-group">
+            <label for="name"><i class="fa fa-user"></i> Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+          </div>
+          <div class="form-group">
+            <label for="email"><i class="fa fa-envelope"></i> Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="form-group">
+            <label for="message"><i class="fa fa-comment"></i> Message:</label>
+            <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="verification-code" id="verification-code-label" hidden>Verification Code:</label>
+            <input type="text" id="verification-code" hidden>
+          </div>
+          <p id="message-to-user" hidden></p>
+          <button type="button" id="verify-code-button" hidden>Verify Code</button>
+          <button id="submit-button" class="btnn" type="submit">Submit</button>
+        </form>
+      </div>
+      <div class="contact-img">
+        <img src="../img/contact.png" alt="ContactImage" />
+      </div>
+    </div>
+  </section>
+  
+  <!-- contact-form -->
+  <script src="/js/home/contactForm.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      contactMe();
+    });
+  </script>
