@@ -1,5 +1,196 @@
-<div class="project-sub-section">
-    <a href="/projects/project-detail">project detail</a>
+<style>
+    /* Add this to your existing CSS file */
 
-    <h2 class="h2">I have done it before, many times. Here are my latest projects. 😎</h2>
+    /* For WebKit browsers (Chrome, Safari, etc.) */
+    .contents::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* For Firefox */
+    .contents {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        /* For Internet Explorer and Edge */
+    }
+
+    .menulist {
+        display: inline-flex;
+        margin: 2rem 0;
+        gap: 20px;
+    }
+
+    .project-container {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 85% 15%;
+    }
+
+    .project-detail {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        grid-gap: 10px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .image-container:nth-child(n) {
+        background-color: #b3d9ff;
+        width: auto;
+        min-height: 300px;
+    }
+
+    .image-container .img {
+        width: 100%;
+        height: 100%;
+        background-color: violet;
+        border-radius: 5px;
+    }
+
+    .contents:nth-child(n) {
+        background-color: #ffb3b3;
+        min-height: 300px;
+    }
+
+    .project-detail .contents p {
+        font: 400 1rem 'Roboto';
+        padding: clamp(1em, 2vw, 3em);
+        color: rgb(23, 27, 30);
+    }
+
+    .page-contents {
+        position: relative;
+        background-color: #1d481a;
+    }
+
+    .page-contents .fixed-contents {
+        position: fixed;
+        top: 20%;
+        right: 5%;
+        background-color: #4897e7;
+        padding: 1rem;
+    }
+
+    @media screen and (max-width: 800px) {
+
+        .project-container {
+            grid-template-columns: 100% 0%;
+        }
+
+        .project-detail {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+        }
+
+        .page-contents {
+            display: none;
+        }
+    }
+</style>
+
+
+<div class="menulist">
+    <a href="/">Home >> </a><a href="/#projects">Projects >> </a><a href=""> Project detail</a>
 </div>
+<div class="project-container">
+    <div class="project-detail">
+        <!-- <div class="image-container">
+            <img class="img" src="" alt="">
+        </div>
+        <div class="contents">
+            <p>
+            </p>
+        </div> -->
+    </div>
+    <div class="page-contents">
+        <div class="fixed-contents">
+            page-contents
+            <!-- <div class="section">
+                section1
+            </div> -->
+        </div>
+    </div>
+</div>
+
+<script>
+    const jsonData = {
+        "project_details": [
+            {
+                "image_src": "img/hello.svg",
+                "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+            },
+            {
+                "image_src": "img/hello.svg",
+                "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+            },
+            {
+                "image_src": "img/hello.svg",
+                "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+            },
+            {
+                "image_src": "img/hello.svg",
+                "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+            }
+        ],
+        "page_contents": {
+            "fixed_contents": "page-contents",
+            "sections": [
+                {
+                    "title": "section1"
+                },
+                {
+                    "title": "section2"
+                }
+            ]
+        }
+    };
+
+    function createProjectDetails(jsonData) {
+        const projectDetail = document.querySelector('.project-detail');
+
+        jsonData.project_details.forEach(detail => {
+            // Create image container
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'image-container';
+
+            const img = document.createElement('img');
+            img.className = 'img';
+            img.src = detail.image_src;
+            img.alt = 'Project Image';
+
+            imageContainer.appendChild(img);
+
+            // Create content container
+            const contentContainer = document.createElement('div');
+            contentContainer.className = 'contents';
+
+            const p = document.createElement('p');
+            p.textContent = detail.content;
+
+            contentContainer.appendChild(p);
+
+            // Append elements to project-detail
+            projectDetail.appendChild(imageContainer);
+            projectDetail.appendChild(contentContainer);
+        });
+    }
+    createProjectDetails(jsonData);
+
+    const createPageContents = (jsonData) => {
+        const pageContents = document.querySelector('.page-contents');
+        const fixedContents = document.querySelector('.fixed-contents');
+
+        jsonData.page_contents.sections.forEach((sec, index) => {
+            const section = document.createElement('div');
+            section.className = `section${index}`;
+            section.textContent = sec.title;
+
+            fixedContents.appendChild(section);
+        });
+
+        pageContents.appendChild(fixedContents);
+    }
+
+    createPageContents(jsonData);
+
+</script>

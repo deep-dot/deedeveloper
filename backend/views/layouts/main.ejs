@@ -4,7 +4,8 @@
 
     <body>
         <main class="main-wrapper light">
-            <% if ( bodyId !="review_comments" && bodyId !="profileId" ) { %>
+            <% if ( bodyId !="review_comments" && bodyId !="profileId" 
+                    && bodyId != "project-detail") { %>
                 <%- include('../partials/navbar.ejs');-%>
                     <% } %>
                         <div id="<%- bodyId %>" class="Container">
