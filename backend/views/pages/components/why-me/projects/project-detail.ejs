@@ -88,26 +88,21 @@
     }
 </style>
 
+<div>
+    <h1>Page 2</h1>
+    <h2 id="project-title"></h2>
+    <p id="project-description"></p>
+</div>
 
 <div class="menulist">
     <a href="/">Home >> </a><a href="/#projects">Projects >> </a><a href=""> Project detail</a>
 </div>
 <div class="project-container">
     <div class="project-detail">
-        <!-- <div class="image-container">
-            <img class="img" src="" alt="">
-        </div>
-        <div class="contents">
-            <p>
-            </p>
-        </div> -->
     </div>
     <div class="page-contents">
         <div class="fixed-contents">
             page-contents
-            <!-- <div class="section">
-                section1
-            </div> -->
         </div>
     </div>
 </div>
@@ -116,27 +111,31 @@
     const jsonData = {
         "project_details": [
             {
+                "title": "Wagefigurer (Mobile App)",
                 "image_src": "img/hello.svg",
-                "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                "content": " Wagefigurer (Mobile App) Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
             },
             {
+                "title": "abc 12",
                 "image_src": "img/hello.svg",
-                "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
             },
             {
+                "title": "123",
                 "image_src": "img/hello.svg",
-                "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                "content": "123 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
             },
             {
+                "title": "ABC",
                 "image_src": "img/hello.svg",
-                "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                "content": "ABC Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
             }
         ],
         "page_contents": {
             "fixed_contents": "page-contents",
             "sections": [
                 {
-                    "title": "section1"
+                    "title": "Wagefigurer (Mobile App)"
                 },
                 {
                     "title": "section2"
@@ -145,36 +144,38 @@
         }
     };
 
-    function createProjectDetails(jsonData) {
+    function createProjectDetails(detail) {
         const projectDetail = document.querySelector('.project-detail');
 
-        jsonData.project_details.forEach(detail => {
-            // Create image container
-            const imageContainer = document.createElement('div');
-            imageContainer.className = 'image-container';
+        // jsonData.project_details.forEach(detail => {
+        //create title
+        const projectTitle = document.createElement('div');
+        projectTitle.className = 'project-title';
+        projectTitle.textContent = detail.title;
+        // projectTitle.appendChild(projectTitle); 
+        // Create image container
+        const imageContainer = document.createElement('div');
+        imageContainer.className = 'image-container';
+        const img = document.createElement('img');
+        img.className = 'img';
+        img.src = detail.image_src;
+        img.alt = 'Project Image';
+        imageContainer.appendChild(img);
 
-            const img = document.createElement('img');
-            img.className = 'img';
-            img.src = detail.image_src;
-            img.alt = 'Project Image';
+        // Create content container
+        const contentContainer = document.createElement('div');
+        contentContainer.className = 'contents';
+        const p = document.createElement('p');
+        p.textContent = detail.content;
+        contentContainer.appendChild(p);
 
-            imageContainer.appendChild(img);
-
-            // Create content container
-            const contentContainer = document.createElement('div');
-            contentContainer.className = 'contents';
-
-            const p = document.createElement('p');
-            p.textContent = detail.content;
-
-            contentContainer.appendChild(p);
-
-            // Append elements to project-detail
-            projectDetail.appendChild(imageContainer);
-            projectDetail.appendChild(contentContainer);
-        });
+        // Append elements to project-detail
+        projectDetail.appendChild(projectTitle);
+        projectDetail.appendChild(imageContainer);
+        projectDetail.appendChild(contentContainer);
+        // });
     }
-    createProjectDetails(jsonData);
+    // createProjectDetails(jsonData);
 
     const createPageContents = (jsonData) => {
         const pageContents = document.querySelector('.page-contents');
@@ -191,6 +192,27 @@
         pageContents.appendChild(fixedContents);
     }
 
-    createPageContents(jsonData);
+    // createPageContents(jsonData);
+
+    function displayProjectDetails() {
+        const title = localStorage.getItem('title');
+        //console.log('title==', title);
+        const description = localStorage.getItem('description');
+        document.querySelector('#project-title').textContent = title;
+        document.querySelector('#project-description').textContent = description;
+
+        createPageContents(jsonData);
+
+        jsonData.project_details.forEach(detail => {
+            if (detail.title === title) {
+                createProjectDetails(detail);
+                //createPageContents(jsonData);
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        displayProjectDetails();
+    });
 
 </script>

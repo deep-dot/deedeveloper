@@ -1,124 +1,123 @@
 <section id="projects" class="projects">
-    <div class="project-sub-section">
-      <a href="/project-detail">project detail</a>
+  <div class="project-sub-section">
 
-      <h2 class="h2">I have done it before, many times. Here are my latest projects. 😎</h2>
-  
-      <div class="project-grid">
+    <h2 class="h2">I have done it before, many times. Here are my latest projects. 😎</h2>
+
+    <div class="project-grid">
+      <!-- <div class="project-grid-item">
         <div class="project-img">
-          <img src="" alt="">
+        <img src="" alt="">
+      </div>
+      <div class="project-detail">
+        <h4 class="project-subtitle">APPLICATION DEVELOPMENT</h4>
+        <h1 class="project-title">Wagefigurer (Mobile App)</h1>
+        <div class="project-content">
+          <p>
+
+          </p>
         </div>
-        <div class="project-detail">
-          <h4 class="project-subtitle">APPLICATION DEVELOPMENT</h4>
-          <h1 class="project-title">Wagefigurer (Mobile App)</h1>
-          <div class="project-content">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus
-              ullam possimus quaerat iure esse accusamus voluptatibus nihil, nesciunt repellendus cupiditate adipisci sit
-              velit, magni recusandae perferendis?</p>
+        <div class="project-technologies">
+          <div>
+            <p class="p">React Native</p>
           </div>
-          <div class="project-technologies">
-            <div>
-              <p class="p">React Native</p>
-            </div>
-            <div>
-              <p class="p">NPM</p>
-            </div>
-            <div>
-              <p class="p">SQLight</p>
-            </div>
+          <div>
+            <p class="p">NPM</p>
           </div>
-          <div class="project-url">
-            <a href="/project-detail">[View Project]</a>
+          <div>
+            <p class="p">SQLight</p>
           </div>
+        </div>
+        <div class="project-url">         
+          <button style="border:none" data-title="Wagefigurer (Mobile App)"
+            onclick="goToPage2(this.dataset.title)">[View Project]</button>
         </div>
       </div>
-  
-      <div class="project-grid">
-        <div class="project-detail">
-          <h4 class="project-subtitle">APPLICATION DEVELOPMENT</h4>
-          <h1 class="project-title">Wagefigurer (Mobile App)</h1>
-          <div class="project-content">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus
-              ullam possimus quaerat iure esse accusamus voluptatibus nihil, nesciunt repellendus cupiditate adipisci sit
-              velit, magni recusandae perferendis?</p>
-          </div>
-          <div class="project-technologies">
-            <div>
-              <p class="p">React Native</p>
-            </div>
-            <div>
-              <p class="p">NPM</p>
-            </div>
-            <div>
-              <p class="p">SQLight</p>
-            </div>
-          </div>
-          <div class="project-url">
-            <a href="">[View Project]</a>
-          </div>
-        </div>
-        <div class="project-img">
-          <img src="" alt="">
-        </div>
-      </div>
-  
-      <div class="project-grid">
-        <div class="project-img">
-          <img src="" alt="">
-        </div>
-        <div class="project-detail">
-          <h4 class="project-subtitle">APPLICATION DEVELOPMENT</h4>
-          <h1 class="project-title">Wagefigurer (Mobile App)</h1>
-          <div class="project-content">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus
-              ullam possimus quaerat iure esse accusamus voluptatibus nihil, nesciunt repellendus cupiditate adipisci sit
-              velit, magni recusandae perferendis?</p>
-          </div>
-          <div class="project-technologies">
-            <div>
-              <p class="p">React Native</p>
-            </div>
-            <div>
-              <p class="p">NPM</p>
-            </div>
-            <div>
-              <p class="p">SQLight</p>
-            </div>
-          </div>
-          <div class="project-url">
-            <a href="">[View Project]</a>
-          </div>
-        </div>
-      </div>
-  
-      <div class="project-grid">
-        <div class="project-detail">
-          <h4 class="project-subtitle">APPLICATION DEVELOPMENT</h4>
-          <h1 class="project-title">Wagefigurer (Mobile App)</h1>
-          <div class="project-content">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus
-              ullam possimus quaerat iure esse accusamus voluptatibus nihil, nesciunt repellendus cupiditate adipisci sit
-              velit, magni recusandae perferendis?</p>
-          </div>
-          <div class="project-technologies">
-            <div>
-              <p class="p">React Native</p>
-            </div>
-            <div>
-              <p class="p">NPM</p>
-            </div>
-            <div>
-              <p class="p">SQLight</p>
-            </div>
-          </div>
-          <div class="project-url">
-            <a href="">[View Project]</a>
-          </div>
-        </div>
-        <div class="project-img">
-          <img src="" alt="">
-        </div>
-      </div>
-  
+      </div> -->
     </div>
-  </section>
+
+  </div>
+</section>
+
+<script>
+  function goToPage2(title) {
+    const projectTitles = document.querySelectorAll('.project-title')
+    projectTitles.forEach(projecttitle => {
+      console.log('project titles==', projecttitle.textContent, title);
+      if (projecttitle.textContent === title) {
+        localStorage.setItem('title', projecttitle.textContent);
+        window.location.href = '/project-detail';
+      }
+    })
+  }
+
+  const jsonData = {
+    "projectDetail": [
+      {
+        "subtitle": " ",
+        "title": "Wagefigurer (Mobile App)",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
+        "technologies": ["React Native", "SQLite", "Node"]
+      },
+      {
+        "subtitle": "",
+        "title": "abc 12",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
+        "technologies": ["React Native", "SQLite", "TypeScript"]
+      },
+      {
+        "subtitle": "",
+        "title": "ABC",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
+        "technologies": ["React Native", "React", "NPM"]
+      },
+      {
+        "subtitle": "",
+        "title": "123",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
+        "technologies": ["React Native", "SQLite", "NPM"]
+      },
+    ]
+  }
+
+  function displayProjectDetail() {
+    const projectDetail = document.querySelector('.project-grid');
+
+    const detailRender = [];
+    var html = " ";
+    jsonData.projectDetail.forEach(detail => {
+      html += `<div class='project-grid-item'>`;
+      html += `<div class='project-detail'>`
+      html += `<h4 class='project-subtitle'> ${detail.subtitle} </h4>`
+      html += `<h1 class='project-title'>${detail.title}</h1>`
+      html += `<div class='project-content'>`
+      html += `<p>${detail.content}</p>`
+      html += `</div>`
+
+      html += `<div class="project-technologies">`
+      detail.technologies.forEach(tech => {
+
+        html += `<div>`
+        html += `<p class="p">${tech}</p>`
+        html += `</div>`
+
+      });
+      html += `</div>`
+
+      html += `<div class='project-url'>`
+      html += `<button data-title="${detail.title}" onclick='goToPage2(this.dataset.title)'>[View Project]</button>`
+      html += `</div>`
+      html += `</div>`
+
+      html += `<div class='project-img'>`
+      html += `<img src="" alt="">`
+      html += `</div>`
+      html += `</div>`
+    });
+    detailRender.push(html);
+    projectDetail.innerHTML = detailRender.join('');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    displayProjectDetail();
+  })
+</script>
