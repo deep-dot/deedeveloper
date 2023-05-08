@@ -13,6 +13,55 @@
         /* For Internet Explorer and Edge */
     }
 
+    .title-section {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .logo_image {
+        height: clamp(50px, 5vh, 150px);
+        width: clamp(130px, 13vw, 200px);
+        background-color: #000;
+        border-radius: 5px;
+    }
+
+    .title-sub-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .project-title {
+        font: 600 clamp(30px, 2vw, 40px) 'Roboto';
+        margin: 10px 0;
+    }
+
+    .profileImage {
+        margin: 10px 0 20px 10px;
+    }
+
+    .profileImage img {
+        width: clamp(50px, 2vw, 70px);
+        height: clamp(50px, 2vh, 70px);
+    }
+
+    .profile-desc {
+        margin: 0 20px;
+    }
+
+    .profile-desc .name {
+        font: 400 clamp(10px, 2vw, 20px) 'Roboto';
+        margin: 5px 0;
+    }
+
+    .profile-desc .reading-time,
+    .profile-desc .reading-time .fas {
+        font: 100 clamp(10px, 2vw, 20px) 'Roboto';
+        opacity: 0.4;
+        margin-right: 5px;
+    }
+
     .menulist {
         display: inline-flex;
         margin: 2rem 0;
@@ -20,23 +69,25 @@
     }
 
     .project-container {
-        min-height: 100vh;
         display: grid;
-        grid-template-columns: 85% 15%;
+        grid-template-columns: 80% 20%;
     }
 
     .project-detail {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        grid-template-rows: repeat(4, 1fr);
-        grid-gap: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .project-detail .more-contents {
+        display: flex;
+        flex-direction: row;
         width: 100%;
-        margin: 0 auto;
     }
 
     .image-container:nth-child(n) {
         background-color: #b3d9ff;
-        width: auto;
+        width: 50%;
         min-height: 300px;
     }
 
@@ -50,6 +101,7 @@
     .contents:nth-child(n) {
         background-color: #ffb3b3;
         min-height: 300px;
+        width: 50%;
     }
 
     .project-detail .contents p {
@@ -59,16 +111,31 @@
     }
 
     .page-contents {
-        position: relative;
-        background-color: #1d481a;
+        position: sticky;
+        top: 5%;
+        max-width: 500px;
+        max-height: 300px;
+        background-color: #4897e7;
+        padding: 2rem;
+        margin-left: 10px;
     }
 
-    .page-contents .fixed-contents {
-        position: fixed;
-        top: 20%;
-        right: 5%;
-        background-color: #4897e7;
-        padding: 1rem;
+    .page-contents .content-heading {
+        margin: 15px 0;
+        font: 500 clamp(10px, 2vw, 16px) 'Roboto';
+        text-decoration: underline;
+        text-transform: uppercase;
+    }
+
+    .page-contents ol li::before {
+        color: #000;
+    }
+
+    .page-contents ol .list-text {
+        font: 300 clamp(12px, 2vw, 18px) 'Roboto';
+        margin: 5px 0;
+        color: tomato;
+        cursor: pointer;
     }
 
     @media screen and (max-width: 800px) {
@@ -77,9 +144,14 @@
             grid-template-columns: 100% 0%;
         }
 
-        .project-detail {
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr;
+        .project-detail .more-contents {
+            flex-direction: column-reverse;
+
+        }
+
+        .image-container:nth-child(n),
+        .contents:nth-child(n) {
+            width: 100%;
         }
 
         .page-contents {
@@ -88,22 +160,37 @@
     }
 </style>
 
-<div>
-    <h1>Page 2</h1>
-    <h2 id="project-title"></h2>
-    <p id="project-description"></p>
-</div>
-
-<div class="menulist">
-    <a href="/">Home >> </a><a href="/#projects">Projects >> </a><a href=""> Project detail</a>
+<div class="title-section">
+    <div>
+        <img class="logo_image" href="#" src="/img/logoDeeDev.svg" alt="Logo" />
+    </div>
+    <div class="menulist">
+        <a href="/">Home >> </a><a href="/#projects">Projects >> </a><a href=""> Project detail</a>
+    </div>
+    <div class="project-title"></div>
+    <div class="title-sub-section">
+        <div class="profileImage">
+            <a href="/auth/profile">
+                <img href="#" src="<%- loggedIn.image %>" alt="" style="width:40px; border-radius: 100%;" />
+            </a>
+        </div>
+        <div class="profile-desc">
+            <div class="name"><%- loggedIn.username || loggedIn.displayName %></div>
+            <div class="reading-time">
+                <i class="fas fa-user"></i><span></span>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="project-container">
     <div class="project-detail">
     </div>
     <div class="page-contents">
-        <div class="fixed-contents">
-            page-contents
+        <div class="content-heading">
+            Page Contents
         </div>
+        <ol>
+        </ol>
     </div>
 </div>
 
@@ -112,101 +199,160 @@
         "project_details": [
             {
                 "title": "Wagefigurer (Mobile App)",
-                "image_src": "img/hello.svg",
-                "content": " Wagefigurer (Mobile App) Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                "reading_time": "June 19, 2022 . 4 minutes to read",
+                "more_contents": [
+                    {
+                        "id": "section1",
+                        "image_src": "img/hello.svg",
+                        "content": " Wagefigurer (Mobile App) Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                    },
+                    {
+                        "id": "section2",
+                        "image_src": "img/hello.svg",
+                        "content": " Wagefigurer (Mobile App) Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                    },
+                ],
+                "page_contents": {
+                    "fixed_contents": "page-contents",
+                    "sections": [
+                        {
+                            "title": "Wagefigurer (Mobile App)"
+                        },
+                        {
+                            "title": "section2"
+                        }
+                    ]
+                }
             },
             {
                 "title": "abc 12",
-                "image_src": "img/hello.svg",
-                "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                "reading_time": "Jan 10, 2022 . 2 minutes to read",
+                "more_contents": [
+                    {
+                        "id": "section1",
+                        "image_src": "img/hello.svg",
+                        "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                    },
+                    {
+                        "id": "section2",
+                        "image_src": "img/hello.svg",
+                        "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                    },
+                    {
+                        "id": "section3",
+                        "image_src": "img/hello.svg",
+                        "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                    },
+                    {
+                        "id": "section4",
+                        "image_src": "img/hello.svg",
+                        "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                    },
+                ],
+                "page_contents": {
+                    "fixed_contents": "page-contents",
+                    "sections": [
+                        {
+                            "id": "section1",
+                            "title": "Wagefigurer (Mobile App)"
+                        },
+                        {
+                            "id": "section4",
+                            "title": "section2"
+                        }
+                    ]
+                }
             },
             {
                 "title": "123",
-                "image_src": "img/hello.svg",
-                "content": "123 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                "reading_time": "Jan 5, 2021 . 5 minutes to read",
+                "more_contents": [
+                    {
+                        "id": "section1",
+                        "image_src": "img/hello.svg",
+                        "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                    }
+                ],
+                "page_contents": {
+                    "fixed_contents": "page-contents",
+                    "sections": [
+                        {
+                            "id": "section1",
+                            "title": "Wagefigurer (Mobile App)"
+                        },
+                        {
+                            "id": "section4",
+                            "title": "section4"
+                        }
+                    ]
+                }
             },
             {
                 "title": "ABC",
-                "image_src": "img/hello.svg",
-                "content": "ABC Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
-            }
-        ],
-        "page_contents": {
-            "fixed_contents": "page-contents",
-            "sections": [
-                {
-                    "title": "Wagefigurer (Mobile App)"
-                },
-                {
-                    "title": "section2"
+                "reading_time": "Nov 11, 2021 . 5 minutes to read",
+                "more_contents": [
+                    {
+                        "id": "section1",
+                        "image_src": "img/hello.svg",
+                        "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                    }
+                ],
+                "page_contents": {
+                    "fixed_contents": "page-contents",
+                    "sections": [
+                        {
+                            "title": "Wagefigurer (Mobile App)"
+                        },
+                        {
+                            "title": "section2"
+                        }
+                    ]
                 }
-            ]
-        }
+            }
+        ]
     };
 
     function createProjectDetails(detail) {
         const projectDetail = document.querySelector('.project-detail');
-
-        // jsonData.project_details.forEach(detail => {
-        //create title
-        const projectTitle = document.createElement('div');
-        projectTitle.className = 'project-title';
+        const projectTitle = document.querySelector('.project-title');
+        const readingTime = document.querySelector('.reading-time span');
+        htmlRender = [];
+        var html = '';
+        // html += `<div class="project-title">${detail.title}</div>`
         projectTitle.textContent = detail.title;
-        // projectTitle.appendChild(projectTitle); 
-        // Create image container
-        const imageContainer = document.createElement('div');
-        imageContainer.className = 'image-container';
-        const img = document.createElement('img');
-        img.className = 'img';
-        img.src = detail.image_src;
-        img.alt = 'Project Image';
-        imageContainer.appendChild(img);
+        readingTime.textContent = detail.reading_time;
 
-        // Create content container
-        const contentContainer = document.createElement('div');
-        contentContainer.className = 'contents';
-        const p = document.createElement('p');
-        p.textContent = detail.content;
-        contentContainer.appendChild(p);
-
-        // Append elements to project-detail
-        projectDetail.appendChild(projectTitle);
-        projectDetail.appendChild(imageContainer);
-        projectDetail.appendChild(contentContainer);
-        // });
-    }
-    // createProjectDetails(jsonData);
-
-    const createPageContents = (jsonData) => {
-        const pageContents = document.querySelector('.page-contents');
-        const fixedContents = document.querySelector('.fixed-contents');
-
-        jsonData.page_contents.sections.forEach((sec, index) => {
-            const section = document.createElement('div');
-            section.className = `section${index}`;
-            section.textContent = sec.title;
-
-            fixedContents.appendChild(section);
+        detail.more_contents.forEach(moreContent => {
+            html += `<div class="more-contents" id="${moreContent.id}">`
+            html += `<div class="contents"><p>${moreContent.content}</p></div>`
+            html += `<div class="image-container">`
+            html += `<img class="img" src=${moreContent.image_src} alt="Project Image">`
+            html += `</div>`
+            html += `</div>`
         });
-
-        pageContents.appendChild(fixedContents);
+        htmlRender.push(html);
+        projectDetail.innerHTML = htmlRender.join('');
     }
 
-    // createPageContents(jsonData);
+    const createPageContents = (detail) => {
+        const contents = document.querySelector('.page-contents ol');
+        const htmlRender = [];
+        detail.page_contents.sections.forEach(sec => {
+            var html = '';
+            html += `<li>`
+            html += `<a class="list-text" href="#${sec.id}">${sec.title}</a>`
+            html += `</li>`
+            htmlRender.push(html);
+        });
+        contents.innerHTML = htmlRender.join('');
+    }
 
     function displayProjectDetails() {
         const title = localStorage.getItem('title');
-        //console.log('title==', title);
-        const description = localStorage.getItem('description');
-        document.querySelector('#project-title').textContent = title;
-        document.querySelector('#project-description').textContent = description;
-
-        createPageContents(jsonData);
-
         jsonData.project_details.forEach(detail => {
             if (detail.title === title) {
                 createProjectDetails(detail);
-                //createPageContents(jsonData);
+                createPageContents(detail);
             }
         });
     }
