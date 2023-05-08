@@ -56,7 +56,11 @@
         "subtitle": " ",
         "title": "Wagefigurer (Mobile App)",
         "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
-        "technologies": ["React Native", "SQLite", "Node"]
+        "technologies": ["React Native", "SQLite", "Node"],
+        "images": ["/img/projects/deedev/deedevhomepage.png",
+          "/img/projects/deedev/signIn.png",
+          "/img/projects/deedev/reviews.png"
+        ]
       },
       {
         "subtitle": "",
@@ -109,7 +113,11 @@
       html += `</div>`
 
       html += `<div class='project-img'>`
-      html += `<img src="" alt="">`
+      if (detail.images && Array.isArray(detail.images)) {
+        detail.images.forEach(image => {
+          html += `<img src="${image}" alt="">`
+        });
+      }
       html += `</div>`
       html += `</div>`
     });
