@@ -13,6 +13,12 @@
         /* For Internet Explorer and Edge */
     }
 
+    .project {
+        display: block;
+        max-width: 1600px;
+        margin: auto;
+    }
+
     .title-section {
         display: flex;
         flex-direction: column;
@@ -105,7 +111,7 @@
     .contents:nth-child(n) {
         /* background-color: #ffb3b3; */
         min-height: 300px;
-        width: 50%;        
+        width: 50%;
     }
 
     .project-detail .contents p {
@@ -144,10 +150,71 @@
         cursor: pointer;
     }
 
+    .written-by {
+        display: flex;
+        border: 0.2px dotted var(--colorOnBackgroundColor);
+        padding: 1em;
+        max-width: 600px;
+    }
+
+    .written-by picture img {
+        border-radius: 50%;
+
+    }
+
+    .written-by .writer-detail {
+        margin-left: 20px;
+    }
+
+    .written-by .writer-detail h3 {
+        text-transform: uppercase;
+        font-weight: 300;
+    }
+
+    .written-by .writer-detail .bio {
+        white-space: pre-line;
+        line-height: 22px;
+        margin-bottom: 10px;
+    }
+
+    .written-by .writer-detail .contact-me a {
+        display: inline-block;
+        margin-top: 10px;
+        background: transparent;
+        border: 2px solid tomato;
+        border-radius: 5px;
+        color: var(--colorOnBackgroundColor);
+        padding: 10px 25px;
+        cursor: pointer;
+        vertical-align: top;
+        margin-right: 10px;
+        text-decoration: none;
+    }
+
+
+    .project-technologies {
+        margin: 1rem 0;
+        display: inline-flex;
+        gap: 0.3em;
+    }
+
+    .project-technologies div:nth-child(n) {
+        background-color: #fff;
+        border-radius: 4px;
+        background-color: var(--background);
+    }
+
+    .project-technologies div:nth-child(n) .p {
+        font: 400 clamp(10px, 2vw, 16px) 'Roboto';
+        padding: clamp(4px, 1vh, 6px) clamp(4px, 2vw, 6px);
+        color: var(--colorOnBackground);
+    }
+
+
     @media screen and (max-width: 800px) {
 
         .project-container {
-            grid-template-columns: 100% 0%;
+            grid-template-columns: 1fr;
         }
 
         .project-detail .more-contents {
@@ -161,42 +228,64 @@
         }
 
         .page-contents {
-            display: none;
+            order: -1;
+        }
+
+        .written-by {
+            display: block;
         }
     }
 </style>
 
-<div class="title-section">
-    <div>
-        <img class="logo_image" href="#" src="/img/logoDeeDev.svg" alt="Logo" />
-    </div>
-    <div class="menulist">
-        <a href="/">Home >> </a><a href="/#projects">Projects >> </a><a href=""> Project detail</a>
-    </div>
-    <div class="project-title"></div>
-    <div class="title-sub-section">
-        <div class="profileImage">
-            <a href="/auth/profile">
-                <img href="#" src="" alt="" style="width:40px; border-radius: 100%;" />
-            </a>
+<div class="project">
+    <div class="title-section">
+        <div>
+            <img class="logo_image" href="#" src="/img/logoDeeDev.svg" alt="Logo" />
         </div>
-        <div class="profile-desc">
-            <div class="name">Kuldeep Dhillon</div>
-            <div class="reading-time">
-                <i class="fas fa-user"></i><span></span>
+        <div class="menulist">
+            <a href="/">Home >> </a><a href="/#projects">Projects >> </a><a href=""> Project detail</a>
+        </div>
+        <div class="project-title"></div>
+        <div class="title-sub-section">
+            <div class="profileImage">
+                <a href="/auth/profile">
+                    <img href="#" src="" alt="" style="width:40px; border-radius: 100%;" />
+                </a>
+            </div>
+            <div class="profile-desc">
+                <div class="name">Kuldeep Dhillon</div>
+                <div class="reading-time">
+                    <i class="fas fa-user"></i><span></span>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="project-container">
-    <div class="project-detail">
-    </div>
-    <div class="page-contents">
-        <div class="content-heading">
-            Page Contents
+    <div class="project-container">
+        <div class="project-detail">
         </div>
-        <ol>
-        </ol>
+        <div class="page-contents">
+        </div>
+    </div>
+    <div class="written-by">
+        <picture>
+            <source srcset="https://res.cloudinary.com/dedqid79f/image/upload/v1642646586/samples/bike.jpg"
+                type="image/cloudinary">
+            <img src="https://res.cloudinary.com/dedqid79f/image/upload/v1642646586/samples/bike.jpg"
+                alt="KuldeepDhillon" title="KuldeepDhillon" width="125px" height="125px" loading="lazy">
+        </picture>
+        <div class="writer-detail">
+            <h3>Written by</h3>
+            <h2>Kuldeep Dhillon</h2>
+            <div class="bio">
+                <p>Hello! I am Kuldeep Dhillon, a Freelance Developer & Consultant from Melbourne, Australia.</p>
+                <p>I specialize in React, React Native, Express.js & TypeScript application development.</p>
+                <p>If you need help on a project, please reach out, and let’s work together.</p>
+            </div>
+            <div class="contact-me">
+                <a href="/#contactSection">CONTACT ME </a>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -206,6 +295,7 @@
             {
                 "title": "Wagefigurer (Mobile App)",
                 "reading_time": "June 19, 2022 . 4 minutes to read",
+                "technologies": ["React Native", "SQLite", "Node"],
                 "more_contents": [
                     {
                         "id": "section1",
@@ -252,6 +342,7 @@
             {
                 "title": "abc 12",
                 "reading_time": "Jan 10, 2022 . 2 minutes to read",
+                "technologies": ["React Native", "SQLite", "Node"],
                 "more_contents": [
                     {
                         "id": "section1",
@@ -291,6 +382,7 @@
             {
                 "title": "123",
                 "reading_time": "Jan 5, 2021 . 5 minutes to read",
+                "technologies": ["React Native", "SQLite", "Node"],
                 "more_contents": [
                     {
                         "id": "section1",
@@ -315,6 +407,7 @@
             {
                 "title": "ABC",
                 "reading_time": "Nov 11, 2021 . 5 minutes to read",
+                "technologies": ["React Native", "SQLite", "Node"],
                 "more_contents": [
                     {
                         "id": "section1",
@@ -361,17 +454,31 @@
     }
 
     const createPageContents = (detail) => {
-        const contents = document.querySelector('.page-contents ol');
+        const contents = document.querySelector('.page-contents');
         const htmlRender = [];
+
+        var html = `<div class="content-heading">Page Contents</div>`
+        html += '<ol>';
         detail.page_contents.sections.forEach(sec => {
-            var html = '';
             html += `<li>`
             html += `<a class="list-text" href="#${sec.id}">${sec.title}</a>`
             html += `</li>`
-            htmlRender.push(html);
         });
+        html += '</ol>';
+        htmlRender.push(html);
+
+        var htmlTech = `<div class="project-technologies">`;
+        detail.technologies.forEach(tech => {
+            htmlTech += `<div>`
+            htmlTech += `<p class="p">${tech}</p>`
+            htmlTech += `</div>`
+        });
+        htmlTech += `</div>`;
+        htmlRender.push(htmlTech);
+
         contents.innerHTML = htmlRender.join('');
     }
+
 
     function displayProjectDetails() {
         const title = localStorage.getItem('title');

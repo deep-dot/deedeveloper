@@ -55,7 +55,7 @@ body a {
 
  .Container {
   position: relative;
-  padding:var(--navheight);
+  padding:var(--navheight) 0;
 }
 
 .overlay {

@@ -1,4 +1,9 @@
 
+.Container {
+  max-width: 1400px;
+  margin: auto;
+}
+
 @media screen and (max-width: 867px) {
 
   .Container {

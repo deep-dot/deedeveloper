@@ -14,14 +14,16 @@
   
   
   #reviewCard {
-   display: block;
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
   }
   
   #reviewCard .card-container {
-    max-width: 850px;
-    /* border: 1px solid #17a2b8; */
+    width: 50%;
     grid-gap: 10px;
     min-height: 300px;
+    align-self:center ;
   }
   
   .card {
@@ -367,6 +369,10 @@
       font: 600 1em "Roboto";
     }
   
+    #reviewCard .card-container {
+      width: 100%;
+    }
+
     .card {
       width: 100%;
       padding: 15px 5px;
