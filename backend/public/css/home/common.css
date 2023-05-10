@@ -1,12 +1,14 @@
 
 .Container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: auto;
 }
 
 @media screen and (max-width: 867px) {
 
   .Container {
+    max-width: 850px;
+    margin: auto;
     padding: calc(var(--navheight) + 2rem) 0.5rem 0 0.5rem;
   }
 

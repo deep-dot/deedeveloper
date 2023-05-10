@@ -6,7 +6,7 @@
   }
   
   .H h1 {
-    font: 800 2.9em "Roboto";
+    font: 800 clamp(18px, 3vw, 36px) "Roboto";
     line-height: 1.5;
     color: var(--colorOnBackgroundColor);
     margin: 2rem 0;
@@ -30,7 +30,7 @@
   }
   
   .home p {
-    font: 400 2em "Roboto";  
+    font: 400 clamp(14px, 3vw, 28px) "Roboto";  
     line-height: 1.5;
     color: var(--colorOnBackgroundColor);
   }
@@ -60,15 +60,15 @@
     min-height: 30vh;
     border-radius: 10px;
     box-shadow: 
-    0px 0px 0px 5px var(--background),
-    0px 0px 0px 10px rgb(255, 0, 0),   /* red */
-    0px 0px 0px 15px rgba(0, 255, 0, 0.5), /* semi-transparent green */
-    0px 0px 0px 20px rgb(0, 0, 255),  /* blue */
-    0px 0px 0px 25px rgb(255, 255, 0),  /* yellow */
-    0px 0px 0px 30px rgb(255, 165, 0),  /* orange */
-    0px 0px 0px 35px rgb(128, 0, 128),  /* purple */
-    0px 0px 0px 40px rgb(255, 192, 203); /* pink */
-    margin: 8rem 0;
+    0px 0px 0px 2px var(--background),
+    0px 0px 0px 4px rgb(255, 0, 0),   /* red */
+    0px 0px 0px 6px rgba(0, 255, 0, 0.5), /* semi-transparent green */
+    0px 0px 0px 8px rgb(0, 0, 255),  /* blue */
+    0px 0px 0px 10px rgb(255, 255, 0),  /* yellow */
+    0px 0px 0px 12px rgb(255, 165, 0),  /* orange */
+    0px 0px 0px 14px rgb(128, 0, 128),  /* purple */
+    0px 0px 0px 16px rgb(255, 192, 203); /* pink */
+    margin: clamp(4rem, 10vw, 5rem);
 }
 
   
@@ -77,14 +77,14 @@
   }
   
   .quote-me-box .sub-quote-me-box h2 {
-    font: 800 2em 'Roboto';
+    font: 800 clamp(18px, 3vw, 36px) 'Roboto';
     margin-bottom: 2rem;
     line-height: 1.5;
     color: var(--colorOnBackgroundColor);
   }
   
   .quote-me-box .sub-quote-me-box p {
-    font: 400 1.8em 'Roboto';
+    font: 400 clamp(14px, 3vw, 28px) 'Roboto';
     margin-bottom: 2rem;
     line-height: 1.5;
     color: var(--colorOnBackgroundColor);
@@ -92,12 +92,11 @@
   
   .quote-me-box .quote-button {
     background: var(--background);
-    font: 500 1.6em 'Roboto';
+    font: 500 clamp(14px, 3vw, 28px) 'Roboto';
     height: auto;
     padding: 7.5px 30px;
     text-transform: uppercase;
     user-select: none;
-    margin-top: 20px;
     color: var(--colorOnBackground);
     border-radius: 25px;
     border: none;
@@ -127,30 +126,15 @@
       border-right: none;
     }
   
-    .H h1 {
-      font: 400 1.9em "Roboto";
-    }
-  
-    .home p {
-      font-size: 1.5em;
-      text-align: center;
-      padding: 0;
-    }
-  
-    .home>p:first-child {
-      font-size: 1.5em;
-      text-align: center;
-      padding: 0;
-    }
-  
-    .quote-me-box {
-      width: 100%;
-    }
-  
+    .home p,
+    .home>p:first-child,
     .sub-quote-me-box {
       text-align: center;
     }
 
+    .quote-me-box {
+      width: 70%;
+    }
   }
 
   @media screen and (max-width: 576px) {
@@ -165,28 +149,8 @@
         border-right: none;
       }
     
-      .home h1 {
-        font: 400 1.5em "Roboto";
-      }
-    
-      .home p {
-        font: 400 1.1em "Roboto";
-      }
-    
       .quote-me-box {
-        width: 100%;
-        margin: 4rem 0;
+        width: 95%;        
       }
     
-      .quote-me-box .sub-quote-me-box h2 {
-        font: 600 1em 'Roboto';
-        }
-      
-      .quote-me-box .sub-quote-me-box p {
-        font: 400 0.8em 'Roboto';
-       }
-    
-      .quote-me-box .quote-button {
-        font: 500 1em 'Roboto';
-      }
   }
