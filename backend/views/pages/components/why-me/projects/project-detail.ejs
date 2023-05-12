@@ -1,243 +1,4 @@
-<style>
-    /* Add this to your existing CSS file */
-
-    /* For WebKit browsers (Chrome, Safari, etc.) */
-    .contents::-webkit-scrollbar {
-        display: none;
-    }
-
-    /* For Firefox */
-    .contents {
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        /* For Internet Explorer and Edge */
-    }
-
-    .project {
-        display: block;
-        max-width: 1600px;
-        margin: auto;
-    }
-
-    .title-section {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .logo_image {
-        height: clamp(50px, 5vh, 150px);
-        width: clamp(130px, 13vw, 200px);
-        background-color: #000;
-        border-radius: 5px;
-    }
-
-    .title-sub-section {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-    }
-
-    .project-title {
-        font: 600 clamp(30px, 2vw, 40px) 'Roboto';
-        margin: 10px 0;
-    }
-
-    .profileImage {
-        margin: 10px 0 20px 10px;
-    }
-
-    .profileImage img {
-        width: clamp(50px, 2vw, 70px);
-        height: clamp(50px, 2vh, 70px);
-    }
-
-    .profile-desc {
-        margin: 0 20px;
-    }
-
-    .profile-desc .name {
-        font: 400 clamp(10px, 2vw, 20px) 'Roboto';
-        margin: 5px 0;
-    }
-
-    .profile-desc .reading-time,
-    .profile-desc .reading-time .fas {
-        font: 100 clamp(10px, 2vw, 20px) 'Roboto';
-        opacity: 0.4;
-        margin-right: 5px;
-    }
-
-    .menulist {
-        display: inline-flex;
-        margin: 2rem 0;
-        gap: 20px;
-    }
-
-    .project-container {
-        display: grid;
-        grid-template-columns: 80% 20%;
-    }
-
-    .project-detail {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .project-detail .more-contents {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-    }
-
-    .image-container {
-        display: flex;
-    }
-
-    .image-container:nth-child(n) {
-        /* background-color: #b3d9ff; */
-        width: 50%;
-    }
-
-    .image-container .img {
-        width: 100%;
-        min-height: 500px;
-        /* background-color: violet; */
-        border-radius: 5px;
-        align-self: center;
-    }
-
-    .contents:nth-child(n) {
-        /* background-color: #ffb3b3; */
-        min-height: 300px;
-        width: 50%;
-    }
-
-    .project-detail .contents p {
-        font: 400 1rem 'Roboto';
-        padding: clamp(1em, 2vw, 3em);
-        color: rgb(23, 27, 30);
-        line-height: 1.5;
-        text-align: justify;
-    }
-
-    .page-contents {
-        position: sticky;
-        top: 5%;
-        max-width: 500px;
-        max-height: 300px;
-        /* background-color: #4897e7; */
-        padding: 2rem;
-        margin-left: 10px;
-    }
-
-    .page-contents .content-heading {
-        margin: 15px 0;
-        font: 500 clamp(10px, 2vw, 16px) 'Roboto';
-        text-decoration: underline;
-        text-transform: uppercase;
-    }
-
-    .page-contents ol li::before {
-        color: #000;
-    }
-
-    .page-contents ol .list-text {
-        font: 300 clamp(12px, 2vw, 18px) 'Roboto';
-        margin: 5px 0;
-        color: rgb(167, 47, 26);
-        cursor: pointer;
-    }
-
-    .written-by {
-        display: flex;
-        border: 0.2px dotted var(--colorOnBackgroundColor);
-        padding: 1em;
-        max-width: 600px;
-    }
-
-    .written-by picture img {
-        border-radius: 50%;
-
-    }
-
-    .written-by .writer-detail {
-        margin-left: 20px;
-    }
-
-    .written-by .writer-detail h3 {
-        text-transform: uppercase;
-        font-weight: 300;
-    }
-
-    .written-by .writer-detail .bio {
-        white-space: pre-line;
-        line-height: 22px;
-        margin-bottom: 10px;
-    }
-
-    .written-by .writer-detail .contact-me a {
-        display: inline-block;
-        margin-top: 10px;
-        background: transparent;
-        border: 2px solid tomato;
-        border-radius: 5px;
-        color: var(--colorOnBackgroundColor);
-        padding: 10px 25px;
-        cursor: pointer;
-        vertical-align: top;
-        margin-right: 10px;
-        text-decoration: none;
-    }
-
-
-    .project-technologies {
-        margin: 1rem 0;
-        display: inline-flex;
-        gap: 0.3em;
-    }
-
-    .project-technologies div:nth-child(n) {
-        background-color: #fff;
-        border-radius: 4px;
-        background-color: var(--background);
-    }
-
-    .project-technologies div:nth-child(n) .p {
-        font: 400 clamp(10px, 2vw, 16px) 'Roboto';
-        padding: clamp(4px, 1vh, 6px) clamp(4px, 2vw, 6px);
-        color: var(--colorOnBackground);
-    }
-
-
-    @media screen and (max-width: 800px) {
-
-        .project-container {
-            grid-template-columns: 1fr;
-        }
-
-        .project-detail .more-contents {
-            flex-direction: column-reverse;
-
-        }
-
-        .image-container:nth-child(n),
-        .contents:nth-child(n) {
-            width: 100%;
-        }
-
-        .page-contents {
-            order: -1;
-        }
-
-        .written-by {
-            display: block;
-        }
-    }
-</style>
-
-<div class="project">
+<div class="project" id="Top">
     <div class="title-section">
         <div>
             <img class="logo_image" href="#" src="/img/logoDeeDev.svg" alt="Logo" />
@@ -249,7 +10,12 @@
         <div class="title-sub-section">
             <div class="profileImage">
                 <a href="/auth/profile">
-                    <img href="#" src="" alt="" style="width:40px; border-radius: 100%;" />
+                    <picture>
+                        <source srcset="https://res.cloudinary.com/dedqid79f/image/upload/v1642646586/samples/bike.jpg"
+                            type="image/cloudinary">
+                        <img src="https://res.cloudinary.com/dedqid79f/image/upload/v1642646586/samples/bike.jpg"
+                            alt="KuldeepDhillon" title="KuldeepDhillon" width="125px" height="125px" loading="lazy">
+                    </picture>
                 </a>
             </div>
             <div class="profile-desc">
@@ -290,145 +56,26 @@
 </div>
 
 <script>
-    const jsonData = {
-        "project_details": [
-            {
-                "title": "Wagefigurer (Mobile App)",
-                "reading_time": "June 19, 2022 . 4 minutes to read",
-                "technologies": ["React Native", "SQLite", "Node"],
-                "more_contents": [
-                    {
-                        "id": "section1",
-                        "image_src": "/img/projects/deedev/deedevhomepage.png",
-                        "content": " Wagefigurer (Mobile App) Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
-                    },
-                    {
-                        "id": "section2",
-                        "image_src": "/img/projects/deedev/signIn.png",
-                        "content": `<b>Title:</b> Secure Login and Authentication System Description: 
-                        A comprehensive and secure login and authentication system for a modern web application, implemented using Express.js as the backend and EJS templates with pure HTML, JavaScript, and CSS for the frontend. The system offers users multiple login options, secure password management, and enhanced security features for a seamless and user-friendly experience. 
-                        <b>Key Features:</b> 
-                        1. Multiple Login Options: Users can choose to log in using their Google, Facebook, or email and password credentials, offering them flexibility and convenience. 
-                        2. User Registration: The system provides a seamless sign-up process for new users, enabling them to create a new account with their email and password or by using their Google or Facebook credentials. 
-                        3. Forgot Password: In case users forget their password, they can easily request a password reset link to be sent to their registered email address, ensuring that they regain access to their account quickly and securely. 
-                        4. Reset Password: Users can securely reset their passwords through a user-friendly interface, with appropriate password strength validation to ensure strong, secure passwords. 
-                        5. Remember Me: The 'Remember Me' feature allows users to stay logged in across multiple sessions, providing a convenient and hassle-free user experience. 
-                        6. reCAPTCHA Verification: To protect the system against bots and spam, a reCAPTCHA verification is included during the login and registration process, ensuring that only genuine users access the platform. 
-                        7. Responsive Design: The login page features a clean and modern design, built using responsive HTML, JavaScript, and CSS to ensure a seamless and visually appealing experience across various devices and screen sizes. 
-                        8. Backend Security: Express.js is employed as the backend framework, providing a robust and secure foundation for user authentication and session management. 
-                        9. EJS Templates: The system's frontend is built using Embedded JavaScript (EJS) templates, allowing for dynamic content generation and a maintainable codebase. 
-                        10. Password Encryption: User passwords are encrypted using industry-standard techniques to ensure data security and prevent unauthorized access. 
-                        11. Account Lockout: To mitigate brute force attacks, the system includes an account lockout feature that temporarily disables login attempts after a specified number of failed attempts. 
-                        12. Session Management: The system incorporates secure session management to ensure that user data remains protected throughout their usage of the platform. 
-                        This secure login and authentication system is a valuable addition to any web application, providing users with a flexible, user-friendly, and secure experience, while maintaining the highest standards of data security and privacy.`,
-                    },
-                    {
-                        "id": "section3",
-                        "image_src": "/img/projects/deedev/reviews.png",
-                        "content": " Wagefigurer (Mobile App) Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
-                    },
-                ],
-                "page_contents": {
-                    "sections": [
-                        {
-                            "title": "Wagefigurer (Mobile App)"
-                        },
-                        {
-                            "title": "section2"
-                        }
-                    ]
-                }
-            },
-            {
-                "title": "abc 12",
-                "reading_time": "Jan 10, 2022 . 2 minutes to read",
-                "technologies": ["React Native", "SQLite", "Node"],
-                "more_contents": [
-                    {
-                        "id": "section1",
-                        "image_src": "img/hello.svg",
-                        "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
-                    },
-                    {
-                        "id": "section2",
-                        "image_src": "img/hello.svg",
-                        "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
-                    },
-                    {
-                        "id": "section3",
-                        "image_src": "img/hello.svg",
-                        "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
-                    },
-                    {
-                        "id": "section4",
-                        "image_src": "img/hello.svg",
-                        "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
-                    },
-                ],
-                "page_contents": {
-                    "fixed_contents": "page-contents",
-                    "sections": [
-                        {
-                            "id": "section1",
-                            "title": "Wagefigurer (Mobile App)"
-                        },
-                        {
-                            "id": "section4",
-                            "title": "section2"
-                        }
-                    ]
-                }
-            },
-            {
-                "title": "123",
-                "reading_time": "Jan 5, 2021 . 5 minutes to read",
-                "technologies": ["React Native", "SQLite", "Node"],
-                "more_contents": [
-                    {
-                        "id": "section1",
-                        "image_src": "img/hello.svg",
-                        "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
-                    }
-                ],
-                "page_contents": {
-                    "fixed_contents": "page-contents",
-                    "sections": [
-                        {
-                            "id": "section1",
-                            "title": "Wagefigurer (Mobile App)"
-                        },
-                        {
-                            "id": "section4",
-                            "title": "section4"
-                        }
-                    ]
-                }
-            },
-            {
-                "title": "ABC",
-                "reading_time": "Nov 11, 2021 . 5 minutes to read",
-                "technologies": ["React Native", "SQLite", "Node"],
-                "more_contents": [
-                    {
-                        "id": "section1",
-                        "image_src": "img/hello.svg",
-                        "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
-                    }
-                ],
-                "page_contents": {
-                    "fixed_contents": "page-contents",
-                    "sections": [
-                        {
-                            "title": "Wagefigurer (Mobile App)"
-                        },
-                        {
-                            "title": "section2"
-                        }
-                    ]
-                }
+
+document.addEventListener('DOMContentLoaded', function () {
+    let jsonData = [];
+    fetch('/jsonData/project-detail.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("HTTP error " + response.status);
             }
-        ]
-    };
+            return response.json();
+        })
+        .then(json => {
+            console.log(json.project_details);
+            jsonData = json.project_details;
+            displayProjectDetails(jsonData);
+            // You can use the JSON data here
+        })
+        .catch(function () {
+            console.log("An error occurred while fetching the JSON file.");
+        });
+    });
 
     function createProjectDetails(detail) {
         const projectDetail = document.querySelector('.project-detail');
@@ -441,6 +88,7 @@
         readingTime.textContent = detail.reading_time;
 
         detail.more_contents.forEach(moreContent => {
+            // html += `<div class="more-contents" id="${moreContent.id}">`
             html += `<div class="more-contents" id="${moreContent.id}">`
             const contentWithLineBreaks = moreContent.content.replace(/\n/g, '<br>');
             html += `<div class="contents"><p>${contentWithLineBreaks}</p></div>`
@@ -459,9 +107,10 @@
 
         var html = `<div class="content-heading">Page Contents</div>`
         html += '<ol>';
-        detail.page_contents.sections.forEach(sec => {
+        detail.page_contents.forEach(title => {
+            console.log('id==', title);
             html += `<li>`
-            html += `<a class="list-text" href="#${sec.id}">${sec.title}</a>`
+            html += `<a class="list-text" href="#${title}">${title}</a>`
             html += `</li>`
         });
         html += '</ol>';
@@ -480,18 +129,17 @@
     }
 
 
-    function displayProjectDetails() {
+    function displayProjectDetails(jsonData) {               
         const title = localStorage.getItem('title');
-        jsonData.project_details.forEach(detail => {
-            if (detail.title === title) {
-                createProjectDetails(detail);
-                createPageContents(detail);
-            }
-        });
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-        displayProjectDetails();
-    });
+        jsonData.forEach(data => {
+            data.project_details.forEach(detail => {   
+                console.log('data==',detail);              
+                if (detail.title === title) {
+                    createProjectDetails(detail);
+                    createPageContents(detail);
+                }
+            });
+        })
+    }        
 
 </script>

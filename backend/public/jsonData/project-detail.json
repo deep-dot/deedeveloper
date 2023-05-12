@@ -1,0 +1,172 @@
+{
+    "project_details": [
+        {
+            "title": "DEEDEVELOPER.COM",
+            "reading_time": "June 19, 2022 . 4 minutes to read",
+            "technologies": [
+                "HTML",
+                "CSS",
+                "Java Script",
+                "Express",
+                "EJS",
+                "MongoDb"
+            ],
+            "more_contents": [
+                {
+                    "id": "Introduction",
+                    "image_src": "/img/projects/deedev/deedevhomepage.png",
+                    "content": "  Deedeveloper.com is a meticulously designed, professional freelance development platform showcasing the expertise and services of a seasoned developer. The website serves as an interactive portfolio, detailing the developer's projects, personal profile, offered services, and much more. Notably, it features a comprehensive blog section along with an accessible feedback system for seamless communication and engagement with potential clients."
+                },
+                {
+                    "id": "Login_functionality",
+                    "image_src": "/img/projects/deedev/signIn.png",
+                    "content": "<b>Title:</b> Secure Login and Authentication System Description: A comprehensive and secure login and authentication system for a modern web application, implemented using Express.js as the backend and EJS templates with pure HTML, JavaScript, and CSS for the frontend. The system offers users multiple login options, secure password management, and enhanced security features for a seamless and user-friendly experience. <b>Key Features:</b> 1. Multiple Login Options: Users can choose to log in using their Google, Facebook, or email and password credentials, offering them flexibility and convenience. 2. User Registration: The system provides a seamless sign-up process for new users, enabling them to create a new account with their email and password or by using their Google or Facebook credentials. 3. Forgot Password: In case users forget their password, they can easily request a password reset link to be sent to their registered email address, ensuring that they regain access to their account quickly and securely. 4. Reset Password: Users can securely reset their passwords through a user-friendly interface, with appropriate password strength validation to ensure strong, secure passwords. 5. Remember Me: The 'Remember Me' feature allows users to stay logged in across multiple sessions, providing a convenient and hassle-free user experience. 6. reCAPTCHA Verification: To protect the system against bots and spam, a reCAPTCHA verification is included during the login and registration process, ensuring that only genuine users access the platform. 7. Responsive Design: The login page features a clean and modern design, built using responsive HTML, JavaScript, and CSS to ensure a seamless and visually appealing experience across various devices and screen sizes. 8. Backend Security: Express.js is employed as the backend framework, providing a robust and secure foundation for user authentication and session management. 9. EJS Templates: The system's frontend is built using Embedded JavaScript (EJS) templates, allowing for dynamic content generation and a maintainable codebase. 10. Password Encryption: User passwords are encrypted using industry-standard techniques to ensure data security and prevent unauthorized access. 11. Account Lockout: To mitigate brute force attacks, the system includes an account lockout feature that temporarily disables login attempts after a specified number of failed attempts. 12. Session Management: The system incorporates secure session management to ensure that user data remains protected throughout their usage of the platform. This secure login and authentication system is a valuable addition to any web application, providing users with a flexible, user-friendly, and secure experience, while maintaining the highest standards of data security and privacy."
+                },                
+                {
+                    "id": "Testimonial",
+                    "image_src": "/img/projects/deedev/reviews.png",
+                    "content": "Feedback System: A robust feedback system allows clients to provide reviews and testimonials, offering valuable insights and validation of the developer's professional capabilities."
+                },
+                {
+                    "id": "Blog",
+                    "image_src": "/img/projects/deedev/reviews.png",
+                    "content": "Blog: A dynamic blog section featuring insightful articles on various tech-related topics. The blog supports all CRUD (Create, Read, Update, Delete) operations, providing an interactive platform for the developer to share knowledge and engage with the audience."
+                }
+            ],
+            "page_contents": [
+                "Top",
+                "Introduction",
+                "Login_functionality",
+                "Testimonial",
+                "Blog"
+            ]
+        },
+        {
+            "title": "WAGEFIGURER",
+            "reading_time": "Jan 10, 2022 . 2 minutes to read",
+            "technologies": [
+                "React Native",
+                "SQLite",
+                "NPM"
+            ],
+            "more_contents": [
+                {
+                    "id": "section1",
+                    "image_src": "img/hello.svg",
+                    "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                },
+                {
+                    "id": "section2",
+                    "image_src": "img/hello.svg",
+                    "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                },
+                {
+                    "id": "section3",
+                    "image_src": "img/hello.svg",
+                    "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                },
+                {
+                    "id": "section4",
+                    "image_src": "img/hello.svg",
+                    "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                }
+            ],
+            "page_contents": {
+                "sections": [
+                    {
+                        "id": "section1",
+                        "title": "Wagefigurer (Mobile App)"
+                    },
+                    {
+                        "id": "section4",
+                        "title": "section2"
+                    }
+                ]
+            }
+        },
+        {
+            "title": "BOUTIQUE.COM (ECOMMERCE)",
+            "reading_time": "Jan 5, 2021 . 5 minutes to read",
+            "technologies": [
+                "React",
+                "MongoDb",
+                "Express",
+                "EJS",
+                "Node"
+            ],
+            "more_contents": [
+                {
+                    "id": "section1",
+                    "image_src": "img/hello.svg",
+                    "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                }
+            ],
+            "page_contents": {
+                "sections": [
+                    {
+                        "id": "section1",
+                        "title": "Wagefigurer (Mobile App)"
+                    },
+                    {
+                        "id": "section4",
+                        "title": "section4"
+                    }
+                ]
+            }
+        },
+        {
+            "title": "DRIVER PANEL",
+            "reading_time": "Nov 11, 2021 . 5 minutes to read",
+            "technologies": [
+                "React Native",
+                "MongoDb",
+                "NPM",
+                "Google Cloud"
+            ],
+            "more_contents": [
+                {
+                    "id": "section1",
+                    "image_src": "img/hello.svg",
+                    "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                }
+            ],
+            "page_contents": {
+                "sections": [
+                    {
+                        "title": "Wagefigurer (Mobile App)"
+                    },
+                    {
+                        "title": "section2"
+                    }
+                ]
+            }
+        },
+        {
+            "title": "USER PANEL",
+            "reading_time": "Nov 11, 2021 . 5 minutes to read",
+            "technologies": [
+                "React Native",
+                "MongoDb",
+                "NPM",
+                "Google Cloud"
+            ],
+            "more_contents": [
+                {
+                    "id": "section1",
+                    "image_src": "img/hello.svg",
+                    "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                }
+            ],
+            "page_contents": {
+                "sections": [
+                    {
+                        "title": "Wagefigurer (Mobile App)"
+                    },
+                    {
+                        "title": "section2"
+                    }
+                ]
+            }
+        }
+    ]
+}

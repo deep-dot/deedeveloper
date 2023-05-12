@@ -7,14 +7,16 @@ module.exports = async(req, res) => {
     var userExist = false;
     if (req.user) {
         userExist = true; 
+        userid = req.user._id;
     }
+   // console.log('post id ===',req.params.id )
     BlogPost.findById(req.params.id).lean().then(blogpost => {       
         res.render('pages/blog/post.ejs', {
             style: 'blog/post.css',
             bodyId: 'BlogPage',
             blogpost,  
             userExist,          
-            userid: req.user._id,
+            userid,
             error: res.locals.error,
             success: res.locals.success
         });

@@ -108,20 +108,6 @@ function fetchJsonDataAndRenderReviews() {
     });
 }
 
-
-function seeNumOfCardsLessOrMore(numOfReviews) {
-    let showAllCards = false;
-    let numOfVisibleCards = 2;
-    let seeMoreButton = document.querySelector("#see-more-button");
-    seeMoreButton.addEventListener("click", () => {
-        showAllCards = !showAllCards;
-        numOfVisibleCards = showAllCards ? numOfReviews : 2;
-        showMoreLess(numOfReviews, numOfVisibleCards, showAllCards, seeMoreButton);
-    });
-    showMoreLess(numOfReviews, numOfVisibleCards, showAllCards, seeMoreButton);
-  }
-  
-
 function morelessmore() {
     const moreless = document.querySelectorAll(".morelessmore");
     const maxHeight = 20; //this hieght is equal to max-height mentioned in contents class in css

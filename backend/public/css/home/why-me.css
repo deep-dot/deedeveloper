@@ -93,8 +93,10 @@
 
 .project-technologies {
     margin: 1rem 0;
-    display: inline-flex;
-    gap: clamp( 1rem, calc(1vw + 1vh), 2rem);
+    display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    gap: 5px;
 }
 
 .project-technologies div:nth-child(n) {

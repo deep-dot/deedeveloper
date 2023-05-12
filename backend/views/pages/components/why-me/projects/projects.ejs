@@ -51,44 +51,50 @@
   }
 
   const jsonData = {
-    "projectDetail": [
+    "projects": [
       {
-        "subtitle": " ",
-        "title": "Wagefigurer (Mobile App)",
-        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
-        "technologies": ["React Native", "SQLite", "Node"],
+        "subtitle": "WEBSITE DEVELOPMENT & DESIGN",
+        "title": "DEEDEVELOPER.COM",
+        "content": ` Deedeveloper.com is a meticulously designed, professional freelance development platform showcasing the expertise and services of a seasoned developer. The website serves as an interactive portfolio, detailing the developer's projects, personal profile, offered services, and much more. Notably, it features a comprehensive blog section along with an accessible feedback system for seamless communication and engagement with potential clients.`,
+        "technologies": ["HTML", "CSS", "Java Script", "Express", "EJS", "MongoDb"],
         "images": ["/img/projects/deedev/deedevhomepage.png",
           "/img/projects/deedev/signIn.png",
           "/img/projects/deedev/reviews.png"
         ]
       },
       {
-        "subtitle": "",
-        "title": "abc 12",
-        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
-        "technologies": ["React Native", "SQLite", "TypeScript"]
-      },
-      {
-        "subtitle": "",
-        "title": "ABC",
-        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
-        "technologies": ["React Native", "React", "NPM"]
-      },
-      {
-        "subtitle": "",
-        "title": "123",
+        "subtitle": "MOBILE APP DEVELOPMENT for 🍏 & 🤖",
+        "title": "WAGEFIGURER",
         "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
         "technologies": ["React Native", "SQLite", "NPM"]
+      },
+      {
+        "subtitle": "WEBSITE DEVELOPMENT",
+        "title": "BOUTIQUE.COM (ECOMMERCE)",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
+        "technologies": ["React", "MongoDb", "Express", "EJS", "Node"]
+      },
+      {
+        "subtitle": "MOBILE APP DEVELOPMENT for 🍏 & 🤖",
+        "title": "DRIVER PANEL",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
+        "technologies": ["React Native", "MongoDb", "NPM", "Google Cloud"]
+      },
+      {
+        "subtitle": "MOBILE APP DEVELOPMENT for 🍏 & 🤖",
+        "title": "USER PANEL",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
+        "technologies": ["React Native", "MongoDb", "NPM", "Google Cloud"]
       },
     ]
   }
 
-  function displayProjectDetail() {
+  function displayProjects() {
     const projectDetail = document.querySelector('.project-grid');
 
     const detailRender = [];
     var html = " ";
-    jsonData.projectDetail.forEach(detail => {
+    jsonData.projects.forEach(detail => {
       html += `<div class='project-grid-item'>`;
       html += `<div class='project-detail'>`
       html += `<h4 class='project-subtitle'> ${detail.subtitle} </h4>`
@@ -124,6 +130,6 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    displayProjectDetail();
+    displayProjects();
   })
 </script>

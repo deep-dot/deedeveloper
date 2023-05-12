@@ -17,7 +17,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background-color: #dc3545;
+  /* background-color: #dc3545; */
   position: fixed;
   top: 0;
   left: 0;
