@@ -57,26 +57,6 @@
 
 <script>
 
-document.addEventListener('DOMContentLoaded', function () {
-    let jsonData = [];
-    fetch('/jsonData/project-detail.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("HTTP error " + response.status);
-            }
-            return response.json();
-        })
-        .then(json => {
-            console.log(json.project_details);
-            jsonData = json.project_details;
-            displayProjectDetails(jsonData);
-            // You can use the JSON data here
-        })
-        .catch(function () {
-            console.log("An error occurred while fetching the JSON file.");
-        });
-    });
-
     function createProjectDetails(detail) {
         const projectDetail = document.querySelector('.project-detail');
         const projectTitle = document.querySelector('.project-title');
@@ -93,7 +73,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const contentWithLineBreaks = moreContent.content.replace(/\n/g, '<br>');
             html += `<div class="contents"><p>${contentWithLineBreaks}</p></div>`
             html += `<div class="image-container">`
-            html += `<img class="img" src=${moreContent.image_src} alt="Project Image">`
+                moreContent.images.forEach( image => {
+                    html += `<img class="img" src=${image.image_src} alt="Project_Image">`
+                });        
             html += `</div>`
             html += `</div>`
         });
@@ -128,18 +110,27 @@ document.addEventListener('DOMContentLoaded', function () {
         contents.innerHTML = htmlRender.join('');
     }
 
-
-    function displayProjectDetails(jsonData) {               
+    document.addEventListener('DOMContentLoaded', function () {
         const title = localStorage.getItem('title');
-        jsonData.forEach(data => {
-            data.project_details.forEach(detail => {   
-                console.log('data==',detail);              
-                if (detail.title === title) {
-                    createProjectDetails(detail);
-                    createPageContents(detail);
+        fetch('/jsonData/project-detail.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("HTTP error " + response.status);
                 }
+                return response.json();
+            })
+            .then(json => {
+                json.project_details.forEach(projectDetail => {
+                    // console.log(projectDetail.title, title)
+                    if (projectDetail.title === title) {
+                        createProjectDetails(projectDetail);
+                        createPageContents(projectDetail);
+                    }
+                })
+            })
+            .catch(function () {
+                console.log("An error occurred while fetching the JSON file.");
             });
-        })
-    }        
+    });
 
 </script>

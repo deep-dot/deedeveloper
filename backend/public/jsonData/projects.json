@@ -1,0 +1,63 @@
+{
+    "projects": [
+        {
+            "subtitle": "WEBSITE DEVELOPMENT & DESIGN",
+            "title": "DEEDEVELOPER.COM",
+            "content": "Deedeveloper.com is a meticulously designed, professional freelance development platform showcasing the expertise and services of a seasoned developer. The website serves as an interactive portfolio, detailing the developer's projects, personal profile, offered services, and much more. Notably, it features a comprehensive blog section along with an accessible feedback system for seamless communication and engagement with potential clients.",
+            "technologies": [
+                "Java Script",
+                "Express",
+                "EJS",
+                "MongoDb"
+            ],
+            "images": [
+                "/img/projects/deedev/deedevhomepage.png",
+                "/img/projects/deedev/signIn.png",
+                "/img/projects/deedev/reviews.png"
+            ]
+        },
+        {
+            "subtitle": "MOBILE APP DEVELOPMENT for 🍏 & 🤖",
+            "title": "WAGEFIGURER",
+            "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
+            "technologies": [
+                "React Native",
+                "SQLite",
+                "NPM"
+            ]
+        },
+        {
+            "subtitle": "WEBSITE DEVELOPMENT",
+            "title": "BOUTIQUE.COM (ECOMMERCE)",
+            "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
+            "technologies": [
+                "React",
+                "MongoDb",
+                "Express",
+                "Node"
+            ]
+        },
+        {
+            "subtitle": "MOBILE APP DEVELOPMENT for 🍏 & 🤖",
+            "title": "DRIVER PANEL",
+            "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
+            "technologies": [
+                "Expo",
+                "MongoDb",
+                "NPM",
+                "Google API's"                
+            ]
+        },
+        {
+            "subtitle": "MOBILE APP DEVELOPMENT for 🍏 & 🤖",
+            "title": "USER PANEL",
+            "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
+            "technologies": [
+                "Expo",
+                "MongoDb",
+                "NPM",
+                "Google API's"
+            ]
+        }
+    ]
+}
