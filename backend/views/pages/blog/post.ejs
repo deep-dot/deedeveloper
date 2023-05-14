@@ -1,82 +1,105 @@
-<div class="showPost">
-  <div class="btns">
-    <div class="button-container">
-      <% if(userExist) { %>
-        <a class="" href="/post/<%= blogpost._id %>/edit">
-          <i class="fa fa-edit" aria-hidden="true"></i>
-        </a>
-        <form method="POST" action="/post/<%= blogpost._id %>?_method=DELETE">
-          <button type="submit" class="btn">
-            <i class="fa fa-trash" aria-hidden="true"></i>
-          </button>
-        </form>
-        <% } %>
-          <a class="like" href="#writeCommentOnPost">
-            <i class="fa fa-comment" aria-hidden="true"></i>
-            <ins>
-              <%= blogpost.comments.length %>
-            </ins>
+<div class="main_post">
+  <div class="showPost">
+    <div class="btns">
+      <div class="button-container">
+        <% if(userExist) { %>
+          <a class="" href="/post/<%= blogpost._id %>/edit">
+            <i class="fa fa-edit" aria-hidden="true"></i>
           </a>
-          <div id="postCard" blog-post-id="<%= blogpost._id %>">
-            <!-- <a href="#" class="btn">
-          <i class=" iconColor fas fa-thumbs-up" aria-hidden="true"></i>
-          </a> -->
-          </div>
-    </div>
-  </div>
-
-  <div class="postDetail hidden">
-    <h2>
-      <%= blogpost.title %>
-    </h2>
-    <div class="writer">
-      <img class="userImg" src="<%= blogpost.createrImage %>" alt=" ">
-      <p style="margin-top: 1rem;">
-        Creater name: <%= blogpost.username %> <br><br>
-          Posted on: <%= blogpost.createdAt.toDateString() %> <br>
-            Updated on: <%= blogpost.updatedAt.toDateString() %> <br>
-      </p>
-    </div>
-    <img class="postImg" src="<%= blogpost.image %>" alt=" " width="100%" height="100%">
-    <div class="postContent">
-      <p class="p">
-        <%- blogpost.post.replace(/\n/g, '<br>') %>
-      </p>
-    </div>
-  </div>
-  <div id="#comment" class="commentsOnPost hidden">
-    <h2>Responses (<%= blogpost.comments.length %>)</h2>
-    <form method="POST" action="/post/<%= blogpost._id %>/comment?_method=PUT">
-      <textarea id="writeCommentOnPost" type="text" name="content" placeholder="What are your thoughts?"></textarea>
-      <button id="submitButton" type="submit">Submit</button>
-    </form>
-    <% for(var i=0; i < blogpost.comments.length; i++) {%>
-      <div class="card">
-        <div class="cardContent">
-          <img src="<%= blogpost.comments[i].commenterImage %>" alt=" " style=" border-radius:50%" width="50px"
-            height="50%" />
-          <p class="">
-            <%= blogpost.comments[i].username %><br>
-              <%= blogpost.comments[i].datePosted.toDateString() %>
-          </p>
-          <blockquote>
-            <%- blogpost.comments[i].content %>
-          </blockquote>
-
-          <% if(blogpost.comments[i].userId.equals(userid)) { %>
-            <form method="POST" action="/post/<%= blogpost.comments[i]._id %>/comment?_method=DELETE">
-              <input type="hidden" name="postId" value="<%= blogpost._id %>" />
-              <button type="submit" class="btn">
-                <i class="fa fa-trash"></i>
-              </button>
-            </form>
-            <% } %>
-        </div>
+          <form method="POST" action="/post/<%= blogpost._id %>?_method=DELETE">
+            <button type="submit" class="btn">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+          </form>
+          <% } %>
+            <a class="like" href="#writeCommentOnPost">
+              <i class="fa fa-comment" aria-hidden="true"></i>
+              <ins>
+                <%= blogpost.comments.length %>
+              </ins>
+            </a>
+            <div id="postCard" blog-post-id="<%= blogpost._id %>">
+              <!-- <a href="#" class="btn">
+            <i class=" iconColor fas fa-thumbs-up" aria-hidden="true"></i>
+            </a> -->
+            </div>
       </div>
-      <% } %>
-  </div>
+    </div>
+    <div class="postDetail hidden">
+      <h2>
+        <%= blogpost.title %>
+      </h2>
+      <div class="writer">
+        <img class="userImg" src="<%= blogpost.createrImage %>" alt=" ">
+        <p style="margin-top: 1rem;">
+          Creater name: <%= blogpost.username %> <br><br>
+            Posted on: <%= blogpost.createdAt.toDateString() %> <br>
+              Updated on: <%= blogpost.updatedAt.toDateString() %> <br>
+        </p>
+      </div>
+      <img class="postImg" src="<%= blogpost.image %>" alt=" " width="100%" height="100%">
+      <div class="postContent">
+        <p class="p">
+          <%- blogpost.post.replace(/\n/g, '<br>' ) %>
+        </p>
+      </div>
+    </div>
+    <div id="#comment" class="commentsOnPost hidden">
+      <h2>Responses (<%= blogpost.comments.length %>)</h2>
+      <form method="POST" action="/post/<%= blogpost._id %>/comment?_method=PUT">
+        <textarea id="writeCommentOnPost" type="text" name="content" placeholder="What are your thoughts?"></textarea>
+        <button id="submitButton" type="submit">Submit</button>
+      </form>
+      <% for(var i=0; i < blogpost.comments.length; i++) {%>
+        <div class="card">
+          <div class="cardContent">
+            <div class="creater-detail">
+              <img src="<%= blogpost.comments[i].commenterImage %>" alt=" " style=" border-radius:50%" width="50px"
+                height="50%" />
+              <p class="p">
+                <b> <%= blogpost.comments[i].username %></b>
+                  <%= blogpost.comments[i].datePosted.toDateString() %>
+              </p>
+            </div>
+            <p class="comment-content">
+              <%- blogpost.comments[i].content %>
+            </p>
 
+            <% if(blogpost.comments[i].userId.equals(userid)) { %>
+              <form method="POST" action="/post/<%= blogpost.comments[i]._id %>/comment?_method=DELETE">
+                <input type="hidden" name="postId" value="<%= blogpost._id %>" />
+                <button type="submit" class="btn">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </form>
+              <% } %>
+          </div>
+        </div>
+        <% } %>
+    </div>
+  </div>
+  <div class="written-by">
+    <picture>
+      <source srcset="https://res.cloudinary.com/dedqid79f/image/upload/v1642646586/samples/bike.jpg"
+        type="image/cloudinary">
+      <img src="https://res.cloudinary.com/dedqid79f/image/upload/v1642646586/samples/bike.jpg" alt="KuldeepDhillon"
+        title="KuldeepDhillon" width="125px" height="125px" loading="lazy">
+    </picture>
+    <div class="writer-detail">
+      <h3>Written by</h3>
+      <h2>Kuldeep Dhillon</h2>
+      <div class="bio">
+        <p>Hello! I am Kuldeep Dhillon, a Freelance Developer & Consultant from Melbourne, Australia.</p>
+        <p>I specialize in React, React Native, Express.js & TypeScript application development.</p>
+        <p>If you need help on a project, please reach out, and let’s work together.</p>
+      </div>
+      <div class="contact-me">
+        <a href="/#contactSection">CONTACT ME </a>
+      </div>
+    </div>
+  </div>
 </div>
+
 
 
 <script>

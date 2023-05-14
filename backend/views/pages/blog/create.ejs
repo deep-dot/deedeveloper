@@ -14,7 +14,7 @@
                     <% } %>
                         <form method="POST" action="/posts/store" enctype="multipart/form-data">
                             <input type="text" placeholder="Title" name="title" id="title" required />
-                            <textarea type="text" name="post" required></textarea>
+                            <textarea id="summernote" type="text" name="post" required></textarea>
                             <input type="file" placeholder="Image" id="image" name="image" />
                             <br>
                             <button id="submitButton" type="submit">Send</button>
@@ -45,6 +45,14 @@
         }
 
         form.submit();
+    });
+
+
+    $(document).ready(function () {
+        $('#summernote').summernote({
+            height: 200, 
+        width: '100%',
+        });
     });
 
 </script>

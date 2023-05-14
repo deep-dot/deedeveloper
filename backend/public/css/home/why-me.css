@@ -47,11 +47,11 @@
 }
 .project-img img:nth-child(2) {
     position:absolute;
-    top:10%;
-    left:40%;
-    width: 30%;
+    top:3%;
+    left:45%;
+    width: 20%;
     height: 45%;
-    transform: rotate(45deg);
+    transform: rotate(25deg);
 }
 
 .project-img img:nth-child(3) {
@@ -77,8 +77,17 @@
 .project-img img:nth-child(5) {
     position:absolute;
     top:50%;
-    left:40%;
-    width: 50%;
+    left:20%;
+    width: 40%;
+    height: 45%;
+    transform: rotate(-20deg);
+}
+
+.project-img img:nth-child(6) {
+    position:absolute;
+    top:50%;
+    left:60%;
+    width: 40%;
     height: 45%;
     transform: rotate(0deg);
 }

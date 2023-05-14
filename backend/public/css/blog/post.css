@@ -1,10 +1,17 @@
+
+.main_post {
+  display: block;
+  max-width: 1600px;
+  margin: auto;
+  overflow: scroll;
+}
+
 h2 {
   align-self: center;
 }
 
 .showPost {
   display: flex;
-  flex-direction: row;
 }
 
 .showPost .btns {
@@ -36,9 +43,8 @@ h2 {
 
 
 .p {
-  font-weight: 400;
-  font-size: clamp(12px, 2vw, 24px);
-  font-family: 'Roboto', sans-serif; /* Add a fallback font like 'sans-serif' */
+  font-weight: 400 clamp(12px, 2vw, 24px) 'Roboto', sans-serif;
+  color: var(--colorOnBackground);
   line-height: 1.5;
   text-align: justify;
 }
@@ -87,10 +93,14 @@ h2 {
   width: 100%;  
 }
 
+.postContent .p {
+  color: var(--colorOnBackgroundColor);
+}
+
 .showPost .commentsOnPost {
   display: block;
   overflow: scroll;
-  background-color:#f6d365;
+  /* background-color:#f6d365; */
   border-radius: 5px;
   padding: 10px;
   min-width: 400px;
@@ -99,6 +109,7 @@ h2 {
 }
 
 .showPost .commentsOnPost .card {
+  display: flex;
   margin-bottom: 2rem;
   border-bottom: 1px solid #17a2b8;
   background-color: transparent;
@@ -115,7 +126,7 @@ h2 {
 
 .commentsOnPost textarea {
   width: 100%;
-  height: 100px;
+  max-height: 300px;
   margin-bottom: 10px;
   padding: 10px;
   border: 1px solid #ddd;
@@ -123,16 +134,20 @@ h2 {
   font-size: 1em;
 }
 
+.cardContent .creater-detail {
+  display: inline-flex;
+}
+
 
 .showPost .commentsOnPost #submitButton {
   display: block;
   margin: 10px auto;
-  padding: 10px 20px;
-  background-color: #333333;
-  color: #ffffff;
+  padding: 5px 10px;
+  background-color: var(--colorOnBackgroundColor);
+  color: var(--colorOnBackground);
   border: none;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: clamp(12px, 1vw, 16px);
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
@@ -144,29 +159,29 @@ h2 {
 
 .commentsOnPost img {
   border-radius: 50%;
-  width: clamp(35px, 4vw, 50px);
-  height: clamp(35px, 4vw, 50px);;
+  width: clamp(25px, 4vw, 35px);
+  height: clamp(25px, 4vw, 35px);;
   margin-right: 10px;
 }
 
-.commentsOnPost p {
+.commentsOnPost .p {
   display: inline-block;
-  font-size: clamp(14px, 2vw, 18px);
+  font-size: clamp(11px, 1vw, 13px);
   margin: 0;
+  color: var(--colorOnBackgroundColor);
 }
 
-.commentsOnPost blockquote {
-  color: var(--lightOne);
+.commentsOnPost .comment-content {
+  color: var(--colorOnBackgroundColor);
   margin-top: 10px;
   margin-bottom: 20px;
-  font-size: clamp(14px, 2vw, 18px);
+  font-size: clamp(12px, 1vw, 14px);
 }
 
 .commentsOnPost #editButton,
 .commentsOnPost form button[type="submit"] {
-  background-color: #ddd;
   border: none;
-  padding: 5px 10px;
+  padding: 5px 5px;
   border-radius: 5px;
   margin-right: 10px;
   cursor: pointer;
@@ -182,6 +197,50 @@ h2 {
 
 .showPost .commentsOnPost .fa-trash {
   color: #dc3545;
+  font-size: clamp(14px, 1vw, 18px);
+  background-color: none;
+}
+
+.written-by {
+  display: flex;
+  border: 0.2px dotted var(--colorOnBackgroundColor);
+  padding: 1em;
+  max-width: 600px;
+}
+
+.written-by picture img {
+  border-radius: 50%;
+  width: clamp(80px, 2vw, 100px);
+  height: clamp(80px, 2vh, 100px);
+}
+
+.written-by .writer-detail {
+  margin-left: 20px;
+}
+
+.written-by .writer-detail h3 {
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.written-by .writer-detail .bio {
+  white-space: pre-line;
+  line-height: 22px;
+  margin-bottom: 10px;
+}
+
+.written-by .writer-detail .contact-me a {
+  display: inline-block;
+  margin-top: 10px;
+  background: transparent;
+  border: 2px solid tomato;
+  border-radius: 5px;
+  color: var(--colorOnBackgroundColor);
+  padding: 10px 25px;
+  cursor: pointer;
+  vertical-align: top;
+  margin-right: 10px;
+  text-decoration: none;
 }
 
 
@@ -205,5 +264,9 @@ h2 {
     margin: 2rem auto;
     width: 100%;
   }
+
+  .written-by {
+    display: block;
+}
 
 }

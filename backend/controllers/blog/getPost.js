@@ -5,12 +5,15 @@ const User = require('../../models/User.js')
 module.exports = async(req, res) => {
     var userid = "";
     var userExist = false;
-    if (req.user) {
-        userExist = true; 
+    if(req.user) {        
         userid = req.user._id;
     }
-   // console.log('post id ===',req.params.id )
     BlogPost.findById(req.params.id).lean().then(blogpost => {       
+        console.log('blogpost useid and userid==', blogpost.userid, userid);
+        if(blogpost.userid.toString() === userid.toString()) {
+            userExist = true; 
+            userid = req.user._id;
+        }        
         res.render('pages/blog/post.ejs', {
             style: 'blog/post.css',
             bodyId: 'BlogPage',

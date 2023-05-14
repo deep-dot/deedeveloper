@@ -252,7 +252,8 @@ router.get('/passwordforgot', (req, res) => {
 })
 
 // forgot password
-router.post('/password/forgot', ensureAuth, async (req, res, next) => {
+router.post('/password/forgot', async (req, res, next) => {
+  console.log(req.body.email)
   const user = await User.findOne({ email: req.body.email });
   if (!user) {
     error = `User not found`;
