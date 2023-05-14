@@ -40,7 +40,7 @@
     <img class="postImg" src="<%= blogpost.image %>" alt=" " width="100%" height="100%">
     <div class="postContent">
       <p class="p">
-        <%- blogpost.post %>
+        <%- blogpost.post.replace(/\n/g, '<br>') %>
       </p>
     </div>
   </div>
@@ -60,7 +60,7 @@
               <%= blogpost.comments[i].datePosted.toDateString() %>
           </p>
           <blockquote>
-            <%= blogpost.comments[i].content %>
+            <%- blogpost.comments[i].content %>
           </blockquote>
 
           <% if(blogpost.comments[i].userId.equals(userid)) { %>
