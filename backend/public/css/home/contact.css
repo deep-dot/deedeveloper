@@ -1,6 +1,5 @@
 
 .C {   
-    width: 95vw;
    margin: auto;
  }
  
@@ -10,7 +9,7 @@
  }
  
  .C .contact h1 {
-   font: 600 1.5em "Roboto";
+   font: 600 clamp(18px, 2vw, 32px) "Roboto";
    text-transform: uppercase;
    color: var(--colorOnBackgroundColor);
    margin: 2rem 0;
@@ -28,7 +27,7 @@
  }
  
  .C .contact #contact-form-viewhome p {
-   font-size: 1rem;
+   font-size: clamp(14px, 2vw, 20px);
    margin-bottom: 2rem;
    line-height: 1.5;
    color: var(--colorOnBackgroundColor);
@@ -42,7 +41,7 @@
  
  .contact #contact-form-viewhome .form-group label {
    margin-bottom: 5px;
-   font: 600 1.5em 'Roboto';
+   font: 600 clamp(16px, 2vw, 22px) 'Roboto';
    text-align: start;
    color: var(--colorOnBackgroundColor);
  }
@@ -115,10 +114,6 @@
 
  @media screen and (max-width: 867px) {
 
-    .C {
-      min-height: 100vh;
-    }
-  
     .C .contact {
       grid-template-columns: 1fr;
     }
@@ -127,12 +122,4 @@
 
   @media screen and (max-width: 576px) {
 
-    .C h1 {
-      font: 500 1.3em "Roboto";
-    }
-  
-    .contact #contact-form-viewhome .form-group label {
-      font: 500 1em 'Roboto';
-    }
-  
   }

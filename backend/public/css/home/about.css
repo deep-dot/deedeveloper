@@ -1,25 +1,26 @@
 /* about me */
 
-.A {
-    display: flex;
-    align-items: center;
-    min-height: 60vh;
-  }
-  
   .about {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
     justify-content: space-between;
+    padding: clamp(0, 2vw, 1rem);
   }
   
-  .about img {
-    width: 100%;
-    align-self: center;
+  .about picture {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
   }
+  
+  .about picture img {
+    max-width: 100%;
+    height: auto;
+  }
+  
   
   .about h1 {
-    font: 600 1.5em "Roboto";
+    font: 600 clamp(24px, 2vw, 32px) "Roboto";
     text-transform: uppercase;
     text-align: start;
     line-height: 1.5;
@@ -28,7 +29,7 @@
   }
   
   .about h2 {
-    font: 600 1.3em 'Roboto';
+    font: 600 clamp(20px, 2vw, 28px) 'Roboto';
     margin-bottom: 20px;
     line-height: 30px;
     line-height: 1.5;
@@ -36,7 +37,7 @@
   }
   
   .about p {
-    font: 500 1.2em 'Roboto';
+    font: 500 clamp(14px, 2vw, 18px) 'Roboto';
     line-height: 26px;
     margin: 15px 0;
     line-height: 1.5;
@@ -47,7 +48,7 @@
   .about-me-icons {
     display: inline-flex;
     gap: 10px;
-    font: 400 1.3vmax 'Roboto';
+    font: 400 clamp(14px, 2vw, 18px) 'Roboto';
   }
   
   .about-me-icons .fa-react,
@@ -64,7 +65,7 @@
   }
   
   .about-me-social-icons a {
-    font-size: 30px;
+    font-size: clamp(20px, 2vw, 30px);
     text-decoration: none;
     color: var(--background);
   }
@@ -75,54 +76,17 @@
   
   @media screen and (max-width: 867px) {
 
-    .A {
-      min-height: 100vh;
-    }
-  
     .about {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .about h1 {
-      font: 600 1.5em 'Roboto';
-    }
-  
-    .about h2 {
-      font: 600 1.3em 'Roboto';
-    }
-  
-    .about p {
-      font: 500 1.2em 'Roboto';
+     grid-template-columns: 1fr;
     }
   
     .about p, .about h1, 
-    .about h2 { 
+    .about h2, .about { 
       text-align: center;
     }
-      .about {
-      text-align: center;
-    }
-  
-    .about-me-icons {
-      font: 400 1vmax 'Roboto';
-    }
-
+    
   }
   
   @media screen and (max-width: 576px) {
 
-    .about h1 {
-      font: 600 1.3em 'Roboto';
-    }
-  
-    .about h2 {
-      font: 600 1em 'Roboto';
-    }
-  
-    .about p {
-      font: 500 0.8em 'Roboto';
-    }  
   }  

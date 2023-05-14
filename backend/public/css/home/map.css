@@ -2,12 +2,11 @@
 .map {
     display: flex;
     flex-direction: column;
-    min-height: 50vh;
-    min-width: 80vw;
+    
   }
   
   .map h1 {
-    font: 600 1.5em "Roboto";
+    font: 600 clamp(22px, 2vw, 30px) "Roboto";
     text-transform: uppercase;
     text-align: left;
     color: var(--colorOnBackgroundColor);
@@ -28,14 +27,6 @@
   
   @media screen and (max-width: 867px) {
   
-    .Container {
-      padding: calc(var(--navheight) + 2rem) 0.5rem 0 0.5rem;
-    }
-  
-    .M {
-      min-height: 100vh;
-    }
-  
     .map iframe {
       height: 50vh;
       width: 100%;
@@ -44,9 +35,5 @@
   }
   
   @media screen and (max-width: 576px) {
-  
-    .map h1 {
-      font: 500 1.3em "Roboto";
-    }
   
   }

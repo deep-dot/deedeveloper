@@ -2,9 +2,20 @@
     <p>Edit post</p>
     <form method="POST" action="/post/<%- blogpost._id %>?_method=PUT" enctype="multipart/form-data">
         <input type="text" name="title" id="title" value="<%- blogpost.title %>" />
-        <textarea type="text" title="post" name="post"><%- blogpost.post %></textarea>
+        <textarea id="summernote" type="text" title="post" name="post"><%- blogpost.post %></textarea>
         <img src="<%- blogpost.image %>" alt="me" />
         <input type="file" placeholder="Image" id="image" name="image" />
         <button type="submit">Update</button>
     </form>
 </div>
+
+<!-- Summernote Lite JS -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#summernote').summernote({
+            height: 200, 
+        width: '100%',
+        });
+    });
+</script>

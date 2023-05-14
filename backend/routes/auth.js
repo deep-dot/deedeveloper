@@ -130,7 +130,7 @@ router.get('/verifyEmail/:token', (req, res) => {
   var token = req.params.token;
   res.render('pages/auth/verifyEmail.ejs', {
     style:'login.css',
-    bodyId:'',
+    bodyId:'verifyEmail',
     error: res.locals.error,
     success: res.locals.success,
     token
@@ -245,7 +245,7 @@ router.get('/login', (req, res) => {
 router.get('/passwordforgot', (req, res) => {
   res.render('pages/auth/forgotpassword/forgotpassword.ejs', {
     style:'login.css',
-    bodyId:'',
+    bodyId:'passwordForget',
     error: res.locals.error,
     success: res.locals.success
   })

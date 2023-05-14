@@ -77,19 +77,20 @@ app.use('/auth', require('./routes/auth'));
 app.use('/', require('./routes/reviews'));
 app.use('/', require('./routes/comments'));
 app.use('/', require('./routes/sendEmail'));
-app.use((req, res) => res.render('pages/notfound.ejs', {
-  style: '',
-  bodyId: 'PageNotFound',
-}));
 
 // Set up serving React build files
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "development") {
   app.use(express.static(path.join(__dirname, "..", "reactend", "build"))); 
 }
 app.get("/quote", (req, res) => {  
   console.log('quote btn is clicked')
   res.sendFile(path.join(__dirname, "..", "reactend", "build", "index.html"));
 });
+
+app.use((req, res) => res.render('pages/notfound.ejs', {
+  style: '',
+  bodyId: 'PageNotFound',
+}));
 
 // Middleware for Errors
 app.use(errorMiddleware);

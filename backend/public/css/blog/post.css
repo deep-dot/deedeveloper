@@ -3,26 +3,15 @@ h2 {
 }
 
 .showPost {
- 
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  grid-gap: 1rem;
+  display: flex;
+  flex-direction: row;
 }
 
+.showPost .btns {
+  background-color: #17a2b8;
+}
 .showPost button {
   border: none;
-}
-
-.button-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  /* background-color: #dc3545; */
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: calc(100% / 4);
 }
 
 .postDetail {
@@ -30,7 +19,19 @@ h2 {
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
-  margin: clamp(1rem, 2vw, 3rem) 0;
+  max-width: 700px;
+  margin: clamp(1rem, 2vw, 3rem) auto;
+}
+
+.postDetail .writer {
+  margin: 4rem 0 0 0;
+}
+
+.showPost .postDetail .userImg {
+  width: clamp(40px, 3vw, 60px);
+  height: clamp(40px, 3vw, 60px);
+  border-radius: 50%;
+  position: relative;
 }
 
 
@@ -55,13 +56,14 @@ h2 {
   align-items: center;
 }
 
-.showPost .btns .button-container .like,
-.showPost .btns .button-container .unlike,
-.showPost .btns .button-container .fa-edit,
-.showPost .btns .button-container .fa-trash {
+.like,
+.unlike,
+.fa-edit,
+.fa-trash {
   font-size: 20px;
   cursor: pointer;
   border: none;  
+  background-color: transparent;
 }
 
 .showPost .btns .button-container .like {
@@ -80,23 +82,20 @@ h2 {
   color: #dc3545;
 }
 
-.showPost .postDetail .userImg {
-  width: clamp(60px, 2vw, 100px);
-  height: clamp(60px, 2vw, 100px);
-  border-radius: 50%;
-  position: relative;
-}
-
 .showPost .postDetail .postImg {
-  max-width: 100%;
-  margin: 2rem 0 4rem 0;
+  margin: 2rem 0;
+  width: 100%;  
 }
 
 .showPost .commentsOnPost {
   display: block;
-  background-color: transparent;
+  overflow: scroll;
+  background-color:#f6d365;
   border-radius: 5px;
-  padding: 20px;
+  padding: 10px;
+  min-width: 400px;
+  margin: 19rem auto;
+  position:static;
 }
 
 .showPost .commentsOnPost .card {
@@ -110,7 +109,7 @@ h2 {
 }
 
 .commentsOnPost h2 {
-  font-size: 1.5em;
+  font-size: clamp(18px, 2vw, 24px);
   margin-bottom: 20px;
 }
 
@@ -145,12 +144,14 @@ h2 {
 
 .commentsOnPost img {
   border-radius: 50%;
+  width: clamp(35px, 4vw, 50px);
+  height: clamp(35px, 4vw, 50px);;
   margin-right: 10px;
 }
 
 .commentsOnPost p {
   display: inline-block;
-  font-size: 0.8em;
+  font-size: clamp(14px, 2vw, 18px);
   margin: 0;
 }
 
@@ -158,7 +159,7 @@ h2 {
   color: var(--lightOne);
   margin-top: 10px;
   margin-bottom: 20px;
-  font-size: 1.2em;
+  font-size: clamp(14px, 2vw, 18px);
 }
 
 .commentsOnPost #editButton,
@@ -169,7 +170,7 @@ h2 {
   border-radius: 5px;
   margin-right: 10px;
   cursor: pointer;
-  font-size: 0.8em;
+  font-size: clamp(14px, 2vw, 18px);
   transition: background-color 0.3s ease;
 }
 
@@ -186,7 +187,7 @@ h2 {
 
 @media screen and (max-width: 867px) {
   .showPost {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
 
   .showPost .btns {
@@ -195,16 +196,14 @@ h2 {
 
   .showPost .btns .button-container {
     top:90%;
-    width: 100vw;
+    width: 100%;
     height: 10vh;
     flex-direction: row;
   }
 
-  .showPost .btns .button-container .like,
-.showPost .btns .button-container .unlike,
-.showPost .btns .button-container .fa-edit,
-.showPost .btns .button-container .fa-trash {
-  background-color: transparent;
-}
+  .showPost .commentsOnPost {
+    margin: 2rem auto;
+    width: 100%;
+  }
 
 }

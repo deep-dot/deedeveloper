@@ -1,6 +1,19 @@
 <section class="A hidden" id="aboutSection">
     <div class="about">
-      <img src="../img/hello.svg" alt="About Me">
+      <picture>
+        <source 
+        media="(min-width:650px)" 
+        srcset="../img/hello.svg" 
+        loading="lazy">
+        <source
+        media="(min-width:480px)"
+        srcset="../img/hello.svg"
+        loading="lazy">
+        <img 
+        src="../img/hello.svg" 
+        alt="About Me" 
+        loading="lazy">
+      </picture>      
       <div class="sub-about">
         <h1>About me</h1>
         <h2>Dee Dhillon - Freelance Developer & Consultant</h2>

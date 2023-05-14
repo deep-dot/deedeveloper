@@ -49,13 +49,14 @@ body a {
   overflow: hidden;
   background-color: var(--backgroundColor);
   width: 100vw;
-  min-height: 100vh;
   /* background: linear-gradient(to bottom, #878484, #fff); */
 }
 
  .Container {
   position: relative;
-  margin:var(--navheight) 0;
+  padding: calc(var(--navheight) + 4rem) 2rem;
+  width: clamp(300px, 100%, 1200px);
+  margin: 0 auto;  ;
 }
 
 .overlay {
@@ -186,11 +187,6 @@ body a {
 }
 
 @media screen and (max-width: 867px) {
-
-  .Container {
-    padding: calc(var(--navheight) + 2rem) 2rem 2rem 2rem;
-  }
-
   .toggle-btn {
     display: block;
     position: absolute; /* toggle button in navbar */
@@ -210,7 +206,7 @@ body a {
 @media screen and (max-width: 576px) {
 
   .Container {
-    padding: var(--navheight) 1rem 4rem 1rem;
+    padding: calc(var(--navheight) + 2rem) 0.5rem;
   }
 
   .cookie-consent-content {

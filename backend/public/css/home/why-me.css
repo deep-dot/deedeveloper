@@ -64,6 +64,25 @@
     box-shadow: 2px 1px 5px 2px var(--colorOnBackgroundColor);
 }
 
+.project-img img:nth-child(4) {
+    position:absolute;
+    top:50%;
+    left:1%;
+    width: 20%;
+    height: 45%;
+    transform: rotate(-5deg);
+    box-shadow: 2px 1px 5px 2px var(--colorOnBackgroundColor);
+}
+
+.project-img img:nth-child(5) {
+    position:absolute;
+    top:50%;
+    left:40%;
+    width: 50%;
+    height: 45%;
+    transform: rotate(0deg);
+}
+
 .project-grid-item:nth-child(odd) .project-detail {
     order: 1;
 }
