@@ -83,32 +83,24 @@
         display: flex;
         flex-direction: column;  
         justify-content: space-between;
-        background-color: blueviolet;  
         gap:10px;   
     }
 
     .project-detail .more-contents {
         display: flex;
         flex-direction: row;
-        width: auto;  /* Reset width */
-        height: auto;  /* Reset height */
-        float: none;  /* If the div is floated, it won't resize to fit its content */
-        overflow: visible;  /* Make sure content isn't being hidden by overflow */
         gap: 10px;
-        background-color: chocolate;
     }
 
     .project-detail .more-contents .contents {
         position: relative;
-        background-color: bisque; 
-        overflow: auto;       
+        height: auto;
     }
 
     .project-detail .more-contents .image-container {
+        display: flex;
         position: relative;
-        margin: clamp(1px, 1vw, 5px);
         border-radius: 10px;
-        background-color: aqua;
     }
 
     .image-container:nth-child(n) {
@@ -118,7 +110,7 @@
 
     .image-container img:nth-child(1) {
         position:absolute;
-        top:0;
+        top:10%;
         left:0;
         width: 100%;
         box-shadow: 0px 0px 0px 5px rgb(179, 217, 255);;
@@ -126,14 +118,14 @@
     }
     .image-container img:nth-child(2) {
         position:absolute;
-        top:40%;
+        top:45%;
         width: 50%;
         height: 30%;
         transform: rotate(0deg);
     }
     .image-container img:nth-child(3) {
         position:absolute;
-        top:60%;
+        top:65%;
         left:50%;
         width: 50%;
         height: 30%;
@@ -257,14 +249,36 @@
             justify-content: space-between;
         }
 
-        .project-detail .more-contents {
-            flex-direction: column;
+        .project-detail .more-contents:nth-child(n) {
+            gap: 2rem;
+            flex-direction: column-reverse;
         }
 
         .image-container:nth-child(n),
-        .contents:nth-child(n) {
-            width: 100%;
+        .contents:nth-child(n) {          
+            width: auto;
+            height: auto;
         }
+
+        .image-container:nth-child(n) img:nth-child(1) {
+           position: relative;
+           top:0;
+        }
+
+        .image-container:nth-child(n) img:nth-child(2),
+        .image-container:nth-child(n) img:nth-child(3) {
+            width: 20%;
+            height: 40%;   
+            top: 60%;         
+         }
+
+         .image-container:nth-child(n) img:nth-child(2) {
+            left:58%;            
+         }
+
+         .image-container:nth-child(n) img:nth-child(3) {
+            left:80%;            
+         }
 
         .page-contents {
             order: -1;

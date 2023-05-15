@@ -79,7 +79,7 @@ app.use('/', require('./routes/comments'));
 app.use('/', require('./routes/sendEmail'));
 
 // Set up serving React build files
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "..", "reactend", "build"))); 
 }
 app.get("/quote", (req, res) => {  
