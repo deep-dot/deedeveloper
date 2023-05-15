@@ -48,9 +48,9 @@
 .project-img img:nth-child(2) {
     position:absolute;
     top:3%;
-    left:45%;
-    width: 20%;
-    height: 45%;
+    left:50%;
+    width: 15%;
+    height: 35%;
     transform: rotate(25deg);
 }
 
@@ -59,7 +59,7 @@
     top:3%;
     left:70%;
     width: 30%;
-    height: 45%;
+    height: 35%;
     transform: rotate(-5deg);
     box-shadow: 2px 1px 5px 2px var(--colorOnBackgroundColor);
 }
@@ -68,8 +68,8 @@
     position:absolute;
     top:50%;
     left:1%;
-    width: 20%;
-    height: 45%;
+    width: 15%;
+    height: 35%;
     transform: rotate(-5deg);
     box-shadow: 2px 1px 5px 2px var(--colorOnBackgroundColor);
 }

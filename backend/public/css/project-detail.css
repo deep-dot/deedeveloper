@@ -57,13 +57,13 @@
     }
 
     .profile-desc .name {
-        font: 400 clamp(10px, 2vw, 20px) 'Roboto';
+        font: 400 clamp(10px, 1vw, 20px) 'Roboto';
         margin: 5px 0;
     }
 
     .profile-desc .reading-time,
     .profile-desc .reading-time .fas {
-        font: 100 clamp(10px, 2vw, 20px) 'Roboto';
+        font: 100 clamp(10px, 1vw, 20px) 'Roboto';
         opacity: 0.4;
         margin-right: 5px;
     }
@@ -81,28 +81,34 @@
 
     .project-detail {
         display: flex;
-        flex-direction: column;        
+        flex-direction: column;  
+        justify-content: space-between;
+        background-color: blueviolet;  
+        gap:10px;   
     }
 
     .project-detail .more-contents {
-        position: relative;
         display: flex;
         flex-direction: row;
-        width: 100%;
+        width: auto;  /* Reset width */
+        height: auto;  /* Reset height */
+        float: none;  /* If the div is floated, it won't resize to fit its content */
+        overflow: visible;  /* Make sure content isn't being hidden by overflow */
         gap: 10px;
+        background-color: chocolate;
     }
 
     .project-detail .more-contents .contents {
         position: relative;
-        background-color: bisque;
-        height: auto;  
+        background-color: bisque; 
+        overflow: auto;       
     }
 
     .project-detail .more-contents .image-container {
         position: relative;
         margin: clamp(1px, 1vw, 5px);
         border-radius: 10px;
-        height: auto;  
+        background-color: aqua;
     }
 
     .image-container:nth-child(n) {
@@ -120,8 +126,17 @@
     }
     .image-container img:nth-child(2) {
         position:absolute;
-        top:30%;
-        width: 100%;
+        top:40%;
+        width: 50%;
+        height: 30%;
+        transform: rotate(0deg);
+    }
+    .image-container img:nth-child(3) {
+        position:absolute;
+        top:60%;
+        left:50%;
+        width: 50%;
+        height: 30%;
         transform: rotate(0deg);
     }
 
@@ -131,9 +146,9 @@
         width: 50%;
     }
 
-    .project-detail .contents p {
+    .contents p {
         font: 400 1rem 'Roboto';
-        padding: clamp(1em, 2vw, 3em);
+        padding: 1em;
         color: rgb(23, 27, 30);
         line-height: 1.5;
         text-align: justify;
@@ -142,13 +157,13 @@
     .page-contents {
         display: block;
         position: fixed;
-        top:5%;
-        right: 1%;
-        max-width: 250px;
-        max-height: 300px;
-        /* background-color: #4897e7; */
+        top:15%;
+        right: 5%;
+        min-width: 250px;
         padding: 2rem;
         margin-left: 10px;
+        border: 0.5px dotted var(--colorOnBackgroundColor);
+        border-radius: 5px;
     }
 
     .page-contents .content-heading {
@@ -158,13 +173,16 @@
         text-transform: uppercase;
     }
 
+    .page-contents ol li {
+        margin: 15px 0;
+    }
+
     .page-contents ol li::before {
         color: #000;
     }
 
     .page-contents ol .list-text {
         font: 300 clamp(12px, 2vw, 18px) 'Roboto';
-        margin: 5px 0;
         color: rgb(167, 47, 26);
         cursor: pointer;
     }
@@ -232,15 +250,15 @@
         color: var(--colorOnBackground);
     }
 
-
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 867px) {
 
         .project-container {
             grid-template-columns: 1fr;
+            justify-content: space-between;
         }
 
         .project-detail .more-contents {
-            flex-direction: column-reverse;
+            flex-direction: column;
         }
 
         .image-container:nth-child(n),
@@ -251,11 +269,10 @@
         .page-contents {
             order: -1;
             position: relative;
-            width: 100%;
+            width: 50%;
             height: auto;
             /* background-color: #4897e7; */
-            margin:0 1rem 5rem 0;
-            padding: 0 10px;
+            margin:0 1rem 5rem 2rem;
         }
 
         .written-by {

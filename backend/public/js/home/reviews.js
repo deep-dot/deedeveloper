@@ -71,7 +71,8 @@ function fetchJsonDataAndRenderReviews() {
             html += '<div>';
             html += `<span class="${className}" onclick="toggleLikeReview(this)" id="${review._id}">`;
             html += '<i class="fa fa-thumbs-up"></i>';
-            html += `<ins style="text-decoration: none; margin-left:4px">${review.likers.length}</ins>`;
+            // html += `<ins style="text-decoration: none; margin-left:4px">${review.likers.length}</ins>`;
+            html += `<ins style="text-decoration: none; margin-left:4px">11</ins>`;
             html += '</span>';
             html += '</div>';
 
