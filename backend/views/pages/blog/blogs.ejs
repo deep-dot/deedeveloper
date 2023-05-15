@@ -48,13 +48,19 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const blogsLengthInput = document.querySelector('input[blogs-length]');
-    const blogsLength = parseInt(blogsLengthInput.getAttribute('blogs-length'));
-    var numOfBlogs = 0;
-    if (blogsLength > 0) {
-      numOfBlogs = blogsLength;
-    }
+  // document.addEventListener('DOMContentLoaded', () => {
+  //   const blogsLengthInput = document.querySelector('input[blogs-length]');
+  //   const blogsLength = parseInt(blogsLengthInput.getAttribute('blogs-length'));
+  //   var numOfBlogs = 0;
+  //   if (blogsLength > 0) {
+  //     numOfBlogs = blogsLength;
+  //   }
+  //   seeNumOfCardsLessOrMore(numOfBlogs);
+  // });
+
+  $(document).ready(function() {
+    const numOfBlogs = parseInt($('input[blogs-length]').attr('blogs-length')) > 0 ? parseInt($('input[blogs-length]').attr('blogs-length')) : 0;
     seeNumOfCardsLessOrMore(numOfBlogs);
-  });
+});
+
 </script>

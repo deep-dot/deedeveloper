@@ -179,49 +179,6 @@
         cursor: pointer;
     }
 
-    .written-by {
-        display: flex;
-        border: 0.2px dotted var(--colorOnBackgroundColor);
-        padding: 1em;
-        max-width: 600px;
-    }
-
-    .written-by picture img {
-        border-radius: 50%;
-        width: clamp(80px, 2vw, 100px);
-        height: clamp(80px, 2vh, 100px);
-    }
-
-    .written-by .writer-detail {
-        margin-left: 20px;
-    }
-
-    .written-by .writer-detail h3 {
-        text-transform: uppercase;
-        font-weight: 300;
-    }
-
-    .written-by .writer-detail .bio {
-        white-space: pre-line;
-        line-height: 22px;
-        margin-bottom: 10px;
-    }
-
-    .written-by .writer-detail .contact-me a {
-        display: inline-block;
-        margin-top: 10px;
-        background: transparent;
-        border: 2px solid tomato;
-        border-radius: 5px;
-        color: var(--colorOnBackgroundColor);
-        padding: 10px 25px;
-        cursor: pointer;
-        vertical-align: top;
-        margin-right: 10px;
-        text-decoration: none;
-    }
-
-
     .project-technologies {
         margin: 1rem 0;
         display: flex;
@@ -287,9 +244,5 @@
             height: auto;
             /* background-color: #4897e7; */
             margin:0 1rem 5rem 2rem;
-        }
-
-        .written-by {
-            display: block;
         }
     }

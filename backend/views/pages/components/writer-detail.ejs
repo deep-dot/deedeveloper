@@ -1,0 +1,73 @@
+    <style>
+
+.written-by {
+  display: flex;
+  border: 0.2px dotted var(--colorOnBackgroundColor);
+  padding: 1em;
+  max-width: 600px;
+}
+
+.written-by picture img {
+  border-radius: 50%;
+  width: clamp(80px, 2vw, 100px);
+  height: clamp(80px, 2vh, 100px);
+}
+
+.written-by .writer-detail {
+  margin-left: 20px;
+}
+
+.written-by .writer-detail h3 {
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.written-by .writer-detail .bio {
+  white-space: pre-line;
+  line-height: 22px;
+  margin-bottom: 10px;
+}
+
+.written-by .writer-detail .contact-me a {
+  display: inline-block;
+  margin-top: 10px;
+  background: transparent;
+  border: 2px solid tomato;
+  border-radius: 5px;
+  color: var(--colorOnBackgroundColor);
+  padding: 10px 25px;
+  cursor: pointer;
+  vertical-align: top;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 867px) {
+
+  .written-by {
+    display: block;
+}
+
+}
+    </style>
+
+<div class="written-by">
+  <picture>
+    <source srcset="https://res.cloudinary.com/dedqid79f/image/upload/v1642646586/samples/bike.jpg"
+      type="image/cloudinary">
+    <img src="https://res.cloudinary.com/dedqid79f/image/upload/v1642646586/samples/bike.jpg" alt="KuldeepDhillon"
+      title="KuldeepDhillon" width="125px" height="125px" loading="lazy">
+  </picture>
+  <div class="writer-detail">
+    <h3>Written by</h3>
+    <h2>Kuldeep Dhillon</h2>
+    <div class="bio">
+      <p>Hello! I am Kuldeep Dhillon, a Freelance Developer & Consultant from Melbourne, Australia.</p>
+      <p>I specialize in React, React Native, Express.js & TypeScript application development.</p>
+      <p>If you need help on a project, please reach out, and let’s work together.</p>
+    </div>
+    <div class="contact-me">
+      <a href="/#contactSection">CONTACT ME </a>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,9 @@
 
 .main_post {
-  display: block;
-  max-width: 1600px;
-  margin: auto;
-  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 h2 {
@@ -14,19 +14,11 @@ h2 {
   display: flex;
 }
 
-.showPost .btns {
-  background-color: #17a2b8;
-}
-.showPost button {
-  border: none;
-}
-
 .postDetail {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
-  max-width: 700px;
   margin: clamp(1rem, 2vw, 3rem) auto;
 }
 
@@ -41,7 +33,6 @@ h2 {
   position: relative;
 }
 
-
 .p {
   font-weight: 400 clamp(12px, 2vw, 24px) 'Roboto', sans-serif;
   color: var(--colorOnBackground);
@@ -49,224 +40,27 @@ h2 {
   text-align: justify;
 }
 
-.showPost .btns .button-container {
-  position: fixed;
-  top: 20%;
-  left: 5%;
-  width: 100px;
-  height: 400px;
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.like,
-.unlike,
-.fa-edit,
-.fa-trash {
-  font-size: 20px;
-  cursor: pointer;
-  border: none;  
-  background-color: transparent;
-}
-
-.showPost .btns .button-container .like {
-  color: green;
-}
-
-.showPost .btns .button-container .unlike {
-  color: blue;
-}
-
-.showPost .btns .button-container .fa-edit {
-  color: #007bff;
-}
-
-.showPost .btns .button-container .fa-trash {
-  color: #dc3545;
-}
-
 .showPost .postDetail .postImg {
   margin: 2rem 0;
-  width: 100%;  
 }
 
 .postContent .p {
   color: var(--colorOnBackgroundColor);
 }
 
-.showPost .commentsOnPost {
-  display: block;
-  overflow: scroll;
-  /* background-color:#f6d365; */
-  border-radius: 5px;
-  padding: 10px;
-  min-width: 400px;
-  margin: 19rem auto;
-  position:static;
-}
-
-.showPost .commentsOnPost .card {
-  display: flex;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #17a2b8;
-  background-color: transparent;
-}
-
-.showPost .commentsOnPost .card .cardContent {
-  padding: 1rem 0 1rem 0;
-}
-
-.commentsOnPost h2 {
-  font-size: clamp(18px, 2vw, 24px);
-  margin-bottom: 20px;
-}
-
-.commentsOnPost textarea {
-  width: 100%;
-  max-height: 300px;
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1em;
-}
-
 .cardContent .creater-detail {
   display: inline-flex;
 }
 
-
-.showPost .commentsOnPost #submitButton {
-  display: block;
-  margin: 10px auto;
-  padding: 5px 10px;
-  background-color: var(--colorOnBackgroundColor);
-  color: var(--colorOnBackground);
-  border: none;
-  border-radius: 5px;
-  font-size: clamp(12px, 1vw, 16px);
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.showPost .commentsOnPost #submitButton:hover {
-  background-color: #f6d365;
-}
-
-.commentsOnPost img {
-  border-radius: 50%;
-  width: clamp(25px, 4vw, 35px);
-  height: clamp(25px, 4vw, 35px);;
-  margin-right: 10px;
-}
-
-.commentsOnPost .p {
-  display: inline-block;
-  font-size: clamp(11px, 1vw, 13px);
-  margin: 0;
-  color: var(--colorOnBackgroundColor);
-}
-
-.commentsOnPost .comment-content {
-  color: var(--colorOnBackgroundColor);
-  margin-top: 10px;
-  margin-bottom: 20px;
-  font-size: clamp(12px, 1vw, 14px);
-}
-
-.commentsOnPost #editButton,
-.commentsOnPost form button[type="submit"] {
-  border: none;
-  padding: 5px 5px;
-  border-radius: 5px;
-  margin-right: 10px;
-  cursor: pointer;
-  font-size: clamp(14px, 2vw, 18px);
-  transition: background-color 0.3s ease;
-}
-
-.commentsOnPost #editButton:hover,
-.commentsOnPost form button[type="submit"]:hover {
-  background-color: #bbb;
-}
-
-
-.showPost .commentsOnPost .fa-trash {
-  color: #dc3545;
-  font-size: clamp(14px, 1vw, 18px);
-  background-color: none;
-}
-
-.written-by {
-  display: flex;
-  border: 0.2px dotted var(--colorOnBackgroundColor);
-  padding: 1em;
-  max-width: 600px;
-}
-
-.written-by picture img {
-  border-radius: 50%;
-  width: clamp(80px, 2vw, 100px);
-  height: clamp(80px, 2vh, 100px);
-}
-
-.written-by .writer-detail {
-  margin-left: 20px;
-}
-
-.written-by .writer-detail h3 {
-  text-transform: uppercase;
-  font-weight: 300;
-}
-
-.written-by .writer-detail .bio {
-  white-space: pre-line;
-  line-height: 22px;
-  margin-bottom: 10px;
-}
-
-.written-by .writer-detail .contact-me a {
-  display: inline-block;
-  margin-top: 10px;
-  background: transparent;
-  border: 2px solid tomato;
-  border-radius: 5px;
-  color: var(--colorOnBackgroundColor);
-  padding: 10px 25px;
-  cursor: pointer;
-  vertical-align: top;
-  margin-right: 10px;
-  text-decoration: none;
-}
-
-
 @media screen and (max-width: 867px) {
+
+  .main_post {
+    width:100%
+  }
+
   .showPost {
     flex-direction: column;
   }
 
-  .showPost .btns {
-    align-items: center;
-  }
-
-  .showPost .btns .button-container {
-    top:90%;
-    width: 100%;
-    height: 10vh;
-    flex-direction: row;
-  }
-
-  .showPost .commentsOnPost {
-    margin: 2rem auto;
-    width: 100%;
-  }
-
-  .written-by {
-    display: block;
 }
 
-}

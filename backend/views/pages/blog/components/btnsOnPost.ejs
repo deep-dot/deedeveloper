@@ -1,0 +1,102 @@
+<style>
+    .showPost .btns .button-container {
+        position: fixed;
+        top: 20%;
+        left: 5%;
+        width: 100px;
+        height: 400px;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .showPost button {
+        border: none;
+    }
+
+    .like,
+    .unlike,
+    .fa-edit,
+    .fa-trash {
+        font-size: 20px;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+    }
+
+    .showPost .btns .button-container .like {
+        color: green;
+    }
+
+    .showPost .btns .button-container .unlike {
+        color: blue;
+    }
+
+    .showPost .btns .button-container .fa-edit {
+        color: #007bff;
+    }
+
+    .showPost .btns .button-container .fa-trash {
+        color: #dc3545;
+    }
+
+
+    @media screen and (max-width:1370px) {
+
+        .showPost .btns {
+            align-items: center;
+        }
+
+        .showPost .btns .button-container {
+            top: 90%;
+            width: 100%;
+            height: 10vh;
+            flex-direction: row;
+        }
+
+    }
+
+    @media screen and (max-width: 867px) {
+
+
+        .showPost .btns {
+            align-items: center;
+        }
+
+        .showPost .btns .button-container {
+            top: 90%;
+            width: 100%;
+            height: 10vh;
+            flex-direction: row;
+        }
+
+    }
+</style>
+
+<div class="btns">
+    <div class="button-container">
+        <% if(userExist) { %>
+            <a class="" href="/post/<%= blogpost._id %>/edit">
+                <i class="fa fa-edit" aria-hidden="true"></i>
+            </a>
+            <form method="POST" action="/post/<%= blogpost._id %>?_method=DELETE">
+                <button type="submit" class="btn">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+            </form>
+            <% } %>
+                <a class="like" href="#writeCommentOnPost">
+                    <i class="fa fa-comment" aria-hidden="true"></i>
+                    <ins>
+                        <%= blogpost.comments.length %>
+                    </ins>
+                </a>
+                <div id="postCard" blog-post-id="<%= blogpost._id %>">
+                    <!-- <a href="#" class="btn">
+          <i class=" iconColor fas fa-thumbs-up" aria-hidden="true"></i>
+          </a> -->
+                </div>
+    </div>
+</div>
