@@ -8,6 +8,7 @@
 
 h2 {
   align-self: center;
+  color: var(--colorOnBackgroundColor);
 }
 
 .showPost {
@@ -17,35 +18,37 @@ h2 {
 .postDetail {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: flex-start;
   margin: clamp(1rem, 2vw, 3rem) auto;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .postDetail .writer {
   margin: 4rem 0 0 0;
 }
 
-.showPost .postDetail .userImg {
+.postDetail .userImg {
   width: clamp(40px, 3vw, 60px);
   height: clamp(40px, 3vw, 60px);
   border-radius: 50%;
   position: relative;
 }
 
-.p {
+.postDetail .postContent .p {
   font-weight: 400 clamp(12px, 2vw, 24px) 'Roboto', sans-serif;
-  color: var(--colorOnBackground);
+  color: var(--colorOnBackgroundColor);
   line-height: 1.5;
   text-align: justify;
 }
 
-.showPost .postDetail .postImg {
+.postDetail .postImg {
+  position: relative;
+  width: 100%;
+  height: auto;
+  align-self: center;
   margin: 2rem 0;
-}
-
-.postContent .p {
-  color: var(--colorOnBackgroundColor);
 }
 
 .cardContent .creater-detail {
@@ -59,7 +62,20 @@ h2 {
   }
 
   .showPost {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .postDetail .postImg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .postDetail .postContent,
+  .postDetail .postContent picture img {
+    max-width: 100%;
+    height: auto;
   }
 
 }

@@ -13,7 +13,7 @@
               Updated on: <%= blogpost.updatedAt.toDateString() %> <br>
         </p>
       </div>
-      <img class="postImg" src="<%= blogpost.image %>" alt=" " width="100%" height="100%">
+      <img class="postImg" src="<%= blogpost.image %>" alt=" ">
       <div class="postContent">
         <p class="p">
           <%- blogpost.post.replace(/\n/g, '<br>' ) %>
