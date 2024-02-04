@@ -8,14 +8,13 @@ const sendEmail = async (options) => {
     secure: true,
     auth: {
       type: 'OAuth2',
-      //user: process.env.MAIL_USERNAME,
+      user: process.env.MAIL_USERNAME,
       // pass: process.env.MAIL_PASSWORD,
       // user: process.env.SMTP_MAIL,
       // pass: process.env.SMTP_PASSWORD,
-      user: options.email,
       refreshToken: process.env.OAUTH_REFRESH_TOKEN,
       accessToken: process.env.OAUTH_ACCESS_TOKEN,
-      expires: process.env.EXPIRY_TIME,
+      //expires: process.env.EXPIRY_TIME,
       clientId: process.env.OAUTH_CLIENTID,
       clientSecret: process.env.OAUTH_CLIENT_SECRET,
       },
@@ -28,7 +27,7 @@ const sendEmail = async (options) => {
     text: options.message,
   };
 
-  //console.log('options in `utils sendemail.js`===', mailOptions);
+  console.log('options in `utils sendemail.js`===', mailOptions);
   try {
     await transporter.sendMail(mailOptions);
   } catch (error) {

@@ -24,7 +24,7 @@ function contactMe() {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("front verify in contactMe ===", data.verificationCode);
+          console.log("front verify in contactMe ===", data);
           verificationCode = data.verificationCode;
           verificationCodeLabel.hidden = false;
           verificationCodeInput.hidden = false;
