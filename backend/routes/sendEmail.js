@@ -3,6 +3,7 @@ const router = express.Router();
 const sendEmail = require("../utils/sendEmail");
 
 async function handleEmailSending(req, res, subject, message) {
+    console.log('req===', req.body);
     try {
         await sendEmail({
             email: req.body.email,
