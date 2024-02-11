@@ -42,7 +42,7 @@
   function goToPage2(title) {
     const projectTitles = document.querySelectorAll('.project-title')
     projectTitles.forEach(projecttitle => {
-      console.log('project titles==', projecttitle.textContent, title);
+     // console.log('project titles==', projecttitle.textContent, title);
       if (projecttitle.textContent === title) {
         localStorage.setItem('title', projecttitle.textContent);
         window.location.href = '/project-detail';

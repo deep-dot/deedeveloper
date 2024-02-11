@@ -73,23 +73,24 @@
             "more_contents": [
                 {
                     "id": "section1",
-                    "image_src": "img/hello.svg",
-                    "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
-                },
-                {
-                    "id": "section2",
-                    "image_src": "img/hello.svg",
-                    "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                    "images": [
+                        {"image_src": "/img/projects/wf/Screenshot_20240211_155017_WageFigurer.jpg"}
+                        ],
+                    "content": "WageFigurer is a powerful mobile application designed to streamline the financial management of cabbies, by allowing them to easily calculate and save mileage records, expenses, and net-paying reports. It is an all-in-one solution that empowers workers and owners to stay in control of their finances, making tax time a breeze.\n\nWith WageFigurer, users can easily categorize expenses and mileage/kilometer (KM) data, making it simple to generate accurate and detailed reports on the go. The app's user-friendly interface allows users to view, update, delete, and generate reports by selecting specific dates, ensuring that financial data is always up-to-date and organized.\n\nWageFigurer's customizable features allow users to add or delete registration numbers of vehicles, update company and driver's commission rates, lifting fees, and government levies according to their specific requirements. Once the report is generated, users can either print it or save it as a PDF file in their phone's memory, making it easy to share with other stakeholders.\n\nThe app does the math for users, so they can focus on running their business. With the option to generate reports weekly, monthly, quarterly, or annually, users can stay on top of their finances and make informed decisions.\n\nWageFigurer ensures that user data is stored in user's own phone storage, and is exclusively designed for operators and drivers. Pricing may vary by location, and subscriptions are charged to users' credit or debit cards through their accounts. The app's subscription automatically renews unless cancelled at least 24 hours before the end of the current period, and users can manage their subscriptions in their account settings after purchase."
                 },
                 {
                     "id": "section3",
-                    "image_src": "img/hello.svg",
-                    "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                    "images": [
+                    {"image_src": "/img/projects/wf/Screenshot_20240211_155112_WageFigurer.jpg"}
+                    ],
+                    "content": " "
                 },
                 {
                     "id": "section4",
-                    "image_src": "img/hello.svg",
-                    "content": " abc Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente accusamus, assumenda sit iste corporis architecto quaerat accusantium cum qui officia exercitationem similique quam nisi ipsa eaque at animi voluptate hic."
+                    "images": [
+                    {"image_src": "/img/projects/wf/Screenshot_20240211_155631_WageFigurer.jpg"}
+                    ],
+                    "content": " "
                 }
             ],
             "page_contents": {

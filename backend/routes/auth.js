@@ -1,10 +1,10 @@
 const express = require('express');
 const passport = require('passport');
-const Session = require('express-session');
+//const Session = require('express-session');
 const router = express.Router();
 const fetch = require('node-fetch');
-const { stringify } = require('querystring');
-const bcrypt = require('bcrypt')
+// const { stringify } = require('querystring');
+// const bcrypt = require('bcrypt')
 const User = require('../models/User');
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
@@ -82,7 +82,8 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
     expiresIn: process.env.JWT_EXPIRE,
   });
   //var paath = "/" + req.file.path.split('/').slice(1).join('/');
-   //console.log('token===', token);
+   console.log('token===', token);
+   try{
   const user = await User.create({
     username: req.body.name,
     email: req.body.email,
@@ -90,6 +91,8 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
     image: req.file.path,
     token
   });
+} catch (err){console.error(err)};
+
   if (user) {
     sendToken(user, 200, res);
     success = `You are registered successfully! Please check ${req.body.email} and click link to verify it.`;
@@ -138,7 +141,7 @@ router.get('/verifyEmail/:token', (req, res) => {
 })
 
 router.post('/verifyEmail/:token', (req, res) => {
-  console.log('verifyEmail====', req.params.token)
+ // console.log('verifyEmail====', req.params.token)
   User.findOne({
     tokan: req.params.token,
   })
@@ -195,6 +198,7 @@ router.get('/profile', ensureAuth, (req, res) => {
 })
 
 router.get('/google', passport.authenticate('google', { scope: ['email', 'profile'] }))
+
 router.get('/google/callback',
   passport.authenticate('google', {
     failureRedirect: '/auth/login',
@@ -208,6 +212,7 @@ router.get('/google/callback',
   });
 
 router.get('/facebook', passport.authenticate('facebook', { scope: ['email', 'profile'] }));
+
 router.get('/facebook/callback',
   passport.authenticate('facebook', {
     failureRedirect: '/auth/login',
@@ -268,7 +273,7 @@ router.post('/password/forgot', async (req, res, next) => {
     await sendEmail({
       email: user.email,
       subject: `Password Recovery`,
-      html:`<div>
+      message:`<div>
       <p>Your password reset token is </p>
       <a href=${resetPasswordUrl}>Click here</a>
       <p>If you have not requested this email then, please ignore it.</p>

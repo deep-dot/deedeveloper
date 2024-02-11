@@ -1,6 +1,7 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 const FacebookStrategy = require('passport-facebook').Strategy
 const LocalStrategy = require('passport-local').Strategy;
+const OAuth2Strategy = require('passport-oauth2').Strategy;
 const fetch = require('node-fetch')
 const config = require('./config.js');
 const env = process.env.NODE_ENV || 'development';
@@ -15,10 +16,10 @@ module.exports = function (passport) {
         callbackURL: config.google_url[env],
       },
       async (accessToken, refreshToken, profile, done) => {
-       // console.log('config.google_url[env]==', config.google_url[env])
+        console.log('config.google_url[env]==', config.google_url[env])
         var newUser = new User();
         newUser.Id = profile.id,
-        newUser.provider = profile.provider;
+          newUser.provider = profile.provider;
         newUser.displayName = profile.displayName;
         newUser.firstName = profile.name.givenName;
         newUser.lastName = profile.name.familyName;
@@ -26,7 +27,7 @@ module.exports = function (passport) {
         newUser.email = profile.emails[0].value;
         newUser.password = " ";
         try {
-          let user = await User.findOne({ email: profile.emails[0].value });          
+          let user = await User.findOne({ email: profile.emails[0].value });
           if (user) {
             return done(null, user)
           }
@@ -52,7 +53,7 @@ module.exports = function (passport) {
 
       var newUser = new User();
       newUser.Id = profile.id,
-      newUser.provider = profile.provider;
+        newUser.provider = profile.provider;
       newUser.displayName = profile.displayName;
       newUser.firstName = profile.name.givenName;
       newUser.lastName = profile.name.familyName;
@@ -65,7 +66,7 @@ module.exports = function (passport) {
           return done(null, user)
         }
         newUser.save().then(function (err, result) {
-         // console.log('User Created');
+          // console.log('User Created');
         });
         done(null, newUser)
       } catch (err) {
@@ -115,6 +116,19 @@ module.exports = function (passport) {
       });
     }
   ));
+
+  passport.use(new OAuth2Strategy({
+    authorizationURL: 'https://accounts.google.com/o/oauth2/v2/auth',
+    tokenURL: 'https://oauth2.googleapis.com/token',
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://localhost:5000/auth/auth2/callback",
+  }, (accessToken, refreshToken, profile, cb) => {
+    console.log('passport access tokan===', accessToken, refreshToken);
+    
+        return done(null, '')
+    //cb(null, { accessToken, profile });
+  }));
 
   passport.serializeUser((user, done) => {
     done(null, user._id)

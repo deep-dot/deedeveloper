@@ -22,13 +22,21 @@
         {
             "subtitle": "MOBILE APP DEVELOPMENT for 🍏 & 🤖",
             "title": "WAGEFIGURER",
-            "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
+            "content": "WageFigurer is a powerful mobile application designed to streamline the financial management of cabbies, by allowing them to easily calculate and save mileage records, expenses, and net-paying reports. It is an all-in-one solution that empowers workers and owners to stay in control of their finances, making tax time a breeze.\n\nWith WageFigurer, users can easily categorize expenses and mileage/kilometer (KM) data,...  read more? (click on 'View Project')",
             "technologies": [
-                "React Native",
-                "SQLite",
-                "NPM"
+              "React Native",
+              "SQLite",
+              "NPM"
+            ],
+            "images": [
+              "/img/projects/wf/Screenshot_20240211_154950_WageFigurer.jpg",
+              "/img/projects/wf/Screenshot_20240211_155017_WageFigurer.jpg",
+              "/img/projects/wf/Screenshot_20240211_155112_WageFigurer.jpg",
+              "/img/projects/wf/Screenshot_20240211_155126_WageFigurer.jpg",
+              "/img/projects/wf/Screenshot_20240211_155631_WageFigurer.jpg",
+              "/img/projects/wf/Screenshot_20240211_155720_WageFigurer.jpg"
             ]
-        },
+          },          
         {
             "subtitle": "WEBSITE DEVELOPMENT",
             "title": "BOUTIQUE.COM (ECOMMERCE)",
