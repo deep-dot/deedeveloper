@@ -11,12 +11,36 @@
                 "MongoDb"
             ],
             "images": [
-                "/img/projects/deedev/deedevhomepage.png",
-                "/img/projects/deedev/signinS.png",
-                "/img/projects/deedev/reviews.png",
-                "/img/projects/deedev/faqMobileView.png",
-                "/img/projects/deedev/quote.png",
-                "/img/projects/deedev/tspost.png"
+                {
+                    "image_src": "/img/projects/deedev/deedevhomepage.png",
+                    "width": "50%",
+                    "height": "50%"
+                },
+                {
+                    "image_src": "/img/projects/deedev/signinS.png",
+                    "width": "15%",
+                    "height": "50%"
+                },
+                {
+                    "image_src": "/img/projects/deedev/reviews.png",
+                    "width": "30%",
+                    "height": "35%"
+                },
+                {
+                    "image_src": "/img/projects/deedev/faqMobileView.png",
+                    "width": "15%",
+                    "height": "35%"
+                },
+                {
+                    "image_src": "/img/projects/deedev/quote.png",
+                    "width": "40%",
+                    "height": "45%"
+                },
+                {
+                    "image_src": "/img/projects/deedev/tspost.png",
+                    "width": "40%",
+                    "height": "45%"
+                }
             ]
         },
         {
@@ -24,19 +48,44 @@
             "title": "WAGEFIGURER",
             "content": "WageFigurer is a powerful mobile application designed to streamline the financial management of cabbies, by allowing them to easily calculate and save mileage records, expenses, and net-paying reports. It is an all-in-one solution that empowers workers and owners to stay in control of their finances, making tax time a breeze.\n\nWith WageFigurer, users can easily categorize expenses and mileage/kilometer (KM) data,...  read more? (click on 'View Project')",
             "technologies": [
-              "React Native",
-              "SQLite",
-              "NPM"
+                "React Native",
+                "SQLite",
+                "NPM",
+                "Type Script"
             ],
             "images": [
-              "/img/projects/wf/Screenshot_20240211_154950_WageFigurer.jpg",
-              "/img/projects/wf/Screenshot_20240211_155017_WageFigurer.jpg",
-              "/img/projects/wf/Screenshot_20240211_155112_WageFigurer.jpg",
-              "/img/projects/wf/Screenshot_20240211_155126_WageFigurer.jpg",
-              "/img/projects/wf/Screenshot_20240211_155631_WageFigurer.jpg",
-              "/img/projects/wf/Screenshot_20240211_155720_WageFigurer.jpg"
+                {
+                    "image_src": "/img/projects/wf/Screenshot_20240211_154950_WageFigurer.jpg",
+                    "width": "20%",
+                    "height": "45%"
+                },
+                {
+                    "image_src": "/img/projects/wf/Screenshot_20240211_155017_WageFigurer.jpg",
+                    "width": "15%",
+                    "height": "45%"
+                },
+                {
+                    "image_src": "/img/projects/wf/Screenshot_20240211_155112_WageFigurer.jpg",
+                    "width": "15%",
+                    "height": "45%"
+                },
+                {
+                    "image_src": "/img/projects/wf/Screenshot_20240211_155126_WageFigurer.jpg",
+                    "width": "15%",
+                    "height": "45%"
+                },
+                {
+                    "image_src": "/img/projects/wf/Screenshot_20240211_155631_WageFigurer.jpg",
+                    "width": "15%",
+                    "height": "45%"
+                },
+                {
+                    "image_src": "/img/projects/wf/Screenshot_20240211_155720_WageFigurer.jpg",
+                    "width": "15%",
+                    "height": "45%"
+                }
             ]
-          },          
+        },
         {
             "subtitle": "WEBSITE DEVELOPMENT",
             "title": "BOUTIQUE.COM (ECOMMERCE)",
@@ -56,7 +105,7 @@
                 "Expo",
                 "MongoDb",
                 "NPM",
-                "Google API's"                
+                "Google API's"
             ]
         },
         {

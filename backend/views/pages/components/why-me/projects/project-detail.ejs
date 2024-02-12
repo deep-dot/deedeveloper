@@ -54,7 +54,7 @@
             html += `<div class="contents"><p>${contentWithLineBreaks}</p></div>`
             html += `<div class="image-container">`
                 moreContent.images.forEach( image => {
-                    html += `<img class="img" src=${image.image_src} alt="Project_Image">`
+                    html += `<img class="img" src="${image.image_src}" width="${image.width}" height="${image.height}" style="box-shadow: ${image['box-shadow']}; top: ${image['top']}; left: ${image['left']}}" alt="Project_Image">`;
                 });        
             html += `</div>`
             html += `</div>`

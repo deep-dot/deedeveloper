@@ -4,7 +4,7 @@
             "title": "DEEDEVELOPER.COM",
             "reading_time": "June 19, 2022 . 4 minutes to read",
             "technologies": [
-                "JQuery",                
+                "JQuery",
                 "Java Script",
                 "Express",
                 "EJS",
@@ -52,6 +52,18 @@
                         }
                     ],
                     "content": "<b>Blog:</b> A dynamic blog section featuring insightful articles on various tech-related topics. The blog supports all CRUD (Create, Read, Update, Delete) operations, providing an interactive platform for the developer to share knowledge and engage with the audience."
+                },
+                {
+                    "id": "Code",
+                    "images": [
+                        {
+                            "image_src": " ",
+                            "width":"0",
+                            "height":"0",
+                            "box-shadow": "none"
+                        }
+                    ],
+                    "content": "<i class='fab fa-github'></i> <a href=\"https://github.com/deep-dot/deedeveloper\"> Github </a>"                    
                 }
             ],
             "page_contents": [
@@ -59,7 +71,8 @@
                 "Introduction",
                 "Login_functionality",
                 "Testimonial",
-                "Blog"
+                "Blog",
+                "Code"
             ]
         },
         {
@@ -68,43 +81,88 @@
             "technologies": [
                 "React Native",
                 "SQLite",
-                "NPM"
+                "NPM",
+                "Type Script"
             ],
             "more_contents": [
                 {
-                    "id": "section1",
+                    "id": "Introduction",
                     "images": [
-                        {"image_src": "/img/projects/wf/Screenshot_20240211_155017_WageFigurer.jpg"}
-                        ],
-                    "content": "WageFigurer is a powerful mobile application designed to streamline the financial management of cabbies, by allowing them to easily calculate and save mileage records, expenses, and net-paying reports. It is an all-in-one solution that empowers workers and owners to stay in control of their finances, making tax time a breeze.\n\nWith WageFigurer, users can easily categorize expenses and mileage/kilometer (KM) data, making it simple to generate accurate and detailed reports on the go. The app's user-friendly interface allows users to view, update, delete, and generate reports by selecting specific dates, ensuring that financial data is always up-to-date and organized.\n\nWageFigurer's customizable features allow users to add or delete registration numbers of vehicles, update company and driver's commission rates, lifting fees, and government levies according to their specific requirements. Once the report is generated, users can either print it or save it as a PDF file in their phone's memory, making it easy to share with other stakeholders.\n\nThe app does the math for users, so they can focus on running their business. With the option to generate reports weekly, monthly, quarterly, or annually, users can stay on top of their finances and make informed decisions.\n\nWageFigurer ensures that user data is stored in user's own phone storage, and is exclusively designed for operators and drivers. Pricing may vary by location, and subscriptions are charged to users' credit or debit cards through their accounts. The app's subscription automatically renews unless cancelled at least 24 hours before the end of the current period, and users can manage their subscriptions in their account settings after purchase."
+                        {
+                            "image_src": "/img/projects/wf/Screenshot_20240211_154950_WageFigurer.jpg",
+                            "width": "auto",
+                            "height": "70%"
+                        }
+                    ],
+                    "content": "<b>Intro:</b>\nWageFigurer is a mobile application designed to streamline the financial management of cabbies, by allowing them to easily calculate and save mileage records, expenses, and net-paying reports. It is an all-in-one solution that empowers workers and owners to stay in control of their finances, making tax time a breeze.\nWith WageFigurer, users can easily categorize expenses and mileage/kilometer (KM) data, making it simple to generate accurate and detailed reports on the go."
                 },
                 {
-                    "id": "section3",
+                    "id": "Features",
                     "images": [
-                    {"image_src": "/img/projects/wf/Screenshot_20240211_155112_WageFigurer.jpg"}
+                        {
+                            "image_src": "/img/projects/wf/Screenshot_20240211_155112_WageFigurer.jpg",
+                            "width": "auto",
+                            "height": "70%"
+                        },
+                        {
+                            "image_src": "/img/projects/wf/Screenshot_20240211_155631_WageFigurer.jpg",
+                            "top":"50%",
+                            "height": "50%"
+                        },
+                       
+                        {
+                            "image_src": "/img/projects/wf/Screenshot_20240211_155126_WageFigurer.jpg"
+                        }
                     ],
-                    "content": " "
+                    "content": "<b>Features:</b> \n The app's user-friendly interface allows users to view, update, delete, and generate reports by selecting specific dates, ensuring that financial data is always up-to-date and organized.\nWageFigurer's customizable features allow users to add or delete registration numbers of vehicles, update company and driver's commission rates, lifting fees, and government levies according to their specific requirements.\n\n"
                 },
                 {
-                    "id": "section4",
+                    "id": "Testimonial",
                     "images": [
-                    {"image_src": "/img/projects/wf/Screenshot_20240211_155631_WageFigurer.jpg"}
+                        {
+                            "image_src": " "
+                        }
                     ],
-                    "content": " "
+                    "content": "<i>Feedback System:</i> An interactive feedback system allows clients to provide reviews and testimonials, offering valuable insights and validation of the developer's professional capabilities."
+                },
+                {
+                    "id": " ",
+                    "images": [
+                        {
+                            "image_src": "/img/projects/wf/Screenshot_20240211_155720_WageFigurer.jpg",
+                            "width": "15%",
+                            "height": "100%"
+                        }
+                    ],
+                    "content": "<i>Create reports:</i> Once the report is generated, users can either print it or save it as a PDF file in their phone's memory, making it easy to share with other stakeholders.\nThe app does the math for users, so they can focus on running their business. With the option to generate reports weekly, monthly, quarterly, or annually, users can stay on top of their finances and make informed decisions.\nWageFigurer ensures that user data is stored in user's own phone storage, and is exclusively designed for operators and drivers."
+                },
+                {
+                    "id": " ",
+                    "images": [
+                        {
+                            "image_src": " "
+                        }
+                    ],
+                    "content": "<i>Subscription:</i> Pricing may vary by location, and subscriptions are charged to users' credit or debit cards through their accounts. The app's subscription automatically renews unless cancelled at least 24 hours before the end of the current period, and users can manage their subscriptions in their account settings after purchase."
+                },
+                {
+                    "id": "Code",
+                    "images": [
+                        {
+                            "image_src": " ",
+                            "width":"0",
+                            "height":"0",
+                            "box-shadow": "none"
+                        }
+                    ],
+                    "content": "<i class='fab fa-github'></i>  <a href=\"https://github.com/deep-dot/WFTypeScript\"> Github </a> \n\n <i class='fab fa-youtube'></i> <a href=\"https://youtu.be/eOmY3OoWxOI\"> Youtube</a>"
                 }
             ],
-            "page_contents": {
-                "sections": [
-                    {
-                        "id": "section1",
-                        "title": "Wagefigurer (Mobile App)"
-                    },
-                    {
-                        "id": "section4",
-                        "title": "section2"
-                    }
-                ]
-            }
+            "page_contents": [
+                "Introduction",
+                "Features",
+                "Code"
+            ]
         },
         {
             "title": "BOUTIQUE.COM (ECOMMERCE)",
