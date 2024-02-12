@@ -33,6 +33,9 @@
         </div>
     </div>
     <%- include('../../writer-detail.ejs') -%>
+<!-- <iframe src="https://docs.google.com/gview?url=https://res.cloudinary.com/dedqid79f/raw/upload/v1707711607/deedeveloper/1104_major_assignement_report_hwcn3h.docx&embedded=true" width="auto" height="500"></iframe> -->
+
+
 </div>
 
 <script>
@@ -52,11 +55,20 @@
             html += `<div class="more-contents" id="${moreContent.id}">`
             const contentWithLineBreaks = moreContent.content.replace(/\n/g, '<br>');
             html += `<div class="contents"><p>${contentWithLineBreaks}</p></div>`
+            // html += `<div class="image-container">`
+            //     moreContent.images.forEach( image => {
+            //         html += `<img class="img" src="${image.image_src}" width="${image.width}" height="${image.height}" style="box-shadow: ${image['box-shadow']}; top: ${image['top']}; left: ${image['left']}}" alt="Project_Image">`;
+            //     });        
+            // html += `</div>` 
+            if (moreContent.images.length > 0 && moreContent.images[0].image_src.trim() !== "") {
             html += `<div class="image-container">`
-                moreContent.images.forEach( image => {
-                    html += `<img class="img" src="${image.image_src}" width="${image.width}" height="${image.height}" style="box-shadow: ${image['box-shadow']}; top: ${image['top']}; left: ${image['left']}}" alt="Project_Image">`;
-                });        
-            html += `</div>`
+            moreContent.images.forEach(image => {
+                html += `<img class="img" src="${image.image_src}" width="${image.width}" height="${image.height}" style="box-shadow: ${image['box-shadow']}; top: ${image['top']}; left: ${image['left']}}" alt="Project_Image">`;
+            });        
+            html += `</div>` 
+        } else {
+            html = html.replace('<div class="contents">', '<div class="contents" style="width: 100%;">');
+        }                      
             html += `</div>`
         });
         htmlRender.push(html);

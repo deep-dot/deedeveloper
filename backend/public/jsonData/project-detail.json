@@ -146,6 +146,19 @@
                     "content": "<i>Subscription:</i> Pricing may vary by location, and subscriptions are charged to users' credit or debit cards through their accounts. The app's subscription automatically renews unless cancelled at least 24 hours before the end of the current period, and users can manage their subscriptions in their account settings after purchase."
                 },
                 {
+                    "id": "Youtube Video",
+                    "images":[
+                        {
+                            "image_src": " ",
+                            "width":"0",
+                            "height":"0",
+                            "box-shadow": "none"
+                        }
+                    ],
+                   
+                    "content": "<iframe src=\"https://www.youtube.com/embed/eOmY3OoWxOI\" width=\"100%\" height=\"500\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+                },
+                {
                     "id": "Code",
                     "images": [
                         {
@@ -155,13 +168,90 @@
                             "box-shadow": "none"
                         }
                     ],
-                    "content": "<i class='fab fa-github'></i>  <a href=\"https://github.com/deep-dot/WFTypeScript\"> Github </a> \n\n <i class='fab fa-youtube'></i> <a href=\"https://youtu.be/eOmY3OoWxOI\"> Youtube</a>"
+                    "content": "<i class='fab fa-github'></i>  <a href=\"https://github.com/deep-dot/WFTypeScript\"> Visit my Github Repo </a>"
                 }
             ],
             "page_contents": [
                 "Introduction",
                 "Features",
+                "Youtube Video",
                 "Code"
+            ]
+        },
+        {
+            "title": "DESIGN & IMPLEMENTATION",
+            "reading_time": "Jan 5, 2023 . 30 minutes to read",
+            "technologies": [
+               ""
+            ],
+            "more_contents": [
+                {
+                    "id": "Detail",
+                    "images":[
+                        {
+                            "image_src": " ",
+                            "width":"0",
+                            "height":"0",
+                            "box-shadow": "none"
+                        }
+                    ] ,
+                    "content": "<iframe src=\"https://docs.google.com/gview?url=https://res.cloudinary.com/dedqid79f/raw/upload/v1707733672/deedeveloper/awsEnvironmentDesignAndImplementation.docx&embedded=true\" width=\"100%\" height=\"1000px\"></iframe>"
+                },
+                {
+                    "id": "Youtube Video",
+                    "images":[
+                        {
+                            "image_src": " ",
+                            "width":"0",
+                            "height":"0",
+                            "box-shadow": "none"
+                        }
+                    ],
+                   
+                    "content": "<iframe src=\"https://www.youtube.com/embed/pjUR1l61Pwo\" width=\"100%\" height=\"500\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+                }
+            ],
+            "page_contents": [
+                "Detail",
+                "Youtube Video"
+            ]
+        },
+        {
+            "title": "Disrupting TV Industry with Brain Computer Interface ",
+            "reading_time": "March 18, 2023 . 15 minutes to read",
+            "technologies": [
+               ""
+            ],
+            "more_contents": [
+                {
+                    "id": "Detail",
+                    "images":[
+                        {
+                            "image_src": " ",
+                            "width":"0",
+                            "height":"0",
+                            "box-shadow": "none"
+                        }
+                    ] ,
+                    "content": "<iframe src=\"https://docs.google.com/gview?url=https://res.cloudinary.com/dedqid79f/raw/upload/v1707736822/deedeveloper/Disrupting_the_Television_Industry_with_Brain-Computer_Interfaces_uiq5bk.docx&embedded=true\" width=\"100%\" height=\"1000px\"></iframe>"
+                },
+                {
+                    "id": "Youtube Video",
+                    "images":[
+                        {
+                            "image_src": " ",
+                            "width":"0",
+                            "height":"0",
+                            "box-shadow": "none"
+                        }
+                    ],
+                   
+                    "content": "<iframe src=\"https://www.youtube.com/embed/dALKUemj-sM\" width=\"100%\" height=\"500\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+                }
+            ],
+            "page_contents": [
+                "Detail",
+                "Youtube Video"
             ]
         },
         {

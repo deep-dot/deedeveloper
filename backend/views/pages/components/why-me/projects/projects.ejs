@@ -79,7 +79,7 @@
       html += `<div class='project-img'>`
       if (detail.images && Array.isArray(detail.images)) {
         detail.images.forEach(image => {
-          html += `<img src="${image.image_src}" width="${image.width}" height="${image.height}" alt="">`
+          html += `<img src="${image.image_src}" width="${image.width}" height="${image.height}" style="position: ${image['position']}" alt="">`
         });
       }
       html += `</div>`
