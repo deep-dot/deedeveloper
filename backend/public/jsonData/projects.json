@@ -122,6 +122,38 @@
             ]
         },
         {
+            "subtitle": "AGILE",
+            "title": "AGILE PROJECT MANAGEMENT",
+            "content": "I got practical skills and experience with running Agile projects, and understands how Agile can be put to use to manage everything from product development to project management, across any industry. Agile Project Management has been developed in partnership with ThoughtWorks.",
+            "technologies": [
+                " "
+            ],
+            "images":[
+                {
+                    "image_src":"/img/projects/agile/agileBadge.png",
+                    "width": "100%",
+                    "height": "100%",
+                    "position": "relative"
+                }
+            ]
+        },
+        {
+            "subtitle": "CYBER SECURITY",
+            "title": "CYBER SECURITY RISK AND STRATEGY",
+            "content": "This credential approves my understanding of threats and risks posed by cyber attacks, and making me know how to create an effective cybersecurity strategy – one that takes into account legal and regulatory requirements, and lets the business promptly respond to incidents, limit damage from attacks and quickly recover any information compromised by hacks. Cybersecurity Risk and Strategy has been developed in partnership with NAB and Palo Alto Networks.",
+            "technologies": [
+                " "
+            ],
+            "images":[
+                {
+                    "image_src":"/img/projects/cyberSecurity/CSbadge.png",
+                    "width": "100%",
+                    "height": "100%",
+                    "position": "relative"
+                }
+            ]
+        },
+        {
             "subtitle": "WEBSITE DEVELOPMENT",
             "title": "BOUTIQUE.COM (ECOMMERCE)",
             "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",

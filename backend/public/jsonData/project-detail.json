@@ -255,6 +255,82 @@
             ]
         },
         {
+            "title": "AGILE PROJECT MANAGEMENT",
+            "reading_time": "April 18, 2023 . 1 minutes to read",
+            "technologies": [
+               ""
+            ],
+            "more_contents": [
+                {
+                    "id": "Detail",
+                    "images":[
+                        {
+                            "image_src": " ",
+                            "width":"0",
+                            "height":"0",
+                            "box-shadow": "none"
+                        }
+                    ] ,
+                    "content": "<img src=\"/img/projects/agile/agileTranscript.png\" width=\"100%\" alt=\"Descriptive text for the image\">"
+                },
+                {
+                    "id": "Youtube Video",
+                    "images":[
+                        {
+                            "image_src": " ",
+                            "width":"0",
+                            "height":"0",
+                            "box-shadow": "none"
+                        }
+                    ],
+                   
+                    "content": "<iframe src=\"https://www.youtube.com/embed/jCkn6HXtRXo\" width=\"100%\" height=\"500\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+                }
+            ],
+            "page_contents": [
+                "Detail",
+                "Youtube Video"
+            ]
+        },
+        {
+            "title": "CYBER SECURITY RISK AND STRATEGY",
+            "reading_time": "Jan 18, 2023 . 1 minutes to read",
+            "technologies": [
+               ""
+            ],
+            "more_contents": [
+                {
+                    "id": "Detail",
+                    "images":[
+                        {
+                            "image_src": " ",
+                            "width":"0",
+                            "height":"0",
+                            "box-shadow": "none"
+                        }
+                    ] ,
+                    "content": "<img src=\"/img/projects/cyberSecurity/CStranscript.png\" width=\"100%\" alt=\"Descriptive text for the image\">"
+                },
+                {
+                    "id": "Youtube Video",
+                    "images":[
+                        {
+                            "image_src": " ",
+                            "width":"0",
+                            "height":"0",
+                            "box-shadow": "none"
+                        }
+                    ],
+                   
+                    "content": "<iframe src=\"https://www.youtube.com/embed/KZm0qWm9-68\" width=\"100%\" height=\"500\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+                }
+            ],
+            "page_contents": [
+                "Detail",
+                "Youtube Video"
+            ]
+        },
+        {
             "title": "BOUTIQUE.COM (ECOMMERCE)",
             "reading_time": "Jan 5, 2021 . 5 minutes to read",
             "technologies": [
