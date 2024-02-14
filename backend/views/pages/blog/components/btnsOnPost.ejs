@@ -16,6 +16,7 @@
         border: none;
     }
 
+    .go-back,
     .like,
     .unlike,
     .fa-edit,
@@ -26,6 +27,10 @@
         background-color: transparent;
     }
 
+    .showPost .btns .button-container .go-back {
+    color: #555; 
+    }
+    
     .showPost .btns .button-container .like {
         color: green;
     }
@@ -77,6 +82,9 @@
 
 <div class="btns">
     <div class="button-container">
+        <a onclick="window.history.back();" class="go-back">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </a>
         <% if(userExist) { %>
             <a class="" href="/post/<%= blogpost._id %>/edit">
                 <i class="fa fa-edit" aria-hidden="true"></i>

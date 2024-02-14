@@ -139,7 +139,7 @@ function showMoreLess(
       cards[i].style.display = "none";
     }
   }
-  console.log("see more button===", numOfReviews, numOfVisibleCards);
+  //console.log("see more button===", numOfReviews, numOfVisibleCards);
   if (numOfReviews >= numOfVisibleCards) {
     seeMoreButton.textContent = showAllCards ? "See less" : "See more";
     seeMoreButton.style.display = "block";
@@ -160,112 +160,4 @@ function seeNumOfCardsLessOrMore(numOfReviews) {
   showMoreLess(numOfReviews, numOfVisibleCards, showAllCards, seeMoreButton);
 }
 
-
-
-// $(document).ready(function() {
-//   // Initial Declarations
-//   let dark = false;
-//   let currentLocation = window.location.pathname;
-  
-//   // Smooth Scroll
-//   $('.nav li a[href^="/#"]').click(function(e) {
-//     e.preventDefault();
-//     let targetId = $(this).attr('href').substring(1);
-//     if ($('#' + targetId).length > 0) {
-//       $('#' + targetId).get(0).scrollIntoView({
-//         behavior: "smooth",
-//         block: "start",
-//       });
-//     }
-//   });
-  
-//   // Dark and Light mode
-//   $(".toggle-btn").click(function() {
-//     dark = !dark;
-//     if (dark) {
-//       $(".main-wrapper").removeClass("light").addClass("dark");
-//     } else {
-//       $(".main-wrapper").removeClass("dark").addClass("light");
-//     }
-//   });
-
-//   // Menu
-//   $(".hamburger-menu").click(function() {
-//     $(".main-wrapper").toggleClass("active");
-//   });
-
-//   // Highlight menu button
-//   $(".nav_list > li > a").each(function() {
-//     if ($(this).attr("href") === currentLocation) {
-//       $(this).css("color", "tomato");
-//     }
-//   });
-
-//   // Scroll animation
-//   let observer = new IntersectionObserver((entries) => {
-//     entries.forEach((entry) => {
-//       if (entry.isIntersecting) {
-//         $(entry.target).addClass("show");
-//       } else {
-//         $(entry.target).removeClass("show");
-//       }
-//     });
-//   });
-
-//   $(".hidden").each(function() {
-//     observer.observe(this);
-//   });
-
-//   // Blog menu button
-//   $(".blog").click(function() {
-//     $(this).toggleClass("active");
-//     if ($(this).hasClass("active")) {
-//       $(".blog-menu").show();
-//     } else {
-//       $(".blog-menu").hide();
-//     }
-//   });
-
-//   // Hide navbar while scrolling down
-//   let lastScroll = 0;
-//   $(window).scroll(function() {
-//     let currentScroll = $(window).scrollTop();
-//     if (currentScroll < lastScroll) {
-//       $("header").removeClass("hidden");
-//     } else {
-//       $("header").addClass("hidden");
-//     }
-//     lastScroll = currentScroll;
-//   });
-
-//   // Show More/Less
-//   function showMoreLess(numOfReviews, numOfVisibleCards, showAllCards, seeMoreButton) {
-//     $(".card-container").each(function(index) {
-//       if (index < numOfVisibleCards) {
-//         $(this).show().css("margin", "10px");
-//       } else {
-//         $(this).hide();
-//       }
-//     });
-//     if (numOfReviews >= numOfVisibleCards) {
-//       $(seeMoreButton).text(showAllCards ? "See less" : "See more").show();
-//     } else {
-//       $(seeMoreButton).hide();
-//     }
-//   }
-
-//   function seeNumOfCardsLessOrMore(numOfReviews) {
-//     let showAllCards = false;
-//     let numOfVisibleCards = 2;
-//     let seeMoreButton = $("#see-more-button");
-//     $(seeMoreButton).click(function() {
-//       showAllCards = !showAllCards;
-//       numOfVisibleCards = showAllCards ? numOfReviews : 2;
-//       showMoreLess(numOfReviews, numOfVisibleCards, showAllCards, seeMoreButton);
-//     });
-//     showMoreLess(numOfReviews, numOfVisibleCards, showAllCards, seeMoreButton);
-//   }
-// });
-
-// seeNumOfCardsLessOrMore();
 

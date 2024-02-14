@@ -1,4 +1,4 @@
-.edit-post {
+/* .edit-post {
     margin: 20px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -51,4 +51,60 @@
   .edit-post button[type="submit"]:hover {
     background-color: #0069d9;
   }
-  
+   */
+
+.edit-post {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+}
+.edit-post p {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+input[type="text"], textarea, input[type="file"] {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+}
+img {
+    display: block;
+    margin: 10px auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+.button-container {
+    text-align: center;
+    padding: 20px;
+}
+.button-container button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+.button-container button:hover {
+    opacity: 0.9;
+}
+.button-container button:nth-child(1) {
+    background-color: #4CAF50;
+    color: white;
+}
+.button-container button:nth-child(2) {
+    background-color: #f44336;
+    color: white;
+    margin-right: 0;
+}

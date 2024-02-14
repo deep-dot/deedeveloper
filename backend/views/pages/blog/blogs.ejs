@@ -44,23 +44,49 @@
               </div>
               <% } %>
           </div>
-          <a id="see-more-button"></a>
+          <!-- <a id="see-more-button"></a> -->
+          <button id="see-more-button">Show More</button>
 </div>
 
-<script>
-  // document.addEventListener('DOMContentLoaded', () => {
-  //   const blogsLengthInput = document.querySelector('input[blogs-length]');
-  //   const blogsLength = parseInt(blogsLengthInput.getAttribute('blogs-length'));
-  //   var numOfBlogs = 0;
-  //   if (blogsLength > 0) {
-  //     numOfBlogs = blogsLength;
-  //   }
-  //   seeNumOfCardsLessOrMore(numOfBlogs);
-  // });
-
+<!-- <script>
   $(document).ready(function() {
     const numOfBlogs = parseInt($('input[blogs-length]').attr('blogs-length')) > 0 ? parseInt($('input[blogs-length]').attr('blogs-length')) : 0;
     seeNumOfCardsLessOrMore(numOfBlogs);
 });
-
-</script>
+</script> -->
+<script>
+  $(document).ready(function() {
+    const cards = document.querySelectorAll('.card-container');
+    const initialLimit = 1; // Initial number of cards to show
+    let currentLimit = initialLimit; // Current limit, starts at initial limit
+    const seeMoreButton = document.querySelector("#see-more-button");
+    const totalCards = cards.length;
+  
+    // Function to update card visibility based on the current limit
+    function updateCardsVisibility() {
+      cards.forEach((card, index) => {
+        card.style.display = index < currentLimit ? '' : 'none';
+      });
+    }
+  
+    // Initially update cards visibility and toggle the see more button
+    updateCardsVisibility();
+    seeMoreButton.style.display = totalCards > initialLimit ? 'block' : 'none';
+  
+    seeMoreButton.addEventListener("click", function() {
+      if (this.textContent.includes("More")) {
+        // Show more cards: set current limit to total cards or a specific increment
+        currentLimit = totalCards; // or currentLimit += 3; for a fixed increment
+        this.textContent = "Show Less";
+      } else {
+        // Show less: reset to initial limit
+        currentLimit = initialLimit;
+        this.textContent = "Show More";
+      }
+  
+      // Update visibility of cards based on the current limit
+      updateCardsVisibility();
+    });
+  });
+  </script>
+  

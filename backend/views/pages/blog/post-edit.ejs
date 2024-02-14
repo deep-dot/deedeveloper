@@ -1,11 +1,15 @@
+
 <div class="edit-post hidden">
-    <p>Edit post</p>
+    <p>Edit Post</p>
     <form method="POST" action="/post/<%- blogpost._id %>?_method=PUT" enctype="multipart/form-data">
-        <input type="text" name="title" id="title" value="<%- blogpost.title %>" />
-        <textarea id="summernote" type="text" title="post" name="post"><%- blogpost.post %></textarea>
-        <img src="<%- blogpost.image %>" alt="me" />
-        <input type="file" placeholder="Image" id="image" name="image" />
-        <button type="submit">Update</button>
+        <input type="text" name="title" id="title" value="<%- blogpost.title %>" placeholder="Title" />
+        <textarea id="summernote" name="post"><%- blogpost.post %></textarea>
+        <img src="<%- blogpost.image %>" alt="Post image" />
+        <input type="file" id="image" name="image" placeholder="Image" />
+        <div class="button-container">
+            <button type="submit">Update</button>
+            <button type="button" onclick="window.history.back();">Cancel</button>
+        </div>        
     </form>
 </div>
 
@@ -15,7 +19,7 @@
     $(document).ready(function () {
         $('#summernote').summernote({
             height: 200, 
-        width: '100%',
+            width: '100%',
         });
     });
 </script>

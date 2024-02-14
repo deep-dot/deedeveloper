@@ -139,8 +139,60 @@
                             <i class="fa fa-trash"></i>
                         </button>
                     </form>
-                    <% } %>
+                    <% } %>                
             </div>
         </div>
         <% } %>
+        <% if(blogpost.comments.length > 3) { %>
+            <button id="showMoreComments">Show More</button>
+            <button id="showLessComments" style="display: none;">Show Less</button>
+        <% } %>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const comments = document.querySelectorAll('.commentsOnPost .card');
+        const showMoreBtn = document.getElementById('showMoreComments');
+        const showLessBtn = document.getElementById('showLessComments');
+        let increment = 2; // Number of comments to show/hide per click
+        let visibleCount = 3; // Initially visible comments
+    
+        // Initially show the first set of comments
+        comments.forEach((comment, index) => {
+            comment.style.display = index < visibleCount ? '' : 'none';
+        });
+    
+        // Update the visibility of the "Show Less" button
+        function updateShowLessButton() {
+            showLessBtn.style.display = visibleCount > 3 ? '' : 'none';
+        }
+    
+        // Show More functionality
+        showMoreBtn.addEventListener('click', function () {
+            visibleCount = Math.min(visibleCount + increment, comments.length);
+            comments.forEach((comment, index) => {
+                comment.style.display = index < visibleCount ? '' : 'none';
+            });
+            if (visibleCount === comments.length) {
+                showMoreBtn.style.display = 'none';
+            }
+            updateShowLessButton();
+        });
+    
+        // Show Less functionality
+        showLessBtn.addEventListener('click', function () {
+            visibleCount = Math.max(visibleCount - increment, 3);
+            comments.forEach((comment, index) => {
+                comment.style.display = index < visibleCount ? '' : 'none';
+            });
+            if (visibleCount <= 3) {
+                showLessBtn.style.display = 'none';
+            }
+            showMoreBtn.style.display = '';
+        });
+    
+        // Initially update the "Show Less" button visibility
+        updateShowLessButton();
+    });
+    </script>
+    
