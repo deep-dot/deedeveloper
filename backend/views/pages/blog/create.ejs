@@ -16,8 +16,11 @@
                             <input type="text" placeholder="Title" name="title" id="title" required />
                             <textarea id="summernote" type="text" name="post" required></textarea>
                             <input type="file" placeholder="Image" id="image" name="image" />
-                            <br>
-                            <button id="submitButton" type="submit">Send</button>
+                            <br>                            
+                            <div class="button-container">
+                                <button id="submitButton" type="submit">Send</button>
+                                <button type="button" style="background-color: tomato;" onclick="window.location.href='/blogs'">Cancel</button>
+                            </div>  
                         </form>
     </div>
 </div>

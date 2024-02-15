@@ -1,145 +1,111 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     fetchJsonDataAndRenderReviews();
 });
 
 function fetchJsonDataAndRenderReviews() {
-    axios.get('/getJsonData').then(res => {
-        //console.log('get reviews ===', res.data.reviews);
-        const reviews = res.data.reviews;
-        const userid = res.data.userid;
-        const reviewRender = [];
-        let likers = 0, canEdit = false, isLiked = false;
-        reviews.forEach((review, index) => {
-            var className = "";
-            var canEditClass = "";
-
-            likers = review.likers;
-            for (var j = 0; j < likers.length; j++) {
-                if (review.likers[j].userid == userid) {
-                    isLiked = true;
-                    break;
-                }
-            }
-            if (JSON.stringify(review.userid) === JSON.stringify(userid)) {
-                canEdit = true;
-            }
-
-
-            if (isLiked) {
-                className = "like";
-            } else {
-                className = "unlike";
-            }
-
-            var html = ''
-            html += '<div class="card-container">' //for see more and see less button
-            html += '<div class="card">'
-
-            html += '<div class="cardRow">'
-            html += `<img src=${review.image} alt=" " />`
-            html += `<p>${review.username}</p>`
-            html += '<ul class="stars">'
-            for (var k = 0; k < 5; k++) {
-                // console.log('stars in home.ejs', review.stars);
-                if (k < review.stars) {
-                    html += `<i class="fa fa-star" style='color:orange; margin:5px; font-size:14px'></i>`
-                } else {
-                    html += `<i class="fa fa-star" style='color:grey; margin:5px; font-size:14px'></i>`
-                }
-            }
-            html += '</ul>'
-            html += `<p>${review.createdAt.slice(0, 10)}</p>`
-            html += '</div>'
-
-            html += '<div class="contents">'
-            html += `<blockquote> ${review.review}</blockquote>`
-            html += '<a class="morelessmore"></a>'
-            html += '</div>'
-
-            html += '<div class="cardbtns">'
-
-            html += '<div id="reviewComment">'
-            html += `<a href="/review/${review._id}/comment" style="float:right;" class="btnn">`
-            html += '<i class="fa fa-comment"></i>'
-            if(review.comments){
-            html += `<span style="margin-left:4px">${review.comments.length}</span>`
-            }
-            html += '</a>'
-            html += '</div>'
-
-            html += '<div>';
-            html += `<span class="${className}" onclick="toggleLikeReview(this)" id="${review._id}">`;
-            html += '<i class="fa fa-thumbs-up"></i>';
-            // html += `<ins style="text-decoration: none; margin-left:4px">${review.likers.length}</ins>`;
-            html += `<ins style="text-decoration: none; margin-left:4px">11</ins>`;
-            html += '</span>';
-            html += '</div>';
-
-            if (canEdit) {
-                html += '<div>'
-                html += `<span class="btnn editButton" onclick="showModal(this)" reviewContent="${review.review}" reviewId="${review._id}" reviewStars="${review.stars}" data-toggle="modal" data-target="#ReviewEditModalCenter">`
-                html += '<i class="far fa-edit"></i>'
-                html += '</span>'
-                html += '</div>'
-
-                html += '<div>'
-                html += `<span class="btnn" onclick="deleteReview(this)"  id="${review._id}">`
-                html += '<i class="fa fa-trash"></i>'
-                html += '</span>'
-                html += '</div>'
-            }
-            html += '</div>'
-            html += '</div>'
-            html += '</div>'
-
-            reviewRender.push(html);
+    axios.get('/getJsonData')
+        .then(res => {
+            const { reviews, userid } = res.data;
+            let reviewRender = reviews.map((review, index) => renderReview(review, userid, index));
+            document.getElementById('reviewCard').innerHTML = reviewRender.join('');
+            attachSeeMoreCommentsListeners();
+        })
+        .catch(error => {
+            console.error('Error fetching reviews:', error);
         });
-        $('#reviewCard').html(reviewRender);
+}
 
-        var numOfReviews = 0;
-        if (reviews) {
-            numOfReviews = reviews.length;
-        }
-        seeNumOfCardsLessOrMore(numOfReviews);
-        morelessmore();
+function renderReview(review, userid, reviewIndex) {
+    let isLiked = review.likers.some(liker => liker.userid === userid);
+    let canEdit = JSON.stringify(review.userid) === JSON.stringify(userid);
+    let commentsHtml = renderCommentsHtml(review.comments, reviewIndex);
+    
+    return `
+    <div class="card-container">
+        <div class="card">
+            <div class="cardRow">
+                <img src="${review.image}" alt=" ">
+                <p>${review.username}</p>
+                <ul class="stars">${renderStars(review.stars)}</ul>
+                <p>${new Date(review.createdAt).toLocaleDateString()}</p>
+            </div>
+            <div class="contents">
+                <blockquote>${review.review}</blockquote>
+            </div>
+            <div class="cardbtns">
+                ${renderReviewButtons(review, isLiked, canEdit)}
+            </div>
+        </div>
+        ${commentsHtml}
+    </div>`;
+}
 
-    }).catch(error => {
-        console.log('Error fetching number of reviews:', error);
+function renderStars(stars) {
+    let starHtml = '';
+    for (let k = 0; k < 5; k++) {
+        starHtml += `<i class="fa fa-star" style='color:${k < stars ? 'orange' : 'grey'}; margin:5px; font-size:14px'></i>`;
+    }
+    return starHtml;
+}
+
+function renderReviewButtons(review, isLiked, canEdit) {
+    return `
+    <a href="/review/${review._id}/comment" style="float:right;" class="btnn">
+        <i class="fa fa-comment"></i><span style="margin-left:4px">${review.comments.length}</span>
+    </a>
+    <span class="${isLiked ? 'like' : 'unlike'}" onclick="toggleLikeReview(this)" id="${review._id}">
+        <i class="fa fa-thumbs-up"></i><ins style="text-decoration: none; margin-left:4px">${review.likers.length}</ins>
+    </span>
+    ${canEdit ? `
+    <span class="btnn editButton" onclick="showModal(this)" reviewContent="${review.review}" reviewId="${review._id}" reviewStars="${review.stars}" data-toggle="modal" data-target="#ReviewEditModalCenter">
+        <i class="far fa-edit"></i>
+    </span>
+    <span class="btnn" onclick="deleteReview(this)" id="${review._id}">
+        <i class="fa fa-trash"></i>
+    </span>` : ''}`;
+}
+
+function attachSeeMoreCommentsListeners() {
+    document.querySelectorAll('.see-more-comments').forEach(button => {
+        const reviewIndex = button.getAttribute('data-review-index');
+        button.addEventListener('click', function() {
+            toggleCommentsDisplay(reviewIndex, button);
+        });
     });
 }
 
-function morelessmore() {
-    const moreless = document.querySelectorAll(".morelessmore");
-    const maxHeight = 20; //this hieght is equal to max-height mentioned in contents class in css
-    for (let i = 0; i < moreless.length; i++) {
-        const content = moreless[i].parentNode;
-        const card = moreless[i].closest('.card');
-        // Clone the content element because we want to see contents heights of hidden reviews as well 
-        const contentClone = content.cloneNode(true);
-        // Set the clone's styles to match the original
-        contentClone.style.maxHeight = 'none';
-        contentClone.style.visibility = 'visible';
-        contentClone.style.position = 'absolute';
-        contentClone.style.width = getComputedStyle(content).width;
-        // Add the clone to the DOM
-        document.body.appendChild(contentClone);
-        // Calculate the actual height
-        const actualHeight = contentClone.offsetHeight;
-        //console.log('contents actual height out click==', actualHeight);
-        // Remove the cloned element from the DOM
-        document.body.removeChild(contentClone);
-        // If the content's actual height is less than maxHeight, hide the button
-        if (actualHeight < maxHeight) {
-            moreless[i].style.display = 'none';
-        }
-       // console.log('contents offset height out click==', content.offsetHeight) ; 
-        moreless[i].addEventListener('click', function() {           
-            content.classList.toggle('active');
-            card.classList.toggle('active');
-            content.addEventListener('transitionend', function() {
-                console.log('content.offsetHeight:', content.offsetHeight);
-            });
+function toggleCommentsDisplay(reviewIndex, button) {
+    const commentsContainer = document.querySelectorAll('.comments-container')[reviewIndex];
+    const comments = commentsContainer.querySelectorAll('.comment');
+    const initiallyVisibleComments = 2; 
+    const isShowingMore = button.getAttribute('data-showing-more') === 'true';
+
+    if (isShowingMore) {
+        comments.forEach((comment, index) => {
+            if (index >= initiallyVisibleComments) {
+                comment.style.display = 'none';
+            }
         });
+        button.textContent = 'Show More Comments';
+        button.setAttribute('data-showing-more', 'false');
+    } else {
+        comments.forEach(comment => comment.style.display = '');
+        button.textContent = 'Show Less Comments';
+        button.setAttribute('data-showing-more', 'true');
     }
+}
+
+function renderCommentsHtml(comments, reviewIndex) {
+    let commentsHtml = comments.map(comment => renderCommentHtml(comment)).join('');
+    commentsHtml = comments.map((comment, index) => {
+        const displayStyle = index < 2 ? '' : ' style="display:none;"'; 
+        return renderCommentHtml(comment, displayStyle);
+    }).join('');
+
+    let seeMoreButtonHtml = comments.length > 2 ? `<button class="see-more-comments" data-review-index="${reviewIndex}" data-showing-more="false">Show More Comments</button>` : '';
+    return `<div class="comments-container">${commentsHtml}</div>${seeMoreButtonHtml}`;
+}
+
+function renderCommentHtml(comment, displayStyle = '') {
+    return `<div class="comment"${displayStyle}>${comment.content} - ${comment.username}</div>`;
 }
