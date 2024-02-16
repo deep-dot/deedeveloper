@@ -44,7 +44,7 @@ router.post('/UserEmail', async (req, res) => {
         const storedCode = verificationCodes[email.toLowerCase().trim()];
         //console.log('stored code===', storedCode, verificationCode)
         if (verificationCode && verificationCode == storedCode) {            
-            await handleEmailSending(req, res, `Email from user`, msg, process.env.MAIL_USERNAME);
+            await handleEmailSending(req, res, `Email from user`, msg, process.env.godaddyEmail);
             delete verificationCodes[email.toLowerCase().trim()];
         } else {
             res.status(401).json({ success: false, message: 'Invalid verification code' });
