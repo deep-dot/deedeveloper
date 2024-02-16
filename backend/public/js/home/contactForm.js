@@ -47,10 +47,11 @@ function contactMe() {
           verificationCodeLabel.hidden = true;
           verificationCodeInput.hidden = true;
           verifyCodeButton.hidden = true;
-          messageToUser.hidden = true;
+          messageToUser.hidden = false;
+          messageToUser.textContent = 'Incorrect verification code. Please try again.';
+          messageToUser.style.color = 'red';
           submitButton.style.display = "block";
           submitButton.innerHTML = "Submit";
-          alert("Incorrect verification code. Please try again.");
         }
       }).catch(error => {
         console.log(error);
@@ -64,24 +65,26 @@ function contactMe() {
       verificationCodeLabel.hidden = true;
       verificationCodeInput.hidden = true;
       verifyCodeButton.hidden = true;
-      messageToUser.hidden = true;
+      messageToUser.hidden = false;
+      messageToUser.textContent = 'Email sending failed, please try again';
+      messageToUser.style.color = 'red';
       submitButton.style.display = "block";
       submitButton.innerHTML = 'Submit';
-      alert('Email sending failed, please try again');
-    }
+    } else {
     verifyCodeButton.classList.remove("loading");
     verificationCodeLabel.hidden = true;
     verificationCodeInput.hidden = true;
     verifyCodeButton.hidden = true;
-    messageToUser.hidden = true;
+    messageToUser.hidden = false;
+    messageToUser.textContent = 'Email sent successfully';
     submitButton.style.display = "block";
     submitButton.innerHTML = 'Submit';
     form.reset();
     return response.json();
+    }
   }
 
   function handleVerificationCodeSent(email) {    
-    // verificationCodeLabel.hidden = false;
     verificationCodeInput.hidden = false;
     verifyCodeButton.hidden = false;
     verificationCodeInput.focus();
@@ -92,11 +95,11 @@ function contactMe() {
   }
 
   function handleError(button, messageElement, error) {
-    console.error("An error occurred", error);
-    messageElement.hidden = true;
+    messageToUser.hidden = false;
+    messageToUser.textContent = 'An error occurred. Please try again.';
+    messageToUser.style.color = 'red';
     toggleLoadingState(button, false);
     button.innerHTML = "Submit";
-    alert('An error occurred. Please try again.');
   }
 
   function toggleLoadingState(button, isLoading) {

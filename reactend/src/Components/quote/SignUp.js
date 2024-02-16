@@ -22,7 +22,6 @@ function SignUp({ quoteFormData }) {
 
     const { name, email } = event.target.elements;
 
-    if (!verificationCode) {
       try {
         const response = await fetch('/verifyUserEmail', {
           method: 'POST',
@@ -31,22 +30,21 @@ function SignUp({ quoteFormData }) {
         });
         const data = await response.json();
         if (data.success) {
-          setVerificationCode(data.verificationCode);
-          console.log('verify code react end ===', data.verificationCode);
+          // setVerificationCode(data.verificationCode);
+          console.log('verify code react end ===', data);
           alert(`A verification code has been sent to your email: ${email.value}. Please check your email and enter the code.`)
           setShowVerificationCodeInput(true);
           setShowVerificationCodeSubmitBtn(true);
           setShowSubmitBtn(false)
           setLoading(false);
         } else {
-          console.log('Verification code sending failed');
+          console.log('Email sending failed, please try again');
           setLoading(false);
           setShowVerificationCodeInput(false);
           setShowVerificationCodeSubmitBtn(false);
           setShowSubmitBtn(true);
         }
       } catch (e) { console.log(e) }
-    }
   }
 
   const emailToDev = async (event) => {
@@ -129,6 +127,7 @@ function SignUp({ quoteFormData }) {
             });
           }}
         />
+
         <input
           id="verification-code"
           type="text"

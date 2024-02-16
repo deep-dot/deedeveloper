@@ -26,7 +26,8 @@ async function handleEmailSending(req, res, subject, message, email) {
 const verificationCodes = {};
 
 router.post('/verifyUserEmail', async (req, res) => {
-    const { name, formId, email } = req.body;
+    console.log('verifyuserEmail==', req.body);
+    const { name, formId, email } = req.body;    
     const verificationCode = Math.floor(Math.random() * 900000) + 100000;
     const message = `Hi ${name}, \nPlease verify your email by putting this ${verificationCode} code in deedeveloper.com website's prompted input field.\nBest wishes,\ndeedeveloper.com`;
     if (["contact-form-viewhome", "contact-form-reactend"].includes(formId)) {

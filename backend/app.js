@@ -78,13 +78,17 @@ app.use('/', require('./routes/reviews'));
 app.use('/', require('./routes/comments'));
 app.use('/', require('./routes/sendEmail'));
 
-// Set up serving React build files
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "..", "reactend", "build"))); 
-}
-app.get("/quote", (req, res) => {  
-  console.log('quote btn is clicked')
-  res.sendFile(path.join(__dirname, "..", "reactend", "build", "index.html"));
+// Set up serving React build files. 
+// Determine the directory to serve static files from based on the environment
+const dir = process.env.NODE_ENV === "production" ? "build" : "build";
+const staticFilesPath = path.join(__dirname, "..", "reactend", dir);
+
+// Use the determined directory to serve static files
+app.use(express.static(staticFilesPath));
+
+// Catch-all route for SPA (Single Page Application) to support client-side routing
+app.get('*', (req, res) => {
+  res.sendFile(path.join(staticFilesPath, "index.html"));
 });
 
 app.use((req, res) => res.render('pages/notfound.ejs', {

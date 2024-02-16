@@ -86,7 +86,7 @@ const Footer = () => {
           <div className="contactLinks">
             <div className="contactMain">Contact</div>
             <div>
-              <i className="fa fa-envelope"></i> dee@deedeveloper.com
+              <i className="fa fa-envelope"></i> info@deedeveloper.com
             </div>
             <div>
               <i className="fa fa-phone"></i> +61432000123
@@ -94,7 +94,7 @@ const Footer = () => {
           </div>
         </div>
       </section>
-      <p className="copyrights">Copyrights 2023 &copy; KuldeepDhillon</p>
+      <p className="copyrights">Copyrights 2024 &copy; deedeveloper.com</p>
       <button
         className={`back-to-top ${isVisible ? 'visible' : ''}`}
         onClick={scrollToTop}
