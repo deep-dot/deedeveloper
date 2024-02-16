@@ -16,7 +16,7 @@ const createTransporter = async () => {
   // });
   //   const accessToken = await oauth2Client.getAccessToken();
   //   const token = accessToken.token;
-  //   console.log('Access Token:', process.env.godaddyEmail, process.env.godaddyPassword);
+   console.log('Access Token:', process.env.godaddyEmail, process.env.godaddyPassword);
   
   // const transporter = nodeMailer.createTransport({
   //   service: 'gmail',
@@ -49,8 +49,7 @@ const transporter = nodeMailer.createTransport({
   return transporter;
 };
 
-const sendEmail = async (options) => {
-  console.log('Preparing to send email:', options);
+const sendEmail = async (options) => {  
   try {
     const transporter = await createTransporter(); 
 
@@ -61,6 +60,7 @@ const sendEmail = async (options) => {
       html: options.message,
     };
 
+    console.log('Preparing to send email:', mailOptions);
     const result = await transporter.sendMail(mailOptions);
     console.log('Email sent successfully:');
   } catch (error) {
