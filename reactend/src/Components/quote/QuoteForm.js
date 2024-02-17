@@ -112,26 +112,25 @@ const questionOptions = [{
 },
 ];
 
+const CustomSelect = ({ questionId, question, options, quoteFormData, onChange }) => {
+  const currentValue = quoteFormData[questionId]?.answer;
+  return (
+    <div className="question-container">
+      <label className="question-label">{question}</label>
+      <Select
+        options={options}
+        value={options.find(option => option.value === currentValue)}
+        onChange={(choice) => onChange(questionId, question, choice)}
+        className="question-select"
+      />
+    </div>
+  );
+};
 
-
-const CustomSelect = ({ question, options, value, onChange }) => (
-  <div className="question-container">
-    <label className="question-label">{question}</label>
-    <Select
-      options={options}
-      value={options.find((option) => option.value === value)}
-      onChange={onChange}
-      className="question-select"
-    />
-  </div>
-);
 
 const QuoteForm = ({ quoteFormData, setQuoteFormData, setFormCompleted }) => {
-  const [completedQuestions, setCompletedQuestions] = useState([]);
-
   useEffect(() => {
     const completedQuestionsIds = Object.keys(quoteFormData);
-    setCompletedQuestions(completedQuestionsIds);
     setFormCompleted(completedQuestionsIds.length === questionOptions.length);
   }, [quoteFormData, setFormCompleted]);
 
@@ -150,11 +149,14 @@ const QuoteForm = ({ quoteFormData, setQuoteFormData, setFormCompleted }) => {
       {questionOptions.map((questionData) => (
         <CustomSelect
           key={questionData.id}
+          questionId={questionData.id}
           question={questionData.question}
           options={questionData.options}
-          value={questionData[questionData.id]}
-          onChange={(choice) => handleSelectChange(questionData.id, questionData.question, choice)}
+          quoteFormData={quoteFormData}
+          // onChange={(questionId, questionText, choice) => handleSelectChange(questionId, questionText, choice)}
+          onChange={handleSelectChange}
         />
+
       ))}
     </div>
   );

@@ -8,7 +8,7 @@ import Footer from '../../Components/footer/Footer';
 function Quote() {
     const [page, setPage] = useState(0);
     const [quoteFormData, setQuoteFormData] = useState({});
-    const [formCompleted, setFormCompleted] = useState(true);
+    const [formCompleted, setFormCompleted] = useState(false);
 
     const FormTitles = ["What should your website include?", "Please send your detail so i can get back to you asap 😀"];
 
@@ -20,6 +20,7 @@ function Quote() {
         }
     };
 
+    console.log('quoteFormData==',quoteFormData);
     return (
         <>
             <div className="main-wrapper">
@@ -45,7 +46,7 @@ function Quote() {
                             <button
                                 id="next-button"
                                 className="next-button"
-                                //disabled={!formCompleted}
+                                disabled={!formCompleted}
                                 style={{ opacity: formCompleted ? 1 : 0.3 }}
                                 onClick={() => { setPage(page + 1) }}
                             >
