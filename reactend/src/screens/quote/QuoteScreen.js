@@ -20,7 +20,7 @@ function Quote() {
         }
     };
 
-    console.log('quoteFormData==',quoteFormData);
+   // console.log('quoteFormData==',quoteFormData);
     return (
         <>
             <div className="main-wrapper">
