@@ -15,10 +15,10 @@ function SignUp({ quoteFormData }) {
   const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
-    const { id, value } = e.target; // Destructure id and value from event target
+    const { id, value } = e.target; 
     setFormData({
       ...formData,
-      [id]: value // Use id to set the corresponding state property
+      [id]: value 
     });
   };
 
@@ -37,11 +37,13 @@ function SignUp({ quoteFormData }) {
       if (data.success) {
         setInputVerificationCode(data.verificationCode)
         setUserMsg(`A verification code has been sent to your email: ${email}. Please check your email and enter the code.`);
+        setErrorMsg('');
         setShowVerificationCodeInput(true);
         setShowVerificationCodeSubmitBtn(true);
         setShowSubmitBtn(false);
       } else {
         setErrorMsg('Email sending failed, please try again.');
+        setUserMsg('');
         setShowVerificationCodeInput(false);
         setShowVerificationCodeSubmitBtn(false);
         setShowSubmitBtn(true);
@@ -49,6 +51,7 @@ function SignUp({ quoteFormData }) {
     } catch (error) {
       console.error(error);
       setErrorMsg('An error occurred. Please try again.');
+      setUserMsg('');
     } finally {
       setLoading(false);
     }
@@ -66,11 +69,8 @@ function SignUp({ quoteFormData }) {
       .map(({ question, answer }) => `${question}: ${answer}`)
       .join('\n');
   
-    // Build the full message including quote form data
     const fullMessage = `${message}\n\nHi,\nI am ${name}.\nQuote Form Data:\n${quoteFormDataString}`;
   
-    // Check if the verification code matches
-    // if (inputVerificationCode === verificationCode) {
       const senddatatoserver = { name, email, verificationCode: inputVerificationCode, message: fullMessage, formId: 'contact-form-reactend' }
       try {
         const response = await fetch('/UserEmail', {
@@ -81,18 +81,19 @@ function SignUp({ quoteFormData }) {
         const data = await response.json();
   
         if (data.success) {
-          // Display success message and reset form as necessary
           setUserMsg('Email sent successfully.');
+          setErrorMsg('');
         } else {
-          // Display failure message without resetting form
           setErrorMsg('Email sending failed, please try again.');
+          setUserMsg('');
         }
         if (data.message === 'Invalid verification code') { 
-          // Handle incorrect verification code
           setErrorMsg('Incorrect verification code.');
+          setUserMsg('');
         }
       } catch (error) {
         setErrorMsg('An error occurred while sending the email. Please try again.');
+        setUserMsg('');
       } finally {
         setLoading(false);
         setShowVerificationCodeInput(false);
@@ -101,7 +102,6 @@ function SignUp({ quoteFormData }) {
       }
   };
   
-
   return (
     <div className="form-container">
       <form onSubmit={showSubmitBtn ? verifyEmail : emailToDev}>

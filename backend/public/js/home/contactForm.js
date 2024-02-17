@@ -28,7 +28,7 @@ function contactMe() {
     })
       .then(handleResponse)
       .then(data => handleVerificationCodeSent(email))
-      .catch(error => handleError(submitButton, messageToUser, error));
+      .catch(error => handleError(submitButton, messageToUser, error.message));
   }
 
   function handleCodeVerification() {
@@ -42,62 +42,64 @@ function contactMe() {
     })
       .then(handleResponse)
       .then(data => {
-        if (data.message == 'Invalid verification code') {          
+        if (data.message == 'Invalid verification code') {
           verifyCodeButton.classList.remove("loading");
           verificationCodeLabel.hidden = true;
           verificationCodeInput.hidden = true;
           verifyCodeButton.hidden = true;
           messageToUser.hidden = false;
-          messageToUser.textContent = 'Incorrect verification code. Please try again.';
+          messageToUser.textContent = 'Incorrect verification code';
           messageToUser.style.color = 'red';
           submitButton.style.display = "block";
           submitButton.innerHTML = "Submit";
+        } else {
+          verifyCodeButton.classList.remove("loading");
+          verificationCodeLabel.hidden = true;
+          verificationCodeInput.hidden = true;
+          verifyCodeButton.hidden = true;
+          messageToUser.hidden = false;
+          messageToUser.textContent = 'Email sent successfully';
+          messageToUser.style.color = 'green';
+          submitButton.style.display = "block";
+          submitButton.innerHTML = 'Submit';
+          form.reset();
         }
       }).catch(error => {
         console.log(error);
+        handleError(verifyCodeButton, messageToUser, error.message);
       });
   }
 
   function handleResponse(response) {
-    //console.log('response==', response);
-    if (!response.ok) {      
-      verifyCodeButton.classList.remove("loading");
-      verificationCodeLabel.hidden = true;
-      verificationCodeInput.hidden = true;
-      verifyCodeButton.hidden = true;
-      messageToUser.hidden = false;
-      messageToUser.textContent = 'Email sending failed, please try again';
-      messageToUser.style.color = 'red';
-      submitButton.style.display = "block";
-      submitButton.innerHTML = 'Submit';
-    } else {
-    verifyCodeButton.classList.remove("loading");
-    verificationCodeLabel.hidden = true;
-    verificationCodeInput.hidden = true;
-    verifyCodeButton.hidden = true;
-    messageToUser.hidden = false;
-    messageToUser.textContent = 'Email sent successfully';
-    submitButton.style.display = "block";
-    submitButton.innerHTML = 'Submit';
-    form.reset();
-    return response.json();
-    }
+    return response.json().then(data => {
+      if (!response.ok || !data.success) {
+        verifyCodeButton.classList.remove("loading");
+        verificationCodeLabel.hidden = true;
+        verificationCodeInput.hidden = true;
+        verifyCodeButton.hidden = true;        
+        submitButton.style.display = "block";
+        submitButton.innerHTML = 'Submit';
+        throw new Error(data.message || 'Email sending failed, please try again');
+      }
+      return data; // Continue with the resolved data for successful cases
+    });
   }
 
-  function handleVerificationCodeSent(email) {    
+  function handleVerificationCodeSent(email) {
     verificationCodeInput.hidden = false;
     verifyCodeButton.hidden = false;
     verificationCodeInput.focus();
     submitButton.classList.remove("loading");
     submitButton.style.display = "none";
     messageToUser.textContent = `A verification code has been sent to your email: ${email}. Please check your email and enter the code.`;
+    messageToUser.style.color = 'green';
     messageToUser.hidden = false;
   }
 
-  function handleError(button, messageElement, error) {
-    messageToUser.hidden = false;
-    messageToUser.textContent = 'An error occurred. Please try again.';
-    messageToUser.style.color = 'red';
+  function handleError(button, messageElement, errorMsg) {
+    messageElement.hidden = false;
+    messageElement.textContent = errorMsg;
+    messageElement.style.color = 'red';
     toggleLoadingState(button, false);
     button.innerHTML = "Submit";
   }
@@ -111,7 +113,7 @@ function contactMe() {
       button.innerHTML = "Submit";
     }
   }
-  
+
   function toggleVerifyingState(button, isLoading) {
     if (isLoading) {
       button.classList.add("loading");
