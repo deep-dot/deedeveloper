@@ -16,6 +16,8 @@ function SignUp({ quoteFormData }) {
 
   const [loading, setLoading] = useState(false);
 
+const [userMsg, setUserMsg] = useState(false);
+
   const verifyEmail = async (event) => {
     event.preventDefault();
     setLoading(true);
