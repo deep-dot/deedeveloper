@@ -46,7 +46,7 @@ function Quote() {
                             <button
                                 id="next-button"
                                 className="next-button"
-                                disabled={!formCompleted}
+                                disabled={formCompleted}
                                 style={{ opacity: formCompleted ? 1 : 0.3 }}
                                 onClick={() => { setPage(page + 1) }}
                             >

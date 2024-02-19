@@ -3,8 +3,6 @@ const passport = require('passport');
 //const Session = require('express-session');
 const router = express.Router();
 const fetch = require('node-fetch');
-// const { stringify } = require('querystring');
-// const bcrypt = require('bcrypt')
 const User = require('../models/User');
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
@@ -52,77 +50,78 @@ const upload = multer({
   fileFilter: fileFilter
 }).single('image');
 
+sendToken
 router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
-  //console.log('registerUser', req.body, req.file)
-  if (req.file === "" || req.file === undefined || !req.file || req.file == null) {
-    error = `Please select image`;
-    req.flash('error', error);
-    //res.json({ success: false, msg: "select image"});
-    return res.redirect('/auth/newuser');
-  }
   if (req.body['g-recaptcha-response'] === '') {
-    await cloudinary.uploader.destroy(req.file.filename);
-    error = `Please select captcha`;
-    req.flash('error', error);
-    // res.json({ success: false, msg: "Please select captcha"});
+    if (req.file) {
+      try {
+        await cloudinary.uploader.destroy(req.file.filename);
+      } catch (e) {
+        console.log("Failed to delete image from Cloudinary:", e);
+        // Consider additional error handling here, if necessary
+      }
+    }
+
+    req.flash('error', 'Please complete the captcha.');
     return res.redirect('/auth/newuser');
   }
-  const body = await fetch(`https://google.com/recaptcha/api/siteverify`, {
+  const captchaVerificationResponse = await fetch(`https://google.com/recaptcha/api/siteverify`, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: `secret=${process.env.CAPTCHA_SECRET}&response=${req.body['g-recaptcha-response']}`,
   }).then(res => res.json());
-  if (!body.success) {
-    error = `Failed captcha verification`;
-    req.flash('error', error);
-    //res.json({ success: false, msg: "Failed captcha verification"});
+
+  if (!captchaVerificationResponse.success) {
+    req.flash('error', 'Failed captcha verification.');
     return res.redirect('/auth/newuser');
   }
-  const token = jwt.sign({ email: req.body.email }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE,
-  });
-  //var paath = "/" + req.file.path.split('/').slice(1).join('/');
-   console.log('token===', token);
-   try{
-  const user = await User.create({
-    username: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-    image: req.file.path,
-    token
-  });
-} catch (err){console.error(err)};
 
-  if (user) {
-    sendToken(user, 200, res);
-    success = `You are registered successfully! Please check ${req.body.email} and click link to verify it.`;
-    req.flash('success', success);
-    res.redirect('/auth/login');
+  try {
+    const existingUser = await User.findOne({ email: req.body.email });
+    if (existingUser) {
+      req.flash('error', `User with this email ${req.body.email} already exists.`);
+      return res.redirect('/auth/newuser');
+    }
 
-    const verifyUserUrl = `${req.protocol}://${req.get("host")}/auth/verifyEmail/${user.token}`;
-    // const verifyUserUrl = `${process.env.FRONTEND_URL}/auth/verifyEmail/${user.confirmationCode}`;
-    sendEmail({
-      email: user.email,
-      subject: "Please confirm your account",
-      html: `<div>
-        <h1>Email Confirmation</h1>
-          <h2>Hello ${user.username}</h2>
-          <p>Please confirm your email by clicking on the following link</p>
-          <a href=${verifyUserUrl}> Click here</a>
-          </div>`,
+    const imagePath = req.file ? req.file.path : '';
+
+    const newUser = new User({
+      username: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      image: imagePath,
     });
-  } else {
-    // return next(new ErrorHander("Registration unsuccessful", 400));
-    error = `User with this email ${req.body.email} already exists`;
-    req.flash('error', error);
-    return res.redirect('/auth/newuser');
+    const token = newUser.getJWTToken(); 
+console.log('token in register user', token);
+    newUser.token = token; 
+    await newUser.save(); 
+    sendToken(newUser, 200, res);
+
+    const verifyUserUrl = `${req.protocol}://${req.get("host")}/auth/verifyEmail/${token}`;
+    await sendEmail({
+      email: newUser.email,
+      subject: "Please confirm your account",
+      message: `<div>
+        <h1>Email Confirmation</h1>
+        <h2>Hello ${newUser.username}</h2>
+        <p>Please confirm your email by clicking on the following link</p>
+        <a href=${verifyUserUrl}> Click here</a>
+        </div>`,
+    });
+
+    req.flash('success', `You are registered successfully! Please check ${newUser.email} and click the link to verify it.`);
+    res.redirect('/auth/login');
+  } catch (err) {
+    console.error("Registration error", err);
+    req.flash('error', 'An error occurred during registration. Please try again.');
+    res.redirect('/auth/newuser');
   }
 }));
 
 router.get('/newuser', (req, res) => {
   res.render('pages/auth/register.ejs', {
-    style:'login.css',
-    bodyId:'',
+    style: 'login.css',
+    bodyId: '',
     sitekey: process.env.CAPTCHA_SITE_KEY,
     error: res.locals.error,
     success: res.locals.success
@@ -132,41 +131,38 @@ router.get('/newuser', (req, res) => {
 router.get('/verifyEmail/:token', (req, res) => {
   var token = req.params.token;
   res.render('pages/auth/verifyEmail.ejs', {
-    style:'login.css',
-    bodyId:'verifyEmail',
+    style: 'login.css',
+    bodyId: 'verifyEmail',
     error: res.locals.error,
     success: res.locals.success,
     token
   })
 })
 
-router.post('/verifyEmail/:token', (req, res) => {
- // console.log('verifyEmail====', req.params.token)
-  User.findOne({
-    tokan: req.params.token,
-  })
-    .then((user) => {
-      if (!user) {
-        error = `User Not found.`;
-        req.flash('error', error);
-        return res.redirect(`/auth/verifyEmail/${req.params.token}`);
-      }
-      user.status = "active";
-      //loggedIn = user;
-      user.save((err) => {
-        if (err) {
-          error = err.message;
-          req.flash('error', error);
-          //res.status(500).json({ success: false, message: err.message });
-          return;
-        }
-        success = `Welcome! ${user.username}  You are logged in now.`;
-        req.flash('success', success);
-        return res.redirect('/auth/profile');
-      });
-    })
-    .catch((e) => console.log("error", e));
+router.post('/verifyEmail/:token', async (req, res) => {
+  try {
+    const user = await User.findOne({
+      token: req.params.token,
+    });
+
+    if (!user) {
+      req.flash('error', 'User Not found.');
+      return res.redirect(`/auth/verifyEmail/${req.params.token}`);
+    }
+
+    user.status = "active";
+
+    await user.save();
+
+    req.flash('success', `Welcome! ${user.username} You are logged in now.`);
+    return res.redirect('/auth/profile');
+  } catch (e) {
+    console.log("error", e);
+    req.flash('error', e.message);
+    return res.redirect(`/auth/verifyEmail/${req.params.token}`);
+  }
 });
+
 
 router.get('/profile', ensureAuth, (req, res) => {
   console.log('profile===', req.user)
@@ -186,8 +182,8 @@ router.get('/profile', ensureAuth, (req, res) => {
     role = req.user.role;
   }
   res.render('pages/profile.ejs', {
-    style:'login.css',
-    bodyId:'profileId',
+    style: 'login.css',
+    bodyId: 'profileId',
     name,
     email,
     status,
@@ -223,23 +219,25 @@ router.get('/facebook/callback',
     delete req.session.returnTo;
   });
 
-router.post('/login',
+  router.post('/login',
   passport.authenticate('local', {
     failureRedirect: '/auth/login',
     keepSessionInfo: true
   }), (req, res) => {
-    sendToken(req.user, 200, res);
+    const { tokenExpires } = sendToken(req.user, 200, res);
+    const expiresAt = tokenExpires.toLocaleString(); 
+    req.flash('success', `Logged in successfully. Your session will expire on ${expiresAt}.`);
     res.redirect(req.session.returnTo || '/');
     delete req.session.returnTo;
-  });
+});
 
 router.get('/login', (req, res) => {
   if (loggedIn) {
     res.redirect('/');
   } else {
     res.render('pages/auth/login.ejs', {
-      style:'login.css',
-      bodyId:'',
+      style: 'login.css',
+      bodyId: '',
       sitekey: process.env.CAPTCHA_SITE_KEY,
       error: res.locals.error,
       success: res.locals.success
@@ -249,8 +247,8 @@ router.get('/login', (req, res) => {
 
 router.get('/passwordforgot', (req, res) => {
   res.render('pages/auth/forgotpassword/forgotpassword.ejs', {
-    style:'login.css',
-    bodyId:'passwordForget',
+    style: 'login.css',
+    bodyId: 'passwordForget',
     error: res.locals.error,
     success: res.locals.success
   })
@@ -258,46 +256,51 @@ router.get('/passwordforgot', (req, res) => {
 
 // forgot password
 router.post('/password/forgot', async (req, res, next) => {
-  console.log(req.body.email)
+
   const user = await User.findOne({ email: req.body.email });
+  //console.log('password forgot user ==', user);
   if (!user) {
-    error = `User not found`;
-    req.flash('error', error);
+    req.flash('error', 'User not found');
     return res.redirect('/auth/passwordforgot');
   }
+
   const resetToken = user.getResetPasswordToken();
+  //console.log('password forgot==', resetToken);
   await user.save({ validateBeforeSave: false });
+
   const resetPasswordUrl = `${req.protocol}://${req.get("host")}/auth/password/reset/${resetToken}`;
-  //const resetPasswordUrl = `${process.env.FRONTEND_URL}/auth/password/reset/${resetToken}`;
+
   try {
     await sendEmail({
       email: user.email,
-      subject: `Password Recovery`,
-      message:`<div>
-      <p>Your password reset token is </p>
-      <a href=${resetPasswordUrl}>Click here</a>
-      <p>If you have not requested this email then, please ignore it.</p>
-      </div>`,      
+      subject: 'Password Recovery',
+      message: `<div>
+              <p>Your password reset token is </p>
+              <a href=${resetPasswordUrl}>Click here</a>
+              <p>If you have not requested this email then, please ignore it.</p>
+              </div>`,
     });
-    success = `Email sent to ${user.email} successfully`;
-    req.flash('success', success);
-     res.send({ success: true })
+    req.flash('success', `Email sent to ${user.email} successfully`);
+    res.send({ success: true });
   } catch (error) {
+    console.error('Failed to send the password reset email:', error);
+
+    // Reset token information should be cleared if the email sending fails
     user.resetPasswordToken = undefined;
     user.resetPasswordExpire = undefined;
     await user.save({ validateBeforeSave: false });
-    error = `Email can't be sent, please try again`;
-    req.flash('error', error);
-    res.send({ success: false })
-    // return next(new ErrorHander(error.message, 500));
+
+    req.flash('error', 'Email can\'t be sent, please try again');
+    res.send({ success: false });
   }
 });
+
 
 router.get("/password/reset/:token", (req, res) => {
   var token = req.params.token;
   res.render('pages/auth/forgotpassword/resetpassword.ejs', {
-    style:'login.css',
-    bodyId:'',
+    style: 'login.css',
+    bodyId: '',
     token,
     error: res.locals.error,
     success: res.locals.success
@@ -306,52 +309,46 @@ router.get("/password/reset/:token", (req, res) => {
 
 // reset password
 router.put("/password/reset/:token", async (req, res, next) => {
-  console.log(req.params);
-  //return res.json({success:false, msg:req.body.token});
-  const resetPasswordToken = crypto
-    .createHash("sha256")
-    .update(req.params.token)
-    .digest("hex");
-  //return res.json({success:true, msg:resetPasswordToken});
-  const user = await User.findOne({
-    resetPasswordToken,
-    resetPasswordExpire: { $gt: Date.now() },
-  });
-  if (!user) {
-    // return res.json({success:true, message:'user not found'});
-    error = `Reset Password Token is invalid or has been expired`;
-    req.flash('error', error);
-    return res.redirect(`/auth/password/reset/${req.params.token}`);
-  }
-  if (req.body.password != req.body.confirmpassword) {
-    //console.log('password mismatch')
-    // return res.json({success:true, message:'password mismatch'});
-    error = `Password does not match`;
-    req.flash('error', error);
-    return res.redirect(`/auth/password/reset/${req.params.token}`);
-  }
-  user.password = req.body.password;
-  user.resetPasswordToken = undefined;
-  user.resetPasswordExpire = undefined;
-  await user.save((err) => {
-    if (err) {
-      //res.status(500).send({ message: err });
-      req.flash('error', err);
-      return;
+  try {
+    const { token } = req.params;
+    const { password, confirmpassword } = req.body;
+
+    // Validate password match upfront
+    if (password !== confirmpassword) {
+      req.flash('error', 'Password does not match');
+      return res.redirect(`/auth/password/reset/${token}`);
     }
-    sendToken(user, 200, res);
-    success = `password updated successfully`;
-    req.flash('success', success);
-    return res.redirect('/auth/login');
-  });
+
+    const resetPasswordToken = crypto.createHash("sha256").update(token).digest("hex");
+
+    // Find the user with the token and ensure the token hasn't expired
+    const user = await User.findOne({
+      resetPasswordToken,
+      resetPasswordExpire: { $gt: Date.now() },
+    });
+
+    if (!user) {
+      req.flash('error', 'Reset Password Token is invalid or has expired');
+      return res.redirect(`/auth/password/reset/${token}`);
+    }
+
+    user.password = password;
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpire = undefined;
+
+    await user.save();
+
+    req.flash('success', 'Password updated successfully');
+    res.redirect('/auth/login');
+  } catch (error) {
+    console.error("Error resetting password:", error);
+    req.flash('error', 'An error occurred while updating the password. Please try again.');
+    res.redirect(`/auth/password/reset/${req.params.token}`);
+  }
 });
 
+
 router.get('/logout', (req, res, next) => {
-  //passport loggedOut  clears both the “req.session.passport” and the “req.user” 
-  //e.g. "req.session.passport" -------> {}
-  //"req.user" ------->  undefined
-  //req.logOut();
-  //express session destroy
   req.session.destroy();
   cookie = req.cookies;
   for (var prop in cookie) {
@@ -364,12 +361,12 @@ router.get('/logout', (req, res, next) => {
     });
   }
   res.redirect('/');
-})
+});
 
 //delete
 router.delete('/deleteUser/:id', ensureAuth, async (req, res) => {
   const user = await User.findById(req.params.id);
-  console.log("id in delete user",req.params.id);
+  console.log("id in delete user", req.params.id);
   if (user.image) {
     const imageUrl = user.image;
     await cloudinary.uploader.destroy(imageUrl);

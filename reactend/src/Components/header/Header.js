@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUser, faClone, faComment, faPhone, faCaretDown, faSignInAlt, faUserPlus, faSignOutAlt, faHamburger } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 const Header = ({ loggedIn }) => {
   const blogRef = useRef(null);
@@ -10,6 +11,23 @@ const Header = ({ loggedIn }) => {
   const headerRef = useRef(null);
   const hamBurgerMenu = useRef(null);
   const [lastScroll, setLastScroll] = useState(0);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userImage, setUserImage] = useState(null); 
+
+  useEffect(() => {
+    const checkAuthStatus = async () => {
+      try {
+        const { data } = await axios.get('/api/auth/status');
+        console.log('data in header==',data.isAuthenticated)
+        setIsAuthenticated(data.isAuthenticated);
+        setUserImage(data.userImage);
+      } catch (error) {
+        console.error('Failed to fetch auth status', error);
+      }
+    };
+
+    checkAuthStatus();
+  }, []);
 
   useEffect(() => {
     // Blog menu button
@@ -25,7 +43,7 @@ const Header = ({ loggedIn }) => {
     const mainWrapper = document.querySelector('.main-wrapper');
 
     const hamBurgerMenuClick = () => {
-      console.log('hamburgermenu clicked==', mainWrapper)
+     // console.log('hamburgermenu clicked==', mainWrapper)
       mainWrapper.classList.toggle("active");
     }
 
@@ -97,7 +115,7 @@ const Header = ({ loggedIn }) => {
               </li>
             </ul>
           </li>
-          {!loggedIn ? (
+          {!isAuthenticated ? (
             <>
               <li id="loggedIn">
                 <a href="/auth/login">
@@ -121,7 +139,7 @@ const Header = ({ loggedIn }) => {
                 <a href="/auth/profile">
                   <img
                     href="#"
-                    src={loggedIn.image}
+                    src={userImage}
                     alt=""
                     style={{ width: '40px', borderRadius: '100%' }}
                   />

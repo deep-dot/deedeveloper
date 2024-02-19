@@ -37,22 +37,30 @@ router.post('/verifyUserEmail', async (req, res) => {
 });
 
 router.post('/UserEmail', async (req, res) => {
-    //console.log('req.body===', req.body)
     const { name, email, verificationCode, message, formId } = req.body;
-    const msg = `Hi Deedeveloper, \nYou have got email from ${name}\n${email}.\n${message}.`;
-
+    const msg = `Hi Deedeveloper, \nYou have got email from ${name}\n${email}.\n${message}.`;    
     if (["contact-form-viewhome", "contact-form-reactend"].includes(formId)) {
+        if (verificationCode == '') { 
+            console.log('req.body===', req.body);
+           await handleEmailSending(req, res, `Email from user`, msg, process.env.SMTP_MAIL);
+           //await handleEmailSending(req, res, `Email from user`, msg, process.env.godaddyEmail);
+            return res.json({ success: true, message: 'Email sent successfully.' });
+        }
+        
         const storedCode = verificationCodes[email.toLowerCase().trim()];
-        //console.log('stored code===', storedCode, verificationCode)
-        if (verificationCode && verificationCode == storedCode) {            
-            // await handleEmailSending(req, res, `Email from user`, msg, process.env.godaddyEmail);
-            await handleEmailSending(req, res, `Email from user`, msg, process.env.SMTP_MAIL);
+       // console.log('Comparing:', verificationCode, storedCode, 'Types:', typeof verificationCode, typeof storedCode);
+        if (verificationCode && String(verificationCode) === String(storedCode)) {
+            //console.log('req.body===', verificationCode, storedCode);
+             await handleEmailSending(req, res, `Email from user`, msg, process.env.SMTP_MAIL);
+           // await handleEmailSending(req, res, `Email from user`, msg, process.env.godaddyEmail);
             delete verificationCodes[email.toLowerCase().trim()];
         } else {
-            res.status(401).json({ success: false, message: 'Invalid verification code' });
+            //console.log('req.body===errr==', verificationCode, storedCode);
+            return res.status(401).json({ success: false, message: 'Invalid verification code' });
         }
+    } else {
+        return res.status(400).json({ success: false, message: 'Invalid formId' });
     }
 });
-
 
 module.exports = router;

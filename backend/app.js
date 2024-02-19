@@ -61,6 +61,7 @@ app.use((req, res, next) => {
   res.locals.data = req.flash('data');
   res.locals.user = req.user || null;
   loggedIn = req.user || null;
+  res.locals.isAuthenticated = !!req.user;
   next();
 });
 
@@ -71,7 +72,17 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Set up routes
+// for react part
+app.get('/api/auth/status', (req, res) => {
+  const isAuthenticated = !!req.user;
+  const userImage = req.user ? req.user.image : null; 
+  res.json({ isAuthenticated, userImage });
+});
+app.get('/api/auth/userDetail', (req, res) => {
+  const userName = req.user ? req.user.username || req.user.displayName : null; 
+  const userEmail = req.user ? req.user.email : null; 
+  res.json({ userName, userEmail });
+});
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
 app.use('/', require('./routes/reviews'));

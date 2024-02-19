@@ -81,7 +81,7 @@ module.exports = function (passport) {
       passReqToCallback: true
     },
     async (req, email, password, done) => {
-      //console.log("req.body['g-recaptcha-response']",req.body['g-recaptcha-response'])
+      // console.log("req.body['g-recaptcha-response']",req.body['g-recaptcha-response'])
       // if (req.body['g-recaptcha-response'] === '') {
       //   error = `Please select captcha`;
       //   return done(null, false, req.flash('error', error));
@@ -116,19 +116,6 @@ module.exports = function (passport) {
       });
     }
   ));
-
-  passport.use(new OAuth2Strategy({
-    authorizationURL: 'https://accounts.google.com/o/oauth2/v2/auth',
-    tokenURL: 'https://oauth2.googleapis.com/token',
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:5000/auth/auth2/callback",
-  }, (accessToken, refreshToken, profile, cb) => {
-    console.log('passport access tokan===', accessToken, refreshToken);
-    
-        return done(null, '')
-    //cb(null, { accessToken, profile });
-  }));
 
   passport.serializeUser((user, done) => {
     done(null, user._id)

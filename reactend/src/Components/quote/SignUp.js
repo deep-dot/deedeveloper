@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function SignUp({ quoteFormData }) {
   const [inputVerificationCode, setInputVerificationCode] = useState('');
   const [showVerificationCodeInput, setShowVerificationCodeInput] = useState(false);
   const [showVerificationCodeSubmitBtn, setShowVerificationCodeSubmitBtn] = useState(false);
-  const [showSubmitBtn, setShowSubmitBtn] = useState(true);
+  const [verify, setVerify] = useState(true);
   const [userMsg, setUserMsg] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [formData, setFormData] = useState({
@@ -13,16 +14,42 @@ function SignUp({ quoteFormData }) {
     message: '',
   });
   const [loading, setLoading] = useState(false);
+  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  let emailToDev, verifyEmail;
+
+  useEffect(() => {
+    const checkUser = async () => {
+      try {
+        const { data } = await axios.get('/api/auth/userDetail');
+        console.log('data in header==', data.userEmail)
+        if (data.userName && data.userEmail) {
+          setUserName(data.userName);
+          setUserEmail(data.userEmail);
+          setFormData({
+            ...formData,
+            name: data.userName,
+            email: data.userEmail,
+          });
+        }
+      } catch (error) {
+        console.error('Failed to fetch auth status', error);
+      }
+    };
+
+    checkUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleInputChange = (e) => {
-    const { id, value } = e.target; 
+    const { id, value } = e.target;
     setFormData({
       ...formData,
-      [id]: value 
+      [id]: value
     });
   };
 
-  const verifyEmail = async (event) => {
+  verifyEmail = async (event) => {
     event.preventDefault();
     setLoading(true);
     const { name, email } = formData;
@@ -40,13 +67,13 @@ function SignUp({ quoteFormData }) {
         setErrorMsg('');
         setShowVerificationCodeInput(true);
         setShowVerificationCodeSubmitBtn(true);
-        setShowSubmitBtn(false);
+        setVerify(false);
       } else {
         setErrorMsg('Email sending failed, please try again.');
         setUserMsg('');
         setShowVerificationCodeInput(false);
         setShowVerificationCodeSubmitBtn(false);
-        setShowSubmitBtn(true);
+        setVerify(true);
       }
     } catch (error) {
       console.error(error);
@@ -57,56 +84,72 @@ function SignUp({ quoteFormData }) {
     }
   };
 
-  const emailToDev = async (event) => {
+  emailToDev = async (event) => {
     event.preventDefault();
     setLoading(true);
-  
-    // Destructure formData for easier access
     const { name, email, message } = formData;
-  
-    // Construct the message string from the quoteFormData
     const quoteFormDataString = Object.values(quoteFormData)
       .map(({ question, answer }) => `${question}: ${answer}`)
       .join('\n');
-  
+
     const fullMessage = `${message}\n\nHi,\nI am ${name}.\nQuote Form Data:\n${quoteFormDataString}`;
-  
-      const senddatatoserver = { name, email, verificationCode: inputVerificationCode, message: fullMessage, formId: 'contact-form-reactend' }
-      try {
-        const response = await fetch('/UserEmail', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(senddatatoserver),
-        });
-        const data = await response.json();
-  
-        if (data.success) {
-          setUserMsg('Email sent successfully.');
-          setErrorMsg('');
-        } else {
-          setErrorMsg('Email sending failed, please try again.');
-          setUserMsg('');
-        }
-        if (data.message === 'Invalid verification code') { 
-          setErrorMsg('Incorrect verification code.');
-          setUserMsg('');
-        }
-      } catch (error) {
-        setErrorMsg('An error occurred while sending the email. Please try again.');
+
+    const senddatatoserver = { name, email, verificationCode: inputVerificationCode, message: fullMessage, formId: 'contact-form-reactend' }
+    console.log('senddatatoserver==', senddatatoserver);
+    try {
+      const response = await fetch('/UserEmail', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(senddatatoserver),
+      });
+      const data = await response.json();
+      console.log('data.success in sign up==', data.success);
+      if (data.success) {
+        setUserMsg('Email sent successfully');
+        setErrorMsg('');
+      } else {
+        setErrorMsg('Email sending failed, please try again.');
         setUserMsg('');
-      } finally {
-        setLoading(false);
-        setShowVerificationCodeInput(false);
-        setShowVerificationCodeSubmitBtn(false);
-        setShowSubmitBtn(true);
       }
+      if (data.message === 'Invalid verification code') {
+        setErrorMsg('Incorrect verification code.');
+        setUserMsg('');
+      }
+    } catch (error) {
+      setErrorMsg('An error occurred while sending the email. Please try again.');
+      setUserMsg('');
+    } finally {
+      setLoading(false);
+      setShowVerificationCodeInput(false);
+      setShowVerificationCodeSubmitBtn(false);
+      setVerify(true);
+    }
   };
-  
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+
+    if (userName && userEmail) {
+      setInputVerificationCode(null);
+      await emailToDev(event); 
+    } else {
+      if (verify) {
+        await verifyEmail(event);
+      } else {
+        console.log('clicked')
+        await emailToDev(event);
+      }
+    }
+  };
+
+
   return (
     <div className="form-container">
-      <form onSubmit={showSubmitBtn ? verifyEmail : emailToDev}>
-        <input id="name" type="text" required placeholder="Name*" value={formData.name} onChange={handleInputChange} />
-        <input id="email" type="text" required placeholder="Email*" value={formData.email} onChange={handleInputChange} />
+      <form onSubmit={handleSubmit}>
+        <input id="name" type="text" required placeholder="Name*" value={formData.name} onChange={handleInputChange} readOnly={!!userName} />
+        <input id="email" type="text" required placeholder="Email*" value={formData.email} onChange={handleInputChange} readOnly={!!userEmail} />
         <textarea id="message" required placeholder="Message" rows="6" value={formData.message} onChange={handleInputChange} />
 
         {showVerificationCodeInput && (
@@ -128,7 +171,7 @@ function SignUp({ quoteFormData }) {
           </button>
         )}
 
-        {showSubmitBtn && (
+        {verify && (
           <button id="submit-button" type="submit" style={{ display: 'block' }}>
             {loading ? 'Sending...' : 'Submit'}
           </button>

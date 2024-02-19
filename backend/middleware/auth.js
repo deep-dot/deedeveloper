@@ -1,41 +1,35 @@
-// module.exports = {
-//   ensureAuth: function (req, res, next) {
-//     req.session.returnTo = req.originalUrl;
-//     if (req.isAuthenticated()) {
-//       return next();
-//     }
-//     return res.redirect('/auth/login')
-//   },
-//   ensureGuest: function (req, res, next) {
-//     if (!req.isAuthenticated()) {
-//       return next();
-//     } else {
-//       return res.redirect('/');
-//     }
-//   },
-// }
-
-
-const catchAsyncErrors = require("./catchAsyncErrors");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const catchAsyncErrors = require("./catchAsyncErrors");
 
 module.exports = {
-  ensureAuth: catchAsyncErrors(async(req, res, next) => {
-    const token  = req.cookies.token;
-    //console.log('token in middleware===', token, req.cookies.token);
-    if (!token || token === undefined) {
-      error = `Please Login to access this resource`;
-      console.log(error)
-      req.flash('error', error);
-      return res.redirect('/auth/login');
-      //return next(new ErrorHander("Please Login to access this resource", 401));
+  ensureAuth: catchAsyncErrors(async (req, res, next) => {
+    let token;
+
+    if (req.cookies && req.cookies.token) {
+      token = req.cookies.token;
+    } else if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
+      token = req.headers.authorization.split(" ")[1];
     }
-    const decodedData = jwt.verify(token, process.env.JWT_SECRET);
-    //console.log(decodedData);
-    req.user = await User.findById(decodedData.id);
-    //console.log('token in middleware===', req.user);
-    next();
-  }
-  )
-}
+    
+    if (!token) {
+      req.flash('error', 'Please login to access this resource');
+      return res.redirect('/auth/login');
+    }
+
+    try {
+      const decodedData = jwt.verify(token, process.env.JWT_SECRET);
+      console.log('decodedData in middleware==', decodedData)
+      req.user = await User.findOne({ email: decodedData.email });
+      if (!req.user) {
+        req.flash('error', 'No user found');
+        return res.redirect('/auth/login');
+      }
+      next();
+    } catch (error) {
+      console.error('Authentication Error:', error);
+      req.flash('error', 'Failed to authenticate. Please try again.');
+      return res.redirect('/auth/login');
+    }
+  })
+};
