@@ -97,7 +97,9 @@ console.log('token in register user', token);
     await newUser.save(); 
     sendToken(newUser, 200, res);
 
-    const verifyUserUrl = `${req.protocol}://${req.get("host")}/auth/verifyEmail/${token}`;
+    const baseProtocol = process.env.NODE_ENV === 'production' ? 'https' : req.protocol;
+    const verifyUserUrl = `${baseProtocol}://${req.get("host")}/auth/verifyEmail/${token}`;
+    console.log('verify url in register user===', verifyUserUrl)
     await sendEmail({
       email: newUser.email,
       subject: "Please confirm your account",
