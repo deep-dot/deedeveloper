@@ -70,7 +70,7 @@ module.exports = function (passport) {
         });
         done(null, newUser)
       } catch (err) {
-        return done(error, false)
+        return done(err, false)
       }
     }
   ));
@@ -107,10 +107,10 @@ module.exports = function (passport) {
           return done(null, false, req.flash('error', 'Incorrect password'));
         }
         if (user.status === "pending") {
-          error = `Pending Account. A link was sent to ${user.email} when you signed up.
+          let error = `Pending Account. A link was sent to ${user.email} when you signed up.
          Please check it and click link to verify it!`;
           req.flash('error', error);
-          return done(null, false, req.flash('error', error));
+          return done(null, false, req.flash('error', err));
         }
         return done(null, user);
       });
