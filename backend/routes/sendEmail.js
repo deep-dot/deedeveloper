@@ -15,7 +15,7 @@ async function handleEmailSending(req, res, subject, message, email) {
             ...(subject.includes('Verify') && { verificationCode: req.body.verificationCode }) // Include verificationCode in the response only if it's a verification email
         });
     } catch (error) {
-        console.error(error); 
+        console.error(error);
         res.status(500).json({
             success: false,
             message: 'Failed to send email',
@@ -27,7 +27,7 @@ const verificationCodes = {};
 
 router.post('/verifyUserEmail', async (req, res) => {
     console.log('verifyuserEmail==', req.body);
-    const { name, formId, email } = req.body;    
+    const { name, formId, email } = req.body;
     const verificationCode = Math.floor(Math.random() * 900000) + 100000;
     const message = `Hi ${name}, \nPlease verify your email by putting this ${verificationCode} code in deedeveloper.com website's prompted input field.\nBest wishes,\ndeedeveloper.com`;
     if (["contact-form-viewhome", "contact-form-reactend"].includes(formId)) {
@@ -37,26 +37,26 @@ router.post('/verifyUserEmail', async (req, res) => {
 });
 
 router.post('/UserEmail', async (req, res) => {
+    console.log('req.body===', req.body);
     const { name, email, verificationCode, message, formId } = req.body;
-    const msg = `Hi Deedeveloper, \nYou have got email from ${name}\n${email}.\n${message}.`;    
+    const msg = `Hi Deedeveloper, \nYou have got email from ${name}\n${email}.\n${message}.`;
     if (["contact-form-viewhome", "contact-form-reactend"].includes(formId)) {
-        if (verificationCode == '') { 
-            console.log('req.body===', req.body);
-           await handleEmailSending(req, res, `Email from user`, msg, process.env.SMTP_MAIL);
-           //await handleEmailSending(req, res, `Email from user`, msg, process.env.godaddyEmail);
-            return res.json({ success: true, message: 'Email sent successfully.' });
-        }
-        
-        const storedCode = verificationCodes[email.toLowerCase().trim()];
-       // console.log('Comparing:', verificationCode, storedCode, 'Types:', typeof verificationCode, typeof storedCode);
-        if (verificationCode && String(verificationCode) === String(storedCode)) {
-            //console.log('req.body===', verificationCode, storedCode);
-             await handleEmailSending(req, res, `Email from user`, msg, process.env.SMTP_MAIL);
-           // await handleEmailSending(req, res, `Email from user`, msg, process.env.godaddyEmail);
-            delete verificationCodes[email.toLowerCase().trim()];
+        if (verificationCode == '' || verificationCode == null) {
+            await handleEmailSending(req, res, `Email from user`, msg, process.env.SMTP_MAIL);
+            //await handleEmailSending(req, res, `Email from user`, msg, process.env.godaddyEmail);
+            // return res.json({ success: true, message: 'Email sent successfully.' });
         } else {
-            //console.log('req.body===errr==', verificationCode, storedCode);
-            return res.status(401).json({ success: false, message: 'Invalid verification code' });
+            const storedCode = verificationCodes[email.toLowerCase().trim()];
+            // console.log('Comparing:', verificationCode, storedCode, 'Types:', typeof verificationCode, typeof storedCode);
+            if (verificationCode && String(verificationCode) === String(storedCode)) {
+                //console.log('req.body===', verificationCode, storedCode);
+                await handleEmailSending(req, res, `Email from user`, msg, process.env.SMTP_MAIL);
+                // await handleEmailSending(req, res, `Email from user`, msg, process.env.godaddyEmail);
+                delete verificationCodes[email.toLowerCase().trim()];
+            } else {
+                //console.log('req.body===errr==', verificationCode, storedCode);
+                return res.status(401).json({ success: false, message: 'Invalid verification code' });
+            }
         }
     } else {
         return res.status(400).json({ success: false, message: 'Invalid formId' });

@@ -103,7 +103,7 @@ function SignUp({ quoteFormData }) {
         body: JSON.stringify(senddatatoserver),
       });
       const data = await response.json();
-      console.log('data.success in sign up==', data.success);
+      //console.log('data.success in sign up==', data.success);
       if (data.success) {
         setUserMsg('Email sent successfully');
         setErrorMsg('');
@@ -138,7 +138,7 @@ function SignUp({ quoteFormData }) {
       if (verify) {
         await verifyEmail(event);
       } else {
-        console.log('clicked')
+        //console.log('clicked')
         await emailToDev(event);
       }
     }
