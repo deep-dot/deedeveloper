@@ -42,16 +42,16 @@ router.post('/UserEmail', async (req, res) => {
     const msg = `Hi Deedeveloper, \nYou have got email from ${name}\n${email}.\n${message}.`;
     if (["contact-form-viewhome", "contact-form-reactend"].includes(formId)) {
         if (verificationCode == '' || verificationCode == null) {
-            await handleEmailSending(req, res, `Email from user`, msg, process.env.SMTP_MAIL);
-            //await handleEmailSending(req, res, `Email from user`, msg, process.env.godaddyEmail);
+           // await handleEmailSending(req, res, `Email from user`, msg, process.env.SMTP_MAIL);
+            await handleEmailSending(req, res, `Email from user`, msg, process.env.godaddyEmail);
             // return res.json({ success: true, message: 'Email sent successfully.' });
         } else {
             const storedCode = verificationCodes[email.toLowerCase().trim()];
             // console.log('Comparing:', verificationCode, storedCode, 'Types:', typeof verificationCode, typeof storedCode);
             if (verificationCode && String(verificationCode) === String(storedCode)) {
                 //console.log('req.body===', verificationCode, storedCode);
-                await handleEmailSending(req, res, `Email from user`, msg, process.env.SMTP_MAIL);
-                // await handleEmailSending(req, res, `Email from user`, msg, process.env.godaddyEmail);
+                //await handleEmailSending(req, res, `Email from user`, msg, process.env.SMTP_MAIL);
+                 await handleEmailSending(req, res, `Email from user`, msg, process.env.godaddyEmail);
                 delete verificationCodes[email.toLowerCase().trim()];
             } else {
                 //console.log('req.body===errr==', verificationCode, storedCode);
