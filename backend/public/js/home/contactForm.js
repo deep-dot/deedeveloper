@@ -1,5 +1,5 @@
 
-async function contactMe() { 
+async function contactMe() {
   const form = document.getElementById("contact-form-viewhome");
   const submitButton = document.getElementById("submit-button");
   const verificationCodeInput = document.getElementById("verification-code");
@@ -10,8 +10,6 @@ async function contactMe() {
   const messageInput = document.getElementById("message");
 
   let inputVerificationCode = null,
-    emailToDev,
-    verifyEmail;
   isAuthenticated = false,
     userDetails = {};
 
@@ -38,30 +36,8 @@ async function contactMe() {
     }
   }
 
-  async function handleFormSubmit(event) {
-    event.preventDefault();
-    const name = nameInput.value;
-    const email = emailInput.value;
-    const message = messageInput.value;
-
-    if (isAuthenticated) {
-      inputVerificationCode = null;
-      submitButton.innerHTML = 'Sending'
-      await emailToDev(name, email, message, inputVerificationCode);
-    } else {
-      console.log(submitButton.innerHTML)
-      if (submitButton.innerHTML === 'Verify') {
-        submitButton.innerHTML = 'Verifying'
-        inputVerificationCode = verificationCodeInput.value;
-        await emailToDev(name, email, message, inputVerificationCode);
-      } else {
-        submitButton.innerHTML = 'Sending'
-        await verifyEmail(name, email, message);
-      }
-    }
-  }
-
-  verifyEmail = async (name, email, message) => {
+  // Function to request email verification
+  async function verifyEmail(name, email, message) {
     console.log('sendEmail', name, email, message);
     const verificationRequestData = { name, email, message, formId: "contact-form-viewhome" };
     try {
@@ -71,12 +47,12 @@ async function contactMe() {
         body: JSON.stringify(verificationRequestData),
       });
       let data = await response.json();
+      messageToUser.hidden = false;
       if (data.success) {
         verificationCodeInput.hidden = false;
         verificationCodeInput.focus();
         messageToUser.textContent = `A verification code has been sent to your email: ${email}. Please check your email and enter the code.`;
         messageToUser.style.color = 'green';
-        messageToUser.hidden = false;
         submitButton.innerHTML = 'Verify'
       } else {
         err = 'Email sending failed, please try again.';
@@ -88,7 +64,8 @@ async function contactMe() {
     }
   }
 
-  emailToDev = async (name, email, message, inputVerificationCode) => {
+  // Function to send email directly to the developer
+  async function emailToDev(name, email, message, inputVerificationCode) {
     console.log('email to dev', name, email, message, inputVerificationCode);
     const senddatatoserver = { name, email, verificationCode: inputVerificationCode, message, formId: "contact-form-viewhome"};
     try {
@@ -98,12 +75,19 @@ async function contactMe() {
         body: JSON.stringify(senddatatoserver),
       });
       let data = await response.json();
+      messageToUser.hidden = false;
       if (data.success) {
         verificationCodeInput.hidden = true;
-        submitButton.innerHTML = 'Sent'
+        submitButton.innerHTML = 'Sent' 
+        submitButton.disabled = true;       
         messageToUser.textContent = 'Email sent successfully';
         messageToUser.style.color = 'green';
       } else {
+        if('Invalid verification code') {
+          err = 'Invalid verification code';
+          handleError(messageToUser, err);
+          return;
+        }
         err = 'Email sending failed, please try again.';
         handleError(messageToUser, err);
       }
@@ -115,16 +99,43 @@ async function contactMe() {
 
   function handleError(messageElement, errorMsg) {
     verificationCodeInput.hidden = true;
-    messageElement.hidden = false;
     messageElement.textContent = errorMsg;
     messageElement.style.color = 'red';
     submitButton.innerHTML = 'Submit'
   }
 
+  async function handleFormSubmit(event) {
+    event.preventDefault();
+    const name = nameInput.value;
+    const email = emailInput.value;
+    const message = messageInput.value;
+    messageToUser.hidden = true;
+
+    // Conditionally execute based on authentication and submission state
+    if (isAuthenticated) {
+      submitButton.textContent = 'Sending...';
+      await emailToDev(name, email, message);
+    } else {
+      switch (submitButton.textContent) {
+        case 'Verify':
+          submitButton.textContent = 'Verifying...';
+          inputVerificationCode = verificationCodeInput.value;
+          await emailToDev(name, email, message, inputVerificationCode);
+          break;
+        case 'Submit':
+          submitButton.textContent = 'Sending verification...';
+          await verifyEmail(name, email, message);
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
   await checkUserStatus();
 
   form.addEventListener("submit", handleFormSubmit);
+
 }
 
 contactMe();
-

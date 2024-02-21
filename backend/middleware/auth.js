@@ -19,7 +19,7 @@ module.exports = {
 
     try {
       const decodedData = jwt.verify(token, process.env.JWT_SECRET);
-      console.log('decodedData in middleware==', decodedData)
+     // console.log('decodedData in middleware==', decodedData)
       req.user = await User.findOne({ email: decodedData.email });
       if (!req.user) {
         req.flash('error', 'No user found');

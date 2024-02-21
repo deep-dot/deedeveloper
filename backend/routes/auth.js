@@ -82,6 +82,21 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
       req.flash('error', `User with this email ${req.body.email} already exists.`);
       return res.redirect('/auth/newuser');
     }
+    // if (existingUser) {
+    //   // Check if the request is an AJAX request
+    //   if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+    //     return res.status(409).json({
+    //       success: false,
+    //       message: `User with this email ${req.body.email} already exists.`
+    //     });
+    //   } else {
+    //     // Use flash messages and redirect for regular form submissions
+    //     req.flash('error', `User with this email ${req.body.email} already exists.`);
+    //     return res.redirect('/auth/newuser');
+    //   }
+    // }
+
+
 
     const imagePath = req.file ? req.file.path : '';
 
@@ -156,8 +171,16 @@ router.post('/verifyEmail/:token', async (req, res) => {
 
     await user.save();
 
-    req.flash('success', `Welcome! ${user.username} You are logged in now.`);
-    return res.redirect('/auth/profile');
+    req.login(user, (err) => {
+      if (err) {
+        console.log("Login error", err);
+        req.flash('error', 'Failed to log in');
+        return res.redirect('/auth/login');
+      }
+
+      req.flash('success', `Welcome! ${user.username} You are logged in now.`);
+      return res.redirect('/auth/profile');
+    });
   } catch (e) {
     console.log("error", e);
     req.flash('error', e.message);
@@ -167,7 +190,7 @@ router.post('/verifyEmail/:token', async (req, res) => {
 
 
 router.get('/profile', ensureAuth, (req, res) => {
-  console.log('profile===', req.user)
+  //console.log('profile===', req.user)
   let name = "";
   let email = "";
   let status = "";

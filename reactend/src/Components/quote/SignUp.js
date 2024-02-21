@@ -172,7 +172,11 @@ function SignUp({ quoteFormData }) {
         )}
 
         {verify && (
-          <button id="submit-button" type="submit" style={{ display: 'block' }}>
+          <button 
+          id="submit-button" 
+          type="submit" 
+          style={{ display: 'block' }}
+          >
             {loading ? 'Sending...' : 'Submit'}
           </button>
         )}
