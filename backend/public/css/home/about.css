@@ -46,19 +46,21 @@
   }
   
   .about-me-icons {
-    display: inline-flex;
+    display: flex;
     gap: 10px;
     font: 400 clamp(14px, 2vw, 18px) 'Roboto';
-  }
-  
-  .about-me-icons .fa-react,
-  .about-me-icons .fa-node-js,
-  .about-me-icons .fa-js {
+    flex-wrap: wrap; /* Add this if you want the icons to wrap in smaller screens */
+}
+
+.about-me-icons div {
+    display: flex;
+    align-items: center; 
     background-color: #17a2b8;
     padding: 5px;
     color: #fff;  
-  }
-  
+    gap: 5px; 
+}
+
   .about-me-social-icons {
     display: inline-flex;
     gap: 25px;

@@ -11,7 +11,7 @@
                 <%= success %>
             </p>
         </div>
-
+        
         <form id="registerForm" method="post" action="/auth/registerUser" enctype="multipart/form-data">
             <div class="signUpElements1">
                 <div class="name">
@@ -37,7 +37,7 @@
                 <div>
                     <input type="file" class="form-control" id="image" name="image" />
                 </div>
-            </div>
+            </div>            
 
             <div class="signUpElements2">
                 <div class="g-recaptcha" data-sitekey="<%= sitekey %>"></div>
@@ -46,25 +46,9 @@
                 <div class="login-register">
                     <p>Do you have an account ? <a href="/auth/login"> Login</a> </p>
                 </div>
-            </div>
+            </div>            
         </form>
-
-        <!-- <script type="text/javascript">
-            function togglePasswordVisibility() {
-                var passwordField = document.getElementById("password");
-                var showPasswordCheckbox = document.getElementById("showPassword");
-                var icon = document.querySelector(".password .icon i");
-                if (showPasswordCheckbox.checked) {
-                    passwordField.type = "text";
-                    icon.classList.remove("fa-lock");
-                    icon.classList.add("fa-unlock");
-                } else {
-                    passwordField.type = "password";
-                    icon.classList.remove("fa-unlock");
-                    icon.classList.add("fa-lock");
-                }
-            }
-        </script> -->
+        <p id="msgToUser"></p>
     </div>
 </div>
 
@@ -86,9 +70,10 @@
     }
 
     // Handle Form Submission
-    document.getElementById("registerForm").addEventListener("submit", function(event) {
-        event.preventDefault(); 
+    document.getElementById("registerForm").addEventListener("submit", function (event) {
+        event.preventDefault();
 
+        let msgToUser = document.getElementById("msgToUser");
         var registerButton = document.getElementById("registerButton");
         registerButton.textContent = "Registering..."; // Change button text to "Registering..."
         registerButton.disabled = true; // Optionally disable the button to prevent multiple submissions
@@ -97,22 +82,32 @@
         fetch('/auth/registerUser', {
             method: 'POST',
             body: formData,
+            headers: {
+                'Accept': 'application/json', // Explicitly tell the server you accept JSON
+            },
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data); 
-            if( data.success ) {
-            registerButton.textContent = "Registered"; 
-            registerButton.disabled = false; 
-            } else {
-                console.log(data.message);
-            }
-        })
-        .catch(error => {
-           // console.log('Error:', error);
-            registerButton.textContent = "Register"; 
-            registerButton.disabled = false; 
-        });
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (data.success) {
+                    registerButton.textContent = "Registered";
+                    msgToUser.textContent = data.message;
+                    msgToUser.style.color = 'green';
+                    registerButton.disabled = true;
+                } else {
+                    console.log(data.message);
+                    registerButton.textContent = "Register";
+                    registerButton.disabled = false;
+                    msgToUser.textContent = data.message;
+                    msgToUser.style.color = 'red';
+                }
+            })
+            .catch(error => {
+                msgToUser.textContent = data.message;
+                msgToUser.style.color = 'red';
+                registerButton.textContent = "Register";
+                registerButton.disabled = false;
+            });
 
         // If not using AJAX, uncomment the next line to submit the form
         // this.submit();

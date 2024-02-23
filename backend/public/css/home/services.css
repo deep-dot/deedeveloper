@@ -187,6 +187,10 @@
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(3, 1fr);
     }
+
+    .services-div1 .services-icons i {
+      font-size: 3rem; 
+    }
   
     .contact-me-box .sub-contact-me-box{
       display: flex;
@@ -213,6 +217,9 @@
       align-self: center;
     }
   
+    .services-div1 .services-icons i {
+      font-size: 2rem; 
+    }
     .skill-box {
       grid-template-columns: 1fr;
       grid-template-rows: repeat(6, 1fr);

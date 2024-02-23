@@ -78,23 +78,21 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
 
   try {
     const existingUser = await User.findOne({ email: req.body.email });
-    if (existingUser) {
+    // if (existingUser) {
+    //   req.flash('error', `User with this email ${req.body.email} already exists.`);
+    //   return res.redirect('/auth/newuser');
+    // }
+    if (existingUser) {      
+      // Check if the request is an AJAX request
+      if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+        return res.status(409).json({
+          success: false,
+          message: `User with this email ${req.body.email} already exists.`
+        });
+      } 
       req.flash('error', `User with this email ${req.body.email} already exists.`);
       return res.redirect('/auth/newuser');
     }
-    // if (existingUser) {
-    //   // Check if the request is an AJAX request
-    //   if (req.xhr || req.headers.accept.indexOf('json') > -1) {
-    //     return res.status(409).json({
-    //       success: false,
-    //       message: `User with this email ${req.body.email} already exists.`
-    //     });
-    //   } else {
-    //     // Use flash messages and redirect for regular form submissions
-    //     req.flash('error', `User with this email ${req.body.email} already exists.`);
-    //     return res.redirect('/auth/newuser');
-    //   }
-    // }
 
 
 
@@ -107,14 +105,14 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
       image: imagePath,
     });
     const token = newUser.getJWTToken(); 
-console.log('token in register user', token);
+//console.log('token in register user', token);
     newUser.token = token; 
     await newUser.save(); 
     sendToken(newUser, 200, res);
 
     const baseProtocol = process.env.NODE_ENV === 'production' ? 'https' : req.protocol;
     const verifyUserUrl = `${baseProtocol}://${req.get("host")}/auth/verifyEmail/${token}`;
-    console.log('verify url in register user===', verifyUserUrl)
+    //console.log('verify url in register user===', verifyUserUrl)
     await sendEmail({
       email: newUser.email,
       subject: "Please confirm your account",
@@ -126,10 +124,22 @@ console.log('token in register user', token);
         </div>`,
     });
 
+    if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+      return res.status(200).json({
+        success: true,
+        message: `You are registered successfully! Please check ${newUser.email} and click the link to verify it.`
+      });
+    } 
     req.flash('success', `You are registered successfully! Please check ${newUser.email} and click the link to verify it.`);
     res.redirect('/auth/login');
   } catch (err) {
     console.error("Registration error", err);
+    if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+      return res.status(500).json({
+        success: false,
+        message: "An error occurred during registration. Please try again."
+      });
+    } 
     req.flash('error', 'An error occurred during registration. Please try again.');
     res.redirect('/auth/newuser');
   }

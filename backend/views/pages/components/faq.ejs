@@ -1,184 +1,102 @@
-<section class="F hidden" id="faq-section">
-    <div class="faq">
-      <h1>F.A.Q.</h1>
-      <h2>Here are answers to the most frequently asked questions.</h2>
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(event)">
-          <span>How much does it cost to build a web application?</span>
-          <span class="toggle-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <div class="sub-faq-answer">
-            <p>It depends. A web application can cost between: <strong>4,000$ and 50,000$.</strong></p>
-            <p>A very big application can cost even more.</p>
-            <em>Everything</em>
-            <em> depends on your needs and the scope of the project.</em>
-            <p>The best way to get a fair estimate of the cost of your application is to book a free consultation
-              with me or to send me a message <a href="#contactSection">here.</a></p>
-          </div>
-        </div>
-      </div>
-  
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(event)">
-          <span>What is your process of web application development?</span>
-          <span class="toggle-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <div class="sub-faq-answer">
-            <p>Here is a brief description of the process:</p>
-            <ol style="margin-left: 30px">
-              <li>Free Consultation & quote</li>
-              <li>Discovery & competitor analysis</li>
-              <li>High-level planning</li>
-              <li>Architecture of the application (database, sitemap)</li>
-              <li>UI/UX design</li>
-              <li>Prototyping</li>
-              <li>Development (Front-end, Back-end)</li>
-              <li>QA Testing</li>
-              <li>Deployment & launch</li>
-              <li>Maintenance & support</li>
-            </ol>
-            <p>The process is the same for single-page applications and cross-platform web applications.</p>
-          </div>
-        </div>
-      </div>
-  
-      <!-- <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(event)">
-          <span>What programming languages & technologies do you use to build applications?</span>
-          <span class="toggle-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <div class="sub-faq-answer">
-            <p>I use a variety of languages & web technologies to build applications.</p>
-            <ul style="margin-left: 25px">
-              <li>On the front-end, I use React with TypeScript.</li>
-              <li>On the back-end, I use Node.js.</li>
+
+<div class="faq">
+  <h1>F.A.Q.</h1>
+  <h2>Here are answers to the most frequently asked questions.</h2>
+</div>
+
+<script>
+  function toggleFaq(event) {
+      const questionElement = event.currentTarget;
+      const answerElement = questionElement.nextElementSibling;
+      const toggleIcon = questionElement.querySelector(".toggle-icon");
+
+      if (answerElement.style.maxHeight) {
+          answerElement.style.maxHeight = null;
+      } else {
+          answerElement.style.maxHeight = answerElement.scrollHeight + "px";
+      }
+
+      toggleIcon.classList.toggle("open");
+      toggleIcon.textContent = answerElement.style.maxHeight ? "-" : "+";
+  }
+
+  function renderFaqs() {
+
+      const faqs = [
+          {
+              question: "How much does it cost to build a web application?",
+              answer: `<p>It depends. A web application can cost between: <strong>4,000$ and 50,000$.</strong></p>
+              <p>A very big application can cost even more.</p><em>Everything</em><em> depends on your needs and the scope of the
+                project.</em>
+              <p>The best way to get a fair estimate of the cost of your application is to book a free consultation with me or to send
+                me a message <a href="#contactSection">here.</a></p>`
+          },
+          {
+              question: "What is your process of web application development?",
+              answer: `<p>Here is a brief description of the process:</p><ol style="margin-left: 30px"><li>Free Consultation & quote</li><li>Discovery & competitor analysis</li><li>High-level planning</li><li>Architecture of the application (database, sitemap)</li><li>UI/UX design</li><li>Prototyping</li><li>Development (Front-end, Back-end)</li><li>QA Testing</li><li>Deployment & launch</li><li>Maintenance & support</li></ol><p>The process is the same for single-page applications and cross-platform web applications.</p>`
+          },
+          {
+              question: "What programming languages & technologies do you use to build applications?",
+              answer: `<p>I use a variety of languages & web technologies to build applications.</p>
+              <p> <ol style="margin-left: 25px">
+              <li>On the front-end, I use React with TypeScript or Next.js </li>
+              <li>On the back-end, I use Express.js or Python.</li>
               <li>For the database, I use either MariaDB, MySQL, or MongoDB.</li>
-              <li>For the infrastructure, I use docker, docker-compose, and Kubernetes.</li>
+              <li>For the infrastructure, I use docker, docker-compose.</li>
               <li>For cross-platform applications, I use Electron.</li>
-            </ul>
+            </ol></p>`
+          },
+          {
+              question: "What are the different types of applications that you make?",
+              answer: `<p>Web development: I can create single-page applications, dynamic applications, and cross-platform applications.</p><p>Mobile app development: I can create cross-platform apps for Android & IOS.</p>`
+          },
+          {
+              question: "Where are you and where do you service?",
+              answer: `<p>We are physically based in Geelong but we provide services Australia-wide! You do not have to live in or near Geelong to take advantage of our web and mobile app development. Online goes everywhere and that is the beauty of what we do. Our focus is small businesses in regional areas. We can meet on Google meet or can use any other adequate service</p>`
+          },
+          {
+              question: "I know I want a website but I don’t know what should be in it or how it should look. Can you help?",
+              answer: `<p>Here’s the thing – you’re an expert at what it is you do. We’re the experts when it comes to websites. As part of our website development process we work with you to gather as much information as we can about what it is you do and where you do it. We then analyse all that information to create the structure of your website, from design and pages, through to key search words and content. Importantly, we extensively research Google to find out the key words people are using when searching for the products and/or services you provide. We then use those key words in our strategy to boost the search engine optimisation of your site.</p>`
+          },
+          {
+              question: "What if I want to add more features to my project after I approve the estimate?",
+              answer: `<p>Look, it’s not impossible but obviously your website build will go much smoother if you’ve thought long and hard about what it is you hope to achieve with your website before even approaching us. If you need to add new elements to your website, it can certainly be done, particularly if the features you’re adding are consistent with our overall plan and design. But if you’re heading off on a different tangent from what we’ve discussed and planned or we’re well advanced in the development of your website, then we’ll need to talk to you about additional fees for the extra work involved. Sorry, but we invest weeks of labour in your website and out-of-scope work can quickly blow the budget. Think long and hard about what you want from your website.</p>`
+          },
+          {
+              question: "I’ve already got a website but it’s useless. Can you fix it?",
+              answer: `<p>Sorry. The answer is always no. Bitter experience has taught us that it’s easier and much more effective – from both financial and time perspectives – to start from scratch. We can produce a website that will look like your original site if you really want, but we’ll do it from scratch.</p>`
+          },
+          {
+              question: "What are your payment terms?",
+              answer: `<p>We require a deposit of 50% upon your acceptance of the contract and the balance at the completion of the project.</p>`
+          },
+          {
+              question: "I know you answer the phones during working hours, but what if my website has problems out of hours?",
+              answer: `<p>The beauty of modern-day communications is that help is never far away. If you need help outside regular hours, send an email to our support desk and we’ll assess your problem and determine whether it’s urgent or can wait until the next business day. If the emergency is the result of something we’ve done – and that’s unlikely – then we’ll cover the cost. But if the problem with your website is something you’ve done – and that’s also unlikely but not impossible – we will have to charge for the repairs, as well as an out-of-hours fee if the repairs are urgent and outside traditional working hours.</p>`
+          }
+      ];
+      const faqContainer = document.querySelector('.faq');
+      faqs.forEach(faq => {
+          const faqItem = document.createElement('div');
+          faqItem.classList.add('faq-item');
+
+          faqItem.innerHTML = `
+          <div class="faq-question" onclick="toggleFaq(event)">
+              <span>${faq.question}</span>
+              <span class="toggle-icon">+</span>
           </div>
-        </div>
-      </div> -->
-  
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(event)">
-          <span>What are the different types of applications that you make?</span>
-          <span class="toggle-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <div class="sub-faq-answer">
-            <p>Web development: I can create single-page applications, dynamic applications, and cross-platform
-              applications.</p>
-            <p>Mobile app development: I can create cross-platform apps for Android & IOS.</p>
+          <div class="faq-answer">
+              <div class="sub-faq-answer">
+                  ${faq.answer}
+              </div>
           </div>
-        </div>
-      </div>
+      `;
+
+          faqContainer.appendChild(faqItem);
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', renderFaqs);
+</script>
   
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(event)">
-          <span>Where are you and where do you service?</span>
-          <span class="toggle-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <div class="sub-faq-answer">
-            <p>We are physically based in Geelong but we provide services Australia-wide! You do not have to live in or
-              near Geelong to take advantage of our web and mobile app development. Online goes everywhere and that is the
-              beauty of what we do. Our focus is small businesses in regional areas. We can meet on Google meet or can use
-              any other adequate service</p>
-          </div>
-        </div>
-      </div>
-  
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(event)">
-          <span>I know I want a website but I don’t know what should be in it or how it should look. Can you help?</span>
-          <span class="toggle-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <div class="sub-faq-answer">
-            <p>Here’s the thing – you’re an expert at what it is you do. We’re the experts when it comes to websites. As
-              part of our website development process we work with you to gather as much information as we can about what
-              it is you do and where you do it. We then analyse all that information to create the structure of your
-              website, from design and pages, through to key search words and content. Importantly, we extensively
-              research Google to find out the key words people are using when searching for the products and/or services
-              you provide. We then use those key words in our strategy to boost the search engine optimisation of your
-              site.</p>
-          </div>
-        </div>
-      </div>
-  
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(event)">
-          <span>What if I want to add more features to my project after I approve the estimate?</span>
-          <span class="toggle-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <div class="sub-faq-answer">
-            <p>Look, it’s not impossible but obviously your website build will go much smoother if you’ve thought long and
-              hard about what it is you hope to achieve with your website before even approaching us.
-  
-              If you need to add new elements to your website, it can certainly be done, particularly if the features
-              you’re adding are consistent with our overall plan and design. But if you’re heading off on a different
-              tangent from what we’ve discussed and planned or we’re well advanced in the development of your website,
-              then we’ll need to talk to you about additional fees for the extra work involved. Sorry, but we invest weeks
-              of labour in your website and out-of-scope work can quickly blow the budget.
-  
-              Think long and hard about what you want from your website.</p>
-          </div>
-        </div>
-      </div>
-  
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(event)">
-          <span>I’ve already got a website but it’s useless. Can you fix it?</span>
-          <span class="toggle-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <div class="sub-faq-answer">
-            <p>Sorry. The answer is always no. Bitter experience has taught us that it’s easier and much more effective –
-              from both financial and time perspectives – to start from scratch. We can produce a website that will look
-              like your original site if you really want, but we’ll do it from scratch.</p>
-          </div>
-        </div>
-      </div>
-  
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(event)">
-          <span>What are your payment terms?</span>
-          <span class="toggle-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <div class="sub-faq-answer">
-            <p>We require a deposit of 50% upon your acceptance of the contract and the balance at the completion of the
-              project.</p>
-          </div>
-        </div>
-      </div>
-  
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(event)">
-          <span>I know you answer the phones during working hours, but what if my website has problems out of
-            hours?</span>
-          <span class="toggle-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <div class="sub-faq-answer">
-            <p>The beauty of modern-day communications is that help is never far away. If you need help outside regular
-              hours, send an email to our support desk and we’ll assess your problem and determine whether it’s urgent or
-              can wait until the next business day.
-  
-              If the emergency is the result of something we’ve done – and that’s unlikely – then we’ll cover the cost.
-              But if the problem with your website is something you’ve done – and that’s also unlikely but not impossible
-              – we will have to charge for the repairs, as well as an out-of-hours fee if the repairs are urgent and
-              outside traditional working hours.</p>
-          </div>
-        </div>
-      </div>
-      <!-- Add more FAQ items as needed -->
-    </div>
-  </section>
-  <!-- faq -->
-  <script src="/js/home/faq.js"></script>
+  <script src="/js/home/faq.js"></script> 

@@ -63,6 +63,10 @@
     margin-top: 1rem;
     border-radius: 5px;
   }
+
+  .faq .sub-faq-answer ul li {
+    background: var(--background); 
+}
   
   .faq .sub-faq-answer {
     padding: 1rem;
