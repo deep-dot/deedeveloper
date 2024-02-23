@@ -78,10 +78,6 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
 
   try {
     const existingUser = await User.findOne({ email: req.body.email });
-    // if (existingUser) {
-    //   req.flash('error', `User with this email ${req.body.email} already exists.`);
-    //   return res.redirect('/auth/newuser');
-    // }
     if (existingUser) {      
       // Check if the request is an AJAX request
       if (req.xhr || req.headers.accept.indexOf('json') > -1) {
@@ -93,8 +89,6 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
       req.flash('error', `User with this email ${req.body.email} already exists.`);
       return res.redirect('/auth/newuser');
     }
-
-
 
     const imagePath = req.file ? req.file.path : '';
 
@@ -133,11 +127,12 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
     req.flash('success', `You are registered successfully! Please check ${newUser.email} and click the link to verify it.`);
     res.redirect('/auth/login');
   } catch (err) {
-    console.error("Registration error", err);
+    console.error("Registration error", err.message);
     if (req.xhr || req.headers.accept.indexOf('json') > -1) {
       return res.status(500).json({
         success: false,
-        message: "An error occurred during registration. Please try again."
+       // message: "An error occurred during registration. Please try again."
+       message: err.message
       });
     } 
     req.flash('error', 'An error occurred during registration. Please try again.');

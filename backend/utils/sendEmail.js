@@ -1,8 +1,8 @@
 const nodeMailer = require('nodemailer');
 const { google } = require('googleapis');
 const OAuth2 = google.auth.OAuth2;
-const config = require('../config/config.js');
-const env = process.env.NODE_ENV || 'development';
+// const config = require('../config/config.js');
+// const env = process.env.NODE_ENV || 'development';
 
 const createTransporter = async () => {
   const oauth2Client = new OAuth2(
@@ -16,7 +16,7 @@ const createTransporter = async () => {
   });
     const accessToken = await oauth2Client.getAccessToken();
     const token = accessToken.token;
-   //console.log('Access Token:',token);
+   console.log('Access Token:',token);
   
   const transporter = nodeMailer.createTransport({
     service: 'gmail',
@@ -65,7 +65,8 @@ const sendEmail = async (options) => {
     const result = await transporter.sendMail(mailOptions);
     console.log('Email sent successfully:');
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error('Error sending email:', error.message);
+    throw new Error(`Email sending failed: ${error.message}`);
   }
 };
 

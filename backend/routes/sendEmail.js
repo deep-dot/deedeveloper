@@ -12,13 +12,18 @@ async function handleEmailSending(req, res, subject, message, email) {
         res.status(200).json({
             success: true,
             email,
-            ...(subject.includes('Verify') && { verificationCode: req.body.verificationCode }) // Include verificationCode in the response only if it's a verification email
+            ...(subject.includes('Verify') && { verificationCode: req.body.verificationCode }), // Include verificationCode in the response only if it's a verification email
+            message: 'Verification code sent to email, please verify.'
         });
     } catch (error) {
         console.error(error);
+        let responseMessage = 'Failed to send email. Please try again later.';
+        if (error.message.includes('invalid_grant')) {
+            responseMessage = 'Email service is currently unavailable. Please try again later.';
+        }
         res.status(500).json({
             success: false,
-            message: 'Failed to send email',
+            message: responseMessage,
         });
     }
 }

@@ -103,7 +103,7 @@
                 }
             })
             .catch(error => {
-                msgToUser.textContent = data.message;
+                msgToUser.textContent = error.message;
                 msgToUser.style.color = 'red';
                 registerButton.textContent = "Register";
                 registerButton.disabled = false;
