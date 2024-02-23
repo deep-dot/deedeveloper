@@ -8,7 +8,6 @@ async function contactMe() {
   const nameInput = document.getElementById("name");
   const emailInput = document.getElementById("email");
   const messageInput = document.getElementById("message");
-
   let inputVerificationCode = null,
   isAuthenticated = false,
     userDetails = {};
@@ -25,6 +24,8 @@ async function contactMe() {
 
         nameInput.value = userDetails.userName;
         emailInput.value = userDetails.userEmail;
+        // nameInput.value = user.username || user.displayName;
+        // emailInput.value = user.email;
         nameInput.setAttribute('readonly', true);
         emailInput.setAttribute('readonly', true);
 

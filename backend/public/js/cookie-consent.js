@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var date = new Date();
         date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
         var expires = "expires=" + date.toUTCString();
-        document.cookie = name + "=" + value + "; " + expires + "; path=/";
+        document.cookie = name + "=" + encodeURIComponent(value) + "; " + expires + "; path=/; Secure; SameSite=Lax";
     }
 
     function getCookie(name) {
@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function checkCookieConsent() {
         var consent = getCookie("cookie-consent");
+        console.log('cookie consent', consent)
         if (!consent) {
             cookieConsent.style.display = "block";
         }

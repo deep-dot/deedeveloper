@@ -47,12 +47,13 @@ app.use(expressLayouts);
 app.set('layout', './layouts/main');
 
 // Flash messages and user info middleware
-app.use((req, res, next) => {
+app.use((req, res, next) => {  
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
   res.locals.data = req.flash('data');
   res.locals.user = req.user || null;
-  loggedIn = req.user || null;
+  //loggedIn = req.user || null;
+  //userImage = req.user.image || null
   res.locals.isAuthenticated = !!req.user;
   next();
 });
@@ -66,6 +67,7 @@ app.use('/', require('./routes/sendEmail'));
 
 // API endpoints for React
 app.get('/api/auth/status', (req, res) => {
+  //console.log('in app js req user',req.user)
   res.json({ isAuthenticated: !!req.user, userImage: req.user ? req.user.image : null });
 });
 
