@@ -50,7 +50,6 @@ const upload = multer({
   fileFilter: fileFilter
 }).single('image');
 
-sendToken
 router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
   if (req.body['g-recaptcha-response'] === '') {
     if (req.file) {
