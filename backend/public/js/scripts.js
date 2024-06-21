@@ -50,14 +50,23 @@ function events() {
       if (dark) {
         main_wrapper.classList.remove("light");
         main_wrapper.classList.add("dark");
+        document.getElementById('light-logo').style.display = 'none';
+        document.getElementById('dark-logo').style.display = 'block';
+        document.getElementById('footer-light-logo').style.display = 'block';
+        document.getElementById('footer-dark-logo').style.display = 'none';
       } else {
         main_wrapper.classList.remove("dark");
         main_wrapper.classList.add("light");
+        document.getElementById('light-logo').style.display = 'block';
+        document.getElementById('dark-logo').style.display = 'none';
+        document.getElementById('footer-light-logo').style.display = 'none';
+        document.getElementById('footer-dark-logo').style.display = 'block';
       }
     });
   } else {
     console.log("toggle_btn is null");
   }
+
 
   //menu
   if (hamburger_menu) {
