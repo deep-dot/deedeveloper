@@ -69,9 +69,6 @@ body a {
 
 .toggle-btn {
   display: block;
-  position: absolute;
-  top:35%;
-  right: 5%;
   border: none;
   background-color: var(--backgroundColor);
   color: var(--colorOnBackgroundColor);

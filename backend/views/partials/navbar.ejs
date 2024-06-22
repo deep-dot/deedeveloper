@@ -1,12 +1,8 @@
 <header>
-  <!-- <img class="logo_image" href="#" src="/img/logoDeeDev.svg" alt="Logo" /> -->
+  <div class="nav_bar">
   <img class="logo_image" id="light-logo" src="/img/light-logoDeeDev.svg" alt="Light Logo">
   <img class="logo_image" id="dark-logo" src="/img/logoDeeDev.svg" alt="Dark Logo" style="display: none;">
 
-  <button class="toggle-btn">
-    <i class="far fa-moon"></i>
-    <i class="far fa-sun"></i>
-  </button>
   <nav class="nav">
     <ul class="nav_list">
       <li>
@@ -73,23 +69,29 @@
     </ul>
   </nav>
 
+  <button class="toggle-btn">
+    <i class="far fa-moon"></i>
+    <i class="far fa-sun"></i>
+  </button>
+
   <div class="hamburger-menu">
     <div class="bar"></div>
   </div>
+</div>
 </header>
+
 <script>
+  function toggleBlogMenu(event) {
+    burgerMenu = document.querySelector('.hamburger-menu');
+    if (burgerMenu.style.display = 'flex') {
+      const blogElement = event.currentTarget;
+      const blogMenuElement = blogElement.nextElementSibling;
 
-function toggleBlogMenu(event) {
-  burgerMenu = document.querySelector('.hamburger-menu');
-  if(burgerMenu.style.display='flex') {
-    const blogElement = event.currentTarget;
-    const blogMenuElement = blogElement.nextElementSibling;
-
-    if (blogMenuElement.style.maxHeight) {
+      if (blogMenuElement.style.maxHeight) {
         blogMenuElement.style.maxHeight = null;
-    } else {
+      } else {
         blogMenuElement.style.maxHeight = blogMenuElement.scrollHeight + "px";
+      }
     }
   }
-}
 </script>

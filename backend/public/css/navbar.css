@@ -16,12 +16,19 @@ header {
   top: 0;
   left: 0;
   right: 0;
+  z-index: 20;
+  height: var(--navheight);
+  /* background: var(--background);   */
+  background: #858282;
+}
+
+.nav_bar{
+  width: 90%;
+  margin: auto;
   transition: all 0.3s ease-in-out;
   transform: translateY(0);
   background: var(--background);  
-  /* background: #858282; */
-  z-index: 20;
-  height: var(--navheight);
+  height: inherit;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-grow: 1;
@@ -30,12 +37,16 @@ header {
   justify-content: space-between;
 }
 
+.logo_image {
+  width: 200px;
+}
+
 .nav {
   display: flex;
-  flex-wrap: wrap;
   padding: 0 20px 0 20px;
-  margin-right:auto;
+  margin:auto;
   height: inherit;
+  /* background: var(--background);     */
   background: #858282;
 }
 
@@ -46,12 +57,8 @@ header {
   list-style: none;
   flex-grow: 1;
   gap: 1.5em;
-  margin: 0;
-  padding: 0;
-}
-
-.nav .nav_list {
   margin-left: auto;
+  padding: 0;
 }
 
 .nav .nav_list li:nth-of-type(1),
@@ -164,16 +171,73 @@ header {
 }
 
 @media screen and (max-width: 768px) {
+  
+  .logo_image {
+    height: var(--navheight);
+  }
+  .nav_bar{
+    padding: 0 10px 0 0;
+    width: auto;
+    margin: auto;
+  }
 
   .nav {
-    display: none;
+    display: flex;   
+    position: absolute;   
+    width: 100%; 
+    height: auto;
+    top: var(--navheight);    
+  }
+/* 
+  .nav.active {
+    display: flex;    
+  } */
+
+  .nav_list {
+    display: none;      
+  }
+  
+  .nav.active .nav_list {
+    display: flex; 
+    flex-direction: column;  
   }
 
-  .nav.active {
-    display: flex;  
-    padding: none;
-    width: 50vw;
-  }
+.nav .nav_list #loggedIn a,
+.nav .nav_list #loggedOut a,
+.nav .nav_list #reg a{
+background-color: var(--background);
+padding: 0;
+color: var(--colorOnBackground);
+}
+
+.nav .nav_list li:not(:last-child),
+.nav .nav_list .blog-menu li {
+  margin-bottom: 3em;
+  border-bottom: 0.5px dotted var(--colorOnBackground);
+}
+
+.nav .nav_list li{
+  text-align: center;
+}
+
+.nav .nav_list li i:not(.fa-caret-down) {
+  display: none;
+}
+
+.nav .blog {
+  list-style: none;
+  margin-top: 0;
+  box-shadow: none;  
+}
+
+.blog > a i {
+  margin-right: 10px;
+  transform: rotate(90deg);
+}
+
+.nav_list .blog-menu {
+  margin-top: 0;
+}
 
   .hamburger-menu {
     z-index: 99;
@@ -209,15 +273,15 @@ header {
   transform: translateY(8px);
 }
 
-.main-wrapper.active .hamburger-menu .bar {
+.nav.active .hamburger-menu .bar {
   background-color: transparent;
 }
 
-.main-wrapper.active .bar::before {
+.nav.active .bar::before {
   transform: translateY(0) rotate(-45deg);
 }
 
-.main-wrapper.active .bar::after {
+.nav.active .bar::after {
   transform: translateY(0) rotate(45deg);
 }
 
@@ -230,62 +294,6 @@ header {
     .nav_list > li:not(.profileImage) {
       display: none;
     }
-    
-    .main-wrapper.active .nav_list > li {
-      display: block;      
-    }
-
-  .main-wrapper.active .nav_list {
-    display: block;
-    height: auto;
-    margin-top: var(--navheight);     
-    padding: 1rem 2rem 3rem 2rem;
-    width: 100vw;
-    transition: 1s;
-    background: var(--background);    
-  }
-
-  .main-wrapper.active .nav_list a {
-    font: 600 2.5vmax "Roboto";
-    color: var(--colorOnBackground);
-  }
-
-  .main-wrapper.active .nav_list #loggedIn a,
-  .main-wrapper.active .nav_list #loggedOut a,
-  .main-wrapper.active .nav_list #reg a{
-  background-color: var(--background);
-  padding: 0;
-  color: var(--colorOnBackground);
-}
-
-  .main-wrapper.active .nav_list li:not(:last-child),
-  .main-wrapper.active .nav_list .blog-menu li {
-    margin-bottom: 3em;
-    border-bottom: 0.5px dotted var(--colorOnBackground);
-  }
-
-  .main-wrapper.active .nav_list li{
-    text-align: center;
-  }
-
-  .main-wrapper.active .nav_list li i:not(.fa-caret-down) {
-    display: none;
-  }
-
-  .nav .blog {
-    list-style: none;
-    margin-top: 0;
-    box-shadow: none;  
-  }
-  
-  .blog > a i {
-    margin-right: 10px;
-    transform: rotate(90deg);
-  }
-
-  .nav_list .blog-menu {
-    margin-top: 0;
-  }
 
   .overlay {
     display: block;
@@ -299,11 +307,11 @@ header {
     pointer-events: none;
     transition: 0.5s;
   }
-
-  .main-wrapper.active .overlay {
+/* 
+  .nav.active .overlay {
     pointer-events: all;
     opacity: 1;
-  }
+  } */
 
 }
 

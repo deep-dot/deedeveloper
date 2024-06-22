@@ -9,17 +9,21 @@ let dark = false,
   hiddenElements,
   obsever,
   currentLocation,
-  menuItems;
+  menuItems,
+  overlay,
+  nav;
 
 function declare() {
   main = document.querySelector("main");
   toggle_btn = document.querySelector(".toggle-btn");
   main_wrapper = document.querySelector(".main-wrapper");
+  nav = document.querySelector('.nav');
   hamburger_menu = document.querySelector(".hamburger-menu");
   blog = document.querySelector(".blog");
   blog_menu = document.querySelector(".blog-menu");
   currentLocation = window.location.pathname;
   menuItems = document.querySelectorAll(".nav_list > li > a");
+  overlay = document.querySelector('.overlay');
 }
 declare();
 
@@ -71,8 +75,10 @@ function events() {
   //menu
   if (hamburger_menu) {
     hamburger_menu.addEventListener("click", () => {
-      main_wrapper.classList.toggle("active");
-      document.querySelector('.nav').classList.toggle('active');
+      nav.classList.toggle('active');
+    });
+    overlay.addEventListener('click', function() {
+      nav.classList.remove('active');
     });
   } else {
     console.log("hamburger_menu is null");
