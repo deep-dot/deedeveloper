@@ -24,24 +24,19 @@ header {
   height: var(--navheight);
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   display: flex;
+  flex-grow: 1;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .nav {
   display: flex;
-  position: relative;
-  max-width: 70%;
-  margin:auto;
+  flex-wrap: wrap;
+  padding: 0 20px 0 20px;
+  margin-right:auto;
   height: inherit;
-}
-
-header .logo_image {
-  position: absolute;
-  left: 20px;
-  top: 0%;
-  width: 200px;
-  height: inherit;
+  background: #858282;
 }
 
 .nav_list {
@@ -59,10 +54,7 @@ header .logo_image {
   margin-left: auto;
 }
 
-.nav .nav_list li:nth-of-type(1) {
-  margin-left: auto;
-}
-
+.nav .nav_list li:nth-of-type(1),
 .nav .nav_list li:nth-of-type(7) {
   margin-left: auto;
 }
@@ -97,14 +89,15 @@ header .logo_image {
 .nav_list .blog-menu {
   color: var(--hoverColor);
   position: absolute;
+  top: var(--navheight);
+  /* width: 100%; */
   background: var(--background);
-  margin-top: 2.2rem;
   list-style: none;
   box-shadow: 2px 2px 0px rgb(23, 162, 184)
 }
 
 .nav_list .blog-menu li {
-  width: 150px;
+  padding: 10px;
   text-align: left;
   border-bottom: 1px dotted var(--colorOnBackground);
   border-radius: 0;
@@ -112,7 +105,6 @@ header .logo_image {
 
 .nav_list .blog-menu li:last-child {
   border-bottom: none;
-  margin: 15px 5px 5px 5px;
 }
 
 .blog > a {
@@ -143,19 +135,51 @@ header .logo_image {
   color: var(--colorOnBackgroundColor);
 }
 
-.hamburger-menu {
-  display: none;
+@media screen and (min-width: 768px) and (max-width: 1250px) {
+
+  header {
+    height: calc(var(--navheight) + 1rem);    
+  }
+
+  header .logo_image {
+    width: 120px;
+  }
+
+  .nav_list {
+    display: flex;
+  } 
+
+  .nav_list li {
+    font: 400 0.8 vmax "Roboto";
+  }
+  
+  .nav_list i {
+    margin-right: 5px;
+  }
+
+  .nav_list .blog {
+    position: static;
+  }
+
 }
 
-.hamburger-menu {  
-  z-index: 99;
-  width: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  display: none;
-}
+@media screen and (max-width: 768px) {
+
+  .nav {
+    display: none;
+  }
+
+  .nav.active {
+    display: flex;  
+    padding: none;
+    width: 50vw;
+  }
+
+  .hamburger-menu {
+    z-index: 99;
+    width: 1.5rem;
+    cursor: pointer;  
+  }
 
 .hamburger-menu .bar {
   position: relative;
@@ -196,54 +220,6 @@ header .logo_image {
 .main-wrapper.active .bar::after {
   transform: translateY(0) rotate(45deg);
 }
-
-@media screen and (min-width: 867px) and (max-width: 1250px) {
-
-  header {
-    height: calc(var(--navheight) + 1rem);    
-  }
-
-  .nav_list {
-    display: flex;
-  }
-
-  header .logo_image {
-    width: 120px;
-  }
-
-  .nav_list li {
-    font: 400 0.8 vmax "Roboto";
-  }
-  
-  .nav_list i {
-    margin-right: 5px;
-  }
-
-}
-
-@media screen and (max-width: 867px) {
-
-  header {
-    display: block;
-    height: var(--navheight);
-  }
-
-  .nav {    
-    display: block;
-    margin: 0;
-    padding: 0;   
-  }
-
-  .hamburger-menu {
-    display: flex;
-    position: absolute;
-    top: 50%;
-    right: 1rem;
-  }
-
-  header .logo_image {
-    width: 150px;
-    }
 
     .nav_list .profileImage {
       position: fixed;
@@ -331,20 +307,7 @@ header .logo_image {
 
 }
 
-@media screen and (max-width: 576px) {
-
-  header {
-    height: var(--navheight);
-  }
-
-  .nav {
-    margin: 0;
-    padding: 0;
-  }
-
-  header .logo_image {
-    left: 5px;
-    }
+@media screen and (max-width: 480px) {
 
     .nav_list .profileImage {
       right:30%;

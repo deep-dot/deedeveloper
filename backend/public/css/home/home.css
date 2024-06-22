@@ -19,9 +19,6 @@
   }
   
   .home .home1, .home .home2 {
-    display: flex;
-    align-items: center;/* Vertically center content */
-    justify-content: center; /* Horizontally center content */
     height: auto;
     padding: 10px;
   }

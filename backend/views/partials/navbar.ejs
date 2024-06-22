@@ -1,7 +1,7 @@
 <header>
   <!-- <img class="logo_image" href="#" src="/img/logoDeeDev.svg" alt="Logo" /> -->
   <img class="logo_image" id="light-logo" src="/img/light-logoDeeDev.svg" alt="Light Logo">
-<img class="logo_image" id="dark-logo" src="/img/logoDeeDev.svg" alt="Dark Logo" style="display: none;">
+  <img class="logo_image" id="dark-logo" src="/img/logoDeeDev.svg" alt="Dark Logo" style="display: none;">
 
   <button class="toggle-btn">
     <i class="far fa-moon"></i>
@@ -34,7 +34,7 @@
           <i class="fas fa-phone"></i>Contact
         </a>
       </li>
-      <li class="blog">
+      <li class="blog" onclick="toggleBlogMenu(event)">
         <a href="#">
           <i class="fa fa-caret-down"></i>
           Blog
@@ -77,3 +77,19 @@
     <div class="bar"></div>
   </div>
 </header>
+<script>
+
+function toggleBlogMenu(event) {
+  burgerMenu = document.querySelector('.hamburger-menu');
+  if(burgerMenu.style.display='flex') {
+    const blogElement = event.currentTarget;
+    const blogMenuElement = blogElement.nextElementSibling;
+
+    if (blogMenuElement.style.maxHeight) {
+        blogMenuElement.style.maxHeight = null;
+    } else {
+        blogMenuElement.style.maxHeight = blogMenuElement.scrollHeight + "px";
+    }
+  }
+}
+</script>

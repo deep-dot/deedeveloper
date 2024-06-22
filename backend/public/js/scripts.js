@@ -72,6 +72,7 @@ function events() {
   if (hamburger_menu) {
     hamburger_menu.addEventListener("click", () => {
       main_wrapper.classList.toggle("active");
+      document.querySelector('.nav').classList.toggle('active');
     });
   } else {
     console.log("hamburger_menu is null");
