@@ -76,6 +76,7 @@ function events() {
   if (hamburger_menu) {
     hamburger_menu.addEventListener("click", () => {
       nav.classList.toggle('active');
+      main_wrapper.classList.toggle('active');
     });
     overlay.addEventListener('click', function() {
       nav.classList.remove('active');
