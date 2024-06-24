@@ -114,6 +114,7 @@ function events() {
     //console.log('blog===', blog);
     if (blog.classList.contains("active")) {
       blog_menu.style.display = "block";
+      // blog_menu.style.height = '5em';
     } else {
       blog_menu.style.display = "none";
     }

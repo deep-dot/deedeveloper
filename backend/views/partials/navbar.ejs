@@ -80,19 +80,20 @@
   </div>
 </div>
 </header>
-
 <script>
-  function toggleBlogMenu(event) {
-    burgerMenu = document.querySelector('.hamburger-menu');
-    if (burgerMenu.style.display = 'flex') {
-      const blogElement = event.currentTarget;
-      const blogMenuElement = blogElement.nextElementSibling;
 
-      if (blogMenuElement.style.maxHeight) {
-        blogMenuElement.style.maxHeight = null;
-      } else {
-        blogMenuElement.style.maxHeight = blogMenuElement.scrollHeight + "px";
-      }
+function toggleBlogMenu(event) {  
+    const blog = event.currentTarget;
+    const blogMenu = blog.nextElementSibling;
+    // const toggleIcon = questionElement.querySelector(".toggle-icon");
+    console.log('toggleBlogMenu==', blogMenu.scrollHeight);
+    if (blogMenu.style.maxHeight) {
+        blogMenu.style.maxHeight = null;
+    } else {
+        blogMenu.style.maxHeight = blogMenu.scrollHeight + "px";
     }
-  }
+
+    // toggleIcon.classList.toggle("open");
+    // toggleIcon.textContent = answerElement.style.maxHeight ? "-" : "+";
+}
 </script>

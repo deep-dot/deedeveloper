@@ -25,7 +25,7 @@ header {
 .nav_bar{
   max-width: 1440px;
   margin: auto;
-  transition: all 0.3s ease-in-out;
+  /* transition: all 0.3s ease-in-out; */
   transform: translateY(0);
   background: var(--background);  
   height: inherit;
@@ -56,6 +56,7 @@ header {
   list-style: none;
   gap: 1.5em;
 }
+
 /* 
 .nav .nav_list li:nth-of-type(1),
 .nav .nav_list li:nth-of-type(7) {
@@ -67,7 +68,8 @@ header {
 } */
 
 .nav_list li {
-  font: 400 0.7em "Roboto";
+  font: 400 1em "Roboto";
+  border-bottom: 0.2 solid black;  
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -237,27 +239,31 @@ header {
     position: absolute;   
     width: 100%; 
     height: auto;
-    top: var(--navheight);       
+    top: var(--navheight);  
+    padding: 0;     
   }
 
   .nav.active {
     display: flex;    
-    background-color: aliceblue;
-  }
+   }
 
   .nav_list {
     flex-direction: column;  
+    width: 100%;
     top: var(--navheight);  
-    margin: 0 10px 10px 10px; 
-    background-color: aquamarine;
+    margin: 2em 0; 
   }
 
   .nav.active .nav_list li{
-    display: flex; 
-    background-color: black;
+    display: flex;    
+    justify-content: center; 
+    width: 100%;
    }
 
-/* 
+.nav .nav_list li i:not(.fa-caret-down) {
+  display: none;
+}
+
 .nav .nav_list #loggedIn a,
 .nav .nav_list #loggedOut a,
 .nav .nav_list #reg a{
@@ -268,20 +274,12 @@ color: var(--colorOnBackground);
 
 .nav .nav_list li:not(:last-child),
 .nav .nav_list .blog-menu li {
-  margin-bottom: 3em;
-  border-bottom: 0.5px dotted var(--colorOnBackground);
-}
-
-.nav .nav_list li{
-  text-align: center;
-}
-
-.nav .nav_list li i:not(.fa-caret-down) {
-  display: none;
+  border-bottom: 0.5px dotted var(--colorOnBackground);  
 }
 
 .nav .blog {
   list-style: none;
+  position: relative;
   margin-top: 0;
   box-shadow: none;  
 }
@@ -291,9 +289,26 @@ color: var(--colorOnBackground);
   transform: rotate(90deg);
 }
 
-.nav_list .blog-menu {
-  margin-top: 0;
-} */
+ .blog-menu {
+  display: none;  
+}
+
+.blog.active .blog-menu {
+  max-height: 4.5em;
+  width: 100%;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+  border-radius: 5px;
+  background-color: var(--colorOnBackground); 
+}
+
+.nav_list .blog-menu li a{
+  color: var(--background);
+}
+
+.blog.active #loggedIn {
+  top: 5em;
+}
 
   .nav_list .profileImage {
     position: fixed;
@@ -317,11 +332,11 @@ color: var(--colorOnBackground);
     pointer-events: none;
     transition: 0.5s;
   }
-/* 
+
   .nav.active .overlay {
     pointer-events: all;
     opacity: 1;
-  } */
+  }
 
 }
 
