@@ -43,7 +43,7 @@ header {
 }
 
 .nav {
-  display: flex;
+  display: flex;  
   padding: 0 20px 0 20px;
   height: inherit;
   background: var(--background);    
@@ -51,6 +51,7 @@ header {
 
 .nav_list {
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
   list-style: none;
@@ -76,28 +77,29 @@ header {
 
 .nav_list a{
   color: var(--colorOnBackground);
+  display: block;
 }
-
+/* 
 .nav_list a:hover,
 .nav_list a:focus {
   text-decoration: none;
   color: var(--hoverColor);
   transform: scale(1.05);
-}
+} */
 
 .nav_list i {
   margin-right: 10px;
   color: var(--mainColor);
 }
 
-.nav_list .blog-menu {
-  color: var(--hoverColor);
+.blog .blog-menu {
+  max-height: 0;
   position: absolute;
+  overflow: hidden;
   top: var(--navheight);
-  /* width: 100%; */
-  background: var(--background);
-  list-style: none;
-  box-shadow: 2px 2px 0px rgb(23, 162, 184)
+  transition: max-height 0.4s ease-in-out;
+  border-radius: 5px;
+  background-color: var(--background); 
 }
 
 .nav_list .blog-menu li {
@@ -110,12 +112,12 @@ header {
 .nav_list .blog-menu li:last-child {
   border-bottom: none;
 }
-
+/* 
 .blog > a {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .nav_list #loggedIn a,
 .nav_list #loggedOut a,
@@ -250,18 +252,26 @@ header {
   .nav_list {
     flex-direction: column;  
     width: 100%;
-    top: var(--navheight);  
     margin: 2em 0; 
   }
 
   .nav.active .nav_list li{
     display: flex;    
-    justify-content: center; 
+    justify-content: flex-start; 
+    padding-left: 10px;
     width: 100%;
    }
 
-.nav .nav_list li i:not(.fa-caret-down) {
+.nav .nav_list li i:not(.toggle-icon) {
   display: none;
+}
+
+.blog a:first-child {
+  display: flex;
+  flex: 1;
+  align-items: center;  
+  justify-content: space-between;
+  margin-right: 2em;
 }
 
 .nav .nav_list #loggedIn a,
@@ -280,21 +290,11 @@ color: var(--colorOnBackground);
 .nav .blog {
   list-style: none;
   position: relative;
-  margin-top: 0;
   box-shadow: none;  
 }
 
-.blog > a i {
-  margin-right: 10px;
-  transform: rotate(90deg);
-}
-
- .blog-menu {
-  display: none;  
-}
-
-.blog.active .blog-menu {
-  max-height: 4.5em;
+.blog .blog-menu {
+  max-height: 0;
   width: 100%;
   overflow: hidden;
   transition: max-height 0.4s ease-in-out;
@@ -302,12 +302,12 @@ color: var(--colorOnBackground);
   background-color: var(--colorOnBackground); 
 }
 
-.nav_list .blog-menu li a{
-  color: var(--background);
+.blog .toggle-icon.open .blog-menu {
+  max-height: 4.5em;
 }
 
-.blog.active #loggedIn {
-  top: 5em;
+.nav_list .blog-menu li a{
+  color: var(--background);
 }
 
   .nav_list .profileImage {

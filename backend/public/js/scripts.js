@@ -107,21 +107,19 @@ function events() {
   hiddenElements.forEach((el) => obsever.observe(el));
 
   // blog menu button
-  if(blog_menu){
-  blog_menu.style.display = "none";
-  blog.addEventListener("click", () => {
-    blog.classList.toggle("active");
-    //console.log('blog===', blog);
-    if (blog.classList.contains("active")) {
-      blog_menu.style.display = "block";
-      // blog_menu.style.height = '5em';
-    } else {
-      blog_menu.style.display = "none";
-    }
-  });
-} else {
-  console.log("blog_menu is null");
-}
+//   if(blog_menu){
+//   blog_menu.style.display = "none";
+//   blog.addEventListener("click", () => {
+//     blog.classList.toggle("active");
+//     if (blog.classList.contains("active")) {
+//       blog_menu.style.display = "block";
+//     } else {
+//       blog_menu.style.display = "none";
+//     }
+//   });
+// } else {
+//   console.log("blog_menu is null");
+// }
 
   //hide navbar while scrolling down
   const header = document.querySelector("header");

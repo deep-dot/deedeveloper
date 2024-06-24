@@ -32,8 +32,9 @@
       </li>
       <li class="blog" onclick="toggleBlogMenu(event)">
         <a href="#">
-          <i class="fa fa-caret-down"></i>
           Blog
+          <!-- <i class="fa toggle-icon"></i>           -->
+          <span class="toggle-icon">+</span>
         </a>
         <ul class="blog-menu">
           <li>
@@ -84,16 +85,17 @@
 
 function toggleBlogMenu(event) {  
     const blog = event.currentTarget;
-    const blogMenu = blog.nextElementSibling;
-    // const toggleIcon = questionElement.querySelector(".toggle-icon");
-    console.log('toggleBlogMenu==', blogMenu.scrollHeight);
+    // const blogMenu = blog.nextElementSibling;
+    const blogMenu = document.querySelector('.blog-menu');
+    const toggleIcon = blog.querySelector(".toggle-icon");
+    console.log('toggleBlogMenu==', toggleIcon);
     if (blogMenu.style.maxHeight) {
         blogMenu.style.maxHeight = null;
     } else {
         blogMenu.style.maxHeight = blogMenu.scrollHeight + "px";
     }
 
-    // toggleIcon.classList.toggle("open");
-    // toggleIcon.textContent = answerElement.style.maxHeight ? "-" : "+";
+    toggleIcon.classList.toggle("open");
+    toggleIcon.textContent = blogMenu.style.maxHeight ? "-" : "+";
 }
 </script>
