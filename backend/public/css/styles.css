@@ -22,16 +22,41 @@
    transform: translateY(0);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
+
 :root {
- --navheight: 11vh;
- --mobileNavHeight: 50vh;
+  
+  --ff-body: 'Poppins', sans-serif;
+  --ff-nav: 'Poppins', sans-serif;
+  
+  --fw-200: 200;
+  --fw-300: 300;
+  --fw-400: 400;
+  --fw-500: 500;
+  
+  --fs-300: .9rem
+  --fs-400: .95rem;
+  --fs-500: 1.2rem;
 }
 
 body {
- font-size: 20px;
+  display: grid;
+  justify-items: center;
+  /* height: 100vh; */
+  padding: 1rem;
+  font-family: var(--ff-body);
+  font-weight: var(--fw-300);
+  font-size: var(--fs-400);
+  background-color: var(--nav-bg-color);
 }
 
-body a {
+ul {
+  list-style: none;
+  margin: 0;
+}
+
+a {
+  cursor: pointer;
   text-decoration: none;
 }
 

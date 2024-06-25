@@ -11,18 +11,20 @@ let dark = false,
   currentLocation,
   menuItems,
   overlay,
+  navBar,
   nav;
 
 function declare() {
   main = document.querySelector("main");
   toggle_btn = document.querySelector(".toggle-btn");
   main_wrapper = document.querySelector(".main-wrapper");
-  nav = document.querySelector('.nav');
+  navBar = document.querySelector('.nav_bar');
+  nav = document.querySelector('nav');
   hamburger_menu = document.querySelector(".hamburger-menu");
-  blog = document.querySelector(".blog");
+  blog = document.querySelector("nav .blog");
   blog_menu = document.querySelector(".blog-menu");
   currentLocation = window.location.pathname;
-  menuItems = document.querySelectorAll(".nav_list > li > a");
+  menuItems = document.querySelectorAll("nav > ul > li > a");
   overlay = document.querySelector('.overlay');
 }
 declare();
@@ -75,11 +77,10 @@ function events() {
   //menu
   if (hamburger_menu) {
     hamburger_menu.addEventListener("click", () => {
-      nav.classList.toggle('active');
-      main_wrapper.classList.toggle('active');
+      navBar.classList.toggle('active');
     });
     overlay.addEventListener('click', function() {
-      nav.classList.remove('active');
+      navBar.classList.remove('active');
     });
   } else {
     console.log("hamburger_menu is null");
@@ -105,21 +106,6 @@ function events() {
     });
   });
   hiddenElements.forEach((el) => obsever.observe(el));
-
-  // blog menu button
-//   if(blog_menu){
-//   blog_menu.style.display = "none";
-//   blog.addEventListener("click", () => {
-//     blog.classList.toggle("active");
-//     if (blog.classList.contains("active")) {
-//       blog_menu.style.display = "block";
-//     } else {
-//       blog_menu.style.display = "none";
-//     }
-//   });
-// } else {
-//   console.log("blog_menu is null");
-// }
 
   //hide navbar while scrolling down
   const header = document.querySelector("header");
