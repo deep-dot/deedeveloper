@@ -1,9 +1,10 @@
-<!-- <header>
+
+<header>
   <div class="nav_bar">
   <img class="logo_image" id="light-logo" src="/img/light-logoDeeDev.svg" alt="Light Logo">
   <img class="logo_image" id="dark-logo" src="/img/logoDeeDev.svg" alt="Dark Logo" style="display: none;">
 
-  <nav>
+  <nav id='nav4Large'>
     <ul>
       <li>
         <a href="/">
@@ -70,14 +71,67 @@
     </ul>
   </nav>
 
+  <nav id='accordion' class='dropdown'>
+    <input
+      type='checkbox'
+      id='toggle-01'
+      class='toggle burger-toggle'
+      hidden
+    >
+    <label for='toggle-01' class='toggle-button'>
+      <div class='burger'>
+        <div class='line1'></div>
+        <div class='line2'></div>
+        <div class='line3'></div>
+      </div>
+    </label>
+    
+    <ul class='dropdown-menu lvl-1'>
+      <li class='item'><a><i class='bi bi-house-fill'></i> Home</a></li>
+      <li class='item'><a>About</a></li>
+      <li class='dropdown'>
+        <input type='checkbox' id='toggle-02' class='toggle' hidden>
+        <label for='toggle-02' class='toggle-button caret'><i class='bi bi-image'></i> Gallery </label>
+        <ul class='dropdown-menu lvl-2'>
+          <li class='dropdown'>
+            <input type='checkbox' id='toggle-03' class='toggle' hidden>
+            <label for='toggle-03' class='toggle-button caret'>3D Graphics </label>
+            <ul class='dropdown-menu lvl-3'>
+              <li class='item'><a>Characters</a></li>
+              <li class='item'><a>Landscapes</a></li>
+            </ul>
+          </li>
+          <li class='item'><a>2D Illustration</a></li>
+        </ul>
+      </li>
+      <li class='dropdown'>
+        <input type='checkbox' id='toggle-04' class='toggle' hidden>
+        <label for='toggle-04' class='toggle-button caret'><i class='bi bi-code-slash'></i> Web Development </label>
+        <ul class='dropdown-menu lvl-2'>
+          <li class='item'><a>Articles</a></li>
+          <li class='dropdown'>
+            <input type='checkbox' id='toggle-05' class='toggle' hidden>
+            <label for='toggle-05' class='toggle-button caret'>Projects </label>
+            <ul class='dropdown-menu lvl-3'>
+              <li class='item'><a>JS</a></li>
+              <li class='item'><a>CSS</a></li>
+            </ul>
+          </li>
+          <li class='item'><a>Tutorials</a></li>
+        </ul>
+      </li>
+      <li class='item'><a><i class='bi bi-envelope-fill'></i> Contact</a></li>
+    </ul>
+  </nav>
+  
   <button class="toggle-btn">
     <i class="far fa-moon"></i>
     <i class="far fa-sun"></i>
   </button>
 
-  <div class="hamburger-menu">
+  <!-- <div class="hamburger-menu">
     <div class="bar"></div>
-  </div>
+  </div> -->
 </div>
 </header>
 <script>
@@ -97,10 +151,10 @@ function toggleBlogMenu(event) {
     toggleIcon.classList.toggle("open");
     toggleIcon.textContent = blogMenu.style.maxHeight ? "-" : "+";
 }
-</script> -->
+</script>
 
 
-<nav id='accordion' class='dropdown'>
+<!-- <nav id='accordion' class='dropdown'>
   <input
     type='checkbox'
     id='toggle-01'
@@ -114,6 +168,7 @@ function toggleBlogMenu(event) {
       <div class='line3'></div>
     </div>
   </label>
+  
   <ul class='dropdown-menu lvl-1'>
     <li class='item'><a><i class='bi bi-house-fill'></i> Home</a></li>
     <li class='item'><a>About</a></li>
@@ -150,7 +205,7 @@ function toggleBlogMenu(event) {
     </li>
     <li class='item'><a><i class='bi bi-envelope-fill'></i> Contact</a></li>
   </ul>
-</nav>
+</nav> -->
 
 <script>
   window.CP.PenTimer.MAX_TIME_IN_LOOP_WO_EXIT = 6000;

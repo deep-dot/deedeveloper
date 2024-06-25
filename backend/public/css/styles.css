@@ -25,7 +25,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
 
 :root {
-  
+  --navheight: 11vh;
+  --mobileNavHeight: 50vh;
+
   --ff-body: 'Poppins', sans-serif;
   --ff-nav: 'Poppins', sans-serif;
   
@@ -42,12 +44,9 @@
 body {
   display: grid;
   justify-items: center;
-  /* height: 100vh; */
-  padding: 1rem;
   font-family: var(--ff-body);
   font-weight: var(--fw-300);
   font-size: var(--fs-400);
-  background-color: var(--nav-bg-color);
 }
 
 ul {
