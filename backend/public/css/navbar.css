@@ -201,13 +201,11 @@ nav ul .fa-sign-out-alt {
 nav ul{
   display: flex;
   flex-direction: column;
-  width: 100%; 
   margin: 2em 0; 
 }
 
- nav ul li{     
-  justify-content: flex-start; 
-  padding: 0 10px;
+ nav ul li{       
+  padding: 5px 10px;
   width: 100%;
  }
 
@@ -230,11 +228,12 @@ nav ul #reg a{
 
 nav ul li:not(:last-child), 
 nav ul .blog-menu li:not(:last-child) {
-  border-bottom: 0.5px dotted var(--colorOnBackground);  
+  border-top: 0.5px dotted var(--colorOnBackground);  
 }
 
 nav .blog {
   max-height: 2em;
+  box-shadow: none;
 }
 
 .blog .blog-menu {
@@ -253,7 +252,7 @@ nav .blog {
   box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-nav ul .blog-menu li{
+nav ul .blog-menu li a{
   color: var(--background);
 }
 
