@@ -218,7 +218,7 @@ display: none;
 }
 
 .nav_bar .blog a,
-.nav_bar .about a {
+.nav_bar .navAbout a {
   display: flex;
   flex: 1;
   align-items: center;  
@@ -231,13 +231,14 @@ nav ul #reg a{
   text-align: center;
 }
 
-nav ul li:not(:last-child), 
-nav ul .blog-menu li:not(:last-child) {
+nav ul li:not(:first-child), 
+nav ul .blog-menu li:not(:first-child),
+nav ul .about-menu li:not(:first-child) {
   border-top: 0.5px dotted var(--colorOnBackground);  
 }
 
 .nav_bar .blog,
-.nav_bar .about {
+.nav_bar .navAbout {
   max-height: 2em;
   box-shadow: none;
 }

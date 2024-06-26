@@ -3,6 +3,7 @@ const router = express.Router()
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
 const homeController = require('../controllers/home')
+const portfolioController = require('../controllers/portfolio')
 const newPostController = require('../controllers/blog/newPost')
 const storePostController = require('../controllers/blog/storePost')
 const toggleLikePostController = require('../controllers/blog/likePost')
@@ -52,6 +53,7 @@ const upload = multer({
 }).single('image');
 
 router.get('/', homeController);
+router.get('/portfolio', portfolioController);
 
 router.get('/blogs', blogsController);
 router.post('/searchPost', searchPostController);
