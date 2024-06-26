@@ -234,7 +234,7 @@ nav ul .blog-menu li:not(:last-child) {
 }
 
 nav .blog {
-  height: auto;
+  max-height: 2em;
 }
 
 .blog .blog-menu {
@@ -245,9 +245,12 @@ nav .blog {
   background-color: var(--colorOnBackground); 
 }
 
-.blog .toggle-icon.open .blog-menu {
+.blog-menu,
+.blog,
+.nav_bar #loggedIn {
   width: 100%;
   transition: max-height 0.4s ease-in-out;
+  box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 nav ul .blog-menu li{
