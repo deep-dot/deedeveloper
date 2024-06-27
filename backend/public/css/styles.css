@@ -69,12 +69,12 @@ a {
 }
 
 .dark {
-  --mainColor: #17a2b8;
-  --hoverColor: #5bacdf;
+  --mainColor: rgb(23, 162, 184);
+  --hoverColor: rgb(91, 172, 223);
   --backgroundColor: #2a4657;
   --colorOnBackgroundColor: #f1f8fc;
   --background: #f1f8fc;  
-  --colorOnBackground: #2a4657;
+  --colorOnBackground: rgb(42, 70, 87);
 }
 
 .main-wrapper {

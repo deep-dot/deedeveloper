@@ -54,7 +54,7 @@ p {
     font-size: var(--textSize);
     font-weight: var(--textWeight);
 }
-
+/* 
 a {
     display: inline-block;
     padding: 10px 20px;
@@ -82,7 +82,7 @@ button {
 
 button:hover, a:hover {
     background-color: var(--buttonHover); 
-}
+} */
 
 
 /* https://learnlayout.com/box-sizing */
@@ -737,13 +737,13 @@ html, body {
     }
 
 /* FOOTER */
-footer {
+/* footer {
     position:sticky;
     bottom:0;
     left:0;    
     width: 100%;
     min-height: var(--footerHeight);
-    /* background: linear-gradient(0deg, rgba(153,134,95,1) 0%, rgba(255,224,158,1) 100%);; */
+    /* background: linear-gradient(0deg, rgba(153,134,95,1) 0%, rgba(255,224,158,1) 100%);; *
     background-color: rgba(255,224,158,1);
     text-align: center;
 }
@@ -785,7 +785,7 @@ footer {
 
 .logo img, .social-icons img {
     width: 25px;
-}
+} */
 
 
 @media (max-width: 1120px) {
@@ -924,14 +924,14 @@ footer {
         width: 90%;
       }
 
-      /* FOOTER */
+      /* FOOTER
 
       .footer-section .section1,
       .footer-section .section2 {
           flex-direction: column;
           margin-bottom: 0px;
           gap: 0em;
-      }
+      } */
 
 }
 
