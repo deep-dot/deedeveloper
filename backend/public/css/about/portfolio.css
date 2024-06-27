@@ -1,4 +1,4 @@
-/* Base styles that apply globally */
+/* Base styles that apply globally
 :root {
     --pageWidth: 1440px;
     --navbarHeight: 5em;  
@@ -53,6 +53,10 @@ p {
     font-family: var(--textFamily);
     font-size: var(--textSize);
     font-weight: var(--textWeight);
+} */
+
+section {
+    margin: 2em 0;
 }
 /* 
 a {
@@ -172,8 +176,18 @@ html, body {
     padding: 20px;
 }
 
+.top-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.top-image h3{
+margin: auto;
+text-align: center;
+}
 .top-image img {
-    width: 40%;
+    width: 60%;
     height: 80%;
     display: block; 
 }
@@ -184,64 +198,6 @@ html, body {
     align-items: center; 
     justify-content: center; 
 }
-
-/* Styles for membership page */
-.membership-container {
-    min-height: 75vh;
-      max-width: var(--pageWidth);
-      margin: 0 auto;
-      padding: 20px;
-    }
-    
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    
-    .membership-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    
-    .membership {
-      flex: 1;
-      min-width: fit-content;
-      background-image: url('../../img/profileImages/skillBackground.jpeg');
-      /* width: calc(33.33% - 20px); */
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      padding: 15px;
-      background-color: #FFE09E;
-      opacity: 0.8;
-      box-sizing: border-box;
-    }
-
-    .membership:hover {
-      background-color: var(--buttonBackGround);
-      box-shadow: 0px 8px 32px 0px rgba(0,0,0,0.2);
-    }
-  
-    .membership img {
-      width: 10em;
-      height: 3em;
-      background-color: black;
-      border-radius: 5px;
-    }
-  
-    .membership p{
-     color: #FFE09E;
-    }
-    
-    .membership a{
-      color: var(--buttonBackGround);
-     }
-    
-    .load-more {
-      text-align: center;
-      margin-top: 30px;
-    }
 
 /* contact */
 
@@ -653,7 +609,6 @@ html, body {
 
     .testimonial-container {
         position: relative;
-        min-height: 75vh;
         max-width: var(--pageWidth);
         margin: 0 auto;
         padding: 20px;   

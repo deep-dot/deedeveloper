@@ -5,6 +5,7 @@
     grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
     padding: clamp(0, 2vw, 1rem);
+    margin: 8em 0;
   }
   
   .about picture {
@@ -25,7 +26,7 @@
     text-align: start;
     line-height: 1.5;
     color: var(--colorOnBackgroundColor);
-    margin: 2rem 0;
+    margin: 2em 0;
   }
   
   .about h2 {
@@ -49,7 +50,8 @@
     display: flex;
     gap: 10px;
     font: 400 clamp(14px, 2vw, 18px) 'Roboto';
-    flex-wrap: wrap; /* Add this if you want the icons to wrap in smaller screens */
+    flex-wrap: wrap; 
+    margin: 2em 0;
 }
 
 .about-me-icons div {
