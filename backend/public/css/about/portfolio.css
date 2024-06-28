@@ -172,74 +172,54 @@ text-align: center;
 
 /* contact */
 
-.contact-section {
-    max-width: var(--pageWidth);
+.contact-me-box {
+    background: var(--backgroundColor);
+    max-width: 850px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px 2px var(--colorOnBackgroundColor);
+    margin: 4em auto;
+  }
+  
+  .sub-contact-me-box {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0 40px;
-    margin-bottom: 20px;
-}
-
-.contact-section .section {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.contact-section .section .subsection1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    margin-right: 20px;
-}
-
-.contact-section .subsection2 img {
-    display: block;
-    width: 100%;
-}
-
-.contact-section .subsection1 input[type="text"],
-.contact-section .subsection1 input[type="email"],
-.contact-section .subsection1 textarea {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-}
-
-.contact-section .subsection1 input[type="submit"] {
-    background-color: var(--buttonBackGround);
-    color: var(--textColor);
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    padding: 2rem;
+  }
+  
+  .contact-me-box .sub-contact-me-box h2 {
+    font: 800 clamp(16px, 3vw, 22px) 'Roboto';
+    margin-bottom: 2rem;
+    color: var(--colorOnBackgroundColor);
+    line-height: 1.5;
+  }
+  
+  .contact-me-box .sub-contact-me-box p {
+    font: 400 clamp(14px, 3vw, 20px) 'Roboto';
+    margin-bottom: 2rem;
+    color: var(--colorOnBackgroundColor);
+    line-height: 1.5;
+  }
+  
+  .contact-me-box .contact-button {
+    align-self: flex-start;
+    background: var(--background);
+    font: 500 clamp(14px, 3vw, 24px) 'Roboto';
+    padding: 7.5px 30px;
+    text-transform: uppercase;
+    user-select: none;
+    border-radius: 5px;
+    color: var(--colorOnBackground);
+    border-radius: 5px;
     border: none;
-    padding: 10px 20px;
     cursor: pointer;
-}
-
-.success {
-    padding: 10px;
-    background-color: #4CAF50; 
-    color: white;
-    text-align: center;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-}
-
-.error {
-    padding: 10px;
-    background-color: #f44336; 
-    color: white;
-    text-align: center;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-}
+    text-decoration: none;
+  }
+  
+  .contact-me-box .contact-button:hover {
+    background: var(--hoverColor);
+  }
 
 /* internship */
 .internship {
@@ -316,7 +296,9 @@ text-align: center;
 .skill-section {
     position: relative;
     overflow: hidden;
+    width: auto;
     background-color: var(--background);
+    padding: 2em 0;
 }
 
 .skill-section::before {
@@ -330,7 +312,7 @@ text-align: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    opacity: 0.3; /* Adjust the opacity value as needed */
+    opacity: 0.3; 
 }
 
 .skill-section h1{
@@ -350,23 +332,32 @@ text-align: center;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     margin: 30px auto;
     padding: 20px;
+    width: 100%;
 }
 
 .skill .software {
     flex:1;
+    margin: auto;
+    width: 100%;
 }
 
 .skill .languages {
     background-color: turquoise;
     flex:1;
+    margin: auto;
+    width: 100%;
+    padding: 1em;
 }
 
 .skill .frameworks {
     background-color: #4CAF50;
     flex:1;
+    margin: auto;
+    width: 100%;
+    padding: 1em;
 }
 
 .skill span {
@@ -374,6 +365,7 @@ text-align: center;
 }
 
 .skill li {
+    top:0;
     margin: 20px 0;
     padding: 10px;
     list-style-type: none; 
@@ -387,7 +379,6 @@ text-align: center;
     border-radius: 10px;
     overflow-y: hidden;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic bezier(.25, .8, .25, 1);
 }
 
 .skill-section .bar:hover {
@@ -630,7 +621,7 @@ text-align: center;
 
      /* navbar */
 
-     .logo {
+    .logo {
         width: 20vw; 
     }
 
@@ -688,6 +679,10 @@ text-align: center;
     .index-section, .left-section, .right-section {
         flex-direction: column; 
     }
+    
+    .index-section::before {
+        background-image: none;
+    }
 
     .top-image img {
         width: 50%;
@@ -710,6 +705,15 @@ text-align: center;
 
     .contact-section .section img {
         display: none;
+    }
+
+    /* skill */
+    .skill {
+        flex-direction: column;
+    }
+
+    .skill  li {
+        width: 100%;
     }
 
     /* internship */

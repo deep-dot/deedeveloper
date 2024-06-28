@@ -257,31 +257,56 @@
         </div>
       </section>
 
-      <section class="contact-section main-section">
+      <!-- <section class="contact-section main-section">
         <h1>Contact Us</h1>
+        <a href="/#contactSection">
+            <i class="fas fa-phone"></i>Contact
+          </a>
         <p>Feel free to drop us a message using the form below!</p>
         <div class="section">
             <div class="subsection1">
-                <h2>Leave a Message</h2>
-                <p>Fill out the form with your name, email, and a brief message.</p>
-                <form>
-                    <label for="name">Name:</label>
+                    <form id="contact-form-portfolio" method="post">
+                    <label for="name"><i class="fa fa-user"></i>Name:</label>
                     <input type="text" id="name" name="name" required>
 
-                    <label for="email">Email:</label>
+                    <label for="email"><i class="fa fa-envelope"></i>Email:</label>
                     <input type="email" id="email" name="email" required>
 
-                    <label for="message">Message:</label>
+                    <label for="message"><i class="fa fa-comment"></i>Message:</label>
                     <textarea id="message" name="message" required></textarea>
 
-                    <input type="submit" value="Send">
+                    <label for="verification-code" id="verification-code-label" hidden>Verification Code:</label>
+                    <input type="text" id="verification-code" hidden>
+
+                    <p id="message-to-user" hidden></p>
+                    <input id="submit-button" type="submit" value="Send">
+
                 </form>
             </div>
             <div class="subsection2">
                 <img src="../img/profileImages/contactus.png" alt="Decorative Image">
             </div>
         </div>
+    </section> -->
+
+    <section class="contact-me-box">
+            <div class="sub-contact-me-box">
+              <h2>
+                Let's build your dream project together. 🤝 </h2>
+              <p>
+                Schedule a free call with me to discuss your project. I will answer all your questions and concerns and provide
+                you with a quote adjusted to your budget. </p>
+              <a class="contact-button" href="/#contactSection">book your free call</a><br>
+            </div>
     </section>
+
 </section>
+<!-- contact-form -->
+<script src="/js/home/contactForm.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    contactMe();
+  });
+</script>
     
     <script src="script.js"></script>

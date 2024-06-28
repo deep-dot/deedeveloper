@@ -112,10 +112,14 @@
    width: 100%;
  }
 
- @media screen and (max-width: 867px) {
+ @media screen and (max-width: 768px) {
 
     .C .contact {
       grid-template-columns: 1fr;
+    }
+
+    .contact .contact-img img {
+      display: none;
     }
   
   }

@@ -276,8 +276,8 @@ nav ul .about-menu li:not(:first-child) {
   border-radius: 3px;
 }
 
-.bar::before,
-.bar::after {
+.hamburger-menu .bar::before,
+.hamburger-menu .bar::after {
   content: "";
   position: absolute;
   width: 100%;
@@ -286,11 +286,11 @@ nav ul .about-menu li:not(:first-child) {
   transition: 0.5s;
 }
 
-.bar::before {
+.hamburger-menu .bar::before {
   transform: translateY(-8px);
 }
 
-.bar::after {
+.hamburger-menu .bar::after {
   transform: translateY(8px);
 }
 
