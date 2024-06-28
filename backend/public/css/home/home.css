@@ -8,7 +8,7 @@
     font: 800 clamp(18px, 3vw, 36px) "Roboto";
     line-height: 1.5;
     color: var(--colorOnBackgroundColor);
-    /* margin: clamp(1rem, 5vw, 2rem) 0; */
+    margin: clamp(1rem, 5vw, 2rem) 0;
     text-align: center;
     text-transform: uppercase;
   }

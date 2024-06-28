@@ -9,6 +9,7 @@
   --headingSize: clamp(1.75rem, 5vw, 2.25rem);
   --headingFamily: 'Raleway', sans-serif;
   --headingColor: #0462A6;
+  --headingColor: #5380a0;
   --headingWeight: 600;
 
   --heading2Size: clamp(1.50rem, 3vw, 1.75rem);

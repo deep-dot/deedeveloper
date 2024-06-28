@@ -26,7 +26,6 @@ header {
 .nav_bar{
   max-width: 1440px;
   margin: auto;  
-  transform: translateY(0);
   height: inherit;  
   display: flex;
   flex-direction: row;
@@ -68,7 +67,6 @@ nav nav ul li:nth-of-type(7) {
 
 nav ul li {
   font: 400 1em "Roboto";
-  border-bottom: 0.2 solid black;  
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -183,11 +181,6 @@ nav ul .fa-sign-out-alt {
     height: var(--navheight);
   }
 
-  .nav_bar{
-    padding: 0 10px 0 0px;
-    width: auto;
-    margin: auto;
-  }
 
 .nav_bar nav {
   display: none;
@@ -271,17 +264,16 @@ nav ul .about-menu li:not(:first-child) {
   .nav_bar .hamburger-menu {
     flex: 1;    
     cursor: pointer; 
+    padding: 0 10px 0 0px;
   }
 
 .hamburger-menu .bar {
   position: relative;
-  justify-content: flex-end;
   margin-left: auto;
-  width: 15%;
   height: 3px;
+  width: 8vw;
   background-color: var(--backgroundColor);
   border-radius: 3px;
-  transition: 0.5s;
 }
 
 .bar::before,
