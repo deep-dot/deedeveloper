@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './footer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+
 const footerImageStyle = {
   backgroundImage: `url(${process.env.PUBLIC_URL}/images/shape1.svg)`,
   backgroundRepeat: 'no-repeat',
@@ -37,7 +38,9 @@ const Footer = () => {
     <footer className="footer" >
       <section className="footer-container">
         <div className="cell">
-          <img href="#" src={`${process.env.PUBLIC_URL}/images/logoDeeDev.svg`} alt="Logo" />
+          <img class="logo_image" id="footer-light-logo" src={`${process.env.PUBLIC_URL}/images/light-logoDeeDev.svg`} alt="light logo" />
+          <img class="logo_image" id="footer-dark-logo" src={`${process.env.PUBLIC_URL}/images/logoDeeDev.svg`} alt="dark logo" />
+          
           <p>
             Dee Dhillon - Freelance Developer & Consultant
           </p>

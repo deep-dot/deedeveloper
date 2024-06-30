@@ -1,157 +1,167 @@
 
-import React, { useState, useEffect, useRef } from 'react';
-import './Header.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faUser, faClone, faComment, faPhone, faCaretDown, faSignInAlt, faUserPlus, faSignOutAlt, faHamburger } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import './Header.css'; // Assume you have a CSS file for styles
 
-const Header = ({ loggedIn }) => {
-  const blogRef = useRef(null);
-  const blogMenuRef = useRef(null);
-  const headerRef = useRef(null);
-  const hamBurgerMenu = useRef(null);
-  const [lastScroll, setLastScroll] = useState(0);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userImage, setUserImage] = useState(null); 
+const Header = ({ isAuthenticated, user }) => {
+  const [isAboutMenuOpen, setAboutMenuOpen] = useState(false);
+  const [isBlogMenuOpen, setBlogMenuOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+  const [isNavBarActive, setNavBarActive] = useState(false);
 
-  useEffect(() => {
-    const checkAuthStatus = async () => {
-      try {
-        const { data } = await axios.get('/api/auth/status');
-        console.log('data in header==',data.isAuthenticated)
-        setIsAuthenticated(data.isAuthenticated);
-        setUserImage(data.userImage);
-      } catch (error) {
-        console.error('Failed to fetch auth status', error);
-      }
-    };
+  const toggleAboutMenu = () => {
+    setAboutMenuOpen(!isAboutMenuOpen);
+  };
 
-    checkAuthStatus();
-  }, []);
+  const toggleBlogMenu = () => {
+    setBlogMenuOpen(!isBlogMenuOpen);
+  };
 
-  useEffect(() => {
-    // Blog menu button
-    const handleBlogClick = () => {
-      blogRef.current.classList.toggle('active');
-      if (blogRef.current.classList.contains('active')) {
-        blogMenuRef.current.style.display = 'block';
-      } else {
-        blogMenuRef.current.style.display = 'none';
-      }
-    };
+  const handleDarkModeToggle = () => {
+    setDarkMode(!darkMode);
+    const lightLogo = document.getElementById('light-logo');
+    const darkLogo = document.getElementById('dark-logo');
+    const footerLightLogo = document.getElementById('footer-light-logo');
+    const footerDarkLogo = document.getElementById('footer-dark-logo');
 
-    const mainWrapper = document.querySelector('.main-wrapper');
-
-    const hamBurgerMenuClick = () => {
-     // console.log('hamburgermenu clicked==', mainWrapper)
-      mainWrapper.classList.toggle("active");
+    if (darkMode) {
+      document.body.classList.add('light');
+      document.body.classList.remove('dark');
+      lightLogo.style.display = 'block';
+      darkLogo.style.display = 'none';
+      footerLightLogo.style.display = 'none';
+      footerDarkLogo.style.display = 'block';
+    } else {
+      document.body.classList.add('dark');
+      document.body.classList.remove('light');
+      lightLogo.style.display = 'none';
+      darkLogo.style.display = 'block';
+      footerLightLogo.style.display = 'block';
+      footerDarkLogo.style.display = 'none';
     }
+  };
 
-    blogRef.current.addEventListener('click', handleBlogClick);
-    hamBurgerMenu.current.addEventListener('click', hamBurgerMenuClick)
+  const handleHamburgerMenuToggle = () => {
+    setNavBarActive(!isNavBarActive);
+  };
 
-    // Hide navbar while scrolling down
+  useEffect(() => {
+    const menuItems = document.querySelectorAll('nav > ul > li > a');
+    const currentLocation = window.location.pathname;
+
+    menuItems.forEach((item) => {
+      if (item.getAttribute('href') === currentLocation) {
+        item.style.color = 'tomato';
+      }
+    });
+
     const handleScroll = () => {
+      const header = document.querySelector('header');
       const currentScroll = window.pageYOffset;
       if (currentScroll < lastScroll) {
-        headerRef.current.classList.remove('hidden');
+        header.classList.remove('hidden');
       } else {
-        headerRef.current.classList.add('hidden');
+        header.classList.add('hidden');
       }
-      setLastScroll(currentScroll);
+      lastScroll = currentScroll;
     };
 
+    let lastScroll = 0;
     window.addEventListener('scroll', handleScroll);
 
     return () => {
-      blogRef.current.removeEventListener('click', handleBlogClick);
       window.removeEventListener('scroll', handleScroll);
-      hamBurgerMenu.current.removeEventListener('click', hamBurgerMenuClick)
     };
-  }, [lastScroll]);
+  }, []);
 
   return (
-    // Add ref={headerRef} to the header element
-    <header ref={headerRef}>
-      <nav className="nav">
-        <img href="#" src={`${process.env.PUBLIC_URL}/images/logoDeeDev.svg`} alt="Logo" />
-        <ul className="nav_list">
-          <li>
-            <a href="/">
-              <FontAwesomeIcon icon={faHome} className="icon-margin-right" />Home
-            </a>
-          </li>
-          <li>
-            <a href="/#aboutSection">
-              <FontAwesomeIcon icon={faUser} className="icon-margin-right" />About
-            </a>
-          </li>
-          <li>
-            <a href="/#servicesSection">
-              <FontAwesomeIcon icon={faClone} className="icon-margin-right" />Services
-            </a>
-          </li>
-          <li>
-            <a href="/#testimonial">
-              <FontAwesomeIcon icon={faComment} className="icon-margin-right" />Testimonial
-            </a>
-          </li>
-          <li>
-            <a href="/#contactSection">
-              <FontAwesomeIcon icon={faPhone} className="icon-margin-right" />Contact
-            </a>
-          </li>
-          <li ref={blogRef} className="blog">
-            <a href="#">
-              <FontAwesomeIcon icon={faCaretDown} className="icon-margin-right" />
-              Blog
-            </a>
-            <ul ref={blogMenuRef} className="blog-menu">
-              <li>
-                <a href="/blogs">Home</a>
-              </li>
-              <li className="write-review">
-                <a href="/posts/new">Write blog</a>
-              </li>
-            </ul>
-          </li>
-          {!isAuthenticated ? (
-            <>
-              <li id="loggedIn">
-                <a href="/auth/login">
-                  <FontAwesomeIcon icon={faSignInAlt} className="icon-margin-right" />Sign In
-                </a>
-              </li>
-              <li id="reg">
-                <a href="/auth/newuser">
-                  <FontAwesomeIcon icon={faUserPlus} className="icon-margin-right" />Sign Up
-                </a>
-              </li>
-            </>
-          ) : (
-            <>
-              <li id="loggedOut">
-                <a href="/auth/logout">
-                  <FontAwesomeIcon icon={faSignOutAlt} className="icon-margin-right" />Sign Out
-                </a>
-              </li>
-              <li>
-                <a href="/auth/profile">
-                  <img
-                    href="#"
-                    src={userImage}
-                    alt=""
-                    style={{ width: '40px', borderRadius: '100%' }}
-                  />
-                </a>
-              </li>
-            </>
-          )}
-        </ul>
-      </nav>
+    <header>
+      <div className={`nav_bar ${isNavBarActive ? 'active' : ''}`}>
+        <img className="logo_image" id="light-logo" src={`${process.env.PUBLIC_URL}/images/light-logoDeeDev.svg`} alt="Light Logo" />
+        <img className="logo_image" id="dark-logo" src={`${process.env.PUBLIC_URL}/images/logoDeeDev.svg`} alt="Dark Logo" style={{ display: 'none' }} />
 
-      <div ref={hamBurgerMenu} className="hamburger-menu">
-        <div className="bar"></div>
+        <nav>
+          <ul>
+            <li>
+              <a href="/">
+                <i className="fas fa-home"></i>Home
+              </a>
+            </li>
+            <li className={`navAbout ${isAboutMenuOpen ? 'open' : ''}`} onClick={toggleAboutMenu}>
+              <a href="#">
+                About
+                <span className="toggle-icon">{isAboutMenuOpen ? '-' : '+'}</span>
+              </a>
+              <ul className="about-menu" style={{ maxHeight: isAboutMenuOpen ? '200px' : '0' }}>
+                <li>
+                  <a href="/portfolio">Portfolio</a>
+                </li>
+                <li>
+                  <a href="/#servicesSection">Services</a>
+                </li>
+              </ul>
+            </li>
+            <li id="Testimonial">
+              <a href="/#testimonial">
+                <i className="fas fa-comment"></i>Testimonial
+              </a>
+            </li>
+            <li>
+              <a href="/#contactSection">
+                <i className="fas fa-phone"></i>Contact
+              </a>
+            </li>
+            <li className={`blog ${isBlogMenuOpen ? 'open' : ''}`} onClick={toggleBlogMenu}>
+              <a href="#">
+                Blog
+                <span className="toggle-icon">{isBlogMenuOpen ? '-' : '+'}</span>
+              </a>
+              <ul className="blog-menu" style={{ maxHeight: isBlogMenuOpen ? '200px' : '0' }}>
+                <li>
+                  <a href="/blogs">Home</a>
+                </li>
+                <li className="write-review">
+                  <a href="/posts/new">Write blog</a>
+                </li>
+              </ul>
+            </li>
+            {!isAuthenticated ? (
+              <>
+                <li id="loggedIn">
+                  <a href="/auth/login">
+                    <i className="fas fa-sign-in-alt"></i>Sign In
+                  </a>
+                </li>
+                <li id="reg">
+                  <a href="/auth/newuser">
+                    <i className="fas fa-user-plus"></i>Sign Up
+                  </a>
+                </li>
+              </>
+            ) : (
+              <>
+                <li id="loggedOut">
+                  <a href="/auth/logout">
+                    <i className="fas fa-sign-out-alt"></i>Sign Out
+                  </a>
+                </li>
+                <li className="profileImage">
+                  <a href="/auth/profile">
+                    <img src={user.image} alt="" style={{ width: '40px', borderRadius: '100%' }} />
+                  </a>
+                </li>
+              </>
+            )}
+          </ul>
+        </nav>
+
+        <button className="toggle-btn" onClick={handleDarkModeToggle}>
+          <i className="far fa-moon"></i>
+          <i className="far fa-sun"></i>
+        </button>
+
+        <div className="hamburger-menu" onClick={handleHamburgerMenuToggle}>
+          <div className="bar"></div>
+        </div>
       </div>
     </header>
   );

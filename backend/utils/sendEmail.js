@@ -8,7 +8,7 @@ const createTransporter = async () => {
   const oauth2Client = new OAuth2(
     process.env.OAUTH_CLIENTID,
     process.env.OAUTH_CLIENT_SECRET,
-    process.env.OAUTH_URL
+   // process.env.OAUTH_URL
   );
   
   oauth2Client.setCredentials({
@@ -25,7 +25,7 @@ const createTransporter = async () => {
       user: process.env.SMTP_MAIL,
       accessToken: token,
       clientId: process.env.OAUTH_CLIENTID,
-      clientSecret: process.env.OAUTH_CLIENT_SECRET,
+      // clientSecret: process.env.OAUTH_CLIENT_SECRET,
       refreshToken: process.env.OAUTH_REFRESH_TOKEN
     },
   });
@@ -50,6 +50,7 @@ const createTransporter = async () => {
 };
 
 const sendEmail = async (options) => {  
+  const transporter = await createTransporter(); 
   try {
     const transporter = await createTransporter(); 
 
@@ -61,7 +62,7 @@ const sendEmail = async (options) => {
       html: options.message,
     };
 
-   // console.log('Preparing to send email:', mailOptions);
+    console.log('Preparing to send email:', mailOptions);
     const result = await transporter.sendMail(mailOptions);
     console.log('Email sent successfully:');
   } catch (error) {
