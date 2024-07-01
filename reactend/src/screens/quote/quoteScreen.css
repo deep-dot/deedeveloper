@@ -4,7 +4,7 @@
   }
   
   section h1 {
-    color: #11ABB0;
+    color: var(--background);
     font-size: 2.5rem;
     margin-bottom: 20px;
     text-align: center;
@@ -14,29 +14,38 @@
     font-size: 1.125rem;
     margin-bottom: 20px;
     text-align: justify;
+    color: var(--background);
+  }
+  
+  .quote-form-container {
+    position: relative;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    width: 50vw;
+    margin: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .quote-form-container h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #333333;
   }
   
   .form-container {
+    position: relative;
     background-color: #fff;
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
   }
   
   .form-container h1 {
     font-size: 1.5rem;
     text-align: center;
   }
-  
-  .form-container .body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-  
+
   .question-label {
     display: block;
     font-size: 1rem;
@@ -45,39 +54,30 @@
     margin-bottom: 0.5rem;
   }
 
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  input,
-  textarea {
+  .form-container input,
+  .form-container textarea {
     margin-bottom: 1rem;
     padding: 0.5rem;    
     border-radius: 4px;
     font-size: 1rem;
   }
 
-  input {
+  .form-container input {
     border: none;
     border-bottom: 1px solid gray;
   }
-  .form-container .next-button, .form-container .previous-button{
+  .quote-form-container .next-button, .quote-form-container .previous-button{
     display: block;
     margin: 10px auto;
     padding: 10px 20px;
     background-color: #333333;
-    color: #ffffff;
+    color: #2a4657;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
-  }
-
-  .form-container .next-button:hover, .form-container .previous-button:hover {
-    background-color: #555555;
   }
   
   #submit-button, #verify-code-button {
@@ -98,7 +98,7 @@
   background-color: rgb(225, 97, 74);
 }
   
-  @media (max-width: 867px) {
+  @media (max-width: 768px) {
     /* .main-wrapper {
       padding: 0 10px;
     } */
@@ -134,7 +134,7 @@
     }
   }
   
-  @media (max-width: 576px) {
+  @media (max-width: 480px) {
     section h1 {
       font-size: 1rem;
     }

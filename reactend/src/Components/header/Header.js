@@ -1,11 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
-import './Header.css'; // Assume you have a CSS file for styles
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './Header.css'; 
 
 const Header = ({ isAuthenticated, user }) => {
   const [isAboutMenuOpen, setAboutMenuOpen] = useState(false);
   const [isBlogMenuOpen, setBlogMenuOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const [isNavBarActive, setNavBarActive] = useState(false);
 
   const toggleAboutMenu = () => {
@@ -14,30 +14,6 @@ const Header = ({ isAuthenticated, user }) => {
 
   const toggleBlogMenu = () => {
     setBlogMenuOpen(!isBlogMenuOpen);
-  };
-
-  const handleDarkModeToggle = () => {
-    setDarkMode(!darkMode);
-    const lightLogo = document.getElementById('light-logo');
-    const darkLogo = document.getElementById('dark-logo');
-    const footerLightLogo = document.getElementById('footer-light-logo');
-    const footerDarkLogo = document.getElementById('footer-dark-logo');
-
-    if (darkMode) {
-      document.body.classList.add('light');
-      document.body.classList.remove('dark');
-      lightLogo.style.display = 'block';
-      darkLogo.style.display = 'none';
-      footerLightLogo.style.display = 'none';
-      footerDarkLogo.style.display = 'block';
-    } else {
-      document.body.classList.add('dark');
-      document.body.classList.remove('light');
-      lightLogo.style.display = 'none';
-      darkLogo.style.display = 'block';
-      footerLightLogo.style.display = 'block';
-      footerDarkLogo.style.display = 'none';
-    }
   };
 
   const handleHamburgerMenuToggle = () => {
@@ -84,6 +60,7 @@ const Header = ({ isAuthenticated, user }) => {
             <li>
               <a href="/">
                 <i className="fas fa-home"></i>Home
+                <FontAwesomeIcon className="fa-icon" icon={['far', 'moon']}  />
               </a>
             </li>
             <li className={`navAbout ${isAboutMenuOpen ? 'open' : ''}`} onClick={toggleAboutMenu}>
@@ -154,9 +131,9 @@ const Header = ({ isAuthenticated, user }) => {
           </ul>
         </nav>
 
-        <button className="toggle-btn" onClick={handleDarkModeToggle}>
-          <i className="far fa-moon"></i>
-          <i className="far fa-sun"></i>
+        <button className="toggle-btn" onClick={() => window.handleDarkModeToggle()}>
+              <FontAwesomeIcon className="fa-icon" icon="faMoon" />
+              <FontAwesomeIcon className="fa-icon" icon="faSun" />
         </button>
 
         <div className="hamburger-menu" onClick={handleHamburgerMenuToggle}>

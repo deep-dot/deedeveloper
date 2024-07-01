@@ -145,7 +145,7 @@ nav ul .fa-sign-out-alt {
   cursor: pointer; 
   border: none;
   background-color: var(--backgroundColor);
-  color: var(--colorOnBackgroundColor);
+  color: var(--background);
   outline: none;
   cursor: pointer;
   height: 35px;
@@ -155,7 +155,7 @@ nav ul .fa-sign-out-alt {
   transition: 0.3s;
 }
 
-.toggle-btn i {
+.toggle-btn .fa-icon {
   line-height: 35px;
 }
 
@@ -163,19 +163,19 @@ nav ul .fa-sign-out-alt {
   background: var(--hoverColor);
 }
 
-.main-wrapper.light .toggle-btn i:last-child,
-.main-wrapper.dark .toggle-btn i:first-child {
+.main-wrapper.light .toggle-btn .fa-icon:last-child,
+.main-wrapper.dark .toggle-btn .fa-icon:first-child {
   display: none;
 }
 
-.main-wrapper.light .toggle-btn i:first-child,
-.main-wrapper.dark .toggle-btn i:last-child {
+.main-wrapper.light .toggle-btn .fa-icon:first-child,
+.main-wrapper.dark .toggle-btn .fa-icon:last-child {
   display: block;
 }
 
 @media screen and (max-width: 768px) {
   
-  .logo_image {
+  .nav_bar .logo_image {
     flex: 1;
     margin: auto;
     height: var(--navheight);
