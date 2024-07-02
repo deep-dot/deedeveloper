@@ -31,6 +31,8 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  overflow: hidden;
 }
 
 .nav_bar .logo_image {
@@ -151,7 +153,7 @@ nav ul .fa-sign-out-alt {
   height: 35px;
   width: 35px;
   border-radius: 50%;
-  font-size: 1rem;
+  font-size: 1em;
   transition: 0.3s;
 }
 
@@ -176,8 +178,8 @@ nav ul .fa-sign-out-alt {
 @media screen and (max-width: 768px) {
   
   .nav_bar .logo_image {
-    flex: 1;
-    margin: auto;
+    flex: 0.5;
+    margin-right: auto;
     height: var(--navheight);
   }
 
@@ -262,7 +264,7 @@ nav ul .about-menu li:not(:first-child) {
 }
 
   .nav_bar .hamburger-menu {
-    flex: 1;    
+    flex: 0.5;    
     cursor: pointer; 
     padding: 0 10px 0 0px;
   }
@@ -306,7 +308,7 @@ nav ul .about-menu li:not(:first-child) {
   transform: translateY(0) rotate(45deg);
 }
 
-  .overlay {
+  /* .overlay {
     display: block;
     position: fixed;
     top: 0;
@@ -322,10 +324,14 @@ nav ul .about-menu li:not(:first-child) {
   .nav_bar.active .overlay {
     pointer-events: all;
     opacity: 1;
-  }
+  } */
 }
 
 @media screen and (max-width: 480px) {
+
+  .nav_bar .logo_image {
+    flex: 0.5;
+  }
 
     nav ul .profileImage {
       right:30%;

@@ -1,28 +1,9 @@
-
-
-
-
-
-* {
-  -webkit-box-sizing: border-box;
-   -moz-box-sizing: border-box;
-        box-sizing: border-box;
-}
-*,
-*::before,
-*::after {
-  padding: 0;
-  margin: 0;
-}
-
-
 /* Define CSS Variables in the :root selector for global accessibility */
 :root {
 
   --navheight: 11vh;
   
   /* Font Sizes */
-  --font-size-xsmall: 12px;
   --font-size-small: 14px;
   --font-size-medium: 16px;
   --font-size-large: 18px;
@@ -38,7 +19,7 @@
   --background-color: #ffffff;
 
   /* Padding */
-  --padding-small: 14px;
+  --padding-small: 8px;
   --padding-medium: 16px;
   --padding-large: 24px;
 
@@ -101,21 +82,9 @@ h1 {
   margin-bottom: var(--margin-small);
 }
 
-h2 {
-  font-size: var(--font-size-medium);
-  color: var(--primary-color);
-  margin-bottom: var(--margin-small);
-}
-
-h3 {
+p {
   font-size: var(--font-size-small);
-  color: var(--primary-color);
-  margin-bottom: var(--margin-small);
-}
-
-p, a {
-  font-size: var(--font-size-xsmall);
-  color: var(--text-color);
+  color: var(--secondary-color);
 }
 
 .container {
@@ -190,128 +159,30 @@ p, a {
 }
 
 
-.hidden {
-  opacity: 1;
-  transition: all 3s;
-}
 
-.show {
-  opacity: 1;
-   transform: translateY(0);
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Light/Dark Mode</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <button id="toggle-dark-mode">Toggle Dark Mode</button>
+  <h1>Welcome</h1>
+  <p>This is a paragraph.</p>
+  <div class="container">
+    <div class="header">Header</div>
+    <div class="footer">Footer</div>
+    <div class="box">Box</div>
+  </div>
 
-ul {
-  list-style: none;
-  margin: 0;
-}
-
-a {
-  cursor: pointer;
-  text-decoration: none;
-}
-
- .Container {
-  position: relative;
-  padding: calc(var(--navheight) + 4rem) 2rem;
-  width: clamp(300px, 100%, 1200px);
-  margin: 0 auto;  ;
-}
-
-@keyframes appear {
-  0% {
-    clip-path: circle(30% at -25% -25%);
-  }
-
-  100% {
-    clip-path: circle(150% at 0 0);
-  }
-}
-
-
-/* Button styles */
-.back-to-top {
-  display: none;
-  position: fixed;
-  bottom: 3rem;
-  right: 3rem;
-  z-index: 9999;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  background-color: var(--background);
-  color: var(--colorOnBackground);
-  text-align: center;
-  line-height: 40px;
-  font-size: 24px;
-  cursor: pointer;
-  transition: opacity 0.2s ease-in-out;
-  outline: none;
-}
-
-.back-to-top.visible {
-  display: block;
-}
-
-.back-to-top:hover {
-  opacity: 0.8;
-}
-
-/* cookie consent */
-
-.cookie-consent {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #2c3e50;
-  color: #fff;
-  padding: 15px;
-  text-align: center;
-  z-index: 1000;
-  display: none;
-}
-
-.cookie-consent-content {
-  display: inline-block;
-  max-width: 80%;
-  margin-right: 10px;
-}
-
-.cookie-consent-accept {
-  background-color: #3498db;
-  border: none;
-  color: #fff;
-  padding: 10px 20px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.cookie-consent-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 18px;
-  background-color: transparent;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-}
-
-@media screen and (max-width: 480px) {
-
-  .Container {
-    padding: calc(var(--navheight) + 2rem) 0.5rem;
-  }
-
-  .cookie-consent-content {
-    display: block;
-    max-width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .cookie-consent-close {
-    top: 5px;
-    right: 5px;
-  }
-
-}
+  <script>
+    const toggleButton = document.getElementById('toggle-dark-mode');
+    toggleButton.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+  </script>
+</body>
+</html>

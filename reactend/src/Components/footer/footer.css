@@ -21,10 +21,6 @@
 .footer-container::before {
   content: "";
   position: absolute;
-  /* top: 15%;
-  left: 0;
-  width: 100%;
-  height: 100%; */
   background-image: url('../../../public/images/shape1.svg'); 
   background-repeat: no-repeat;
   background-size: contain;  
@@ -97,8 +93,8 @@ align-items: center;
   align-items: flex-start;
 }
 
-p {
-  font-size: 1em;
+.copyrights {
+  font-size: 0.5em;
   align-self: center;
   color: var(--colorOnBackgroundColor);
 }

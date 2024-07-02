@@ -1,23 +1,27 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './Header.css'; 
+import './Header.css';
 
 const Header = ({ isAuthenticated, user }) => {
   const [isAboutMenuOpen, setAboutMenuOpen] = useState(false);
   const [isBlogMenuOpen, setBlogMenuOpen] = useState(false);
   const [isNavBarActive, setNavBarActive] = useState(false);
 
+  const blogMenuRef = useRef(null);
+  const aboutMenuRef = useRef(null);
+  const loggedInRef = useRef(null);
+  const testimonialRef = useRef(null);
+
   const toggleAboutMenu = () => {
-    setAboutMenuOpen(!isAboutMenuOpen);
+    setAboutMenuOpen(prevState => !prevState);
   };
 
   const toggleBlogMenu = () => {
-    setBlogMenuOpen(!isBlogMenuOpen);
+    setBlogMenuOpen(prevState => !prevState);
   };
 
   const handleHamburgerMenuToggle = () => {
-    setNavBarActive(!isNavBarActive);
+    setNavBarActive(prevState => !prevState);
   };
 
   useEffect(() => {
@@ -49,6 +53,30 @@ const Header = ({ isAuthenticated, user }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (isBlogMenuOpen) {
+      blogMenuRef.current.style.maxHeight = blogMenuRef.current.scrollHeight + 'px';
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        loggedInRef.current.style.marginTop = blogMenuRef.current.scrollHeight + 'px';
+      }
+    } else {
+      blogMenuRef.current.style.maxHeight = null;
+      loggedInRef.current.style.marginTop = null;
+    }
+  }, [isBlogMenuOpen]);
+
+  useEffect(() => {
+    if (isAboutMenuOpen) {
+      aboutMenuRef.current.style.maxHeight = aboutMenuRef.current.scrollHeight + 'px';
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        testimonialRef.current.style.marginTop = aboutMenuRef.current.scrollHeight + 'px';
+      }
+    } else {
+      aboutMenuRef.current.style.maxHeight = null;
+      testimonialRef.current.style.marginTop = null;
+    }
+  }, [isAboutMenuOpen]);
+
   return (
     <header>
       <div className={`nav_bar ${isNavBarActive ? 'active' : ''}`}>
@@ -60,7 +88,7 @@ const Header = ({ isAuthenticated, user }) => {
             <li>
               <a href="/">
                 <i className="fas fa-home"></i>Home
-                <FontAwesomeIcon className="fa-icon" icon={['far', 'moon']}  />
+                <FontAwesomeIcon className="fa-icon" icon={['far', 'moon']} />
               </a>
             </li>
             <li className={`navAbout ${isAboutMenuOpen ? 'open' : ''}`} onClick={toggleAboutMenu}>
@@ -68,7 +96,7 @@ const Header = ({ isAuthenticated, user }) => {
                 About
                 <span className="toggle-icon">{isAboutMenuOpen ? '-' : '+'}</span>
               </a>
-              <ul className="about-menu" style={{ maxHeight: isAboutMenuOpen ? '200px' : '0' }}>
+              <ul className="about-menu" ref={aboutMenuRef} style={{ maxHeight: isAboutMenuOpen ? '200px' : '0' }}>
                 <li>
                   <a href="/portfolio">Portfolio</a>
                 </li>
@@ -77,7 +105,7 @@ const Header = ({ isAuthenticated, user }) => {
                 </li>
               </ul>
             </li>
-            <li id="Testimonial">
+            <li id="Testimonial" ref={testimonialRef}>
               <a href="/#testimonial">
                 <i className="fas fa-comment"></i>Testimonial
               </a>
@@ -92,7 +120,7 @@ const Header = ({ isAuthenticated, user }) => {
                 Blog
                 <span className="toggle-icon">{isBlogMenuOpen ? '-' : '+'}</span>
               </a>
-              <ul className="blog-menu" style={{ maxHeight: isBlogMenuOpen ? '200px' : '0' }}>
+              <ul className="blog-menu" ref={blogMenuRef} style={{ maxHeight: isBlogMenuOpen ? '200px' : '0' }}>
                 <li>
                   <a href="/blogs">Home</a>
                 </li>
@@ -103,7 +131,7 @@ const Header = ({ isAuthenticated, user }) => {
             </li>
             {!isAuthenticated ? (
               <>
-                <li id="loggedIn">
+                <li id="loggedIn" ref={loggedInRef}>
                   <a href="/auth/login">
                     <i className="fas fa-sign-in-alt"></i>Sign In
                   </a>
@@ -132,8 +160,8 @@ const Header = ({ isAuthenticated, user }) => {
         </nav>
 
         <button className="toggle-btn" onClick={() => window.handleDarkModeToggle()}>
-              <FontAwesomeIcon className="fa-icon" icon="faMoon" />
-              <FontAwesomeIcon className="fa-icon" icon="faSun" />
+          <FontAwesomeIcon className="fa-icon" icon={'faMoon'} />
+          <FontAwesomeIcon className="fa-icon" icon={'faSun'} />
         </button>
 
         <div className="hamburger-menu" onClick={handleHamburgerMenuToggle}>
@@ -145,4 +173,3 @@ const Header = ({ isAuthenticated, user }) => {
 };
 
 export default Header;
-

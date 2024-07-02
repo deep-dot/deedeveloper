@@ -40,6 +40,11 @@ body {
   font-size: 20px;
 }
 
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .main-wrapper {
   position: relative;
   margin: var(--navheight) auto;
