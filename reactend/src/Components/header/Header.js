@@ -1,161 +1,175 @@
-
 import React, { useState, useEffect, useRef } from 'react';
-import './Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faUser, faClone, faComment, faPhone, faCaretDown, faSignInAlt, faUserPlus, faSignOutAlt, faHamburger } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
+import './Header.css';
 
-const Header = ({ loggedIn }) => {
-  const blogRef = useRef(null);
+const Header = ({ isAuthenticated, user }) => {
+  const [isAboutMenuOpen, setAboutMenuOpen] = useState(false);
+  const [isBlogMenuOpen, setBlogMenuOpen] = useState(false);
+  const [isNavBarActive, setNavBarActive] = useState(false);
+
   const blogMenuRef = useRef(null);
-  const headerRef = useRef(null);
-  const hamBurgerMenu = useRef(null);
-  const [lastScroll, setLastScroll] = useState(0);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userImage, setUserImage] = useState(null); 
+  const aboutMenuRef = useRef(null);
+  const loggedInRef = useRef(null);
+  const testimonialRef = useRef(null);
+
+  const toggleAboutMenu = () => {
+    setAboutMenuOpen(prevState => !prevState);
+  };
+
+  const toggleBlogMenu = () => {
+    setBlogMenuOpen(prevState => !prevState);
+  };
+
+  const handleHamburgerMenuToggle = () => {
+    setNavBarActive(prevState => !prevState);
+  };
 
   useEffect(() => {
-    const checkAuthStatus = async () => {
-      try {
-        const { data } = await axios.get('/api/auth/status');
-        console.log('data in header==',data.isAuthenticated)
-        setIsAuthenticated(data.isAuthenticated);
-        setUserImage(data.userImage);
-      } catch (error) {
-        console.error('Failed to fetch auth status', error);
+    const menuItems = document.querySelectorAll('nav > ul > li > a');
+    const currentLocation = window.location.pathname;
+
+    menuItems.forEach((item) => {
+      if (item.getAttribute('href') === currentLocation) {
+        item.style.color = 'tomato';
       }
-    };
+    });
 
-    checkAuthStatus();
-  }, []);
-
-  useEffect(() => {
-    // Blog menu button
-    const handleBlogClick = () => {
-      blogRef.current.classList.toggle('active');
-      if (blogRef.current.classList.contains('active')) {
-        blogMenuRef.current.style.display = 'block';
-      } else {
-        blogMenuRef.current.style.display = 'none';
-      }
-    };
-
-    const mainWrapper = document.querySelector('.main-wrapper');
-
-    const hamBurgerMenuClick = () => {
-     // console.log('hamburgermenu clicked==', mainWrapper)
-      mainWrapper.classList.toggle("active");
-    }
-
-    blogRef.current.addEventListener('click', handleBlogClick);
-    hamBurgerMenu.current.addEventListener('click', hamBurgerMenuClick)
-
-    // Hide navbar while scrolling down
     const handleScroll = () => {
+      const header = document.querySelector('header');
       const currentScroll = window.pageYOffset;
       if (currentScroll < lastScroll) {
-        headerRef.current.classList.remove('hidden');
+        header.classList.remove('hidden');
       } else {
-        headerRef.current.classList.add('hidden');
+        header.classList.add('hidden');
       }
-      setLastScroll(currentScroll);
+      lastScroll = currentScroll;
     };
 
+    let lastScroll = 0;
     window.addEventListener('scroll', handleScroll);
 
     return () => {
-      blogRef.current.removeEventListener('click', handleBlogClick);
       window.removeEventListener('scroll', handleScroll);
-      hamBurgerMenu.current.removeEventListener('click', hamBurgerMenuClick)
     };
-  }, [lastScroll]);
+  }, []);
+
+  useEffect(() => {
+    if (isBlogMenuOpen) {
+      blogMenuRef.current.style.maxHeight = blogMenuRef.current.scrollHeight + 'px';
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        loggedInRef.current.style.marginTop = blogMenuRef.current.scrollHeight + 'px';
+      }
+    } else {
+      blogMenuRef.current.style.maxHeight = null;
+      loggedInRef.current.style.marginTop = null;
+    }
+  }, [isBlogMenuOpen]);
+
+  useEffect(() => {
+    if (isAboutMenuOpen) {
+      aboutMenuRef.current.style.maxHeight = aboutMenuRef.current.scrollHeight + 'px';
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        testimonialRef.current.style.marginTop = aboutMenuRef.current.scrollHeight + 'px';
+      }
+    } else {
+      aboutMenuRef.current.style.maxHeight = null;
+      testimonialRef.current.style.marginTop = null;
+    }
+  }, [isAboutMenuOpen]);
 
   return (
-    // Add ref={headerRef} to the header element
-    <header ref={headerRef}>
-      <nav className="nav">
-        <img href="#" src={`${process.env.PUBLIC_URL}/images/logoDeeDev.svg`} alt="Logo" />
-        <ul className="nav_list">
-          <li>
-            <a href="/">
-              <FontAwesomeIcon icon={faHome} className="icon-margin-right" />Home
-            </a>
-          </li>
-          <li>
-            <a href="/#aboutSection">
-              <FontAwesomeIcon icon={faUser} className="icon-margin-right" />About
-            </a>
-          </li>
-          <li>
-            <a href="/#servicesSection">
-              <FontAwesomeIcon icon={faClone} className="icon-margin-right" />Services
-            </a>
-          </li>
-          <li>
-            <a href="/#testimonial">
-              <FontAwesomeIcon icon={faComment} className="icon-margin-right" />Testimonial
-            </a>
-          </li>
-          <li>
-            <a href="/#contactSection">
-              <FontAwesomeIcon icon={faPhone} className="icon-margin-right" />Contact
-            </a>
-          </li>
-          <li ref={blogRef} className="blog">
-            <a href="#">
-              <FontAwesomeIcon icon={faCaretDown} className="icon-margin-right" />
-              Blog
-            </a>
-            <ul ref={blogMenuRef} className="blog-menu">
-              <li>
-                <a href="/blogs">Home</a>
-              </li>
-              <li className="write-review">
-                <a href="/posts/new">Write blog</a>
-              </li>
-            </ul>
-          </li>
-          {!isAuthenticated ? (
-            <>
-              <li id="loggedIn">
-                <a href="/auth/login">
-                  <FontAwesomeIcon icon={faSignInAlt} className="icon-margin-right" />Sign In
-                </a>
-              </li>
-              <li id="reg">
-                <a href="/auth/newuser">
-                  <FontAwesomeIcon icon={faUserPlus} className="icon-margin-right" />Sign Up
-                </a>
-              </li>
-            </>
-          ) : (
-            <>
-              <li id="loggedOut">
-                <a href="/auth/logout">
-                  <FontAwesomeIcon icon={faSignOutAlt} className="icon-margin-right" />Sign Out
-                </a>
-              </li>
-              <li>
-                <a href="/auth/profile">
-                  <img
-                    href="#"
-                    src={userImage}
-                    alt=""
-                    style={{ width: '40px', borderRadius: '100%' }}
-                  />
-                </a>
-              </li>
-            </>
-          )}
-        </ul>
-      </nav>
+    <header>
+      <div className={`nav_bar ${isNavBarActive ? 'active' : ''}`}>
+        <img className="logo_image" id="light-logo" src={`${process.env.PUBLIC_URL}/images/light-logoDeeDev.svg`} alt="Light Logo" />
+        <img className="logo_image" id="dark-logo" src={`${process.env.PUBLIC_URL}/images/logoDeeDev.svg`} alt="Dark Logo" style={{ display: 'none' }} />
 
-      <div ref={hamBurgerMenu} className="hamburger-menu">
-        <div className="bar"></div>
+        <nav>
+          <ul>
+            <li>
+              <a href="/">
+                <i className="fas fa-home"></i>Home
+                <FontAwesomeIcon className="fa-icon" icon={['far', 'moon']} />
+              </a>
+            </li>
+            <li className={`navAbout ${isAboutMenuOpen ? 'open' : ''}`} onClick={toggleAboutMenu}>
+              <a href="#">
+                About
+                <span className="toggle-icon">{isAboutMenuOpen ? '-' : '+'}</span>
+              </a>
+              <ul className="about-menu" ref={aboutMenuRef} style={{ maxHeight: isAboutMenuOpen ? '200px' : '0' }}>
+                <li>
+                  <a href="/portfolio">Portfolio</a>
+                </li>
+                <li>
+                  <a href="/#servicesSection">Services</a>
+                </li>
+              </ul>
+            </li>
+            <li id="Testimonial" ref={testimonialRef}>
+              <a href="/#testimonial">
+                <i className="fas fa-comment"></i>Testimonial
+              </a>
+            </li>
+            <li>
+              <a href="/#contactSection">
+                <i className="fas fa-phone"></i>Contact
+              </a>
+            </li>
+            <li className={`blog ${isBlogMenuOpen ? 'open' : ''}`} onClick={toggleBlogMenu}>
+              <a href="#">
+                Blog
+                <span className="toggle-icon">{isBlogMenuOpen ? '-' : '+'}</span>
+              </a>
+              <ul className="blog-menu" ref={blogMenuRef} style={{ maxHeight: isBlogMenuOpen ? '200px' : '0' }}>
+                <li>
+                  <a href="/blogs">Home</a>
+                </li>
+                <li className="write-review">
+                  <a href="/posts/new">Write blog</a>
+                </li>
+              </ul>
+            </li>
+            {!isAuthenticated ? (
+              <>
+                <li id="loggedIn" ref={loggedInRef}>
+                  <a href="/auth/login">
+                    <i className="fas fa-sign-in-alt"></i>Sign In
+                  </a>
+                </li>
+                <li id="reg">
+                  <a href="/auth/newuser">
+                    <i className="fas fa-user-plus"></i>Sign Up
+                  </a>
+                </li>
+              </>
+            ) : (
+              <>
+                <li id="loggedOut">
+                  <a href="/auth/logout">
+                    <i className="fas fa-sign-out-alt"></i>Sign Out
+                  </a>
+                </li>
+                <li className="profileImage">
+                  <a href="/auth/profile">
+                    <img src={user.image} alt="" style={{ width: '40px', borderRadius: '100%' }} />
+                  </a>
+                </li>
+              </>
+            )}
+          </ul>
+        </nav>
+
+        <button className="toggle-btn" onClick={() => window.handleDarkModeToggle()}>
+          <FontAwesomeIcon className="fa-icon" icon={'faMoon'} />
+          <FontAwesomeIcon className="fa-icon" icon={'faSun'} />
+        </button>
+
+        <div className="hamburger-menu" onClick={handleHamburgerMenuToggle}>
+          <div className="bar"></div>
+        </div>
       </div>
     </header>
   );
 };
 
 export default Header;
-

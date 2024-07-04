@@ -12,7 +12,7 @@
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix reactend && npm run build --prefix reactend"
   },
   "engines": {
-    "node": "19.7.0"
+    "node": "20.15.0"
   },
   "repository": {
     "type": "git",

@@ -16,7 +16,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/quote" element={<Quote />} />
+        <Route path="/" element={<Quote />} />
         {data && <Route path="/portfolio" element={<Portfolio data={data.portfolio} />} />}
       </Routes>
     </Router>

@@ -56,8 +56,32 @@
     <section class="skill-section">
         <h1>My Skills</h1>
         <div class="skill">
+            <ul class="software">
+                <li>
+                    <p>system modelling</p>
+                    <span class="bar"><span class="html"></span>70%</span>
+                </li>
+                <li>
+                    <p>big data analytics</p>
+                    <span class="bar"><span class="css"></span>70%</span>
+                </li>
+                <li>
+                    <p>AWS cloud computing</p>
+                    <span class="bar"><span class="javascript"></span>60%</span>
+                </li>
+                <li>
+                    <p>Web design & development</p>
+                    <span class="bar"><span class="python"></span>55%</span>
+                </li>
+                <li>
+                    <p>It problem solving</p>
+                    <span class="bar"><span class="python"></span>55%</span>
+                </li>
+            </ul>
+            <li>
             <ul class="languages">
                 <li>
+                    <h2>Languages</h2>
                     <p>html</p>
                     <span class="bar"><span class="html"></span>70%</span>
                 </li>
@@ -69,8 +93,17 @@
                     <p>Javascript</p>
                     <span class="bar"><span class="javascript"></span>60%</span>
                 </li>
+                <li>
+                    <p>python</p>
+                    <span class="bar"><span class="python"></span>55%</span>
+                </li>
             </ul>
             <ul class="frameworks">
+                <h2>Frameworks or Libraries</h2>
+                <li>
+                    <p>jquerry</p>
+                    <span class="bar"><span class="jquerry"></span>60%</span>
+                </li>
                 <li>
                     <p>React</p>
                     <span class="bar"><span class="react"></span>60%</span>
@@ -84,6 +117,7 @@
                     <span class="bar"><span class="express"></span>65%</span>
                 </li>
             </ul>
+        </li>
         </div>
     </section>
 
@@ -223,30 +257,59 @@
         </div>
       </section>
 
-      <section class="contact-section main-section">
+      <!-- <section class="contact-section main-section">
         <h1>Contact Us</h1>
+        <a href="/#contactSection">
+            <i class="fas fa-phone"></i>Contact
+          </a>
         <p>Feel free to drop us a message using the form below!</p>
         <div class="section">
             <div class="subsection1">
+                <h2>Leave a Message</h2>
+                <p>Fill out the form with your name, email, and a brief message.</p>
                 <form>
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
 
-                    <label for="email">Email:</label>
+                    <label for="email"><i class="fa fa-envelope"></i>Email:</label>
                     <input type="email" id="email" name="email" required>
 
-                    <label for="message">Message:</label>
+                    <label for="message"><i class="fa fa-comment"></i>Message:</label>
                     <textarea id="message" name="message" required></textarea>
 
-                    <input type="submit" value="Send">
+                    <label for="verification-code" id="verification-code-label" hidden>Verification Code:</label>
+                    <input type="text" id="verification-code" hidden>
+
+                    <p id="message-to-user" hidden></p>
+                    <input id="submit-button" type="submit" value="Send">
+
                 </form>
             </div>
             <div class="subsection2">
                 <img src="../img/profileImages/contactus.png" alt="Decorative Image">
             </div>
         </div>
+    </section> -->
+
+    <section class="contact-me-box">
+            <div class="sub-contact-me-box">
+              <h2>
+                Let's build your dream project together. 🤝 </h2>
+              <p>
+                Schedule a free call with me to discuss your project. I will answer all your questions and concerns and provide
+                you with a quote adjusted to your budget. </p>
+              <a class="contact-button" href="/#contactSection">book your free call</a><br>
+            </div>
     </section>
+
 </section>
+<!-- contact-form -->
+<script src="/js/home/contactForm.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    contactMe();
+  });
+</script>
     
     <script src="/js/scripts.js"></script>
     <script src="/js/portfolio.js"></script>

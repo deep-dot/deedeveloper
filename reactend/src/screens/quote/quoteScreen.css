@@ -1,42 +1,51 @@
 
-  section {
+ .quoteSection {
     padding: 30px 0;
   }
   
-  section h1 {
-    color: #11ABB0;
+ .quoteSection h1 {
+    color: var(--background);
     font-size: 2.5rem;
     margin-bottom: 20px;
     text-align: center;
   }
   
-  section p {
-    font-size: 1.125rem;
+ .quoteSection p {
+    font-size: 1em;
     margin-bottom: 20px;
     text-align: justify;
+    color: var(--background);
+  }
+  
+  .quote-form-container {
+    position: relative;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    width: 50vw;
+    margin: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .quote-form-container h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #333333;
   }
   
   .form-container {
+    position: relative;
     background-color: #fff;
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
   }
   
   .form-container h1 {
     font-size: 1.5rem;
     text-align: center;
   }
-  
-  .form-container .body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-  
+
   .question-label {
     display: block;
     font-size: 1rem;
@@ -45,39 +54,30 @@
     margin-bottom: 0.5rem;
   }
 
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  input,
-  textarea {
+  .form-container input,
+  .form-container textarea {
     margin-bottom: 1rem;
     padding: 0.5rem;    
     border-radius: 4px;
     font-size: 1rem;
   }
 
-  input {
+  .form-container input {
     border: none;
     border-bottom: 1px solid gray;
   }
-  .form-container .next-button, .form-container .previous-button{
+  .quote-form-container .next-button, .quote-form-container .previous-button{
     display: block;
     margin: 10px auto;
     padding: 10px 20px;
     background-color: #333333;
-    color: #ffffff;
+    color: #2a4657;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
-  }
-
-  .form-container .next-button:hover, .form-container .previous-button:hover {
-    background-color: #555555;
   }
   
   #submit-button, #verify-code-button {
@@ -98,66 +98,54 @@
   background-color: rgb(225, 97, 74);
 }
   
-  @media (max-width: 867px) {
-    /* .main-wrapper {
-      padding: 0 10px;
-    } */
-  
-    section h1 {
-      font-size: 1.75rem;
-    }
-  
-    section p {
-      font-size: 1rem;
-    }
-    
-  
-    .form-container {
-      padding: 20px;
-    }
-  
-    .form-container h1 {
-      font-size: 1.25rem;
-    }
-
-    .question-label {
-      font-size: 0.9rem;
-    }
+  @media (max-width: 768px) {
 
     .signUpContainer {
       width: 80%;
     }
 
-    .form-container button {
+    .quote-form-container {
+      width: 70vw;
+    }
+
+    .quote-form-container button {
       padding: 8px 15px;
       font-size: 12px;
     }
   }
   
-  @media (max-width: 576px) {
-    section h1 {
-      font-size: 1rem;
+  @media (max-width: 480px) {
+
+    .quoteSection {
+      width: 100vw;
+      margin: auto;
+    }
+
+   .quoteSection h1 {
+      font-size: 0.8em;
     }
   
-    section p {
-      font-size: 0.875rem;
+   .quoteSection p {
+      font-size: 0.6em;
     }
   
-    .form-container {
-      padding: 15px;
+    .form-container,
+    .quote-form-container {
+      width: 100%;
+      padding: 1em;
     }
   
     .form-container h1 {
-      font-size: 1.15rem;
+      font-size: 0.8em;
     }
 
     .signUpContainer {
       width: 100%;
     }
 
-    .form-container button {
+    .quote-form-container button {
       padding: 5px 10px;
-      font-size: 10px;
+      font-size: 0.5em;
     }
   }
   

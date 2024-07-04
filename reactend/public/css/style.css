@@ -8,6 +8,24 @@
   --colorOnBackgroundColor: #2a4657;
 }
 
+.light {
+  --mainColor: #17a2b8;
+  --hoverColor: #5bacdf;
+  --backgroundColor: #f1f8fc;
+  --colorOnBackgroundColor: #2a4657;
+  --background: #2a4657;
+  --colorOnBackground: #f1f8fc;  
+}
+
+.dark {
+  --mainColor: rgb(23, 162, 184);
+  --hoverColor: rgb(91, 172, 223);
+  --backgroundColor: #2a4657;
+  --colorOnBackgroundColor: #f1f8fc;
+  --background: #f1f8fc;  
+  --colorOnBackground: rgb(42, 70, 87);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -19,13 +37,20 @@ body {
   background-color: #f6f6f6;
   color: #333;
   line-height: 1.6;
+  font-size: 20px;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .main-wrapper {
   position: relative;
-  max-width: 1200px;
   margin: var(--navheight) auto;
   padding: 0 15px;
+  max-width: 1440px;
+  background-color: var(--backgroundColor);
   /* background: linear-gradient(to bottom, #878484, #fff); */
 }
 

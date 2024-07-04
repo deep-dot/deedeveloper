@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import './footer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
-const footerImageStyle = {
-  backgroundImage: `url(${process.env.PUBLIC_URL}/images/shape1.svg)`,
-  backgroundRepeat: 'no-repeat',
-  backgroundSize: 'contain',
-  backgroundPosition: 'center',
-  opacity: 0.1,
-};
+
+// const footerImageStyle = {
+//   backgroundImage: `url(${process.env.PUBLIC_URL}/images/shape1.svg)`,
+//   backgroundRepeat: 'no-repeat',
+//   backgroundSize: 'contain',
+//   backgroundPosition: 'center',
+//   opacity: 0.1,
+// };
 
 
 const Footer = () => {
@@ -37,7 +38,9 @@ const Footer = () => {
     <footer className="footer" >
       <section className="footer-container">
         <div className="cell">
-          <img href="#" src={`${process.env.PUBLIC_URL}/images/logoDeeDev.svg`} alt="Logo" />
+          <img className="logo_image" id="footer-light-logo" src={`${process.env.PUBLIC_URL}/images/light-logoDeeDev.svg`} alt="light logo" style={{ display: 'none' }} />
+          <img className="logo_image" id="footer-dark-logo" src={`${process.env.PUBLIC_URL}/images/logoDeeDev.svg`} alt="dark logo" />
+
           <p>
             Dee Dhillon - Freelance Developer & Consultant
           </p>
@@ -47,17 +50,17 @@ const Footer = () => {
           <div className="social-icons">
             <div>
               <a href="https://www.facebook.com/">
-                <i className="fab fa-facebook"></i>
+                <FontAwesomeIcon icon={['fab', 'facebook']} />
               </a>
             </div>
             <div>
               <a href="https://www.linkedin.com/">
-                <i className="fab fa-linkedin"></i>
+                <FontAwesomeIcon icon={['fab', 'linkedin']} />
               </a>
             </div>
             <div>
               <a href="https://www.instagram.com/">
-                <i className="fab fa-instagram"></i>
+                <FontAwesomeIcon icon={['fab', 'instagram']} />
               </a>
             </div>
           </div>
@@ -86,10 +89,10 @@ const Footer = () => {
           <div className="contactLinks">
             <div className="contactMain">Contact</div>
             <div>
-              <i className="fa fa-envelope"></i> info@deedeveloper.com
+              <FontAwesomeIcon icon="envelope" /> info@deedeveloper.com
             </div>
             <div>
-              <i className="fa fa-phone"></i> +61432000123
+              <FontAwesomeIcon icon="phone" /> +61432000123
             </div>
           </div>
         </div>
