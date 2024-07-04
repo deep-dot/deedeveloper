@@ -22,7 +22,7 @@ const createTransporter = async () => {
     service: 'gmail',
     auth: {
       type: 'OAuth2',
-      user: process.env.SMTP_MAIL,
+      user: process.env.MAIL_USERNAME,
       accessToken: token,
       clientId: process.env.OAUTH_CLIENTID,
       clientSecret: process.env.OAUTH_CLIENT_SECRET,
@@ -50,12 +50,13 @@ const createTransporter = async () => {
 };
 
 const sendEmail = async (options) => {  
+  console.log('sendemail===',options);
   try {
     const transporter = await createTransporter(); 
 
     const mailOptions = {
       // from: process.env.godaddyEmail,
-      from: process.env.SMTP_MAIL,
+      from: process.env.MAIL_USERNAME,
       to: options.email,
       subject: options.subject,
       html: options.message,

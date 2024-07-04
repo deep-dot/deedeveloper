@@ -273,7 +273,7 @@ nav ul .about-menu li:not(:first-child) {
     cursor: pointer; 
   }
 
-.hamburger-menu .bar {
+  .nav_bar .hamburger-menu .bar {
   position: relative;
   justify-content: flex-end;
   margin-left: auto;
@@ -335,7 +335,7 @@ nav ul .about-menu li:not(:first-child) {
 
 @media screen and (max-width: 480px) {
 
-    nav ul .profileImage {
+    .nav_bar ul .profileImage {
       right:30%;
     }
 
