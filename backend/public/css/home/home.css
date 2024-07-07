@@ -5,10 +5,6 @@
   }
   
   .H h1 {
-    font: 800 clamp(18px, 3vw, 36px) "Roboto";
-    line-height: 1.5;
-    color: var(--colorOnBackgroundColor);
-    margin: clamp(1rem, 5vw, 2rem) 0;
     text-align: center;
     text-transform: uppercase;
   }
@@ -21,12 +17,6 @@
   .home .home1, .home .home2 {
     height: auto;
     padding: 10px;
-  }
-  
-  .home p {
-    font: 400 clamp(14px, 3vw, 28px) "Roboto";  
-    line-height: 1.5;
-    color: var(--colorOnBackgroundColor);
   }
   
   .home .home1 {
@@ -65,23 +55,8 @@
     margin: clamp(4rem, 10vw, 5rem);
 }
 
-  
   .sub-quote-me-box {
     padding: 2rem;
-  }
-  
-  .quote-me-box .sub-quote-me-box h2 {
-    font: 800 clamp(18px, 3vw, 36px) 'Roboto';
-    margin-bottom: 2rem;
-    line-height: 1.5;
-    color: var(--colorOnBackgroundColor);
-  }
-  
-  .quote-me-box .sub-quote-me-box p {
-    font: 400 clamp(14px, 3vw, 28px) 'Roboto';
-    margin-bottom: 2rem;
-    line-height: 1.5;
-    color: var(--colorOnBackgroundColor);
   }
   
   .quote-me-box .quote-button {
@@ -110,7 +85,7 @@
     }
   }
 
-  @media screen and (max-width: 867px) {
+  @media screen and (max-width: 768px) {
   
     .home>p:first-child {
       border-right: none;
@@ -127,7 +102,7 @@
     }
   }
 
-  @media screen and (max-width: 576px) {
+  @media screen and (max-width: 480px) {
 
     .home {
        grid-template-columns: 1fr;

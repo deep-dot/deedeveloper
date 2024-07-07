@@ -8,13 +8,6 @@
    grid-template-columns: 1fr 1fr;
  }
  
- .C .contact h1 {
-   font: 600 clamp(18px, 2vw, 32px) "Roboto";
-   text-transform: uppercase;
-   color: var(--colorOnBackgroundColor);
-   margin: 2rem 0;
- }
- 
  .C .contact #contact-form-viewhome {
    display: flex;
    flex-direction: column;
@@ -24,13 +17,6 @@
    padding: 20px;
    border-radius: 5px;
    box-shadow: 0px 0px 10px 1px var(--background);
- }
- 
- .C .contact #contact-form-viewhome p {
-   font-size: clamp(14px, 2vw, 20px);
-   margin-bottom: 2rem;
-   line-height: 1.5;
-   color: var(--colorOnBackgroundColor);
  }
  
  .contact #contact-form-viewhome .form-group {

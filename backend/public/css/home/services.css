@@ -20,17 +20,6 @@
    padding: 5px;
   }
   
-  .services-div1 h1 {
-    font: 600 clamp(18px, 3vw, 22px) "Roboto";
-    color: var(--colorOnBackgroundColor);
-    line-height: 1.5;
-    margin: 2rem 0;
-  }
-  
-  .services-div1 ul {
-    list-style-type: none;
-  }
-  
   .services-div1 ul li {
     margin-bottom: 20px;
     line-height: 1.5;
@@ -89,20 +78,6 @@
     padding: 2rem;
   }
   
-  .contact-me-box .sub-contact-me-box h2 {
-    font: 800 clamp(16px, 3vw, 22px) 'Roboto';
-    margin-bottom: 2rem;
-    color: var(--colorOnBackgroundColor);
-    line-height: 1.5;
-  }
-  
-  .contact-me-box .sub-contact-me-box p {
-    font: 400 clamp(14px, 3vw, 20px) 'Roboto';
-    margin-bottom: 2rem;
-    color: var(--colorOnBackgroundColor);
-    line-height: 1.5;
-  }
-  
   .contact-me-box .contact-button {
     align-self: flex-start;
     background: var(--background);
@@ -126,19 +101,6 @@
     display: block;
   }
   
-  .skill p {
-    color: var(--colorOnBackgroundColor);
-    font: 500 clamp(14px, 3vw, 20px) "Roboto";
-    line-height: 1.5;
-  }
-  
-  .skill h2 {
-    color: var(--colorOnBackgroundColor);
-    font: 500 clamp(16px, 3vw, 22px) "Roboto";
-    margin: 2rem 0;
-    line-height: 1.5;
-  }
-  
   .skill-box {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -150,29 +112,18 @@
   
   .skill-box .child {
     border: 1px dotted var(--colorOnBackgroundColor);
-    /* background: var(--background); */
     padding: 10px;
     text-align: center;
     border-radius: 5px;
   }
   
-  .skill-box .sub-child h2 {
-    font: 800 clamp(16px, 3vw, 22px) 'Roboto';
-    color: var(--colorOnBackgroundColor);
+  .skill-box .sub-child h3,
+  .skill-box .sub-child p {
     text-align: left;
-    line-height: 1.5;
   }
   
-  .skill-box .sub-child p {
-    font: 400 clamp(14px, 3vw, 18px) 'Roboto';
-    color: var(--colorOnBackgroundColor);
-    text-align: left;
-    line-height: 26px;
-    line-height: 1.5;
-  }
 
-
-@media screen and (max-width: 867px) {
+@media screen and (max-width: 768px) {
   
     .services {
      grid-template-columns: 1fr;
@@ -210,7 +161,7 @@
     }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 480px) {
 
     .S .services .services-div1 .contact-button,
     .contact-me-box .sub-contact-me-box .contact-button {      

@@ -5,14 +5,6 @@
     
   }
   
-  .map h1 {
-    font: 600 clamp(22px, 2vw, 30px) "Roboto";
-    text-transform: uppercase;
-    text-align: left;
-    color: var(--colorOnBackgroundColor);
-    margin: 2rem 0;
-  }
-  
   .map iframe {
     height: 50vh;
     width: 100%;
@@ -25,7 +17,7 @@
     }
   }
   
-  @media screen and (max-width: 867px) {
+  @media screen and (max-width: 768px) {
   
     .map iframe {
       height: 50vh;
@@ -34,6 +26,3 @@
   
   }
   
-  @media screen and (max-width: 576px) {
-  
-  }

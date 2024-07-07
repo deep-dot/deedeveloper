@@ -4,14 +4,6 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
-    padding: clamp(0, 2vw, 1rem);
-    margin: 8em 0;
-  }
-  
-  .about picture {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
   }
   
   .about picture img {
@@ -19,49 +11,9 @@
     height: auto;
   }
   
-  
   .about h1 {
-    font: 600 clamp(24px, 2vw, 32px) "Roboto";
-    text-transform: uppercase;
     text-align: start;
-    line-height: 1.5;
-    color: var(--colorOnBackgroundColor);
-    margin: 2em 0;
   }
-  
-  .about h2 {
-    font: 600 clamp(20px, 2vw, 28px) 'Roboto';
-    margin-bottom: 20px;
-    line-height: 30px;
-    line-height: 1.5;
-    color: var(--colorOnBackgroundColor);
-  }
-  
-  .about p {
-    font: 500 clamp(14px, 2vw, 18px) 'Roboto';
-    line-height: 26px;
-    margin: 15px 0;
-    line-height: 1.5;
-    text-align: left;
-    color: var(--colorOnBackgroundColor);
-  }
-  
-  .about-me-icons {
-    display: flex;
-    gap: 10px;
-    font: 400 clamp(14px, 2vw, 18px) 'Roboto';
-    flex-wrap: wrap; 
-    margin: 2em 0;
-}
-
-.about-me-icons div {
-    display: flex;
-    align-items: center; 
-    background-color: #17a2b8;
-    padding: 5px;
-    color: #fff;  
-    gap: 5px; 
-}
 
   .about-me-social-icons {
     display: inline-flex;
@@ -70,15 +22,14 @@
   
   .about-me-social-icons a {
     font-size: clamp(20px, 2vw, 30px);
-    text-decoration: none;
-    color: var(--background);
+    color: var(--colorOnBackgroundColor);
   }
   
   .about-me-social-icons a:hover {
     color: #17a2b8;
   }
   
-  @media screen and (max-width: 867px) {
+  @media screen and (max-width: 768px) {
 
     .about {
      grid-template-columns: 1fr;
@@ -91,6 +42,3 @@
     
   }
   
-  @media screen and (max-width: 576px) {
-
-  }  

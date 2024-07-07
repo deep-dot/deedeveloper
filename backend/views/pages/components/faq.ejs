@@ -82,13 +82,11 @@
 
           faqItem.innerHTML = `
           <div class="faq-question" onclick="toggleFaq(event)">
-              <span>${faq.question}</span>
-              <span class="toggle-icon">+</span>
+              <h3>${faq.question}</h3>
+              <p class="toggle-icon">+</p>
           </div>
           <div class="faq-answer">
-              <div class="sub-faq-answer">
-                  ${faq.answer}
-              </div>
+              ${faq.answer}                             
           </div>
       `;
 
