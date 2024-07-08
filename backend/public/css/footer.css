@@ -70,7 +70,7 @@ justify-content: center;
 .footer .footer-container .cell a,
 .footer .footer-container .cell,
 .footer .footer-container .cell:nth-child(4) i {
-  color: var(--colorOnBackgroundColor);
+  color: var(--textColor);
 }
 
 .footer p {

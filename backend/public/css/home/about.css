@@ -22,11 +22,11 @@
   
   .about-me-social-icons a {
     font-size: clamp(20px, 2vw, 30px);
-    color: var(--colorOnBackgroundColor);
+    color: var(--textColor);
   }
   
   .about-me-social-icons a:hover {
-    color: #17a2b8;
+    color: var(--hoverColor);
   }
   
   @media screen and (max-width: 768px) {

@@ -24,7 +24,7 @@
     margin-bottom: 20px;
     line-height: 1.5;
     font: 500 clamp(14px, 3vw, 20px) 'Roboto';
-    color: var(--colorOnBackgroundColor);
+    color: var(--textColor);
   }
   
   .S .services .services-div1 .contact-button {
@@ -35,7 +35,7 @@
     text-transform: uppercase;
     user-select: none;
     border-radius: 5px;
-    color: var(--colorOnBackground);
+    color: var(--text);
     border-radius: 5px;
     border: none;
     cursor: pointer;
@@ -54,7 +54,7 @@
   .services-div1 .services-icons i {
     font-size: 4rem;
     opacity: 0.3;
-    color: var(--colorOnBackgroundColor);
+    color: var(--textColor);
     line-height: 1.5;
   }
   
@@ -63,11 +63,16 @@
   }
   
   .contact-me-box {
-    background: var(--backgroundColor);
+    background: var(--background);
     max-width: 850px;
     border-radius: 5px;
-    box-shadow: 0px 0px 15px 2px var(--colorOnBackgroundColor);
+    box-shadow: 0px 0px 15px 2px var(--background);
     margin: 8rem 0;
+  }
+
+  .contact-me-box p,
+  .contact-me-box h2 {
+    color: var(--text);
   }
   
   .sub-contact-me-box {
@@ -80,13 +85,13 @@
   
   .contact-me-box .contact-button {
     align-self: flex-start;
-    background: var(--background);
+    background: var(--backgroundColor);
     font: 500 clamp(14px, 3vw, 24px) 'Roboto';
     padding: 7.5px 30px;
     text-transform: uppercase;
     user-select: none;
     border-radius: 5px;
-    color: var(--colorOnBackground);
+    color: var(--textColor);
     border-radius: 5px;
     border: none;
     cursor: pointer;
@@ -111,7 +116,7 @@
   }
   
   .skill-box .child {
-    border: 1px dotted var(--colorOnBackgroundColor);
+    border: 1px dotted var(--background);
     padding: 10px;
     text-align: center;
     border-radius: 5px;

@@ -12,17 +12,8 @@
     padding: 2rem 1rem 2rem 1rem;
 }
 
-.login_wrapper .sub_login_wrapper h1 {
-    margin: 2rem 0 2rem 0;
-    font: 800 clamp(24px, 2vw, 28px) "Roboto";
-    color: var(--colorOnBackgroundColor);
-}
-
 .login_wrapper .sub_login_wrapper h2 {
-    margin: 2rem 0 2rem 0;
-    font:500 2rem 'Roboto';
     align-self: center;
-    color: var(--colorOnBackgroundColor);
 }
 
 .login_wrapper_grid {
@@ -81,7 +72,7 @@
 .fa-unlock, .fa-user, .fa-id-card, 
 .fa-home, .fa-battery-full, .fa-edit, 
 .fa-trash, .fa-user-circle {
-    color: var(--colorOnBackgroundColor);
+    color: var(--text);
     font:500 1.5rem 'Roboto';
 }
 
@@ -92,8 +83,8 @@ input[type="file"], input[type="text"], input[type="email"], input[type="passwor
     height: 2rem;
     border: none;
     background-color: transparent;
-    border-bottom: 1px solid var(--colorOnBackgroundColor);
-    color: var(--colorOnBackgroundColor);
+    border-bottom: 1px solid var(--background);
+    color: var(--textColor);
 }
 
 input[type="file"] { 
@@ -119,7 +110,7 @@ input[type="checkbox"] {
 }
 
 .showPass a, label {
-    color: var(--colorOnBackgroundColor);
+    color: var(--textColor);
 }
 
 .g-recaptcha {
@@ -195,7 +186,7 @@ input[type="checkbox"] {
     display: block;
   }
 
-@media screen and (max-width: 867px) {
+@media screen and (max-width: 768px) {
 
     .login_wrapper .sub_login_wrapper h1, h2 {
         text-align: center;
@@ -254,7 +245,7 @@ input[type="checkbox"] {
 
 }
 
-@media screen and (max-width: 467px) {
+@media screen and (max-width: 480px) {
 
     .login_wrapper_grid {
         grid-template-columns: 1fr;

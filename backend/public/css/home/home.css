@@ -20,7 +20,7 @@
   }
   
   .home .home1 {
-    border-right: 1px solid var(--colorOnBackgroundColor);
+    border-right: 1px solid var(--background);
   }
   
   .home::before {
@@ -66,7 +66,7 @@
     padding: 7.5px 30px;
     text-transform: uppercase;
     user-select: none;
-    color: var(--colorOnBackground);
+    color: var(--text);
     border-radius: 25px;
     border: none;
     cursor: pointer;

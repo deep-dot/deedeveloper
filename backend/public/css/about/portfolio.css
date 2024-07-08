@@ -1,82 +1,5 @@
-/* Base styles that apply globally
-:root {
-    --pageWidth: 1440px;
-    --navbarHeight: 5em;  
-    --footerHeight: 10rem;
-    --buttonBackGround: #9EBDFF;
-    --buttonHover: #ffe09e;
-
-    --headingSize: clamp(1.75rem, 5vw, 2.25rem);
-    --headingFamily: 'Raleway', sans-serif;
-    --headingColor: #0462A6;
-    --headingWeight: 600;
-
-    --heading2Size: clamp(1.50rem, 3vw, 1.75rem);
-    --heading2Family: 'Raleway', sans-serif;
-    --heading2Color: #0462A6;
-    --heading2Weight: 500;
-
-    --heading3Size: clamp(1.10rem, 2.25vw, 1.25rem);
-    --heading3Family: 'Raleway', sans-serif;
-    --heading3Color: #0462A6;
-    --heading3Weight: 600;
-
-    --textSize: clamp(1rem, 2vw, 1.15rem);
-    --textFamily: Georgia, 'Times New Roman', Times, serif;
-    --textColor: #000000;
-    --textWeight: 300;
-}
-
-h1 {
-    color: var(--headingColor);
-    font-family: var(--headingFamily);
-    font-size: var(--headingSize);
-    font-weight: var(--headingWeight);
-}
-
-h2 {
-    color: var(--heading2Color);
-    font-family: var(--heading2Family);
-    font-size: var(--heading2Size);
-    font-weight: var(--heading2Weight);
-}
-
-h3 {
-    color: var(--heading3Color);
-    font-family: var(--heading3Family);
-    font-size: var(--heading3Size);
-    font-weight: var(--heading3Weight);
-}
-
-p {
-    color: var(--textColor);
-    font-family: var(--textFamily);
-    font-size: var(--textSize);
-    font-weight: var(--textWeight);
-} */
-
 section {
     margin: 2em 0;
-}
-
-
-/* https://learnlayout.com/box-sizing */
-* {
-    -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-html, body {
-    position: relative;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; 
-    background-color: rgba(255, 224, 158, 0.1); 
-    font-family: Georgia, 'Times New Roman', Times, serif; 
-    font-size: 18px; 
-    line-height: 1.5; 
-    letter-spacing: 2px; 
 }
 
 .main-section {
@@ -176,7 +99,7 @@ text-align: center;
     background: var(--backgroundColor);
     max-width: 850px;
     border-radius: 5px;
-    box-shadow: 0px 0px 15px 2px var(--colorOnBackgroundColor);
+    box-shadow: 0px 0px 15px 2px var(--backgroundColor);
     margin: 4em auto;
   }
   
@@ -188,20 +111,6 @@ text-align: center;
     padding: 2rem;
   }
   
-  .contact-me-box .sub-contact-me-box h2 {
-    font: 800 clamp(16px, 3vw, 22px) 'Roboto';
-    margin-bottom: 2rem;
-    color: var(--colorOnBackgroundColor);
-    line-height: 1.5;
-  }
-  
-  .contact-me-box .sub-contact-me-box p {
-    font: 400 clamp(14px, 3vw, 20px) 'Roboto';
-    margin-bottom: 2rem;
-    color: var(--colorOnBackgroundColor);
-    line-height: 1.5;
-  }
-  
   .contact-me-box .contact-button {
     align-self: flex-start;
     background: var(--background);
@@ -210,7 +119,7 @@ text-align: center;
     text-transform: uppercase;
     user-select: none;
     border-radius: 5px;
-    color: var(--colorOnBackground);
+    color: var(--text);
     border-radius: 5px;
     border: none;
     cursor: pointer;
@@ -317,14 +226,12 @@ text-align: center;
 
 .skill-section h1{
     text-align: center;
-    color: var(--colorOnBackground);
+    color: var(--text);
 }
 
 .skill-section p {
-    color: #fff;
     text-transform: uppercase;
-    margin: 5px;
-    font-size: var(--textSize);
+    color: var(--text);
 }
 
 .skill {
@@ -558,15 +465,16 @@ text-align: center;
       width: calc(33.33% - 20px);
       min-height: 250px;
       margin-bottom: 20px;
-      border: 1px solid #ccc;
+      border: 1px solid var(--background);
       padding: 15px;
-      background-color: #FFE09E;    
+      /* background-color: #FFE09E;     */
       opacity: 0.8;
     }
   
     .testimonial-container .card:hover {
       background-color: var(--buttonBackGround);
-      box-shadow: 0px 8px 32px 0px rgba(0,0,0,0.2);
+      /* box-shadow: 0px 8px 32px 0px rgba(0,0,0,0.2); */
+      box-shadow: 0px 8px 32px 0px var(--background);
     }
   
     .testimonial-container .card img {

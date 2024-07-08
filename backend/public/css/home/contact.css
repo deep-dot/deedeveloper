@@ -29,7 +29,7 @@
    margin-bottom: 5px;
    font: 600 clamp(16px, 2vw, 22px) 'Roboto';
    text-align: start;
-   color: var(--colorOnBackgroundColor);
+   color: var(--textColor);
  }
  
  .contact #contact-form-viewhome .form-group input[type="text"],
@@ -45,15 +45,15 @@
  .contact #contact-form-viewhome .form-group input[type="email"]:focus,
  .contact #contact-form-viewhome .form-group textarea:focus {
    outline: none;
-   box-shadow: 0 0 5px var(--colorOnBackgroundColor);
-   background-color: var(--backgroundColor);
+   box-shadow: 0 0 5px var(--background);
+   background-color: var(--background);
  }
  
  .contact #contact-form-viewhome #submit-button,
  .contact #contact-form-viewhome #verify-code-button{
    align-self: flex-end;
    background-color: var(--background);
-   color: var(--colorOnBackground);
+   color: var(--text);
    padding: 5px 10px;
    border: none;
    border-radius: 5px;

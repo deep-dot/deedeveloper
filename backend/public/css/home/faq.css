@@ -11,13 +11,13 @@
   }
   
   .faq em, .faq ol, .faq p, .faq ul li {
-    color: var(--backgroundColor);
+    color: var(--text);
     line-height: 1.5;
     padding: 1em;
   }
   
   .faq .faq-item {
-    border-bottom: 0.5px solid var(--colorOnBackgroundColor);
+    border-bottom: 0.5px solid var(--background);
     margin: 1rem 0;
   }
   
@@ -42,7 +42,7 @@
   
   .faq .toggle-icon {
     font-size: 1.2rem;
-    color: var(--colorOnBackgroundColor);
+    color: var(--textColor);
     transition: transform 0.3s ease-in-out;
   }
   
