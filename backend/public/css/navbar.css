@@ -18,7 +18,7 @@ header {
   right: 0;
   z-index: 20;
   height: var(--navheight);
-  background: var(--background);  
+  background: var(--backgroundLight);  
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
   /* background: #858282; */
 }
@@ -44,7 +44,7 @@ nav {
   padding: 0 20px 0 20px;
   height: inherit;
   transition: all 0.3s ease-in-out;
-  background: var(--background); 
+  background: transparent;
 }
 
 nav ul {
@@ -72,7 +72,7 @@ nav ul li {
 }
 
 nav ul a{
-  color: var(--colorOnBackground);
+  color: var(--textLight);
   display: block;
 }
 /* 
@@ -96,7 +96,7 @@ nav ul i {
   overflow: hidden;
   top: var(--navheight);
   transition: max-height 0.4s ease-in-out;
-  background-color: var(--colorOnBackground); 
+  background-color: var(--backgroundLight); 
   box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -104,8 +104,8 @@ nav ul i {
 .nav_bar .about-menu li a {  
   padding: 10px;
   text-align: left;
-  color: var(--background);
-  border-bottom: 1px dotted var(--background);
+  color: var(--textLight);
+  border-bottom: 1px dotted var(--backgroundLight);
   border-radius: 0;
 }
 
@@ -122,8 +122,8 @@ nav ul i {
 nav ul #loggedIn a,
 nav ul #loggedOut a,
 nav ul #reg a{
-  background-color: var(--backgroundColor);
-  color: var(--colorOnBackgroundColor);
+  background-color: var(--backgroundLight);
+  color: var(--textLight);
   border:none;
   border-radius: 20px;
   padding: 0.5em 1em;
@@ -131,21 +131,22 @@ nav ul #reg a{
 
 nav ul #loggedIn a:hover,
 nav ul #loggedOut a:hover,
-nav ul #reg a:hover{
-  background-color: var(--mainColor);
+nav ul #reg a:hover,
+.toggle-btn:hover{
+  background-color: var(--hoverColor);
 }
 
 nav ul .fa-user-plus,
 nav ul .fa-sign-in-alt,
 nav ul .fa-sign-out-alt {
-  color: var(--colorOnBackgroundColor);
+  color: var(--textLight);
 }
 
 .toggle-btn {
   cursor: pointer; 
   border: none;
-  background-color: var(--backgroundColor);
-  color: var(--colorOnBackgroundColor);
+  background-color: var(--backgroundLight);
+  color: var(--textLight);
   outline: none;
   cursor: pointer;
   height: 35px;
@@ -157,10 +158,6 @@ nav ul .fa-sign-out-alt {
 
 .toggle-btn i {
   line-height: 35px;
-}
-
-.toggle-btn:hover {
-  background: var(--hoverColor);
 }
 
 .main-wrapper.light .toggle-btn i:last-child,
@@ -227,7 +224,7 @@ nav ul #reg a{
 nav ul li:not(:first-child), 
 nav ul .blog-menu li:not(:first-child),
 nav ul .about-menu li:not(:first-child) {
-  border-top: 0.5px dotted var(--colorOnBackground);  
+  border-top: 0.5px dotted var(--textLight);  
 }
 
 .nav_bar .blog,
@@ -242,7 +239,7 @@ nav ul .about-menu li:not(:first-child) {
   top: 0;
   position: relative;  
   overflow: hidden;
-  background-color: var(--colorOnBackground); 
+  background-color: var(--backgroundLight); 
 }
 
  .nav_bar .blog-menu,
@@ -258,7 +255,7 @@ nav ul .about-menu li:not(:first-child) {
 
 .nav_bar .blog-menu li a,
 .nav_bar .about-menu li a{
-  color: var(--background);
+  color: var(--textLight);
 }
 
   .nav_bar .hamburger-menu {
@@ -272,7 +269,7 @@ nav ul .about-menu li:not(:first-child) {
   margin-left: auto;
   height: 3px;
   width: 8vw;
-  background-color: var(--backgroundColor);
+  background-color: var(--backgroundLight);
   border-radius: 3px;
 }
 
@@ -282,7 +279,7 @@ nav ul .about-menu li:not(:first-child) {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: var(--backgroundColor);
+  background-color: var(--backgroundLight);
   transition: 0.5s;
 }
 
@@ -313,7 +310,7 @@ nav ul .about-menu li:not(:first-child) {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--backgroundColor);
+    background-color: var(--backgroundLight);
     opacity: 0;
     pointer-events: none;
     transition: 0.5s;

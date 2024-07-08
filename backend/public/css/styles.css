@@ -3,9 +3,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
 :root {
+  --hoverColor: rgb(91, 172, 223);
+
   --navheight: 11vh;
   --mobileNavHeight: 50vh;
-
   --pageWidth: 1440px;
   --footerHeight: 10rem;
   /* --buttonBackGround: #9EBDFF;
@@ -28,8 +29,22 @@
 
   --textSize: clamp(1rem, 2vw, 1.50rem);
   --textFamily: Georgia, 'Times New Roman', Times, serif;
-  /* --textColor: #000000; */
+  /* --textLight: #000000; */
   --textWeight: 300;
+}
+
+.light {
+  --backgroundLight: #f1f8fc;
+  --textLight: #2a4657;
+  /* --background: #2a4657;
+  --colorOnBackground: #f1f8fc;   */
+}
+
+.dark {
+  --backgroundDark: #2a4657;
+  --textLight: #f1f8fc;
+  /* --background: #f1f8fc;  
+  --colorOnBackground: rgb(42, 70, 87); */
 }
 
 h1, h2, h3, p {
@@ -41,21 +56,21 @@ body section {
 }
 
 h1 {
-  color: var(--colorOnBackgroundColor);
+  color: var(--textLight);
   font-family: var(--headingFamily);
   font-size: var(--headingSize);
   font-weight: var(--headingWeight);
 }
 
 h2 {
-  color: var(--colorOnBackgroundColor);
+  color: var(--textLight);
   font-family: var(--heading2Family);
   font-size: var(--heading2Size);
   font-weight: var(--heading2Weight);
 }
 
 h3 {
-  color: var(--colorOnBackgroundColor);
+  color: var(--textLight);
   font-family: var(--heading3Family);
   font-size: var(--heading3Size);
   font-weight: var(--heading3Weight);
@@ -63,7 +78,7 @@ h3 {
 
 p {
   /* font: 400 clamp(14px, 3vw, 28px) "Roboto";   */
-  color: var(--colorOnBackgroundColor);
+  color: var(--textLight);
   font-family: var(--textFamily);
   font-size: var(--textSize);
   font-weight: var(--textWeight);  
@@ -110,28 +125,10 @@ a {
    transform: translateY(0);
 }
 
-.light {
-  --mainColor: #17a2b8;
-  --hoverColor: #5bacdf;
-  --backgroundColor: #f1f8fc;
-  --colorOnBackgroundColor: #2a4657;
-  --background: #2a4657;
-  --colorOnBackground: #f1f8fc;  
-}
-
-.dark {
-  --mainColor: rgb(23, 162, 184);
-  --hoverColor: rgb(91, 172, 223);
-  --backgroundColor: #2a4657;
-  --colorOnBackgroundColor: #f1f8fc;
-  --background: #f1f8fc;  
-  --colorOnBackground: rgb(42, 70, 87);
-}
-
 .main-wrapper {
   position: relative;
   overflow: hidden;
-  background-color: var(--backgroundColor);
+  background-color: var(--backgroundLight);
   width: 100vw;
   /* background: linear-gradient(to bottom, #878484, #fff); */
 }
