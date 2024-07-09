@@ -54,12 +54,12 @@ section {
 }
 
 .content {
-    box-shadow: 0px 8px 32px 0px rgba(0,0,0,0.2);
+    box-shadow: var(--boxshadowwithopacity);
     background-color: rgba(255, 224, 158, 0.5);  ;
 }
 
 .content:hover{
-    background-color: #FFE09E;
+    background-color: var(--hoverColor);
     opacity: 0.6;
 }
 
@@ -99,7 +99,7 @@ text-align: center;
     background: var(--backgroundColor);
     max-width: 850px;
     border-radius: 5px;
-    box-shadow: 0px 0px 15px 2px var(--backgroundColor);
+    box-shadow: var(--boxshadowwithopacity);
     margin: 4em auto;
   }
   
@@ -135,7 +135,7 @@ text-align: center;
     display: flex;
     flex-direction: column;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--boxshadowwithopacity);
 }
 
 .internship > p {
@@ -252,7 +252,7 @@ text-align: center;
 }
 
 .skill .languages {
-    background-color: turquoise;
+    background-color: rgb(64, 224, 208, 0.5);
     flex:1;
     margin: auto;
     width: 100%;
@@ -260,7 +260,7 @@ text-align: center;
 }
 
 .skill .frameworks {
-    background-color: #4CAF50;
+    background-color: rgb(76, 175, 80, 0.5);
     flex:1;
     margin: auto;
     width: 100%;
@@ -285,11 +285,11 @@ text-align: center;
     border: 1px solid rgba(0,0,0,0.22);
     border-radius: 10px;
     overflow-y: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: var(--boxshadowwithopacity);
 }
 
 .skill-section .bar:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: var(--boxshadowwithopacity);
 }
 
 .skill-section .bar span {
@@ -472,9 +472,8 @@ text-align: center;
     }
   
     .testimonial-container .card:hover {
-      background-color: var(--buttonBackGround);
-      /* box-shadow: 0px 8px 32px 0px rgba(0,0,0,0.2); */
-      box-shadow: 0px 8px 32px 0px var(--background);
+      background-color: var(--hoverColor);
+      box-shadow: var(--boxshadowwithopacity);
     }
   
     .testimonial-container .card img {
@@ -498,90 +497,7 @@ text-align: center;
     }
 
 
-@media (max-width: 1120px) {
-    .nav-links .nav-sublinks li {
-        margin: 0;
-        padding: 0;
-    }
-}
-@media (min-width: 768px) and (max-width: 990px) {
-
-    .navbar {
-        padding: 0 5px;
-    }
-    .nav-links .nav-sublinks li {
-        padding: 0;
-    }
-    .nav-links .nav-sublinks li a {
-        padding: 0;
-    }
-
-}
-
 @media (max-width: 768px) {
-
-    html {
-        font-size: 14px;
-    }
-    .main-section {
-        padding: 10px;
-    }
-
-     /* navbar */
-
-    .logo {
-        width: 20vw; 
-    }
-
-    .nav-links {
-        display: none; 
-    }
-
-    .navbar {
-        padding: 5px;
-    }
-
-    .nav-button button {
-        width: 100vw; 
-    }
-
-    .navbar.active {
-        background-color: #0462A6;
-    }
-
-    .nav-links.active {
-        display: flex; 
-        flex-direction: column;
-        align-items: flex-start; 
-        width: 100%; 
-        position: absolute;
-        background: linear-gradient(360deg, rgba(153,134,95,1) 0%, rgba(255,224,158,1) 70%);
-        top: 100%; 
-        left: 0; 
-        z-index: 10; 
-        padding: 20px;
-        margin: 0;
-    }
-
-    .nav-links.active .dropdown-content {
-        background: none;
-        position: relative;    
-    }
-    .nav-links.active .dropdown-content > div:first-child {
-        flex-direction: column; 
-        align-items: flex-start;
-        padding: 0 0 0 40px;
-        gap: 1em;
-    }
-
-    .nav-links.active .nav-sublinks {
-        flex-direction: column;
-        gap: 5px
-    }
-
-    .burger {
-        display: block; 
-    }
 
     /* index */
     .index-section, .left-section, .right-section {
@@ -599,20 +515,6 @@ text-align: center;
     
     .bottom-text {
         width: 100%; 
-    }
-
-    /* contact */
-
-    .contact-section{
-        padding: 0 10px;
-    }
-
-    .contact-section .section {
-        flex-direction: column;
-    }
-
-    .contact-section .section img {
-        display: none;
     }
 
     /* skill */
@@ -646,10 +548,6 @@ text-align: center;
 }
 
 @media (max-width: 480px) {
-
-    html {
-        font-size: 12px;
-    }
 
 /* Index */
     .content, .text-content {

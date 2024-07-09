@@ -59,8 +59,8 @@ On light backgrounds: #333333 (Dark Gray) */
   --textColor: #f1f8fc;
   --background: #f1f8fc;  
   --text: rgb(42, 70, 87);
-  --backgroundwithopacity: rgb(241, 248, 252, 0.5);
-  --boxshadowwithopacity: rgb(241, 248, 252, 0.5);
+  --backgroundwithopacity: rgb(241, 248, 252, 0.6);
+  --boxshadowwithopacity: rgb(241, 248, 252, 0.6);
 }
 
 h1, h2, h3, p {
