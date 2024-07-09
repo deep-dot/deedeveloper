@@ -1,7 +1,7 @@
 
 /* Footer */
 .footer {  
-  min-height: var(--footerHeight);
+  /* max-height: var(--footerHeight); */
   background-color: var(--backgroundwithopacity);
 }
 

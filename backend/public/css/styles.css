@@ -144,11 +144,9 @@ a {
 }
 
 .main-wrapper {
-  position: relative;
+  margin: auto;
   overflow: hidden;
   background-color: var(--backgroundColor);
-  width: 100vw;
-  /* background: linear-gradient(to bottom, #878484, #fff); */
 }
 
  .Container {

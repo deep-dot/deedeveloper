@@ -17,15 +17,15 @@ const app = express();
 // Passport Config
 require('./config/passport')(passport);
 
-// Global variable for logged-in user
-global.loggedIn = null;
-
 // Session setup
 app.use(Session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   store: MongoStore.create({ mongoUrl: config.db_url[env] }),
+  cookie: {
+    maxAge: 1000 * 60 * 30, // Session expiration time in milliseconds (e.g., 30 minutes)
+  },
 }));
 
 // Middlewares setup
@@ -52,8 +52,6 @@ app.use((req, res, next) => {
   res.locals.error = req.flash('error');
   res.locals.data = req.flash('data');
   res.locals.user = req.user || null;
-  //loggedIn = req.user || null;
-  //userImage = req.user.image || null
   res.locals.isAuthenticated = !!req.user;
   next();
 });
