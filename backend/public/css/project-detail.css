@@ -113,7 +113,7 @@
         top:10%;
         left:0;
         width: 100%;
-        box-shadow: 0px 0px 0px 5px rgb(179, 217, 255);;
+        box-shadow: var(--boxshadowwithopacity);
         padding:0.5rem;
     }
     .image-container img:nth-child(2) {

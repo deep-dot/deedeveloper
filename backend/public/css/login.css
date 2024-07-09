@@ -2,7 +2,7 @@
 .login_wrapper {
     display: block;
     position: relative;
-    box-shadow: 0px 0px 5px 0 var(--background);
+    box-shadow: var(--boxshadowwithopacity);
     margin: auto; 
     border-radius: 5px;
     max-width: 800px;

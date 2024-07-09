@@ -55,7 +55,7 @@
     top:3%;
     left:70%;
     transform: rotate(-5deg);
-    box-shadow: 2px 1px 5px 2px var(--colorOnBackgroundColor);
+    box-shadow: var(--boxshadowwithopacity);
 }
 
 .project-img img:nth-child(4) {
@@ -63,7 +63,7 @@
     top:50%;
     left:1%;
     transform: rotate(-5deg);
-    box-shadow: 2px 1px 5px 2px var(--colorOnBackgroundColor);
+    box-shadow: var(--boxshadowwithopacity);
 }
 
 .project-img img:nth-child(5) {

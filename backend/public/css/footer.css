@@ -1,13 +1,13 @@
 
 /* Footer */
-.footer {
-  max-width: var(--pageWidth);
+.footer {  
   min-height: var(--footerHeight);
-  margin: auto;
-  /* background: linear-gradient(50deg, rgba(91,172,223) 100%, rgba(42,70,87) 0%);; */
+  background-color: var(--backgroundwithopacity);
 }
 
 .footer .footer-container {
+  max-width: var(--pageWidth);
+  margin: auto;
   display: flex;
   flex-direction: row;  
   align-items:stretch;
