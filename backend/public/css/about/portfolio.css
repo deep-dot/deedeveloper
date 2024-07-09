@@ -116,7 +116,7 @@ section {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    box-shadow: var(--boxshadowwithopacity);
+    border: solid var(--background) 1px;
 }
 
 .internship > p {
@@ -126,7 +126,7 @@ section {
     display: flex;
     flex-grow: 1;
     padding: 20px;
-    border-bottom: solid gray 1px;
+    border-bottom: solid var(--background) 1px;
 }
 
 .company1, .company3 {
@@ -173,7 +173,7 @@ section {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-    border-bottom: solid 1px black;
+    border-bottom: solid var(--background) 1px;
 }
 
 .internDescription .details .detail strong,
