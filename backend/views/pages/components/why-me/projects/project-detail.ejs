@@ -4,7 +4,7 @@
             <img class="logo_image" href="#" src="/img/logoDeeDev.svg" alt="Logo" />
         </div>
         <div class="menulist">
-            <a href="/">Home ➣➣</a><a href="/#projects">Projects ➣➣ </a><a href=""> Project detail</a>
+            <a href="/portfolio">Home ➣➣</a><a href="/portfolio/#projects">Projects ➣➣ </a><a href=""> Project detail</a>
         </div>
         <div class="project-title"></div>
         <div class="title-sub-section">
@@ -89,9 +89,9 @@
 
         var htmlTech = `<div class="project-technologies">`;
         detail.technologies.forEach(tech => {
-            htmlTech += `<div>`
-            htmlTech += `<p class="p">${tech}</p>`
-            htmlTech += `</div>`
+            // htmlTech += `<div>`
+            htmlTech += `<a class="p">${tech}, </a>`
+            // htmlTech += `</div>`
         });
         htmlTech += `</div>`;
         htmlRender.push(htmlTech);

@@ -24,62 +24,61 @@
         gap: 10px;
     }
 
-    .logo_image {
+    .title-section .logo_image {
         height: clamp(50px, 5vh, 150px);
         width: clamp(130px, 13vw, 200px);
         background-color: #000;
         border-radius: 5px;
     }
 
-    .title-sub-section {
+    .title-section .title-sub-section {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
     }
 
-    .project-title {
-        font: 600 clamp(30px, 2vw, 40px) 'Roboto';
-        margin: 10px 0;
-    }
-
-    .profileImage {
+    .title-section .profileImage {
         margin: 10px 0 20px 10px;
     }
 
-    .profileImage img {
+    .title-section .profileImage img {
         width: clamp(80px, 2vw, 100px);
         height: clamp(80px, 2vh, 100px);
         border-radius: 50%;
     }
 
-    .profile-desc {
+    .title-section .profile-desc {
         margin: 0 20px;
     }
 
-    .profile-desc .name {
+    .title-section .profile-desc .name {
         font: 400 clamp(10px, 1vw, 20px) 'Roboto';
         margin: 5px 0;
     }
 
-    .profile-desc .reading-time,
-    .profile-desc .reading-time .fas {
+    .title-section .profile-desc .reading-time,
+    .title-section .profile-desc .reading-time .fas {
         font: 100 clamp(10px, 1vw, 20px) 'Roboto';
         opacity: 0.4;
         margin-right: 5px;
     }
 
-    .menulist {
+    .title-section .menulist {
         display: inline-flex;
         margin: 2rem 0;
         gap: 20px;
     }
 
     .project-container {
+        position: relative;
         display: grid;
-        grid-template-columns: 80% 20%;
+        grid-template-columns: 78% 18%;
+        gap: 4%;
     }
 
     .project-detail {
+        position: sticky;
+        margin-right: auto;
         display: flex;
         flex-direction: column;  
         justify-content: space-between;
@@ -138,31 +137,11 @@
         width: 50%;
     }
 
-    .contents p {
-        font: 400 1rem 'Roboto';
-        padding: 1em;
-        color: rgb(23, 27, 30);
-        line-height: 1.5;
-        text-align: justify;
-    }
-
     .page-contents {
-        display: block;
         position: fixed;
         top:15%;
         right: 5%;
-        min-width: 250px;
-        padding: 2rem;
-        margin-left: 10px;
-        border: 0.5px dotted var(--colorOnBackgroundColor);
-        border-radius: 5px;
-    }
-
-    .page-contents .content-heading {
-        margin: 15px 0;
-        font: 500 clamp(10px, 2vw, 16px) 'Roboto';
-        text-decoration: underline;
-        text-transform: uppercase;
+        width: 18%;
     }
 
     .page-contents ol li {
@@ -187,19 +166,17 @@
         gap: 0.3em;
     }
 
-    .project-technologies div:nth-child(n) {
-        background-color: #fff;
-        border-radius: 4px;
+    .project-technologies div {
         background-color: var(--background);
+        border-radius: 4px;
+        padding: 0 10px;
     }
 
-    .project-technologies div:nth-child(n) .p {
-        font: 400 clamp(10px, 2vw, 16px) 'Roboto';
-        padding: clamp(4px, 1vh, 6px) clamp(4px, 2vw, 6px);
-        color: var(--colorOnBackground);
+    .project-technologies div p {
+        color: var(--text);
     }
 
-    @media screen and (max-width: 867px) {
+    @media screen and (max-width: 768px) {
 
         .project-container {
             grid-template-columns: 1fr;
@@ -242,11 +219,6 @@
          }
 
         .page-contents {
-            order: -1;
-            position: relative;
-            width: 50%;
-            height: auto;
-            /* background-color: #4897e7; */
-            margin:0 1rem 5rem 2rem;
+            display: none;
         }
     }

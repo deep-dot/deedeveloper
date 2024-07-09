@@ -13,8 +13,8 @@ section {
 
 /* Index */
 .index-section {
-    display: flex;
-    position: relative;
+    display: inline-flex;
+    flex-grow: 1;    
 }
 
 .index-section::before {
@@ -35,23 +35,27 @@ section {
     flex: 1;
     display: flex;
     flex-direction: column;
-    position: relative; 
+    align-items: center;
+    justify-content: center;
 }
 
-.right-section {
-    flex: 1; 
-    display: flex;
-    flex-direction: column; 
-    position: relative;
+.left-section .about-me-icons {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.right-section .top-image, .right-section .bottom-text {
-    flex: 1; 
-    display: flex;
-    align-items: center; 
-    justify-content: center; 
-    padding: 20px; 
+.left-section .about-me-icons div {
+    padding: 0 4px;
+    color: var(--text);
+    background-color: var(--background);
 }
+
+.right-section img {
+    width: 60%;
+    height: auto;
+}
+
 
 .content {
     box-shadow: var(--boxshadowwithopacity);
@@ -70,33 +74,10 @@ section {
     padding: 20px;
 }
 
-.top-image {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
-.top-image h3{
-margin: auto;
-text-align: center;
-}
-.top-image img {
-    width: 60%;
-    height: 80%;
-    display: block; 
-}
-
-.bottom-text {
-    flex-grow: 1;
-    display: flex;
-    align-items: center; 
-    justify-content: center; 
-}
-
 /* contact */
 
 .contact-me-box {
-    background: var(--backgroundColor);
+    background: var(--backgroundwithopacity);
     max-width: 850px;
     border-radius: 5px;
     box-shadow: var(--boxshadowwithopacity);
@@ -188,17 +169,17 @@ text-align: center;
     padding: 20px;
 }
 
-.detail {
+.internDescription .details .detail {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
     border-bottom: solid 1px black;
 }
 
-.detail strong {
-    color: #666666;
+.internDescription .details .detail strong,
+.internDescription .details .detail span {
+    color: var(--textColor);
 }
-
 /* skill */
 /* https://youtu.be/EoN_4fv3T7A?si=g54lQRQ2I8IidY3c */
 
@@ -206,7 +187,7 @@ text-align: center;
     position: relative;
     overflow: hidden;
     width: auto;
-    background-color: var(--background);
+    background-color: var(--backgroundwithopacity);
     padding: 2em 0;
 }
 
@@ -226,12 +207,10 @@ text-align: center;
 
 .skill-section h1{
     text-align: center;
-    color: var(--text);
 }
 
 .skill-section p {
     text-transform: uppercase;
-    color: var(--text);
 }
 
 .skill {
@@ -240,6 +219,7 @@ text-align: center;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    flex-grow: 1;
     margin: 30px auto;
     padding: 20px;
     width: 100%;
@@ -251,27 +231,16 @@ text-align: center;
     width: 100%;
 }
 
-.skill .languages {
-    background-color: rgb(64, 224, 208, 0.5);
-    flex:1;
-    margin: auto;
-    width: 100%;
-    padding: 1em;
-}
-
+.skill .languages,
 .skill .frameworks {
-    background-color: rgb(76, 175, 80, 0.5);
     flex:1;
     margin: auto;
     width: 100%;
     padding: 1em;
 }
 
-.skill span {
-    color: #fff;
-}
-
-.skill li {
+.skill > li {
+    flex: 1;
     top:0;
     margin: 20px 0;
     padding: 10px;
@@ -285,7 +254,6 @@ text-align: center;
     border: 1px solid rgba(0,0,0,0.22);
     border-radius: 10px;
     overflow-y: hidden;
-    box-shadow: var(--boxshadowwithopacity);
 }
 
 .skill-section .bar:hover {
@@ -295,7 +263,7 @@ text-align: center;
 .skill-section .bar span {
     height: 27px;
     float: left;
-    background: linear-gradient(135deg, #0462A6 0%, #9EBDFF 100%);
+    background: var(--hoverColor);
 }
 
 .html {
@@ -458,6 +426,10 @@ text-align: center;
       align-items: center;
       flex-wrap: wrap;
     }
+
+    .testimonial-cards .stars {
+        color: orange;
+    }
     
     .testimonial-container .card {
       display: flex;
@@ -500,6 +472,11 @@ text-align: center;
 @media (max-width: 768px) {
 
     /* index */
+    .index-section {
+        text-align: center;
+        flex-direction: row-reverse;
+    }
+
     .index-section, .left-section, .right-section {
         flex-direction: column; 
     }
@@ -508,14 +485,10 @@ text-align: center;
         background-image: none;
     }
 
-    .top-image img {
+    .right-section img {
         width: 50%;
         height: auto; 
     } 
-    
-    .bottom-text {
-        width: 100%; 
-    }
 
     /* skill */
     .skill {

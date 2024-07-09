@@ -152,6 +152,39 @@
                     "position": "relative"
                 }
             ]
+        },
+        {
+            "subtitle": "WEBSITE DEVELOPMENT",
+            "title": "BOUTIQUE.COM (ECOMMERCE)",
+            "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
+            "technologies": [
+                "React",
+                "MongoDb",
+                "Express",
+                "Node"
+            ]
+        },
+        {
+            "subtitle": "MOBILE APP DEVELOPMENT for 🍏 & 🤖",
+            "title": "DRIVER PANEL",
+            "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
+            "technologies": [
+                "Expo",
+                "MongoDb",
+                "NPM",
+                "Google API's"
+            ]
+        },
+        {
+            "subtitle": "MOBILE APP DEVELOPMENT for 🍏 & 🤖",
+            "title": "USER PANEL",
+            "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto pariatur labore quidem necessitatibus",
+            "technologies": [
+                "Expo",
+                "MongoDb",
+                "NPM",
+                "Google API's"
+            ]
         }
     ]
 }

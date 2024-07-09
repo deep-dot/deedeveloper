@@ -3,11 +3,6 @@
     /* background: bisque; */
 }
 
-.project-sub-section .h2 {
-    font: 700 clamp(16px, 2vw, 36px) 'Roboto';
-    color: var(--colorOnBackgroundColor);  
-}
-
 .project-sub-section {
     /* background: cadetblue; */
     position: relative;
@@ -31,7 +26,7 @@
 
 .project-img {
     position: relative;
-    background-color:blue;
+    background-color: var(--backgroundwithopacity);
     margin: clamp(1px, 2vw, 5px);
     border-radius: 10px;
     height: 400px;    
@@ -90,41 +85,22 @@
     margin: 5px;
 }
 
-.project-subtitle {
-    font: 300 clamp(10px, 2vw, 20px) 'Roboto';
-    color: var(--colorOnBackgroundColor);  
-}
-
-.project-title {
-    font: 800 clamp(12px, 2vw, 24px) 'Roboto';
-    margin: 1rem 0 1.5rem 0;
-    color: var(--colorOnBackgroundColor);  
-}
-
-.project-content {
-    font: clamp(14px, calc(1vw + 1vh), 20px) 'Roboto';
-    line-height: 1.5;
-    color: var(--colorOnBackgroundColor);  
-}
-
 .project-technologies {
     margin: 1rem 0;
     display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 5px;
 }
 
-.project-technologies div:nth-child(n) {
-    background-color: #fff;    
+.project-technologies div { 
     border-radius: 4px;    
     background-color: var(--background);
+    padding: 0 10px;
 }
 
-.project-technologies div:nth-child(n) .p {   
-    font: 400 clamp(10px, 2vw, 20px) 'Roboto';
-    margin: clamp(10px, 1vh, 20px) clamp(10px, 2vw, 10px); 
-    color: var(--colorOnBackground);
+.project-technologies div p { 
+    color: var(--text);
 }
 
 .project-url {
@@ -132,8 +108,7 @@
 }
 
 .project-url button {
-    font: 300 clamp(12px, 2vw, 24px) 'Roboto';
-    color: var(--colorOnBackgroundColor);  
+    color: tomato;  
     border: none;
     cursor: pointer;
 }
