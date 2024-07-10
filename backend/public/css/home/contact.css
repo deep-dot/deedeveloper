@@ -1,14 +1,17 @@
-
-.C {   
-   margin: auto;
- }
- 
- .C .contact {
+.contact {
    display: grid;
-   grid-template-columns: 1fr 1fr;
+   grid-template-columns: 1fr 1fr;   
+ }
+
+ .contact > div {
+  background-color: var(--backgroundwithopacity);
+ }
+
+ .contact > div > h1 {
+  padding-left: 20px;
  }
  
- .C .contact #contact-form-viewhome {
+ .contact > div > form {
    display: flex;
    flex-direction: column;
    justify-content: flex-start;
@@ -19,38 +22,36 @@
    box-shadow: var(--boxshadowwithopacity);
  }
  
- .contact #contact-form-viewhome .form-group {
+ .contact > div > form > div {
    display: flex;
    flex-direction: column;
    margin-bottom: 10px;
  }
  
- .contact #contact-form-viewhome .form-group label {
+ .contact > div > form > div > label {
    margin-bottom: 5px;
    font: 600 clamp(16px, 2vw, 22px) 'Roboto';
    text-align: start;
    color: var(--textColor);
  }
  
- .contact #contact-form-viewhome .form-group input[type="text"],
- .contact #contact-form-viewhome .form-group input[type="email"],
- .contact #contact-form-viewhome .form-group textarea {
+ .contact > div > form > div input[type="text"],
+ .contact > div > form > div input[type="email"],
+ .contact > div > form > div textarea {
    padding: 10px;
    border-radius: 5px;
    border: none;
    margin-bottom: 10px;
  }
  
- .contact #contact-form-viewhome .form-group input[type="text"]:focus,
- .contact #contact-form-viewhome .form-group input[type="email"]:focus,
- .contact #contact-form-viewhome .form-group textarea:focus {
+ .contact > div > form > div input[type="text"]:focus,
+ .contact > div > form > div input[type="email"]:focus,
+ .contact > div > form > div textarea:focus {
    outline: none;
-   box-shadow: var(--boxshadowwithopacity);
-   background-color: var(--background);
  }
  
- .contact #contact-form-viewhome #submit-button,
- .contact #contact-form-viewhome #verify-code-button{
+ .contact > div > form > button,
+ .contact > div > form #verify-code-button{
    align-self: flex-end;
    background-color: var(--background);
    color: var(--text);
@@ -60,26 +61,26 @@
    cursor: pointer;
  }
  
- .contact #contact-form-viewhome #submit-button:hover,
- .contact #contact-form-viewhome #verify-code-button:hover {
+ .contact > div > form > button:hover,
+ .contact > div > form #verify-code-button:hover {
    background-color: var(--hoverColor);
  }
  
- .contact #contact-form-viewhome #submit-button.loading:before {
+ .contact > div > form > button.loading:before {
    content: "Sending...";
    display: inline-block;
    margin-right: 5px;
    font-weight: bold;
  }
- .contact #contact-form-viewhome #verify-code-button.loading:before {
+ .contact > div > form #verify-code-button.loading:before {
    content: "Verifying...";
    display: inline-block;
    margin-right: 5px;
    font-weight: bold;
  }
  
- .contact #contact-form-viewhome #submit-button.loading:after,
- .contact #contact-form-viewhome #verify-code-button.loading:after {
+ .contact > div > form > button.loading:after,
+ .contact > div > form #verify-code-button.loading:after {
    content: "";
    display: inline-block;
    width: 16px;
@@ -93,18 +94,18 @@
    margin-right: 5px;
  }
  
- .contact .contact-img img {
+ .contact > img {
    height: 100%;
    width: 100%;
  }
 
  @media screen and (max-width: 768px) {
 
-    .C .contact {
+    .contact {
       grid-template-columns: 1fr;
     }
 
-    .contact .contact-img img {
+    .contact > img {
       display: none;
     }
   

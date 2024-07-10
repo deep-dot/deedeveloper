@@ -1,7 +1,7 @@
 
 async function contactMe() {
   const form = document.getElementById("contact-form-viewhome");
-  const submitButton = document.getElementById("submit-button");
+  const submitButton = document.getElementById(".contact > form > button");
   const verificationCodeInput = document.getElementById("verification-code");
   const verificationCodeLabel = document.getElementById("verification-code-label");
   const messageToUser = document.getElementById("message-to-user");
