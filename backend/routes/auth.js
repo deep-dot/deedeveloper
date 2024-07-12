@@ -97,12 +97,11 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
       password: req.body.password,
       image: imagePath,
     });
-    const token = newUser.getJWTToken('emailVerification'); 
-//console.log('token in register user', token);
-    newUser.token = token; 
-    // newUser.token = undefined;
+   // const token = newUser.getJWTToken('emailVerification'); 
+    const token = sendToken(newUser, 200, res,'emailVerification' );
+    console.log('token in register user', token);
+    newUser.token = undefined; 
     await newUser.save(); 
-    sendToken(newUser, 200, res,'emailVerification' );
 
     const baseProtocol = process.env.NODE_ENV === 'production' ? 'https' : req.protocol;
     const verifyUserUrl = `${baseProtocol}://${req.get("host")}/auth/verifyEmail/${token}`;

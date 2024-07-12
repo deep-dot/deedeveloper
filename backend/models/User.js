@@ -116,10 +116,10 @@ UserSchema.methods.getJWTToken = function (type) {
 
   if (type === 'emailVerification') {
     secret = process.env.EMAIL_VERIFICATION_SECRET;
-    expiresIn = process.env.EMAIL_VERIFICATION_EXPIRE;
+    expiresIn = `${parseInt(process.env.EMAIL_VERIFICATION_EXPIRE, 10)}m`; // Convert to string with 'm' for minutes
   } else if (type === 'auth') {
     secret = process.env.JWT_SECRET;
-    expiresIn = process.env.JWT_EXPIRE;
+    expiresIn = `${parseInt(process.env.JWT_EXPIRE, 10)}m`; // Convert to string with 'm' for minutes
   } else {
     throw new Error('Invalid token type');
   }

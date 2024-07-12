@@ -15,31 +15,60 @@ module.exports = {
 
     if (!token) {
       req.flash('error', 'Please login to access this resource');
-      req.user = null;  // Clear req.user
-      return res.redirect('/auth/login');
+      // destroySessionAndRedirect(req, res);
+      return res.redirect('/auth/login'); 
     }
 
     try {
-      const decodedData = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = await User.findOne({ email: decodedData.email });
+      // First decode without verifying to get the token type
+      const decodedData = jwt.decode(token);
+      let secret;
+      console.log('decodedData in auth.js middleware==', decodedData);
+
+      if (decodedData.type === 'emailVerification') {
+        secret = process.env.EMAIL_VERIFICATION_SECRET;
+      } else if (decodedData.type === 'auth') {
+        secret = process.env.JWT_SECRET;
+      } else {
+        throw new Error('Invalid token type');
+      }
+
+      // Verify the token with the appropriate secret
+      const verifiedData = jwt.verify(token, secret);
+      console.log('verifiedData in auth.js middleware==', verifiedData);
+
+      req.user = await User.findOne({ email: verifiedData.email });
+      console.log('req.user in auth.js middleware==', req.user);
 
       if (!req.user) {
-        req.flash('error', 'No user found');
-        return res.redirect('/auth/login');
+        req.flash('error', 'You are not registered yet. Please register first.');
+        destroySessionAndRedirect(req, res);
+        return;
       }
-
       next();
+
     } catch (error) {
       console.error('Authentication Error:', error);
-      
-      req.user = null;  // Clear req.user
       if (error.name === 'TokenExpiredError') {
         req.flash('error', 'Your session has expired. Please log in again.');
-        return res.redirect('/logout');  // Redirect to logout route
       } else {
         req.flash('error', 'Failed to authenticate. Please try again.');
-        return res.redirect('/auth/login');
       }
+      destroySessionAndRedirect(req, res);
     }
   })
+};
+
+const destroySessionAndRedirect = (req, res, redirectUrl = '/auth/login') => {
+  req.session.destroy(err => {
+    if (err) {
+      console.error('Failed to destroy session:', err);
+    }
+    res.clearCookie('connect.sid', {
+      path: '/',
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production'
+    });
+    return res.redirect(redirectUrl);
+  });
 };

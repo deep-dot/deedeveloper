@@ -49,7 +49,7 @@ app.set('layout', './layouts/main');
 // Flash messages and user info middleware
 
 app.use((req, res, next) => {  
-  console.log('is authenticated in app.js==', res.locals.isAuthenticated = !!req.user, req.user);
+  console.log('is authenticated in app.js==', res.locals.isAuthenticated = !!req.user);
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
   res.locals.data = req.flash('data');

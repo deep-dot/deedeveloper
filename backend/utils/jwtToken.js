@@ -15,6 +15,7 @@ const sendToken = (user, statusCode, res, type) => {
 
   res.cookie('token', token, options);
 
+  // return token;
   return {
     token,
     tokenExpires: new Date(Date.now() + expirationTime),
