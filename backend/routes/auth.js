@@ -97,11 +97,12 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
       password: req.body.password,
       image: imagePath,
     });
-    const token = newUser.getJWTToken(); 
+    const token = newUser.getJWTToken('emailVerification'); 
 //console.log('token in register user', token);
     newUser.token = token; 
+    // newUser.token = undefined;
     await newUser.save(); 
-    sendToken(newUser, 200, res);
+    sendToken(newUser, 200, res,'emailVerification' );
 
     const baseProtocol = process.env.NODE_ENV === 'production' ? 'https' : req.protocol;
     const verifyUserUrl = `${baseProtocol}://${req.get("host")}/auth/verifyEmail/${token}`;
@@ -158,40 +159,41 @@ router.get('/verifyEmail/:token', (req, res) => {
     success: res.locals.success,
     token
   })
-})
+});
 
 router.post('/verifyEmail/:token', async (req, res) => {
   try {
+    const token = req.params.token;
     const user = await User.findOne({
-      token: req.params.token,
+      status: 'pending' // only search for users with 'pending' status
     });
 
-    if (!user) {
-      req.flash('error', 'User Not found.');
-      return res.redirect(`/auth/verifyEmail/${req.params.token}`);
+    if (!user || !bcrypt.compareSync(token, user.token)) {
+      req.flash('error', 'Invalid or expired token.');
+      return res.redirect('/auth/verifyEmail');
     }
 
-    user.status = "active";
+    user.status = 'active';
+    user.token = undefined; // remove the token after verification
 
     await user.save();
 
     req.login(user, (err) => {
       if (err) {
-        console.log("Login error", err);
+        console.log('Login error', err);
         req.flash('error', 'Failed to log in');
         return res.redirect('/auth/login');
       }
 
-      req.flash('success', `Welcome! ${user.username} You are logged in now.`);
+      req.flash('success', `Welcome! ${user.username}, you are logged in now.`);
       return res.redirect('/auth/profile');
     });
   } catch (e) {
-    console.log("error", e);
+    console.log('error', e);
     req.flash('error', e.message);
-    return res.redirect(`/auth/verifyEmail/${req.params.token}`);
+    return res.redirect('/auth/verifyEmail');
   }
 });
-
 
 router.get('/profile', ensureAuth, (req, res) => {
   //console.log('profile===', req.user)
@@ -248,22 +250,19 @@ router.get('/facebook/callback',
     delete req.session.returnTo;
   });
 
-  router.post('/login',
+router.post('/login',
   passport.authenticate('local', {
     failureRedirect: '/auth/login',
     keepSessionInfo: true
-  }), (req, res) => {
-    const { tokenExpires } = sendToken(req.user, 200, res);
-    const expiresAt = tokenExpires.toLocaleString(); 
+  }), (req, res) => {    
+    sendToken(req.user, 200, res, 'auth');
+    const expiresAt = parseInt(process.env.JWT_EXPIRE, 10) * 60 * 1000;
     req.flash('success', `Logged in successfully. Your session will expire on ${expiresAt}.`);
     res.redirect(req.session.returnTo || '/');
     delete req.session.returnTo;
 });
 
 router.get('/login', (req, res) => {
-  if (loggedIn) {
-    res.redirect('/');
-  } else {
     res.render('pages/auth/login.ejs', {
       style: 'login.css',
       bodyId: '',
@@ -271,7 +270,6 @@ router.get('/login', (req, res) => {
       error: res.locals.error,
       success: res.locals.success
     })
-  }
 });
 
 router.get('/passwordforgot', (req, res) => {
@@ -376,21 +374,39 @@ router.put("/password/reset/:token", async (req, res, next) => {
   }
 });
 
-
-router.get('/logout', (req, res, next) => {
-  req.session.destroy();
-  cookie = req.cookies;
-  for (var prop in cookie) {
-    if (!cookie.hasOwnProperty(prop)) {
-      continue;
+router.get('/logout', (req, res) => {
+  // Destroy the session
+  req.session.destroy(err => {
+    if (err) {
+      console.error('Failed to destroy session:', err);
+      return res.redirect('/');
     }
-    res.cookie(prop, '', {
-      expires: new Date(Date.now()),
+
+    // Clear all cookies
+    res.clearCookie('connect.sid', {
+      path: '/',
       httpOnly: true,
+      secure: process.env.NODE_ENV === 'production'
     });
-  }
-  res.redirect('/');
+    res.redirect('/');
+  });
 });
+
+
+// router.get('/logout', (req, res, next) => {
+//   req.session.destroy();
+//   cookie = req.cookies;
+//   for (var prop in cookie) {
+//     if (!cookie.hasOwnProperty(prop)) {
+//       continue;
+//     }
+//     res.cookie(prop, '', {
+//       expires: new Date(Date.now()),
+//       httpOnly: true,
+//     });
+//   }
+//   res.redirect('/');
+// });
 
 //delete
 router.delete('/deleteUser/:id', ensureAuth, async (req, res) => {

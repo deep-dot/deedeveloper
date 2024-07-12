@@ -1,23 +1,24 @@
+const sendToken = (user, statusCode, res, type) => {
+  const token = user.getJWTToken(type);
 
-const sendToken = (user, statusCode, res) => {
+  const expirationTime = type === 'auth'
+    ? parseInt(process.env.JWT_EXPIRE, 10) * 60 * 1000 // Auth token expiration in milliseconds
+    : parseInt(process.env.EMAIL_VERIFICATION_EXPIRE, 10) * 60 * 1000; // Email verification token expiration in milliseconds
 
-  const token = user.getJWTToken();
-
-  const expirationTime = process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000; // Convert days to milliseconds
-
+    console.log( 'expiration time==', expirationTime);
   const options = {
     expires: new Date(Date.now() + expirationTime),
-    httpOnly: true, // Accessible only by web server
-    sameSite: 'Lax', // CSRF protection
-    secure: process.env.NODE_ENV != 'development' // Use HTTPS
+    httpOnly: true,
+    sameSite: 'Lax',
+    secure: process.env.NODE_ENV === 'production' // Use HTTPS in production
   };
 
   res.cookie('token', token, options);
 
   return {
     token,
-    tokenExpires: options.expires
+    tokenExpires: new Date(Date.now() + expirationTime),
   };
 };
 
-module.exports = sendToken;
+module.exports = sendToken ;

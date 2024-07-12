@@ -5,6 +5,7 @@ const fetch = require('node-fetch')
 const config = require('./config.js');
 const env = process.env.NODE_ENV || 'development';
 const User = require('../models/User')
+const sendToken = require("../utils/jwtToken");
 
 module.exports = function (passport) {
   passport.use(
@@ -95,7 +96,7 @@ module.exports = function (passport) {
           return done(null, false, req.flash('error', 'Failed captcha verification'));
         }
   
-        const user = await User.findOne({ email: email }).exec();
+        const user = await User.findOne({ email }).exec();
         if (!user) {
           return done(null, false, req.flash('error', 'Incorrect email'));
         }
@@ -109,9 +110,7 @@ module.exports = function (passport) {
           const error = `Pending Account. A link was sent to ${user.email} when you signed up.
           Please check it and click the link to verify your account!`;
           return done(null, false, req.flash('error', error));
-        }
-  
-        // User authenticated successfully
+        }        
         return done(null, user);
       } catch (err) {
         // Handle unexpected errors gracefully

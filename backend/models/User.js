@@ -108,11 +108,23 @@ UserSchema.methods.comparePassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 
-UserSchema.methods.getJWTToken = function () {
-  // return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
-    return jwt.sign({ email: this.email }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE,
-  });
+UserSchema.methods.getJWTToken = function (type) {
+  const payload = { email: this.email, type: type };
+
+  let secret;
+  let expiresIn;
+
+  if (type === 'emailVerification') {
+    secret = process.env.EMAIL_VERIFICATION_SECRET;
+    expiresIn = process.env.EMAIL_VERIFICATION_EXPIRE;
+  } else if (type === 'auth') {
+    secret = process.env.JWT_SECRET;
+    expiresIn = process.env.JWT_EXPIRE;
+  } else {
+    throw new Error('Invalid token type');
+  }
+
+  return jwt.sign(payload, secret, { expiresIn: expiresIn });
 };
 
 UserSchema.methods.getResetPasswordToken = function () {
