@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { ensureAuth, ensureGuest } = require('../middleware/auth')
+const { ensureAuth, ensureGuest, checkSessionExpiration } = require('../middleware/auth')
 
 const homeController = require('../controllers/home')
 const portfolioController = require('../controllers/portfolio')

@@ -82,19 +82,19 @@ module.exports = function (passport) {
     async (req, email, password, done) => {
       try {
 
-        if (req.body['g-recaptcha-response'] === '') {
-          return done(null, false, req.flash('error', 'Please select captcha'));
-        }
+        // if (req.body['g-recaptcha-response'] === '') {
+        //   return done(null, false, req.flash('error', 'Please select captcha'));
+        // }
   
-        const recaptchaResponse = await fetch(`https://google.com/recaptcha/api/siteverify`, {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: `secret=${process.env.CAPTCHA_SECRET}&response=${req.body['g-recaptcha-response']}`,
-        }).then(res => res.json());
+        // const recaptchaResponse = await fetch(`https://google.com/recaptcha/api/siteverify`, {
+        //   method: "POST",
+        //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        //   body: `secret=${process.env.CAPTCHA_SECRET}&response=${req.body['g-recaptcha-response']}`,
+        // }).then(res => res.json());
   
-        if (!recaptchaResponse.success) {
-          return done(null, false, req.flash('error', 'Failed captcha verification'));
-        }
+        // if (!recaptchaResponse.success) {
+        //   return done(null, false, req.flash('error', 'Failed captcha verification'));
+        // }
   
         const user = await User.findOne({ email }).exec();
         if (!user) {

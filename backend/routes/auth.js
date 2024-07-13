@@ -6,7 +6,7 @@ const fetch = require('node-fetch');
 const User = require('../models/User');
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
-const { ensureAuth, ensureGuest } = require('../middleware/auth')
+const { ensureAuth, ensureGuest, checkSessionExpiration } = require('../middleware/auth')
 //const ErrorHander = require("../utils/errorhandler");
 var jwt = require("jsonwebtoken");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
@@ -254,7 +254,7 @@ router.post('/login',
     failureRedirect: '/auth/login',
     keepSessionInfo: true
   }), (req, res) => {    
-    sendToken(req.user, 200, res, 'auth');
+    sendToken(req.user, 200, res, 'auth', req.sessionID);
     const expiresAt = parseInt(process.env.JWT_EXPIRE, 10) * 60 * 1000;
     req.flash('success', `Logged in successfully. Your session will expire on ${expiresAt}.`);
     res.redirect(req.session.returnTo || '/');
@@ -269,6 +269,22 @@ router.get('/login', (req, res) => {
       error: res.locals.error,
       success: res.locals.success
     })
+});
+
+router.post('/extend-session', ensureAuth, async (req, res) => {
+  try {
+    if (!req.user) {
+      return res.status(401).json({ message: 'No user logged in' });
+    }
+
+    // Reissue the token and update the cookie
+    const { token, tokenExpires } = sendToken(req.user, 200, res, 'auth', req.sessionID);
+
+    res.json({ token, tokenExpires });
+  } catch (error) {
+    console.error('Error extending session:', error);
+    res.status(500).json({ message: 'Failed to extend session' });
+  }
 });
 
 router.get('/passwordforgot', (req, res) => {
@@ -390,22 +406,6 @@ router.get('/logout', (req, res) => {
     res.redirect('/');
   });
 });
-
-
-// router.get('/logout', (req, res, next) => {
-//   req.session.destroy();
-//   cookie = req.cookies;
-//   for (var prop in cookie) {
-//     if (!cookie.hasOwnProperty(prop)) {
-//       continue;
-//     }
-//     res.cookie(prop, '', {
-//       expires: new Date(Date.now()),
-//       httpOnly: true,
-//     });
-//   }
-//   res.redirect('/');
-// });
 
 //delete
 router.delete('/deleteUser/:id', ensureAuth, async (req, res) => {

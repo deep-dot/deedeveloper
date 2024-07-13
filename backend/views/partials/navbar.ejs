@@ -78,7 +78,11 @@
             </li>
             <li class="profileImage">
               <a href="/auth/profile">
-                <img href="#" src="<%- user.image %>" alt="" style="width:40px; border-radius: 100%;" />
+                <% if (user && user.image) { %>
+                  <img src="<%= user.image %>" alt="Profile Image" style="width:40px; border-radius: 100%;" />
+                <% } else { %>
+                  <img src="" alt="" style="width:40px; border-radius: 100%;" />
+                <% } %>
               </a>
             </li>
             <% } %>
