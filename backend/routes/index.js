@@ -53,7 +53,7 @@ const upload = multer({
 }).single('image');
 
 router.get('/', homeController);
-router.get('/portfolio', portfolioController);
+router.get('/portfolio',ensureAuth, portfolioController);
 
 router.get('/blogs', blogsController);
 router.post('/searchPost', searchPostController);
