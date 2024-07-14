@@ -12,6 +12,11 @@ const destroySessionAndRedirect = (req, res, redirectUrl = '/auth/login') => {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production'
     });
+    res.clearCookie('token', {
+      path: '/',
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production'
+    });
     req.user = null;
     return res.redirect(redirectUrl);
   });
@@ -52,7 +57,7 @@ const ensureAuth = catchAsyncErrors(async (req, res, next) => {
       throw new Error('Invalid token type');
     }
 
-    jwt.verify(token, process.env.JWT_SECRET, async(err, user) => {
+    jwt.verify(token, process.env.secret, async(err, user) => {
       if (err) {
         req.flash('error', 'No user found');
         return destroySessionAndRedirect(req, res);
@@ -94,4 +99,5 @@ const checkSessionExpiration = (req, res, next) => {
 module.exports = {
   ensureAuth,
   checkSessionExpiration,
+  destroySessionAndRedirect,
 };

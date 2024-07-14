@@ -10,6 +10,9 @@ const flash = require('connect-flash');
 const passport = require('passport');
 const config = require('./config/config.js');
 const env = process.env.NODE_ENV || 'development';
+const jwt = require("jsonwebtoken");
+const User = require("./models/User");
+// const { ensureAuth } = require('./middleware/auth');
 
 // Initialize express app
 const app = express();
@@ -46,10 +49,23 @@ app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.set('layout', './layouts/main');
 
+// Middleware to set req.user if authenticated
+app.use(async (req, res, next) => {  
+  if (req.cookies && req.cookies.token) {    
+    try {            
+      const decodedData = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
+      req.user = await User.findOne({ email: decodedData.email });
+    } catch (error) {
+      req.user = null;
+    }
+  } else {
+    req.user = null;
+  }
+  next();
+});
 // Flash messages and user info middleware
-
 app.use((req, res, next) => {  
-  // console.log('is authenticated in app.js==', res.locals.isAuthenticated = !!req.user);
+  console.log('req.user in app.js', req.user);
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
   res.locals.data = req.flash('data');

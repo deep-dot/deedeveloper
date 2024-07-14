@@ -1,6 +1,6 @@
 const express = require('express');
 const passport = require('passport');
-//const Session = require('express-session');
+const Session = require('express-session');
 const router = express.Router();
 const fetch = require('node-fetch');
 const User = require('../models/User');
@@ -11,6 +11,7 @@ const { ensureAuth, ensureGuest, checkSessionExpiration } = require('../middlewa
 var jwt = require("jsonwebtoken");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const sendToken = require("../utils/jwtToken");
+const {destroySessionAndRedirect} =  require('../middleware/auth');
 
 const cloudinary = require("cloudinary").v2;
 const multer = require('multer');
@@ -249,16 +250,69 @@ router.get('/facebook/callback',
     delete req.session.returnTo;
   });
 
-router.post('/login',
-  passport.authenticate('local', {
-    failureRedirect: '/auth/login',
-    keepSessionInfo: true
-  }), (req, res) => {    
-    sendToken(req.user, 200, res, 'auth', req.sessionID);
+// router.post('/login',
+//   passport.authenticate('local', {
+//     failureRedirect: '/auth/login',
+//     keepSessionInfo: true
+//   }), (req, res) => {    
+//     sendToken(req.user, 200, res, 'auth', req.sessionID);
+//     const expiresAt = parseInt(process.env.JWT_EXPIRE, 10) * 60 * 1000;
+//     req.flash('success', `Logged in successfully. Your session will expire on ${expiresAt}.`);
+//     res.redirect(req.session.returnTo || '/');
+//     delete req.session.returnTo;
+// });
+
+router.post('/login', async(req, res) => {   
+  // console.log('req body in auth login==', req.body)
+  const {email, password} = req.body;
+  try {
+
+    if (req.body['g-recaptcha-response'] === '') {
+      req.flash('error', 'Please select captcha');
+      return res.redirect('/auth/login');
+    }
+
+    const recaptchaResponse = await fetch(`https://google.com/recaptcha/api/siteverify`, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `secret=${process.env.CAPTCHA_SECRET}&response=${req.body['g-recaptcha-response']}`,
+    }).then(res => res.json());
+
+    if (!recaptchaResponse.success) {
+      req.flash('error', 'Failed captcha verification');
+      return res.redirect('/auth/login');
+    }
+
+    const user = await User.findOne({ email }).exec();
+    if (!user) {
+      req.flash('error', 'Incorrect email');
+      return res.redirect('/auth/login');
+    }
+
+    const isPasswordMatched = user.validPassword(password);
+    if (!isPasswordMatched) {
+      req.flash('error', 'Incorrect password');
+      return res.redirect('/auth/login');
+    }
+
+    if (user.status === "pending") {
+      const error = `Pending Account. A link was sent to ${user.email} when you signed up.
+      Please check it and click the link to verify your account!`;
+      req.flash('error', error);
+      return res.redirect('/auth/login');
+    }        
+    console.log('user in auth login==', user);
+  
+    sendToken(user, 200, res, 'auth', req.sessionID);
     const expiresAt = parseInt(process.env.JWT_EXPIRE, 10) * 60 * 1000;
-    req.flash('success', `Logged in successfully. Your session will expire on ${expiresAt}.`);
+    req.flash('success', `Logged in successfully. Your session will expire in ${expiresAt / 60000} minutes.`);
     res.redirect(req.session.returnTo || '/');
     delete req.session.returnTo;
+  } catch (err) {
+    console.log(err);
+    req.flash('error', 'An error occurred. Please try again.');
+    res.redirect('/auth/login');
+  }    
 });
 
 router.get('/login', (req, res) => {
@@ -390,21 +444,7 @@ router.put("/password/reset/:token", async (req, res, next) => {
 });
 
 router.get('/logout', (req, res) => {
-  // Destroy the session
-  req.session.destroy(err => {
-    if (err) {
-      console.error('Failed to destroy session:', err);
-      return res.redirect('/');
-    }
-
-    // Clear all cookies
-    res.clearCookie('connect.sid', {
-      path: '/',
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production'
-    });
-    res.redirect('/');
-  });
+  destroySessionAndRedirect(req, res);
 });
 
 //delete

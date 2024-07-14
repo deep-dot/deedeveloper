@@ -1,11 +1,11 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 const FacebookStrategy = require('passport-facebook').Strategy
-const LocalStrategy = require('passport-local').Strategy;
-const fetch = require('node-fetch')
+// const LocalStrategy = require('passport-local').Strategy;
+// const fetch = require('node-fetch')
 const config = require('./config.js');
 const env = process.env.NODE_ENV || 'development';
 const User = require('../models/User')
-const sendToken = require("../utils/jwtToken");
+// const sendToken = require("../utils/jwtToken");
 
 module.exports = function (passport) {
   passport.use(
@@ -75,49 +75,49 @@ module.exports = function (passport) {
     }
   ));
 
-  passport.use(new LocalStrategy({
-      usernameField: 'email',
-      passReqToCallback: true
-    },
-    async (req, email, password, done) => {
-      try {
+  // passport.use(new LocalStrategy({
+  //     usernameField: 'email',
+  //     passReqToCallback: true
+  //   },
+  //   async (req, email, password, done) => {
+  //     try {
 
-        // if (req.body['g-recaptcha-response'] === '') {
-        //   return done(null, false, req.flash('error', 'Please select captcha'));
-        // }
+  //       if (req.body['g-recaptcha-response'] === '') {
+  //         return done(null, false, req.flash('error', 'Please select captcha'));
+  //       }
   
-        // const recaptchaResponse = await fetch(`https://google.com/recaptcha/api/siteverify`, {
-        //   method: "POST",
-        //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        //   body: `secret=${process.env.CAPTCHA_SECRET}&response=${req.body['g-recaptcha-response']}`,
-        // }).then(res => res.json());
+  //       const recaptchaResponse = await fetch(`https://google.com/recaptcha/api/siteverify`, {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //         body: `secret=${process.env.CAPTCHA_SECRET}&response=${req.body['g-recaptcha-response']}`,
+  //       }).then(res => res.json());
   
-        // if (!recaptchaResponse.success) {
-        //   return done(null, false, req.flash('error', 'Failed captcha verification'));
-        // }
+  //       if (!recaptchaResponse.success) {
+  //         return done(null, false, req.flash('error', 'Failed captcha verification'));
+  //       }
   
-        const user = await User.findOne({ email }).exec();
-        if (!user) {
-          return done(null, false, req.flash('error', 'Incorrect email'));
-        }
+  //       const user = await User.findOne({ email }).exec();
+  //       if (!user) {
+  //         return done(null, false, req.flash('error', 'Incorrect email'));
+  //       }
   
-        const isPasswordMatched = user.validPassword(password);
-        if (!isPasswordMatched) {
-          return done(null, false, req.flash('error', 'Incorrect password'));
-        }
+  //       const isPasswordMatched = user.validPassword(password);
+  //       if (!isPasswordMatched) {
+  //         return done(null, false, req.flash('error', 'Incorrect password'));
+  //       }
   
-        if (user.status === "pending") {
-          const error = `Pending Account. A link was sent to ${user.email} when you signed up.
-          Please check it and click the link to verify your account!`;
-          return done(null, false, req.flash('error', error));
-        }        
-        return done(null, user);
-      } catch (err) {
-        // Handle unexpected errors gracefully
-        return done(err);
-      }
-    }
-  ));
+  //       if (user.status === "pending") {
+  //         const error = `Pending Account. A link was sent to ${user.email} when you signed up.
+  //         Please check it and click the link to verify your account!`;
+  //         return done(null, false, req.flash('error', error));
+  //       }        
+  //       return done(null, user);
+  //     } catch (err) {
+  //       // Handle unexpected errors gracefully
+  //       return done(err);
+  //     }
+  //   }
+  // ));
   
 
   passport.serializeUser((user, done) => {
