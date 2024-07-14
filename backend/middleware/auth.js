@@ -3,29 +3,52 @@ const User = require("../models/User");
 const catchAsyncErrors = require("./catchAsyncErrors");
 
 const destroySessionAndRedirect = (req, res, redirectUrl = '/auth/login') => {
-  req.session.destroy(err => {
-    if (err) {
-      console.error('Failed to destroy session:', err);
-    }
-    res.clearCookie('connect.sid', {
-      path: '/',
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production'
+
+  if (req.isAuthenticated && req.isAuthenticated()) {
+    // Use Passport's logout if the user is authenticated via Passport
+    req.logout(err => {
+      if (err) {
+        console.error('Failed to logout:', err);
+      }
+      res.clearCookie('connect.sid', {
+        path: '/',
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production'
+      });
+      res.clearCookie('token', {
+        path: '/',
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production'
+      });
+      req.user = null;
+      return res.redirect(redirectUrl);
     });
-    res.clearCookie('token', {
-      path: '/',
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production'
+  } else {
+    // Handle custom logout
+    req.session.destroy(err => {
+      if (err) {
+        console.error('Failed to destroy session:', err);
+      }
+      res.clearCookie('connect.sid', {
+        path: '/',
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production'
+      });
+      res.clearCookie('token', {
+        path: '/',
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production'
+      });
+      req.user = null;
+      return res.redirect(redirectUrl);
     });
-    req.user = null;
-    return res.redirect(redirectUrl);
-  });
+  }
 };
 
 const ensureAuth = catchAsyncErrors(async (req, res, next) => {
   let token;
 
- // console.log('req.cookies.token in auth.js middleware==', req.cookies.token, req.user);
+  // console.log('req.cookies.token in auth.js middleware==', req.cookies.token, req.user);
   if (req.cookies && req.cookies.token) {
     token = req.cookies.token;
   } else if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
@@ -33,7 +56,7 @@ const ensureAuth = catchAsyncErrors(async (req, res, next) => {
   }
 
   if (!token) {
-    //console.log('Please login to access this resource');
+    console.log('Please login to access this resource');
     req.flash('error', 'Please login to access this resource');
     return destroySessionAndRedirect(req, res);
   }
@@ -41,7 +64,7 @@ const ensureAuth = catchAsyncErrors(async (req, res, next) => {
   try {
     const decodedData = jwt.decode(token);
     let secret;
-    console.log('decodedData in auth.js middleware==', decodedData);
+    // console.log('decodedData in auth.js middleware==', decodedData);
 
     if (!decodedData) {
       req.user = null;
@@ -57,21 +80,19 @@ const ensureAuth = catchAsyncErrors(async (req, res, next) => {
       throw new Error('Invalid token type');
     }
 
-    jwt.verify(token, process.env.secret, async(err, user) => {
+    jwt.verify(token, process.env.secret, async (err, user) => {
       if (err) {
         req.flash('error', 'No user found');
         return destroySessionAndRedirect(req, res);
-      }      
-      req.user = await User.findOne({email: user.email});
-      console.log('verifiedData in auth.js middleware==', req.user);
+      }
+      req.user = await User.findOne({ email: user.email });
+      // console.log('verifiedData in auth.js middleware==', req.user);
       next();
     });
 
   } catch (error) {
-    console.error('Authentication Error:', error);
-    
+    // console.error('Authentication Error:', error);
     if (error.name === 'TokenExpiredError') {
-      req.user = null;
       req.flash('error', 'Your session has expired. Please log in again.');
     } else {
       req.flash('error', 'Failed to authenticate. Please try again.');

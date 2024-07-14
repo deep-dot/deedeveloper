@@ -12,7 +12,7 @@ const config = require('./config/config.js');
 const env = process.env.NODE_ENV || 'development';
 const jwt = require("jsonwebtoken");
 const User = require("./models/User");
-// const { ensureAuth } = require('./middleware/auth');
+
 
 // Initialize express app
 const app = express();
@@ -26,9 +26,11 @@ app.use(Session({
   resave: false,
   saveUninitialized: true,
   store: MongoStore.create({ mongoUrl: config.db_url[env] }),
-  cookie: {
+  cookie: { 
+    secure: process.env.NODE_ENV === 'production',
+    httpOnly: true,
     maxAge: 1000 * 60 * 30, // Session expiration time in milliseconds (e.g., 30 minutes)
-  },
+   }
 }));
 
 // Middlewares setup
@@ -65,7 +67,7 @@ app.use(async (req, res, next) => {
 });
 // Flash messages and user info middleware
 app.use((req, res, next) => {  
-  console.log('req.user in app.js', req.user);
+  // console.log('req.user in app.js', req.user);
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
   res.locals.data = req.flash('data');

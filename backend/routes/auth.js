@@ -231,9 +231,7 @@ router.get('/google/callback',
     failureRedirect: '/auth/login',
     keepSessionInfo: true
   }), (req, res) => {
-    sendToken(req.user, 200, res);
-    // req.session.returnTo = req.originalUrl;
-    // console.log(req.session.returnTo); // doesnt have returnTo inside anymore ?
+    sendToken(req.user, 200, res, 'auth', req.sessionID);
     res.redirect(req.session.returnTo || '/');
     delete req.session.returnTo;
   });
@@ -245,7 +243,7 @@ router.get('/facebook/callback',
     failureRedirect: '/auth/login',
     keepSessionInfo: true
   }), (req, res) => {
-    sendToken(req.user, 200, res);
+    sendToken(req.user, 200, res, 'auth', req.sessionID);
     res.redirect(req.session.returnTo || '/');
     delete req.session.returnTo;
   });
@@ -301,7 +299,7 @@ router.post('/login', async(req, res) => {
       req.flash('error', error);
       return res.redirect('/auth/login');
     }        
-    console.log('user in auth login==', user);
+   // console.log('user in auth login==', user);
   
     sendToken(user, 200, res, 'auth', req.sessionID);
     const expiresAt = parseInt(process.env.JWT_EXPIRE, 10) * 60 * 1000;
@@ -444,7 +442,7 @@ router.put("/password/reset/:token", async (req, res, next) => {
 });
 
 router.get('/logout', (req, res) => {
-  destroySessionAndRedirect(req, res);
+    destroySessionAndRedirect(req, res);
 });
 
 //delete

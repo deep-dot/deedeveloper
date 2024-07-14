@@ -16,32 +16,34 @@ module.exports = function (passport) {
         callbackURL: config.google_url[env],
       },
       async (accessToken, refreshToken, profile, done) => {
-        console.log('config.google_url[env]==', config.google_url[env])
-        var newUser = new User();
-        newUser.Id = profile.id,
-          newUser.provider = profile.provider;
-        newUser.displayName = profile.displayName;
-        newUser.firstName = profile.name.givenName;
-        newUser.lastName = profile.name.familyName;
-        newUser.image = profile.photos[0].value;
-        newUser.email = profile.emails[0].value;
-        newUser.password = " ";
+        console.log('Google Callback URL:', config.google_url[env]);
+
         try {
           let user = await User.findOne({ email: profile.emails[0].value });
           if (user) {
-            return done(null, user)
+            return done(null, user);
           }
-          //newUser.save();
-          newUser.save().then(function (err, result) {
-            //console.log('User Created');
+
+          const newUser = new User({
+            googleId: profile.id,
+            provider: profile.provider,
+            displayName: profile.displayName,
+            firstName: profile.name.givenName,
+            lastName: profile.name.familyName,
+            image: profile.photos[0].value,
+            email: profile.emails[0].value,
+            password: " ", // You might want to handle this differently
           });
-          done(null, newUser)
+
+          await newUser.save();
+          
+          done(null, newUser);
         } catch (err) {
-          return done(err, false)
+          return done(err, false);
         }
       }
     )
-  )
+  );
 
   passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
