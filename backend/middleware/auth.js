@@ -48,7 +48,7 @@ const destroySessionAndRedirect = (req, res, redirectUrl = '/auth/login') => {
 const ensureAuth = catchAsyncErrors(async (req, res, next) => {
   let token;
 
-  // console.log('req.cookies.token in auth.js middleware==', req.cookies.token, req.user);
+  console.log('req.cookies.token in auth.js middleware==', req.cookies.token, req.user);
   if (req.cookies && req.cookies.token) {
     token = req.cookies.token;
   } else if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
