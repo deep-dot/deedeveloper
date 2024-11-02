@@ -54,18 +54,9 @@ nav ul {
   gap: 1.5em;
 }
 
-/* 
-nav nav ul li:nth-of-type(1),
-nav nav ul li:nth-of-type(7) {
-  margin-left: auto;
-} */
-
-/* nav nav ul li:nth-of-type(8) {  
-  margin-right: auto;
-} */
 
 nav ul li {
-  font: 400 1em "Roboto";
+  font: 400 0.6em "Roboto";
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -74,16 +65,9 @@ nav ul a{
   color: var(--text);
   display: block;
 }
-/* 
-nav ul a:hover,
-nav ul a:focus {
-  text-decoration: none;
-  color: var(--hoverColor);
-  transform: scale(1.05);
-} */
 
 nav ul i {
-  margin-right: 10px;
+  margin-right: 2px;
   color: var(--mainColor);
 }
 
@@ -111,12 +95,6 @@ nav ul i {
 .nav_bar .blog-menu li:last-child {
   border-bottom: none;
 }
-/* 
-.blog > a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 
 nav ul #loggedIn a,
 nav ul #loggedOut a,
@@ -148,15 +126,15 @@ nav ul .fa-sign-out-alt {
   color: var(--textColor);
   outline: none;
   cursor: pointer;
-  height: 35px;
-  width: 35px;
+  height: 25px;
+  width: 25px;
   border-radius: 50%;
-  font-size: 1rem;
+  font-size: 0.7rem;
   transition: 0.3s;
 }
 
 .toggle-btn i {
-  line-height: 35px;
+  line-height: 25px;
 }
 
 .main-wrapper.light .toggle-btn i:last-child,

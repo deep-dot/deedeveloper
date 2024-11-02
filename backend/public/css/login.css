@@ -67,12 +67,13 @@
     align-items: flex-start;
 }
 
-.fa-envelope,
+/* .fa-envelope,
 .fa-lock,
 .fa-unlock, .fa-user, .fa-id-card, 
 .fa-home, .fa-battery-full, .fa-edit, 
-.fa-trash, .fa-user-circle {
-    color: var(--text);
+.fa-trash, .fa-user-circle { */
+.fa {
+    color: var(--textColor);
     font:500 1.5rem 'Roboto';
 }
 

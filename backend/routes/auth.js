@@ -231,6 +231,7 @@ router.get('/google/callback',
     failureRedirect: '/auth/login',
     keepSessionInfo: true
   }), (req, res) => {
+    console.log('req.user in routes/auth/google/callback',req.user, req.sessionID)
     sendToken(req.user, 200, res, 'auth', req.sessionID);
     res.redirect(req.session.returnTo || '/');
     delete req.session.returnTo;

@@ -48,7 +48,7 @@ const destroySessionAndRedirect = (req, res, redirectUrl = '/auth/login') => {
 const ensureAuth = catchAsyncErrors(async (req, res, next) => {
   let token;
 
-  console.log('req.cookies.token in auth.js middleware==', req.cookies.token, req.user);
+  //console.log('req.cookies.token in auth.js middleware==', req.cookies.token, req.user);
   if (req.cookies && req.cookies.token) {
     token = req.cookies.token;
   } else if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
@@ -64,7 +64,7 @@ const ensureAuth = catchAsyncErrors(async (req, res, next) => {
   try {
     const decodedData = jwt.decode(token);
     let secret;
-    // console.log('decodedData in auth.js middleware==', decodedData);
+    console.log('decodedData in auth.js middleware==', decodedData);
 
     if (!decodedData) {
       req.user = null;
@@ -80,7 +80,7 @@ const ensureAuth = catchAsyncErrors(async (req, res, next) => {
       throw new Error('Invalid token type');
     }
 
-    jwt.verify(token, process.env.secret, async (err, user) => {
+    jwt.verify(token, secret, async (err, user) => {
       if (err) {
         req.flash('error', 'No user found');
         return destroySessionAndRedirect(req, res);

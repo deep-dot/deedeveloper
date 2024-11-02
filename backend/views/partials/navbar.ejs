@@ -7,14 +7,9 @@
       <ul>
         <li>
           <a href="/">
-            <i class="fas fa-home"></i>Home
+            <i class="fas fa-home in_navBar"></i>Home
           </a>
         </li>
-        <!-- <li>
-          <a href="/#aboutSection">
-            <i class="fas fa-user"></i>About
-          </a>
-        </li> -->
 
         <li class="navAbout" onclick="toggleAboutMenu(event)">
           <a href="#">
@@ -27,14 +22,12 @@
             </li>
             <li>
               <a href="/#servicesSection">
-                <!-- <i class="fas fa-clone"></i> -->
                 Services
               </a>
             </li>
           </ul>
         </li>
 
-       
         <li id="Testimonial">
           <a href="/#testimonial">
             <i class="fas fa-comment"></i>Testimonial
@@ -62,7 +55,8 @@
         <% if(!isAuthenticated) {%>
           <li id="loggedIn">
             <a href="/auth/login">
-              <i class="fas fa-sign-in-alt"></i>Sign In
+              <i class="fas fa-sign-in-alt"></i>
+              <span>Sign In</span>
             </a>
           </li>
           <li id="reg">
@@ -78,11 +72,8 @@
             </li>
             <li class="profileImage">
               <a href="/auth/profile">
-                <% if (user && user.image) { %>
-                  <img src="<%= user.image %>" alt="Profile Image" style="width:40px; border-radius: 100%;" />
-                <% } else { %>
-                  <img src="" alt="" style="width:40px; border-radius: 100%;" />
-                <% } %>
+                <img src="<%= user && user.image ? user.image : '/img/person.png' %>" alt=" " 
+                 style="width:40px; border-radius: 100%;" />
               </a>
             </li>
             <% } %>

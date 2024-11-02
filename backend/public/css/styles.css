@@ -228,12 +228,16 @@ a {
   margin-right: 10px;
 }
 
+.cookie-consent-content p {
+  font-size: 12px;
+}
+
 .cookie-consent-accept {
   background-color: #3498db;
   border: none;
   color: #fff;
-  padding: 10px 20px;
-  font-size: 14px;
+  padding: 5px 10px;
+  font-size: 12px;
   cursor: pointer;
 }
 
@@ -241,7 +245,7 @@ a {
   position: absolute;
   top: 10px;
   right: 10px;
-  font-size: 18px;
+  font-size: 12px;
   background-color: transparent;
   border: none;
   color: #fff;
