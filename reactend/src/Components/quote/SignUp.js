@@ -22,7 +22,7 @@ function SignUp({ quoteFormData }) {
     const checkUser = async () => {
       try {
         const { data } = await axios.get('/api/auth/userDetail');
-        console.log('data in header==', data.userEmail)
+        // console.log('data in header==', data.userEmail)
         if (data.userName && data.userEmail) {
           setUserName(data.userName);
           setUserEmail(data.userEmail);

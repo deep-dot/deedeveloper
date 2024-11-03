@@ -13,7 +13,6 @@ const env = process.env.NODE_ENV || 'development';
 const jwt = require("jsonwebtoken");
 const User = require("./models/User");
 
-
 // Initialize express app
 const app = express();
 
@@ -52,19 +51,20 @@ app.use(expressLayouts);
 app.set('layout', './layouts/main');
 
 // Middleware to set req.user if authenticated
-app.use(async (req, res, next) => {  
-  if (req.cookies && req.cookies.token) {    
-    try {            
-      const decodedData = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
-      req.user = await User.findOne({ email: decodedData.email });
-    } catch (error) {
-      req.user = null;
-    }
-  } else {
-    req.user = null;
-  }
-  next();
-});
+// app.use(async (req, res, next) => {  
+//   if (req.cookies && req.cookies.token) {    
+//     try {            
+//       const decodedData = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
+//       req.user = await User.findOne({ email: decodedData.email });
+//     } catch (error) {
+//       req.user = null;
+//     }
+//   } else {
+//     req.user = null;
+//   }
+//   next();
+// });
+
 // Flash messages and user info middleware
 app.use((req, res, next) => {  
   // console.log('req.user in app.js', req.user);
@@ -85,7 +85,7 @@ app.use('/', require('./routes/sendEmail'));
 
 // API endpoints for React
 app.get('/api/auth/status', (req, res) => {
-  //console.log('in app js req user',req.user)
+  //console.log('in app js req user')
   res.json({ isAuthenticated: !!req.user, userImage: req.user ? req.user.image : null });
 });
 

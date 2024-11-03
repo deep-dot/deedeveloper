@@ -10,7 +10,11 @@ const env = process.env.NODE_ENV || 'development';
   require('dotenv').config({ path: 'backend/config/config.env' });
 
 // Enable CORS middleware
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3005',
+  credentials: true
+}));
+
 
 connectDatabase();
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Header.css';
 
-const Header = ({ isAuthenticated, user }) => {
+const Header = () => {
   const [isAboutMenuOpen, setAboutMenuOpen] = useState(false);
   const [isBlogMenuOpen, setBlogMenuOpen] = useState(false);
   const [isNavBarActive, setNavBarActive] = useState(false);
@@ -12,6 +12,29 @@ const Header = ({ isAuthenticated, user }) => {
   const loggedInRef = useRef(null);
   const testimonialRef = useRef(null);
 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userImage, setUserImage] = useState(null);
+
+  // Function to check authentication status
+  const checkAuthStatus = async () => {
+    try {
+      const response = await fetch('/api/auth/status', {
+        method: 'GET',
+        credentials: 'include', // Include cookies if needed for session
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setIsAuthenticated(data.isAuthenticated);
+        setUserImage(data.userImage);
+      } else {
+        console.error('Failed to fetch auth status');
+      }
+    } catch (error) {
+      console.error('Error fetching auth status:', error);
+    }
+  };
+  
   const toggleAboutMenu = () => {
     setAboutMenuOpen(prevState => !prevState);
   };
@@ -25,6 +48,7 @@ const Header = ({ isAuthenticated, user }) => {
   };
 
   useEffect(() => {
+    checkAuthStatus();
     const menuItems = document.querySelectorAll('nav > ul > li > a');
     const currentLocation = window.location.pathname;
 
@@ -132,7 +156,7 @@ const Header = ({ isAuthenticated, user }) => {
             {!isAuthenticated ? (
               <>
                 <li id="loggedIn" ref={loggedInRef}>
-                  <a href="/auth/login">
+                <a href="/auth/login">
                     <i className="fas fa-sign-in-alt"></i>Sign In
                   </a>
                 </li>
@@ -151,7 +175,7 @@ const Header = ({ isAuthenticated, user }) => {
                 </li>
                 <li className="profileImage">
                   <a href="/auth/profile">
-                    <img src={user.image} alt="" style={{ width: '40px', borderRadius: '100%' }} />
+                    <img src={userImage} alt="" style={{ width: '40px', borderRadius: '100%' }} />
                   </a>
                 </li>
               </>
