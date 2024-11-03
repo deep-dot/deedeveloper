@@ -51,19 +51,19 @@ app.use(expressLayouts);
 app.set('layout', './layouts/main');
 
 // Middleware to set req.user if authenticated
-// app.use(async (req, res, next) => {  
-//   if (req.cookies && req.cookies.token) {    
-//     try {            
-//       const decodedData = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
-//       req.user = await User.findOne({ email: decodedData.email });
-//     } catch (error) {
-//       req.user = null;
-//     }
-//   } else {
-//     req.user = null;
-//   }
-//   next();
-// });
+app.use(async (req, res, next) => {  
+  if (req.cookies && req.cookies.token) {    
+    try {            
+      const decodedData = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
+      req.user = await User.findOne({ email: decodedData.email });
+    } catch (error) {
+      req.user = null;
+    }
+  } else {
+    req.user = null;
+  }
+  next();
+});
 
 // Flash messages and user info middleware
 app.use((req, res, next) => {  
