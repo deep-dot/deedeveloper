@@ -1,9 +1,9 @@
 /* about me */
 
   .about {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: space-between;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
   }
   
   .about picture img {
@@ -32,7 +32,7 @@
   @media screen and (max-width: 768px) {
 
     .about {
-     grid-template-columns: 1fr;
+      flex-direction: column;
     }
   
     .about p, .about h1, 

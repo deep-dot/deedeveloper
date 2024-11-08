@@ -107,7 +107,7 @@
   /* .card .morelessmore { */
   
   .contents {
-    max-height: 100px;
+    max-height: 300px;
     overflow: hidden;
     position: relative;
     transition: max-height 0.3s ease-in-out;

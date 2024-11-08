@@ -9,19 +9,19 @@
     text-transform: uppercase;
   }
   
-  .home {
+  /* .home {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-  }
+  } */
   
-  .home .home1, .home .home2 {
+  /* .home .home1, .home .home2 {
     height: auto;
     padding: 10px;
   }
   
   .home .home1 {
     border-right: 1px solid var(--background);
-  }
+  } */
   
   .home::before {
     content: "";
