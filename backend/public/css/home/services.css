@@ -4,20 +4,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
   }
   
   .services {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    align-items: center;
+   display: flex;
+   justify-content: space-around;
+    align-items: center;  
   }
   
   .services-div1 {
     display: flex;
     flex-direction: column;
-   padding: 5px;
+     padding: 5px;
   }
   
   .services-div1 ul li {
@@ -131,7 +131,7 @@
 @media screen and (max-width: 768px) {
   
     .services {
-     grid-template-columns: 1fr;
+     flex-direction: column;
     }
   
     .services-div1 {

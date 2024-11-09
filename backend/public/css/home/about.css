@@ -2,13 +2,16 @@
 
   .about {
     display: flex;
-    justify-content: space-between; 
+    /* justify-content: space-between;  */
     align-items: center; 
+    min-height: 100vh;
+    width: 100%;
+    padding: 2rem;
+    background-color: black;
   }
   
   .about picture img {
     max-width: 80%;
-    height: auto;
   }
 
   .about div {
@@ -37,13 +40,13 @@
 
     .about {
       flex-direction: column;
+      justify-content: center; 
     }
 
-
-  .about picture img,
-  .about div {
-    max-width: 100%;
-  }
+    .about picture img,
+    .about div {
+      max-width: 100%;
+    }
   
     .about p, .about h1, 
     .about h2, .about { 

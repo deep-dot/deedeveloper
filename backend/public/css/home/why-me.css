@@ -1,6 +1,6 @@
 .why-me {
-   position: relative;
-    /* background: bisque; */
+ display: flex;
+   height: 100vh;
 }
 
 .project-sub-section {

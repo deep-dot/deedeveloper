@@ -2,6 +2,7 @@
 .testimonial {
     display: flex;
     flex-direction: column;
+    padding: 2rem;
   }
   
   #reviewCard {

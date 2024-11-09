@@ -1,11 +1,12 @@
 
 .F {
-    min-height: 70vh;
+  min-height: 100vh;
   }
   
   .faq {
     display: flex;
     flex-direction: column;
+    padding: 2rem;
   }
   
   .faq em, .faq ol, .faq p, .faq ul li {

@@ -2,12 +2,16 @@
 .map {
     display: flex;
     flex-direction: column;
-    
+    height: 100vh;
+    padding: 2rem;
+    justify-content: center;
+    background-color: black;
   }
   
   .map iframe {
-    height: 50vh;
+    height: 80%;
     width: 100%;
+    text-align: center;
   }
   
   

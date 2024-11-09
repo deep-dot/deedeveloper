@@ -2,7 +2,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 0;
+    padding-top: calc(var(--navheight) + 2rem);
+    min-height: 100vh;
+    width: 100%;
   }
   
   .H h1,
@@ -13,8 +15,10 @@
   
   .quote-me-box {
     width: 50%;
+    padding: 2rem;
     min-height: 30vh;
     border-radius: 10px;
+    text-align: center;
     box-shadow: 
     var(--boxshadowwithopacity),
     0px 0px 0px 4px rgb(255, 0, 0),   /* red */
@@ -26,10 +30,6 @@
     0px 0px 0px 16px rgb(255, 192, 203); /* pink */
     margin: clamp(4rem, 10vw, 5rem);
 }
-
-  .sub-quote-me-box {
-    padding: 2rem;
-  }
   
   .quote-me-box .quote-button {
     background: var(--background);
@@ -50,7 +50,6 @@
     background: var(--hoverColor);
   }
   
-  
   @keyframes blink-animation {
     50% {
       opacity: 0;
@@ -59,16 +58,16 @@
 
   @media screen and (max-width: 768px) {
   
-    .sub-quote-me-box {
-      text-align: center;
-    }
-
     .quote-me-box {
       width: 70%;
     }
   }
 
   @media screen and (max-width: 480px) {
+
+    .H {
+      margin-top: 0;
+    }
 
       .quote-me-box {
         width: 95%;        
