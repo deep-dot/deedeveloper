@@ -1,19 +1,19 @@
 
 .login_wrapper {
     display: block;
-    position: relative;
     box-shadow: var(--boxshadowwithopacity);
-    margin: auto; 
     border-radius: 5px;
     max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1, h2 {
+    text-align: center;
 }
 
 .login_wrapper .sub_login_wrapper {
     padding: 2rem 1rem 2rem 1rem;
-}
-
-.login_wrapper .sub_login_wrapper h2 {
-    align-self: center;
 }
 
 .login_wrapper_grid {
@@ -28,20 +28,25 @@
     padding: 1rem;
     border-radius: 5px;
     text-align: center;
+    margin: auto;
 }
 
 .facebook {
     background-color: cornflowerblue;
+    max-width: 100px;
+    border-radius: 50%;
 }
 
 .google {
     background-color: crimson;
+    max-width: 100px;
+    border-radius: 50%;
 }
 
 .facebook a, .google a {
     align-self: center;
     color: white;
-    font:500 clamp(18px, 2vw, 22px) 'Roboto';
+    font:500 clamp(1rem, 2vw, 2rem) 'Roboto';
     text-transform: uppercase;
 }
 
@@ -189,22 +194,12 @@ input[type="checkbox"] {
 
 @media screen and (max-width: 768px) {
 
-    .login_wrapper .sub_login_wrapper h1, h2 {
-        text-align: center;
-    }
-
     .login_wrapper .sub_login_wrapper {
         padding: 2rem 1rem 2rem 1rem;
     }
-    .login_wrapper .sub_login_wrapper .login_wrapper_grid {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
 
     .facebook, .google {
-        width: 100%;
+        width: 100%;        
     }
 
     .showPass {
@@ -248,11 +243,10 @@ input[type="checkbox"] {
 
 @media screen and (max-width: 480px) {
 
-    .login_wrapper_grid {
-        grid-template-columns: 1fr;
-        padding:0;
+    .login_wrapper {
+        margin-top: 0;
     }
-
+    
     .login_wrapper .sub_login_wrapper {
         padding: 1rem;
     }

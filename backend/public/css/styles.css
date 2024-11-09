@@ -25,21 +25,21 @@ On light backgrounds: #333333 (Dark Gray) */
   /* --buttonBackGround: #9EBDFF;
   --buttonHover: #ffe09e; */
 
-  --headingSize: clamp(1.75rem, 5vw, 2.25rem);
+  --headingSize: clamp(1.5rem, 2vw, 2rem);
   --headingFamily: 'Raleway', sans-serif;
   --headingWeight: 600;
 
-  --heading2Size: clamp(1.50rem, 3vw, 1.75rem);
+  --heading2Size: clamp(1rem, 2vw, 1.75rem);
   --heading2Family: 'Raleway', sans-serif;
   /* --heading2Color: #0462A6; */
   --heading2Weight: 500;
 
-  --heading3Size: clamp(1.10rem, 2.25vw, 1.25rem);
+  --heading3Size: clamp(0.8rem, 2vw, 1.5rem);
   --heading3Family: 'Raleway', sans-serif;
   /* --heading3Color: #0462A6; */
   --heading3Weight: 600;
 
-  --textSize: clamp(1rem, 2vw, 1.50rem);
+  --textSize: clamp(0.6rem, 2vw, 1.2rem);
   --textFamily: Georgia, 'Times New Roman', Times, serif;
   /* --textColor: #000000; */
   --textWeight: 300;

@@ -3,8 +3,12 @@
    grid-template-columns: 1fr 1fr;   
  }
 
- .contact > div {
-  background-color: var(--backgroundwithopacity);
+ .contact div {
+  max-width: 80%;
+ }
+
+ .contact img {
+  max-width: 100%;
  }
 
  .contact > div > h1 {
@@ -104,6 +108,11 @@
     .contact {
       grid-template-columns: 1fr;
     }
+
+    .contact div,
+    .contact img {
+      max-width: 100%;
+     }
 
     .contact > img {
       display: none;

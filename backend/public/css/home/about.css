@@ -7,8 +7,12 @@
   }
   
   .about picture img {
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
+  }
+
+  .about div {
+    max-width: 40%;
   }
   
   .about h1 {
@@ -34,6 +38,12 @@
     .about {
       flex-direction: column;
     }
+
+
+  .about picture img,
+  .about div {
+    max-width: 100%;
+  }
   
     .about p, .about h1, 
     .about h2, .about { 
