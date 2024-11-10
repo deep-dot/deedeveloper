@@ -52,6 +52,8 @@ const upload = multer({
 }).single('image');
 
 router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
+
+  console.log('register user in auth.ja---', req.body);
   if (req.body['g-recaptcha-response'] === '') {
     if (req.file) {
       try {
@@ -99,12 +101,12 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
       image: imagePath,
     });
    // const token = newUser.getJWTToken('emailVerification'); 
-    const token = sendToken(newUser, 200, res,'emailVerification' );
+    const token = sendToken(newUser, 200, res, 'emailVerification' );
     console.log('token in register user', token);
     newUser.token = undefined; 
     await newUser.save(); 
 
-    const baseProtocol = process.env.NODE_ENV === 'production' ? 'https' : req.protocol;
+     const baseProtocol = process.env.NODE_ENV === 'production' ? 'https' : req.protocol;
     const verifyUserUrl = `${baseProtocol}://${req.get("host")}/auth/verifyEmail/${token}`;
     //console.log('verify url in register user===', verifyUserUrl)
     await sendEmail({

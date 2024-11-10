@@ -1,7 +1,7 @@
 
 async function contactMe() {
   const form = document.getElementById("contact-form-viewhome");
-  const submitButton = document.getElementById(".contact > form > button");
+  const submitButton = document.querySelector("#contact-form-viewhome > button");
   const verificationCodeInput = document.getElementById("verification-code");
   const verificationCodeLabel = document.getElementById("verification-code-label");
   const messageToUser = document.getElementById("message-to-user");
@@ -115,7 +115,7 @@ async function contactMe() {
     // Conditionally execute based on authentication and submission state
     if (isAuthenticated) {
       submitButton.textContent = 'Sending...';
-      await emailToDev(name, email, message);
+      await emailToDev(name, email, message, null);
     } else {
       switch (submitButton.textContent) {
         case 'Verify':

@@ -9,6 +9,12 @@
     padding: 2rem;
     background-color: black;
   }
+
+  .about h1,
+  .about h2,
+  .about p {
+    color: white;
+  }
   
   .about picture img {
     max-width: 80%;
@@ -29,7 +35,8 @@
   
   .about-me-social-icons a {
     font-size: clamp(20px, 2vw, 30px);
-    color: var(--textColor);
+    /* color: var(--textColor); */
+    color: white;
   }
   
   .about-me-social-icons a:hover {

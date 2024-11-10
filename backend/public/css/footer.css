@@ -55,7 +55,7 @@ text-align: center;
 .footer .footer-container .cell p,
 .footer .footer-container .cell i {
   color: var(--textColor);
-  font-size: calc(var(--textSize) - 8px);
+  font-size: calc(var(--textSize) - 2px);
 }
 
 

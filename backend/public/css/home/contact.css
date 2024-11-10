@@ -8,6 +8,11 @@
    background-color: black;
  }
 
+ .contact h1,
+ .contact h2 {
+  color: white;
+ }
+
  .contact div {
   max-width: 80%;
  }
@@ -41,7 +46,8 @@
    margin-bottom: 5px;
    font: 600 clamp(16px, 2vw, 22px) 'Roboto';
    text-align: start;
-   color: var(--textColor);
+   /* color: var(--textColor); */
+   color: white;
  }
  
  .contact > div > form > div input[type="text"],
@@ -63,7 +69,8 @@
  .contact > div > form #verify-code-button{
    align-self: flex-end;
    background-color: var(--background);
-   color: var(--text);
+   /* color: var(--text); */
+   color: white;
    padding: 5px 10px;
    border: none;
    border-radius: 5px;

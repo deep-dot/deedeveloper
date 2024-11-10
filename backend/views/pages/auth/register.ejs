@@ -12,7 +12,8 @@
             </p>
         </div>
         
-        <form id="registerForm" method="post" action="/auth/registerUser" enctype="multipart/form-data">
+        <form method="post" action="/auth/registerUser" enctype="multipart/form-data">
+            <!-- <form id="registerForm"> -->
             <div class="signUpElements1">
                 <div class="name">
                     <i class="fas fa-user icon"></i>
@@ -71,14 +72,14 @@
 
     // Handle Form Submission
     document.getElementById("registerForm").addEventListener("submit", function (event) {
-        event.preventDefault();
-
+        event.preventDefault();        
         let msgToUser = document.getElementById("msgToUser");
         var registerButton = document.getElementById("registerButton");
         registerButton.textContent = "Registering..."; // Change button text to "Registering..."
         registerButton.disabled = true; // Optionally disable the button to prevent multiple submissions
 
         var formData = new FormData(this);
+        console.log('register.ejs===',formData);
         fetch('/auth/registerUser', {
             method: 'POST',
             body: formData,

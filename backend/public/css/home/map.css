@@ -7,6 +7,10 @@
     justify-content: center;
     background-color: black;
   }
+
+  .map h1 {
+    color: white;
+  }
   
   .map iframe {
     height: 80%;
