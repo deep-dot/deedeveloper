@@ -150,6 +150,10 @@ a {
   background-color: var(--backgroundColor);
 }
 
+.Container {
+  padding-top: 2rem;
+}
+
 .overlay {
   display: none;
 }
@@ -247,6 +251,10 @@ a {
 }
 
 @media screen and (max-width: 480px) {
+
+  .Container {
+    padding-top: 3rem;
+  }
 
   .cookie-consent-content {
     display: block;
