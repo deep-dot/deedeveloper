@@ -1,25 +1,25 @@
 const nodemailer = require('nodemailer');
 
 
-// const transporter = nodemailer.createTransport({
-//   host: process.env.SMTP_HOST,
-//   port: 465, // Use 587 for TLS
-//   secure: true, // true for 465, false for 587
-//   auth: {
-//     user: process.env.SMTP_MAIL,
-//     pass: process.env.GOOGLE_PASS
-//   },
-// });
-
 const transporter = nodemailer.createTransport({
-  host: 'smtpout.secureserver.net',
+  host: process.env.SMTP_HOST,
   port: 465, // Use 587 for TLS
   secure: true, // true for 465, false for 587
   auth: {
-    user: process.env.godaddyEmail,
-    pass: process.env.godaddyPassword
+    user: process.env.SMTP_MAIL,
+    pass: process.env.GOOGLE_PASS
   },
 });
+
+// const transporter = nodemailer.createTransport({
+//   host: 'smtpout.secureserver.net',
+//   port: 465, // Use 587 for TLS
+//   secure: true, // true for 465, false for 587
+//   auth: {
+//     user: process.env.godaddyEmail,
+//     pass: process.env.godaddyPassword
+//   },
+// });
 
 // Test the connection
 transporter.verify((error, success) => {
