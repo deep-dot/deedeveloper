@@ -12,6 +12,7 @@ var jwt = require("jsonwebtoken");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const sendToken = require("../utils/jwtToken");
 const {destroySessionAndRedirect} =  require('../middleware/auth');
+const bcrypt = require('bcrypt')
 
 const cloudinary = require("cloudinary").v2;
 const multer = require('multer');
@@ -53,7 +54,7 @@ const upload = multer({
 
 router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
 
-  console.log('register user in auth.ja---', req.body);
+ // console.log('register user in auth.ja---', req.body);
   if (req.body['g-recaptcha-response'] === '') {
     if (req.file) {
       try {
@@ -102,13 +103,15 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
     });
    // const token = newUser.getJWTToken('emailVerification'); 
     const token = sendToken(newUser, 200, res, 'emailVerification' );
-    console.log('token in register user', token);
-    newUser.token = undefined; 
+    // const tokenString = typeof token === "string" ? token : JSON.stringify(token);
+    const tokenString = typeof token === "object" && token.token ? token.token : token;
+   // console.log('token in register user', token);
+    newUser.token = tokenString; 
     await newUser.save(); 
 
      const baseProtocol = process.env.NODE_ENV === 'production' ? 'https' : req.protocol;
-    const verifyUserUrl = `${baseProtocol}://${req.get("host")}/auth/verifyEmail/${token}`;
-    //console.log('verify url in register user===', verifyUserUrl)
+    const verifyUserUrl = `${baseProtocol}://${req.get("host")}/auth/verifyEmail/${tokenString}`;
+   // console.log('verify url in register user===', verifyUserUrl)
     await sendEmail({
       email: newUser.email,
       subject: "Please confirm your account",
@@ -129,7 +132,7 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
     req.flash('success', `You are registered successfully! Please check ${newUser.email} and click the link to verify it.`);
     res.redirect('/auth/login');
   } catch (err) {
-    console.error("Registration error", err.message);
+   // console.error("Registration error", err.message);
     if (req.xhr || req.headers.accept.indexOf('json') > -1) {
       return res.status(500).json({
         success: false,
@@ -153,6 +156,7 @@ router.get('/newuser', (req, res) => {
 })
 
 router.get('/verifyEmail/:token', (req, res) => {
+ // console.log('verifyemail in auth.js in get===', req.params.token);
   var token = req.params.token;
   res.render('pages/auth/verifyEmail.ejs', {
     style: 'login.css',
@@ -163,14 +167,15 @@ router.get('/verifyEmail/:token', (req, res) => {
   })
 });
 
-router.post('/verifyEmail/:token', async (req, res) => {
+router.post('/verifyEmail/:token', async (req, res) => {  
   try {
     const token = req.params.token;
     const user = await User.findOne({
-      status: 'pending' // only search for users with 'pending' status
+      token: token 
     });
 
-    if (!user || !bcrypt.compareSync(token, user.token)) {
+   // console.log('verifyemail in auth.js in post===', token, user);
+      if (!user) {
       req.flash('error', 'Invalid or expired token.');
       return res.redirect('/auth/verifyEmail');
     }

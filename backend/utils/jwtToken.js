@@ -1,6 +1,8 @@
 const sendToken = (user, statusCode, res, type, sessionID) => {
   const token = user.getJWTToken(type);
 
+//  console.log('Token type in jwtToken.js:', typeof token); // Should output 'string'
+
   const expirationTime = type === 'auth'
     ? parseInt(process.env.JWT_EXPIRE, 10) * 60 * 1000 // Auth token expiration in milliseconds
     : parseInt(process.env.EMAIL_VERIFICATION_EXPIRE, 10) * 60 * 1000; // Email verification token expiration in milliseconds
