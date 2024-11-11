@@ -54,7 +54,7 @@ const upload = multer({
 
 router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
 
-   console.log('register user in auth.ja---', req.body);
+  // console.log('register user in auth.ja---', req.body);
   // if (req.body['g-recaptcha-response'] === '') {
   //   if (req.file) {
   //     try {
@@ -293,7 +293,7 @@ router.post('/login', async (req, res) => {
 
     const user = await User.findOne({ email }).exec();
     if (!user) {
-      req.flash('error', 'Incorrect email');
+      res.send(req.flash('error', 'Incorrect email'));
       return res.redirect('/auth/login');
     }
 
