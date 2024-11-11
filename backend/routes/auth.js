@@ -82,13 +82,13 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
   try {
     const existingUser = await User.findOne({ email: req.body.email });
     if (existingUser) {
-    //   // Check if the request is an AJAX request
-    //   if (req.xhr || req.headers.accept.indexOf('json') > -1) {
-    //     return res.status(409).json({
-    //       success: false,
-    //       message: `User with this email ${req.body.email} already exists.`
-    //     });
-    //   }
+      // Check if the request is an AJAX request
+      if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+        return res.status(409).json({
+          success: false,
+          message: `User with this email ${req.body.email} already exists.`
+        });
+      }
       req.flash('error', `User with this email ${req.body.email} already exists.`);
       return res.redirect('/auth/newuser');
     }
