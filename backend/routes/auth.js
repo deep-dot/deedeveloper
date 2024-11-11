@@ -103,17 +103,17 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
       image: imagePath,
     });
     // const token = newUser.getJWTToken('emailVerification'); 
-    const token = sendToken(newUser, 200, res, 'emailVerification');
+    const { token, tokenExpires } = sendToken(newUser, 200, res, 'emailVerification');
     // const tokenString = typeof token === "string" ? token : JSON.stringify(token);
-    const tokenString = typeof token === "object" && token.token ? token.token : token;
-    const tokenExpires = typeof token === "object" && token.tokenExpires ? token.tokenExpires : tokenExpires;
+    // const tokenString = typeof token === "object" && token.token ? token.token : token;
+    // const tokenExpires = typeof token === "object" && token.tokenExpires ? token.tokenExpires : tokenExpires;
     // console.log('token in register user', token);
-    newUser.token = tokenString;
+    newUser.token = token;
     newUser.tokenExpires = tokenExpires;
     await newUser.save();
 
     const baseProtocol = process.env.NODE_ENV === 'production' ? 'https' : req.protocol;
-    const verifyUserUrl = `${baseProtocol}://${req.get("host")}/auth/verifyEmail/${tokenString}`;
+    const verifyUserUrl = `${baseProtocol}://${req.get("host")}/auth/verifyEmail/${token}`;
     // console.log('verify url in register user===', verifyUserUrl)
     await sendEmail({
       email: newUser.email,
@@ -143,7 +143,7 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
         message: err.message
       });
     }
-    req.flash('error', 'An error occurred during registration. Please try again.');
+    req.flash('error', `An error occurred during registration. Please try again.${err}`);
     res.redirect('/auth/newuser');
   }
 }));
