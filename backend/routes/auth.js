@@ -339,7 +339,7 @@ router.post('/login', async (req, res) => {
     sendToken(user, 200, res, 'auth', req.sessionID);
     req.flash('success', 'Logged in successfully.');
     res.redirect(req.session.returnTo || '/');
-   // console.log('req.user in routes post /auth/login', req.user, req.token)
+    console.log('req.user in routes post /auth/login', req.user, req.token)
     user.status = "active";
     user.token = undefined;
     user.tokenExpires = undefined;

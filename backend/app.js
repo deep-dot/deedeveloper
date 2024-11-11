@@ -26,7 +26,8 @@ app.use(Session({
   saveUninitialized: true,
   store: MongoStore.create({ mongoUrl: config.db_url[env] }),
   cookie: { 
-    secure: process.env.NODE_ENV === 'production',
+    // secure: process.env.NODE_ENV === 'production',
+    secure: false,
     httpOnly: true,
     maxAge: 1000 * 60 * 15, // Session expiration time in milliseconds (e.g., 15 minutes)
    }
@@ -67,7 +68,7 @@ app.use(async (req, res, next) => {
 
 // Flash messages and user info middleware
 app.use((req, res, next) => {  
- // console.log('req.user in app.js', req.user, req.flash());
+ console.log('req.user in app.js', req.user, req.flash());
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
   res.locals.data = req.flash('data');
