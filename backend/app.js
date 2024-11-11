@@ -67,7 +67,7 @@ app.use(async (req, res, next) => {
 
 // Flash messages and user info middleware
 app.use((req, res, next) => {  
-  console.log('req.user in app.js', req.user);
+  console.log('req.user in app.js', req.user, req.flash());
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
   res.locals.data = req.flash('data');

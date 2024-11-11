@@ -300,8 +300,8 @@ router.post('/login', async (req, res) => {
     const isPasswordMatched = user.validPassword(password);
     if (!isPasswordMatched) {
       req.flash('error', 'Incorrect password'); // Set the flash message
-     const errorMessage = req.flash('error'); // Retrieve it without consuming it
-     console.log(errorMessage);
+    //  const errorMessage = req.flash('error'); // Retrieve it without consuming it
+    //  console.log(errorMessage);
       return res.redirect('/auth/login');
     }
 
