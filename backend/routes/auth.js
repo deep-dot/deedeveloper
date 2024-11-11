@@ -299,8 +299,9 @@ router.post('/login', async (req, res) => {
 
     const isPasswordMatched = user.validPassword(password);
     if (!isPasswordMatched) {
-      req.flash('error', 'Incorrect password');
-      console.log(req.flash('error'));
+      req.flash('error', 'Incorrect password'); // Set the flash message
+     const errorMessage = req.flash('error'); // Retrieve it without consuming it
+     console.log(errorMessage);
       return res.redirect('/auth/login');
     }
 
@@ -335,7 +336,7 @@ router.post('/login', async (req, res) => {
 
     // Send authentication token
     sendToken(user, 200, res, 'auth', req.sessionID);
-    req.flash('success', `Logged in successfully.`);
+    req.flash('success', 'Logged in successfully.');
     res.redirect(req.session.returnTo || '/');
    // console.log('req.user in routes post /auth/login', req.user, req.token)
     user.status = "active";
@@ -344,7 +345,7 @@ router.post('/login', async (req, res) => {
     await user.save();
     delete req.session.returnTo;
   } catch (err) {
-    console.log(err);
+    //console.log(err);
     req.flash('error', 'An error occurred. Please try again.');
     res.redirect('/auth/login');
   }
