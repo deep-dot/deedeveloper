@@ -16,7 +16,7 @@ module.exports = function (passport) {
         callbackURL: config.google_url[env],
       },
       async (accessToken, refreshToken, profile, done) => {
-        console.log('Google Callback URL:', config.google_url[env]);
+    //    console.log('Google Callback URL:', config.google_url[env]);
 
         try {
           let user = await User.findOne({ email: profile.emails[0].value });

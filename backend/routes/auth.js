@@ -11,7 +11,7 @@ const { ensureAuth, ensureGuest, checkSessionExpiration } = require('../middlewa
 var jwt = require("jsonwebtoken");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const sendToken = require("../utils/jwtToken");
-const {destroySessionAndRedirect} =  require('../middleware/auth');
+const { destroySessionAndRedirect } = require('../middleware/auth');
 const bcrypt = require('bcrypt')
 
 const cloudinary = require("cloudinary").v2;
@@ -54,41 +54,41 @@ const upload = multer({
 
 router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
 
- // console.log('register user in auth.ja---', req.body);
-  if (req.body['g-recaptcha-response'] === '') {
-    if (req.file) {
-      try {
-        await cloudinary.uploader.destroy(req.file.filename);
-      } catch (e) {
-        console.log("Failed to delete image from Cloudinary:", e);
-        // Consider additional error handling here, if necessary
-      }
-    }
+  // console.log('register user in auth.ja---', req.body);
+  // if (req.body['g-recaptcha-response'] === '') {
+  //   if (req.file) {
+  //     try {
+  //       await cloudinary.uploader.destroy(req.file.filename);
+  //     } catch (e) {
+  //       console.log("Failed to delete image from Cloudinary:", e);
+  //       // Consider additional error handling here, if necessary
+  //     }
+  //   }
 
-    req.flash('error', 'Please complete the captcha.');
-    return res.redirect('/auth/newuser');
-  }
-  const captchaVerificationResponse = await fetch(`https://google.com/recaptcha/api/siteverify`, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `secret=${process.env.CAPTCHA_SECRET}&response=${req.body['g-recaptcha-response']}`,
-  }).then(res => res.json());
+  //   req.flash('error', 'Please complete the captcha.');
+  //   return res.redirect('/auth/newuser');
+  // }
+  // const captchaVerificationResponse = await fetch(`https://google.com/recaptcha/api/siteverify`, {
+  //   method: "POST",
+  //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //   body: `secret=${process.env.CAPTCHA_SECRET}&response=${req.body['g-recaptcha-response']}`,
+  // }).then(res => res.json());
 
-  if (!captchaVerificationResponse.success) {
-    req.flash('error', 'Failed captcha verification.');
-    return res.redirect('/auth/newuser');
-  }
+  // if (!captchaVerificationResponse.success) {
+  //   req.flash('error', 'Failed captcha verification.');
+  //   return res.redirect('/auth/newuser');
+  // }
 
   try {
     const existingUser = await User.findOne({ email: req.body.email });
-    if (existingUser) {      
+    if (existingUser) {
       // Check if the request is an AJAX request
       if (req.xhr || req.headers.accept.indexOf('json') > -1) {
         return res.status(409).json({
           success: false,
           message: `User with this email ${req.body.email} already exists.`
         });
-      } 
+      }
       req.flash('error', `User with this email ${req.body.email} already exists.`);
       return res.redirect('/auth/newuser');
     }
@@ -101,17 +101,19 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
       password: req.body.password,
       image: imagePath,
     });
-   // const token = newUser.getJWTToken('emailVerification'); 
-    const token = sendToken(newUser, 200, res, 'emailVerification' );
+    // const token = newUser.getJWTToken('emailVerification'); 
+    const token = sendToken(newUser, 200, res, 'emailVerification');
     // const tokenString = typeof token === "string" ? token : JSON.stringify(token);
     const tokenString = typeof token === "object" && token.token ? token.token : token;
-   // console.log('token in register user', token);
-    newUser.token = tokenString; 
-    await newUser.save(); 
+    const tokenExpires = typeof token === "object" && token.tokenExpires ? token.tokenExpires : tokenExpires;
+    // console.log('token in register user', token);
+    newUser.token = tokenString;
+    newUser.tokenExpires = tokenExpires;
+    await newUser.save();
 
-     const baseProtocol = process.env.NODE_ENV === 'production' ? 'https' : req.protocol;
+    const baseProtocol = process.env.NODE_ENV === 'production' ? 'https' : req.protocol;
     const verifyUserUrl = `${baseProtocol}://${req.get("host")}/auth/verifyEmail/${tokenString}`;
-   // console.log('verify url in register user===', verifyUserUrl)
+    // console.log('verify url in register user===', verifyUserUrl)
     await sendEmail({
       email: newUser.email,
       subject: "Please confirm your account",
@@ -128,18 +130,18 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
         success: true,
         message: `You are registered successfully! Please check ${newUser.email} and click the link to verify it.`
       });
-    } 
+    }
     req.flash('success', `You are registered successfully! Please check ${newUser.email} and click the link to verify it.`);
     res.redirect('/auth/login');
   } catch (err) {
-   // console.error("Registration error", err.message);
+    // console.error("Registration error", err.message);
     if (req.xhr || req.headers.accept.indexOf('json') > -1) {
       return res.status(500).json({
         success: false,
-       // message: "An error occurred during registration. Please try again."
-       message: err.message
+        // message: "An error occurred during registration. Please try again."
+        message: err.message
       });
-    } 
+    }
     req.flash('error', 'An error occurred during registration. Please try again.');
     res.redirect('/auth/newuser');
   }
@@ -156,7 +158,7 @@ router.get('/newuser', (req, res) => {
 })
 
 router.get('/verifyEmail/:token', (req, res) => {
- // console.log('verifyemail in auth.js in get===', req.params.token);
+  // console.log('verifyemail in auth.js in get===', req.params.token);
   var token = req.params.token;
   res.render('pages/auth/verifyEmail.ejs', {
     style: 'login.css',
@@ -167,21 +169,23 @@ router.get('/verifyEmail/:token', (req, res) => {
   })
 });
 
-router.post('/verifyEmail/:token', async (req, res) => {  
+router.post('/verifyEmail/:token', async (req, res) => {
   try {
     const token = req.params.token;
     const user = await User.findOne({
-      token: token 
+      token: token
     });
 
-   // console.log('verifyemail in auth.js in post===', token, user);
-      if (!user) {
+    //console.log('verifyemail in auth.js in post===', user,req.sessionID);
+    if (!user) {
       req.flash('error', 'Invalid or expired token.');
       return res.redirect('/auth/verifyEmail');
     }
 
+    sendToken(user, 200, res, 'auth', req.sessionID);
     user.status = 'active';
     user.token = undefined; // remove the token after verification
+    user.tokenExpires = undefined;
 
     await user.save();
 
@@ -238,7 +242,7 @@ router.get('/google/callback',
     failureRedirect: '/auth/login',
     keepSessionInfo: true
   }), (req, res) => {
-    console.log('req.user in routes/auth/google/callback',req.user, req.sessionID)
+   // console.log('req.user in routes/auth/google/callback', req.user, req.sessionID)
     sendToken(req.user, 200, res, 'auth', req.sessionID);
     res.redirect(req.session.returnTo || '/');
     delete req.session.returnTo;
@@ -268,26 +272,24 @@ router.get('/facebook/callback',
 //     delete req.session.returnTo;
 // });
 
-router.post('/login', async(req, res) => {   
-  // console.log('req body in auth login==', req.body)
-  const {email, password} = req.body;
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
   try {
+    // if (req.body['g-recaptcha-response'] === '') {
+    //   req.flash('error', 'Please select captcha');
+    //   return res.redirect('/auth/login');
+    // }
 
-    if (req.body['g-recaptcha-response'] === '') {
-      req.flash('error', 'Please select captcha');
-      return res.redirect('/auth/login');
-    }
+    // const recaptchaResponse = await fetch(`https://google.com/recaptcha/api/siteverify`, {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    //   body: `secret=${process.env.CAPTCHA_SECRET}&response=${req.body['g-recaptcha-response']}`,
+    // }).then(res => res.json());
 
-    const recaptchaResponse = await fetch(`https://google.com/recaptcha/api/siteverify`, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `secret=${process.env.CAPTCHA_SECRET}&response=${req.body['g-recaptcha-response']}`,
-    }).then(res => res.json());
-
-    if (!recaptchaResponse.success) {
-      req.flash('error', 'Failed captcha verification');
-      return res.redirect('/auth/login');
-    }
+    // if (!recaptchaResponse.success) {
+    //   req.flash('error', 'Failed captcha verification');
+    //   return res.redirect('/auth/login');
+    // }
 
     const user = await User.findOne({ email }).exec();
     if (!user) {
@@ -301,34 +303,61 @@ router.post('/login', async(req, res) => {
       return res.redirect('/auth/login');
     }
 
+    const currentTime = Date.now();
+
     if (user.status === "pending") {
-      const error = `Pending Account. A link was sent to ${user.email} when you signed up.
-      Please check it and click the link to verify your account!`;
-      req.flash('error', error);
-      return res.redirect('/auth/login');
-    }        
-   // console.log('user in auth login==', user);
-  
+      if (user.tokenExpires > currentTime) {
+        req.flash('error', `Pending Account. A link was sent to ${user.email}. Please verify your account.`);
+        return res.redirect('/auth/login');
+      } else {
+        // Generate a new verification token since the previous one expired
+        const { token, tokenExpires } = sendToken(user, 200, res, 'emailVerification');
+        user.token = token;
+        user.tokenExpires = tokenExpires;
+        await user.save();
+
+        const baseProtocol = process.env.NODE_ENV === 'production' ? 'https' : req.protocol;
+        const verifyUserUrl = `${baseProtocol}://${req.get("host")}/auth/verifyEmail/${token}`;
+
+        await sendEmail({
+          email: user.email,
+          subject: "Please confirm your account",
+          message: `<div><h1>Email Confirmation</h1><h2>Hello ${user.username}</h2>
+                    <p>Please confirm your email by clicking on the following link</p>
+                    <a href=${verifyUserUrl}> Click here</a></div>`,
+        });
+
+        req.flash('error', 'A new verification email has been sent. Please check your email.');
+        return res.redirect('/auth/login');
+      }
+    }
+
+    // Send authentication token
     sendToken(user, 200, res, 'auth', req.sessionID);
-    const expiresAt = parseInt(process.env.JWT_EXPIRE, 10) * 60 * 1000;
-    req.flash('success', `Logged in successfully. Your session will expire in ${expiresAt / 60000} minutes.`);
+    req.flash('success', `Logged in successfully.`);
     res.redirect(req.session.returnTo || '/');
+   // console.log('req.user in routes post /auth/login', req.user, req.token)
+    user.status = "active";
+    user.token = undefined;
+    user.tokenExpires = undefined;
+    await user.save();
     delete req.session.returnTo;
   } catch (err) {
     console.log(err);
     req.flash('error', 'An error occurred. Please try again.');
     res.redirect('/auth/login');
-  }    
+  }
 });
 
+
 router.get('/login', (req, res) => {
-    res.render('pages/auth/login.ejs', {
-      style: 'login.css',
-      bodyId: '',
-      sitekey: process.env.CAPTCHA_SITE_KEY,
-      error: res.locals.error,
-      success: res.locals.success
-    })
+  res.render('pages/auth/login.ejs', {
+    style: 'login.css',
+    bodyId: '',
+    sitekey: process.env.CAPTCHA_SITE_KEY,
+    error: res.locals.error,
+    success: res.locals.success
+  })
 });
 
 router.post('/extend-session', ensureAuth, async (req, res) => {
@@ -450,7 +479,7 @@ router.put("/password/reset/:token", async (req, res, next) => {
 });
 
 router.get('/logout', (req, res) => {
-    destroySessionAndRedirect(req, res);
+  destroySessionAndRedirect(req, res);
 });
 
 //delete

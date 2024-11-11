@@ -64,7 +64,7 @@ const ensureAuth = catchAsyncErrors(async (req, res, next) => {
   try {
     const decodedData = jwt.decode(token);
     let secret;
-    console.log('decodedData in auth.js middleware==', decodedData);
+   // console.log('decodedData in auth.js middleware==', decodedData);
 
     if (!decodedData) {
       req.user = null;

@@ -1,10 +1,10 @@
-const sendToken = (user, statusCode, res, type, sessionID) => {
+const sendToken = (user, statusCode, res, type, sessionID = null) => {
   const token = user.getJWTToken(type);
 
 //  console.log('Token type in jwtToken.js:', typeof token); // Should output 'string'
 
   const expirationTime = type === 'auth'
-    ? parseInt(process.env.JWT_EXPIRE, 10) * 60 * 1000 // Auth token expiration in milliseconds
+    ? parseInt(process.env.JWT_EXPIRE, 10) * 60 * 1000 // Auth token expiration in 600000 milliseconds (10 minutes)
     : parseInt(process.env.EMAIL_VERIFICATION_EXPIRE, 10) * 60 * 1000; // Email verification token expiration in milliseconds
 
   const options = {
@@ -21,7 +21,9 @@ const sendToken = (user, statusCode, res, type, sessionID) => {
     secure: process.env.NODE_ENV === 'production'
   };
 
-  res.cookie('connect.sid', sessionID, options);
+  if (sessionID) {
+    res.cookie('connect.sid', sessionID, options);
+  }
   res.cookie('token', token, tokenOptions);
 
   return {

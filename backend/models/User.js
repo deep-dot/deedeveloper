@@ -14,6 +14,9 @@ const UserSchema = new mongoose.Schema({
   token: {
     type: String,
   },
+  tokenExpires: {
+    type: Date // Date type for storing the expiration timestamp
+  },
   username: {
     type: String,
   },

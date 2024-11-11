@@ -31,7 +31,7 @@ transporter.verify((error, success) => {
 });
 
 const sendEmail = async (options) => {
- // console.log('sendEmail.js utils', options)
+  console.log('sendEmail.js utils', options)
 
   const mailOptions = {
     to: options.email,
