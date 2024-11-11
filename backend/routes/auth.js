@@ -300,6 +300,7 @@ router.post('/login', async (req, res) => {
     const isPasswordMatched = user.validPassword(password);
     if (!isPasswordMatched) {
       req.flash('error', 'Incorrect password');
+      console.log(req.flash('error'));
       return res.redirect('/auth/login');
     }
 
@@ -327,7 +328,7 @@ router.post('/login', async (req, res) => {
                     <a href=${verifyUserUrl}> Click here</a></div>`,
         });
 
-        req.flash('error', 'A new verification email has been sent. Please check your email.');
+        req.flash('error', 'A new verification email has been sent. Please check your email.');        
         return res.redirect('/auth/login');
       }
     }

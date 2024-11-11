@@ -28,7 +28,7 @@ app.use(Session({
   cookie: { 
     secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
-    maxAge: 1000 * 60 * 30, // Session expiration time in milliseconds (e.g., 30 minutes)
+    maxAge: 1000 * 60 * 15, // Session expiration time in milliseconds (e.g., 15 minutes)
    }
 }));
 
