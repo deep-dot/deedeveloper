@@ -79,7 +79,7 @@
         registerButton.disabled = true; // Optionally disable the button to prevent multiple submissions
 
         var formData = new FormData(this);
-        console.log('register.ejs===',formData);
+       // console.log('register.ejs===',formData);
         fetch('/auth/registerUser', {
             method: 'POST',
             body: formData,

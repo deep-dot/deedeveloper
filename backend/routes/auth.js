@@ -102,12 +102,7 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
       password: req.body.password,
       image: imagePath,
     });
-    // const token = newUser.getJWTToken('emailVerification'); 
     const { token, tokenExpires } = sendToken(newUser, 200, res, 'emailVerification');
-    // const tokenString = typeof token === "string" ? token : JSON.stringify(token);
-    // const tokenString = typeof token === "object" && token.token ? token.token : token;
-    // const tokenExpires = typeof token === "object" && token.tokenExpires ? token.tokenExpires : tokenExpires;
-    // console.log('token in register user', token);
     newUser.token = token;
     newUser.tokenExpires = tokenExpires;
     await newUser.save();
