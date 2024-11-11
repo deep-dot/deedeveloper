@@ -89,7 +89,7 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
           message: `User with this email ${req.body.email} already exists.`
         });
       }
-      return res.status(401).json({ error: `User with this email ${req.body.email} already exists.` });
+     // return res.status(401).json({ error: `User with this email ${req.body.email} already exists.` });
       req.flash('error', `User with this email ${req.body.email} already exists.`);
       return res.redirect('/auth/newuser');
     }
