@@ -33,12 +33,12 @@ app.use(Session({
 }));
 
 // Middlewares setup
+app.use(flash());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, './public')));
 app.use(methodOverride('_method'));
-app.use(flash());
 
 // Passport middleware
 app.use(passport.initialize());

@@ -54,7 +54,7 @@ const upload = multer({
 
 router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
 
-  // console.log('register user in auth.ja---', req.body);
+   console.log('register user in auth.js---', req.body);
   // if (req.body['g-recaptcha-response'] === '') {
   //   if (req.file) {
   //     try {
@@ -89,6 +89,7 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
           message: `User with this email ${req.body.email} already exists.`
         });
       }
+      return res.status(401).json({ error: `User with this email ${req.body.email} already exists.` });
       req.flash('error', `User with this email ${req.body.email} already exists.`);
       return res.redirect('/auth/newuser');
     }
