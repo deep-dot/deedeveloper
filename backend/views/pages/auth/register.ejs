@@ -77,11 +77,21 @@
         event.preventDefault();        
         let msgToUser = document.getElementById("msgToUser");
         var registerButton = document.getElementById("registerButton");
-        registerButton.textContent = "Registering..."; // Change button text to "Registering..."
-        registerButton.disabled = true; // Optionally disable the button to prevent multiple submissions
+        registerButton.textContent = "Registering..."; 
+        registerButton.disabled = true; 
 
-        var formData = new FormData(this);
-       // console.log('register.ejs===',formData);
+        // Get reCAPTCHA response
+        const captchaResponse = grecaptcha.getResponse();
+        if (!captchaResponse) {
+            msgToUser.textContent = "Please complete the CAPTCHA.";
+            msgToUser.style.color = "red";
+            registerButton.textContent = "Register";
+            registerButton.disabled = false;
+            return;
+        }
+
+        const formData = new FormData(this);
+
         fetch('/auth/registerUser', {
             method: 'POST',
             body: formData,
@@ -112,7 +122,5 @@
                 registerButton.disabled = false;
             });
 
-        // If not using AJAX, uncomment the next line to submit the form
-        // this.submit();
     });
 </script>

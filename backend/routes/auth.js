@@ -53,7 +53,14 @@ const upload = multer({
 }).single('image');
 
 router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
-  if (req.body['g-recaptcha-response'] === '') {
+
+  const { email, password, 'g-recaptcha-response': captchaResponse } = req.body;
+  // const { name, email, password } = req.body;
+  // const captchaResponse = req.body['g-recaptcha-response'];
+  console.log('auth.js registerUser==', captchaResponse);
+
+  // Verify CAPTCHA
+  if (!captchaResponse) {
     if (req.file) {
       try {
         await cloudinary.uploader.destroy(req.file.filename);
@@ -61,20 +68,19 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
         console.log("Failed to delete image from Cloudinary:", e);
       }
     }
-    return res.status(400).json({ success: false, message: 'Please complete the captcha.' });
+    return res.status(400).json({ success: false, message: 'Please complete the CAPTCHA' });
   }
 
-  const captchaVerificationResponse = await fetch(`https://google.com/recaptcha/api/siteverify`, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `secret=${process.env.CAPTCHA_SECRET}&response=${req.body['g-recaptcha-response']}`,
-  }).then(res => res.json());
-
-  if (!captchaVerificationResponse.success) {
-    return res.status(400).json({ success: false, message: 'Failed captcha verification.' });
-  }
+  const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.CAPTCHA_SECRET}&response=${captchaResponse}`;
 
   try {
+    const captchaVerification = await fetch(verificationUrl, { method: 'POST' });
+    const captchaResult = await captchaVerification.json();
+
+    if (!captchaResult.success) {
+      return res.status(400).json({ success: false, message: 'CAPTCHA verification failed' });
+    }
+
     const existingUser = await User.findOne({ email: req.body.email });
     if (existingUser) {
       return res.status(409).json({
@@ -98,7 +104,7 @@ router.post('/registerUser', upload, catchAsyncErrors(async (req, res) => {
 
     const baseProtocol = process.env.NODE_ENV === 'production' ? 'https' : req.protocol;
     const verifyUserUrl = `${baseProtocol}://${req.get("host")}/auth/verifyEmail/${token}`;
-    
+
     await sendEmail({
       email: newUser.email,
       subject: "Please confirm your account",
@@ -125,9 +131,7 @@ router.get('/newuser', (req, res) => {
   res.render('pages/auth/register.ejs', {
     style: 'login.css',
     bodyId: 'registrationPage',
-    sitekey: process.env.CAPTCHA_SITE_KEY,
-    error: res.locals.error,
-    success: res.locals.success
+    sitekey: process.env.CAPTCHA_SITE_KEY
   });
 })
 
@@ -153,6 +157,8 @@ router.post('/verifyEmail/:token', async (req, res) => {
     user.token = undefined;
     user.tokenExpires = undefined;
     await user.save();
+
+    sendToken(user, 200, res, 'auth'); // assign user in req.user
 
     // Log the user in
     req.login(user, (err) => {
@@ -191,7 +197,7 @@ router.get('/google/callback',
     failureRedirect: '/auth/login',
     keepSessionInfo: true
   }), (req, res) => {
-   // console.log('req.user in routes/auth/google/callback', req.user, req.sessionID)
+    // console.log('req.user in routes/auth/google/callback', req.user, req.sessionID)
     sendToken(req.user, 200, res, 'auth', req.sessionID);
     res.redirect(req.session.returnTo || '/');
     delete req.session.returnTo;
@@ -221,29 +227,34 @@ router.get('/facebook/callback',
 //     delete req.session.returnTo;
 // });
 
+
+router.get('/login', (req, res) => {
+  res.render('pages/auth/login.ejs', {
+    style: 'login.css',
+    bodyId: 'loginPage',
+    sitekey: process.env.CAPTCHA_SITE_KEY,
+  });
+});
+
 router.post('/login', async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, 'g-recaptcha-response': captchaResponse } = req.body;
+
+  // Check if captcha response exists
+  if (!captchaResponse) {
+    return res.status(400).json({ success: false, message: 'Please complete the CAPTCHA' });
+  }
+
+  // Verify captcha with Google
+  const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.CAPTCHA_SECRET}&response=${captchaResponse}`;
+
   try {
-    if (req.body['g-recaptcha-response'] === '') {
-      return res.status(400).json({
-        success: false,
-        message: 'Please select captcha',
-      });
+    const captchaVerificationResponse = await fetch(verificationUrl, { method: 'POST' });
+    const captchaResult = await captchaVerificationResponse.json();
+
+    if (!captchaResult.success) {
+      return res.status(400).json({ success: false, message: 'Failed CAPTCHA verification' });
     }
-    
-    const recaptchaResponse = await fetch(`https://google.com/recaptcha/api/siteverify`, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `secret=${process.env.CAPTCHA_SECRET}&response=${req.body['g-recaptcha-response']}`,
-    }).then(res => res.json());
-    
-    if (!recaptchaResponse.success) {
-      return res.status(400).json({
-        success: false,
-        message: 'Failed captcha verification',
-      });
-    }
-    
+
     const user = await User.findOne({ email }).exec();
     if (!user) {
       return res.status(401).json({ success: false, message: 'This email is not registered or incorrect email' });
@@ -291,15 +302,6 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ success: false, message: 'An error occurred. Please try again.' });
   }
 });
-
-router.get('/login', (req, res) => {
-  res.render('pages/auth/login.ejs', {
-    style: 'login.css',
-    bodyId: 'loginPage',
-    sitekey: process.env.CAPTCHA_SITE_KEY,
-  });
-});
-
 
 router.post('/extend-session', ensureAuth, async (req, res) => {
   try {
@@ -424,7 +426,7 @@ router.delete('/deleteUser/:id', ensureAuth, async (req, res) => {
       const imageUrl = user.image;
       await cloudinary.uploader.destroy(imageUrl);
     }
-    
+
     await user.remove();
 
     res.status(200).json({
