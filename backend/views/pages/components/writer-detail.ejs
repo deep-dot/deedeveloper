@@ -2,9 +2,9 @@
 
 .written-by {
   display: flex;
+  width: 100%;
   border: 0.2px dotted var(--background);
   padding: 1em;
-  max-width: 600px;
 }
 
 .written-by picture img {
@@ -15,6 +15,7 @@
 
 .written-by .writer-detail {
   margin-left: 20px;
+  width: 100%;
 }
 
 .written-by .writer-detail .bio {
@@ -37,12 +38,16 @@
   text-decoration: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 480px) {
 
   .written-by {
-    display: block;
+    flex-direction: column;
+    padding: 0;
 }
 
+  .written-by .writer-detail {
+    margin-left: 0;    
+  }
 }
     </style>
 

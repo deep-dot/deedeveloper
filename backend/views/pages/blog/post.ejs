@@ -17,10 +17,12 @@
       <div class="postContent">
           <%- blogpost.post.replace(/\n/g, '<br>' ) %>
       </div>
+      <%- include('./components/commentsOnPost.ejs') -%>
+      <%- include('../components/writer-detail.ejs') -%>
     </div>
-   <%- include('./components/commentsOnPost.ejs') -%>
+   
   </div>
-  <%- include('../components/writer-detail.ejs') -%>
+  
 </div>
 
 
