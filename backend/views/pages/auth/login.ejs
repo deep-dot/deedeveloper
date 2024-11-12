@@ -1,79 +1,102 @@
-    <section class="login_wrapper">
-        <div class="sub_login_wrapper">
-            <h1>SIGN IN</h1>
-            <div class="login_wrapper_grid">
-                <div class="facebook">
-                    <a href="/auth/facebook">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                </div>
-                <div class="google">
-                    <a href="/auth/google">
-                        <i class="fab fa-google"></i>
-                    </a>
-                </div>
+<section class="loginPage">
+    <div class="login_wrapper">
+    <div class="sub_login_wrapper">
+        <h1>SIGN IN</h1>
+        <div class="login_wrapper_grid">
+            <div class="facebook">
+                <a href="/auth/facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
             </div>
-
-            <h2>or</h2>
-            <div class="login-error">
-                <p>
-                    <%= error %>
-                </p>
+            <div class="google">
+                <a href="/auth/google">
+                    <i class="fab fa-google"></i>
+                </a>
             </div>
-            <div class="login-success">
-                <p>
-                    <%= success %>
-                </p>
-            </div>
-
-            <form id="loginForm" method="post" action="/auth/login" content-type="application/json">
-                <div class="email">
-                    <i class="fas fa-envelope"></i>
-                    <input name="email" type="email" required id="email" placeholder="Email Address *" />
-                </div>
-                <div class="password">
-                    <i class="fas fa-lock"></i>
-                    <i class="fas fa-unlock" style="display: none;"></i>
-                    <input name="password" id="password" type="password" required placeholder="Password" />
-                </div>
-                <div class="showPass">
-                    <div>
-                        <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
-                        <label class="" for="showPassword">
-                            Show Password
-                        </label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="rememberme" name="rememberme" onclick="saveUserCredentials()" />
-                        <label class="form-check-label" for="rememberme">
-                            Remember me
-                        </label>
-                    </div>
-                    <a class="forgotPass" href="/auth/passwordforgot">Forgot password</a>
-                </div>
-                <div class="recaptcha-container">
-                    <div class="g-recaptcha" data-size="compact" data-sitekey="<%= sitekey %>"></div>
-                </div>
-                <button class="login-btn" id="send" type="submit">Login</button>
-                <div class="login-register">
-                    <p>Don't have an account? <a href="/auth/newuser">Register</a></p>
-                </div>
-            </form>
         </div>
-    </section>
 
+        <h2>or</h2>
+        <div class="login-error" id="loginError">
+            <p></p>
+        </div>
+        <div class="login-success" id="loginSuccess">
+            <p></p>
+        </div>
+
+        <form id="loginForm">
+            <div class="email">
+                <i class="fas fa-envelope"></i>
+                <input name="email" type="email" required id="email" placeholder="Email Address *" />
+            </div>
+            <div class="password">
+                <i class="fas fa-lock"></i>
+                <i class="fas fa-unlock" style="display: none;"></i>
+                <input name="password" id="password" type="password" required placeholder="Password" />
+            </div>
+            <div class="showPass">
+                <div>
+                    <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
+                    <label for="showPassword">Show Password</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="rememberme" name="rememberme" onclick="saveUserCredentials()" />
+                    <label for="rememberme">Remember me</label>
+                </div>
+                <a class="forgotPass" href="/auth/passwordforgot">Forgot password</a>
+            </div>
+            <div class="recaptcha-container">
+                <div class="g-recaptcha" data-size="compact" data-sitekey="<%= sitekey %>"></div>
+            </div>
+            <button class="login-btn" type="button" onclick="loginUser()">Login</button>
+            <div class="login-register">
+                <p>Don't have an account? <a href="/auth/newuser">Register</a></p>
+            </div>
+        </form>
+    </div>
+</section>
 
 <script type="text/javascript">
-   function togglePasswordVisibility() {
-    var passwordField = document.getElementById("password");
-    var showPasswordCheckbox = document.getElementById("showPassword");
-    var lockIcon = document.querySelector('.fa-lock');
-    var unlockIcon = document.querySelector('.fa-unlock');
+    async function loginUser() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
-    passwordField.type = showPasswordCheckbox.checked ? "text" : "password";
-    lockIcon.style.display = showPasswordCheckbox.checked ? "none" : "inline-block";
-    unlockIcon.style.display = showPasswordCheckbox.checked ? "inline-block" : "none";
-}
+        try {
+            const response = await fetch('/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            const result = await response.json();
+
+            // Clear any previous messages
+            document.getElementById('loginError').querySelector('p').textContent = '';
+            document.getElementById('loginSuccess').querySelector('p').textContent = '';
+
+            if (result.success) {
+                document.getElementById('loginSuccess').querySelector('p').textContent = result.message;
+                setTimeout(() => {
+                    window.location.href = result.redirectUrl || '/';
+                }, 2000); // Redirect after a short delay
+            } else {
+                document.getElementById('loginError').querySelector('p').textContent = result.message;
+            }
+        } catch (error) {
+            console.error('Error during login:', error);
+            document.getElementById('loginError').querySelector('p').textContent = 'An error occurred. Please try again.';
+        }
+    }
+
+    function togglePasswordVisibility() {
+        const passwordField = document.getElementById("password");
+        const showPasswordCheckbox = document.getElementById("showPassword");
+        const lockIcon = document.querySelector('.fa-lock');
+        const unlockIcon = document.querySelector('.fa-unlock');
+
+        passwordField.type = showPasswordCheckbox.checked ? "text" : "password";
+        lockIcon.style.display = showPasswordCheckbox.checked ? "none" : "inline-block";
+        unlockIcon.style.display = showPasswordCheckbox.checked ? "inline-block" : "none";
+    }
 
     function setCookie(name, value, days) {
         const expires = new Date(Date.now() + days * 86400e3).toUTCString();
@@ -91,21 +114,18 @@
     }
 
     function saveUserCredentials() {
-        var email = document.getElementById('email').value;
-        var rememberMe = document.getElementById('rememberme').checked;
+        const email = document.getElementById('email').value;
+        const rememberMe = document.getElementById('rememberme').checked;
         if (rememberMe) {
-            setCookie('useremail', email, 1); // Set cookie to expire in 1 day
+            setCookie('useremail', email, 1);
         }
     }
 
     window.onload = function() {
-    let userEmail = getCookie('useremail');
-   // console.log('email in cookie==',userEmail);
-    if(userEmail) {
-        // If the cookie exists, prefill the email input and possibly check the "Remember Me" checkbox
-        document.getElementById('email').value = userEmail;
-        document.getElementById('rememberme').checked = true;
-    }
-};
-
+        const userEmail = getCookie('useremail');
+        if (userEmail) {
+            document.getElementById('email').value = userEmail;
+            document.getElementById('rememberme').checked = true;
+        }
+    };
 </script>

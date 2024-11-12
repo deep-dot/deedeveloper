@@ -1,20 +1,53 @@
-<section class="login_wrapper">
+<section class="account-confirmation">
+    <div class="login_wrapper">
     <div class="sub_login_wrapper">
-        <h1>Account confirmed!</h1>
-        <div class="login-error">
-            <p>
-              <%= error %>
-            </p>
-          </div>
-          <div class="login-success">
-            <p>
-              <%= success %>
-            </p>
-          </div>
-        <form id="verifyAccount" method="post" action="/auth/verifyEmail/<%= token %>?_method=POST"
-            contenttype="application/json">
-            <input type="hidden" name="token" value="<%= token %>" id="token" />
-            <button type="submit">Be active</button>
-        </form>
+      <h1>Account Confirmation</h1>
+      <div class="login-error" id="loginError" style="display: none;">
+        <p></p>
+      </div>
+      <div class="login-success" id="loginSuccess" style="display: none;">
+        <p></p>
+      </div>
+      <form id="verifyAccountForm" content-type="application/json">
+        <input type="hidden" name="token" value="<%= token %>" id="token" />
+        <button class="login-btn" type="button" onclick="verifyAccount()">Be Active</button>
+      </form>
     </div>
+</div>
 </section>
+  
+  <script type="text/javascript">
+    async function verifyAccount() {
+      const token = document.getElementById('token').value;
+  
+      // Clear previous messages
+      document.getElementById('loginError').style.display = 'none';
+      document.getElementById('loginSuccess').style.display = 'none';
+  
+      try {
+        const response = await fetch(`/auth/verifyEmail/${token}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token })
+        });
+  
+        const result = await response.json();
+  
+        if (result.success) {
+          document.getElementById('loginSuccess').style.display = 'block';
+          document.getElementById('loginSuccess').querySelector('p').textContent = result.message;
+          setTimeout(() => {
+            window.location.href = '/auth/profile';
+          }, 2000);
+        } else {
+          document.getElementById('loginError').style.display = 'block';
+          document.getElementById('loginError').querySelector('p').textContent = result.message;
+        }
+      } catch (error) {
+        console.error('Verification error:', error);
+        document.getElementById('loginError').style.display = 'block';
+        document.getElementById('loginError').querySelector('p').textContent = 'An error occurred. Please try again.';
+      }
+    }
+  </script>
+  

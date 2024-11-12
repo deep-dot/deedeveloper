@@ -5,7 +5,9 @@
     <body>
         <main class="main-wrapper light">
             <% if ( bodyId !="review_comments" && bodyId !="profileId" 
-                    && bodyId != "project-detail" && bodyId != "passwordForget") { %>
+                    && bodyId != "project-detail" && bodyId != "passwordForget"
+                    && bodyId != "verifyEmail"
+                    && bodyId != "passwordReset") { %>
                 <%- include('../partials/navbar.ejs');-%>
                     <% } %>
                         <div id="<%- bodyId %>" class="Container">
@@ -13,7 +15,10 @@
                                 <div class="overlay"></div>
                                 <button class="back-to-top" title="Go to top">&#9650;</button>
                         </div>
-                        <% if ( bodyId !="review_comments" && bodyId !="profileId" ) { %>
+                        <% if ( bodyId !="review_comments" && bodyId !="profileId" 
+                                && bodyId != "verifyEmail" && bodyId != "loginPage"
+                                && bodyId != "registrationPage" && bodyId != "passwordForget"
+                                && bodyId != "passwordReset") { %>
                             <%- include('../partials/footer.ejs');-%>
                                 <% } %>
         </main>
