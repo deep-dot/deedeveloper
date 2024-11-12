@@ -15,9 +15,7 @@
       </div>
       <img class="postImg" src="<%= blogpost.image %>" alt=" ">
       <div class="postContent">
-        <p class="p">
           <%- blogpost.post.replace(/\n/g, '<br>' ) %>
-        </p>
       </div>
     </div>
    <%- include('./components/commentsOnPost.ejs') -%>

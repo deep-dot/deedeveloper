@@ -1,19 +1,20 @@
 
-.blogMainImg {
-  width: auto;
-  height: auto;
-}
-
-.blogMainImg picture img {
-  width: 100%;
-  height: 100%;
-}
-
 .search-box {
   margin-top: 5rem;
   margin-bottom: 4rem;
   display: flex;
   justify-content: center;
+}
+.blogMainImg {
+  width: 100%; /* Adjust based on container */
+  max-width: 600px; /* Optional: limit the max width of the container */
+  margin: 0 auto; /* Center the container if it's smaller than the page width */
+}
+
+.blogMainImg img {
+  width: 100%; 
+  height: auto; 
+  display: block; 
 }
 
 form {
@@ -38,61 +39,46 @@ button[type="submit"] {
 }
 
 /* blog card */
-.blog-card {
+
+.blog-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 4rem;
+}
+
+.blog-container .card-container .blog-card{
   display: block;
   width: 300px;
-  height: 400px;
+  height: 300px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   text-decoration: none;
   transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  padding: 15px;
 }
+
+.blog-container .card-container img {
+  width: 100%;  /* Make the image take up the full width of the card */
+  height: 60%; /* Maintain aspect ratio */
+  display: block; /* Remove any extra space below the image */
+}
+
 
 .blog-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.blog-card img {
-  display: block;
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.blog-card h2 {
-  margin: 20px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.blog-card p {
-  margin: 0 20px 20px;
-  font-size: 1rem;
-  color: #666;
-}
-
-/* see more button functionality */
-
-.blog-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.blog-container .card-container {
-  margin-bottom: 2rem;
-}
-
- 
+ /* see more button functionality */
  #see-more-button {
   display: block;
   margin: 5rem auto;
-  padding: 10px 20px;
+  padding: 5px 10px;
   background-color: #333333;
   color: #ffffff;
   border: none;
@@ -108,11 +94,4 @@ button[type="submit"] {
   background-color: #555555;
 }
 
-@media screen and (max-width: 576px) {
-
-  .blogMainImg picture img {
-    width: 100%;
-  }
-  
-}
 

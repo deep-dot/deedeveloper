@@ -42,7 +42,7 @@ const Footer = () => {
           <img className="logo_image" id="footer-dark-logo" src={`${process.env.PUBLIC_URL}/images/logoDeeDev.svg`} alt="dark logo" />
 
           <p>
-            Dee Dhillon - Freelance Developer & Consultant
+            Dee Dhillon - Freelance Software Developer
           </p>
           <p>
             High Quality is our first priority
@@ -79,8 +79,8 @@ const Footer = () => {
             <div className="serviceMain">Services</div>
             <div>Mobile app development for IOS and Android</div>
             <div>Website design and development</div>
-            <div>Search Engine Optimisation</div>
-            <div>Google Ads Management</div>
+            {/* <div>Search Engine Optimisation</div>
+            <div>Google Ads Management</div> */}
             <div>Logo design</div>
             <div>Future maintenance</div>
           </div>

@@ -18,12 +18,12 @@
 
 
   <% if(error) { %>
-    <p style="text-align: center; font-size:14px; color:red">
+    <p style="text-align: center; font-size:12px; color:red">
       <%= error %>
     </p>
     <% } %>
       <% if(success) { %>
-        <p style="text-align: center; font-size:14px; color:green">
+        <p style="text-align: center; font-size:12px; color:green">
           <%= success %>
         </p>
         <% } %>
@@ -34,12 +34,12 @@
               <div class="card-container">
                 <a href="/post/<%= blogposts[i]._id %>" class="blog-card">
                   <img src="<%= blogposts[i].image %>" alt="Blog Photo">
-                  <h2 class="blog-title">
+                  <h4>
                     <%= blogposts[i].title %>
-                  </h2>
-                  <p class="blog-meta">Posted <%= blogposts[0].createdAt.toDateString() %> by <%= blogposts[i].username
+                  </h4>
+                  <h6>Posted <%= blogposts[0].createdAt.toDateString() %> by <%= blogposts[i].username
                         %>
-                  </p>
+                  </h6>
                 </a>
               </div>
               <% } %>
@@ -57,7 +57,7 @@
 <script>
   $(document).ready(function() {
     const cards = document.querySelectorAll('.card-container');
-    const initialLimit = 1; // Initial number of cards to show
+    const initialLimit = 3; // Initial number of cards to show
     let currentLimit = initialLimit; // Current limit, starts at initial limit
     const seeMoreButton = document.querySelector("#see-more-button");
     const totalCards = cards.length;
