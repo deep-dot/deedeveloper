@@ -1,125 +1,95 @@
-<div class="project" id="Top">
-    <div class="title-section">
-        <div>
-            <img class="logo_image" href="#" src="/img/logoDeeDev.svg" alt="Logo" />
-        </div>
-        <div class="menulist">
-            <a href="/portfolio">Home ➣➣</a><a href="/portfolio/#projects">Projects ➣➣ </a><a href=""> Project detail</a>
-        </div>
-        <div class="project-title"></div>
-        <div class="title-sub-section">
-            <div class="profileImage">
-                <a href="/auth/profile">
-                    <picture>
-                        <!-- <source srcset="https://res.cloudinary.com/dedqid79f/image/upload/v1642646586/samples/bike.jpg"
-                          type="image/cloudinary"> -->
-                        <img src="https://lh3.googleusercontent.com/a/AGNmyxYKP7KlSgpMYZ1EngEaDDBvDyjCH97coxhOrCmiaA=s96-c" alt="Kuldeep_Dhillon"
-                          title="KuldeepDhillon" width="125px" height="125px" loading="lazy">
-                      </picture>
-                </a>
-            </div>
-            <div class="profile-desc">
-                <div class="name">Kuldeep Dhillon</div>
-                <div class="reading-time">
-                    🕒 <span></span>
-                </div>
-            </div>
-        </div>
+
+
+<section class="project-detail" id="Top">
+    <img class="logo_image" src="/img/logoDeeDev.svg" alt="Logo" />
+
+    <div class="menulist">
+        <a href="/portfolio">Home ➣➣</a>
+        <a href="/portfolio/#projects">Projects ➣➣</a>
+        <a href="#">Project Detail</a>
     </div>
-    <div class="project-container">
-        <div class="project-detail">
-        </div>
-        <div class="page-contents">
-        </div>
-    </div>
-    <%- include('../../writer-detail.ejs') -%>
-</div>
+
+    <p class="title"></p>
+
+    <a href="/auth/profile">
+        <picture>
+            <img src="https://lh3.googleusercontent.com/a/AGNmyxYKP7KlSgpMYZ1EngEaDDBvDyjCH97coxhOrCmiaA=s96-c"
+                alt="Kuldeep_Dhillon" title="KuldeepDhillon" width="125" height="125" loading="lazy">
+        </picture>
+    </a>
+    <p>
+        Kuldeep Dhillon <br>
+        🕒 <span></span>
+    </p>
+
+    <div class="project"></div>
+    <div class="page-contents"></div>
+
+    <%- include('../../writer-detail.ejs') %>
+</section>
+
 
 <script>
+    const projectDetail = document.querySelector('.project-detail .project');
+    const projectTitle = document.querySelector('.project-detail .title');
+    const readingTime = document.querySelector('.project-detail span');
+    const contents = document.querySelector('.project-detail .page-contents');
 
     function createProjectDetails(detail) {
-        const projectDetail = document.querySelector('.project-detail');
-        const projectTitle = document.querySelector('.project-title');
-        const readingTime = document.querySelector('.reading-time span');
-        htmlRender = [];
-        var html = '';
-        // html += `<div class="project-title">${detail.title}</div>`
         projectTitle.textContent = detail.title;
         readingTime.textContent = detail.reading_time;
 
-        detail.more_contents.forEach(moreContent => {
-            // html += `<div class="more-contents" id="${moreContent.id}">`
-            html += `<div class="more-contents" id="${moreContent.id}">`
+        const htmlRender = detail.more_contents.map(moreContent => {
+            let html = `<div class="more-contents" id="${moreContent.id}">`;
             const contentWithLineBreaks = moreContent.content.replace(/\n/g, '<br>');
-            html += `<div class="contents"><p>${contentWithLineBreaks}</p></div>`
-            // html += `<div class="image-container">`
-            //     moreContent.images.forEach( image => {
-            //         html += `<img class="img" src="${image.image_src}" width="${image.width}" height="${image.height}" style="box-shadow: ${image['box-shadow']}; top: ${image['top']}; left: ${image['left']}}" alt="Project_Image">`;
-            //     });        
-            // html += `</div>` 
+            html += `<div class="contents" style="${!moreContent.images.length ? 'width: 100%;' : ''}">
+                <p>${contentWithLineBreaks}</p></div>`;
+
             if (moreContent.images.length > 0 && moreContent.images[0].image_src.trim() !== "") {
-            html += `<div class="image-container">`
-            moreContent.images.forEach(image => {
-                html += `<img class="img" src="${image.image_src}" width="${image.width}" height="${image.height}" style="box-shadow: ${image['box-shadow']}; top: ${image['top']}; left: ${image['left']}}" alt="Project_Image">`;
-            });        
-            html += `</div>` 
-        } else {
-            html = html.replace('<div class="contents">', '<div class="contents" style="width: 100%;">');
-        }                      
-            html += `</div>`
+                const images = moreContent.images.map(image =>
+                    `<img src="${image.image_src}" width="${image.width}" height="${image.height}" style="box-shadow: ${image['box-shadow']}; top: ${image['top']}; left: ${image['left']}}" alt="Project_Image">`
+                ).join('');
+                html += `<div class="image-container">${images}</div>`;
+            }
+
+            html += `</div>`;
+            return html;
         });
-        htmlRender.push(html);
+
         projectDetail.innerHTML = htmlRender.join('');
     }
 
-    const createPageContents = (detail) => {
-        const contents = document.querySelector('.page-contents');
-        const htmlRender = [];
+    function createPageContents(detail) {
+        const contentItems = detail.page_contents.map(list =>
+            `<li><a href="#${list}">${list}</a></li>`
+        ).join('');
 
-        var html = `<div class="content-heading">Page Contents</div>`
-        html += '<ol>';
-        detail.page_contents.forEach(title => {
-            console.log('id==', title);
-            html += `<li>`
-            html += `<a class="list-text" href="#${title}">${title}</a>`
-            html += `</li>`
-        });
-        html += '</ol>';
-        htmlRender.push(html);
+        const technologies = detail.technologies.map(tech =>
+            `<p class="tech">${tech}</p>`
+        ).join('');
 
-        var htmlTech = `<div class="project-technologies">`;
-        detail.technologies.forEach(tech => {
-            // htmlTech += `<div>`
-            htmlTech += `<a class="p">${tech}, </a>`
-            // htmlTech += `</div>`
-        });
-        htmlTech += `</div>`;
-        htmlRender.push(htmlTech);
-
-        contents.innerHTML = htmlRender.join('');
+        contents.innerHTML = `
+            <p>Page Contents</p>
+            ${contentItems}
+            ${technologies}
+        `;
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', async () => {
         const title = localStorage.getItem('title');
-        fetch('/jsonData/project-detail.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("HTTP error " + response.status);
-                }
-                return response.json();
-            })
-            .then(json => {
-                json.project_details.forEach(projectDetail => {
-                    // console.log(projectDetail.title, title)
-                    if (projectDetail.title === title) {
-                        createProjectDetails(projectDetail);
-                        createPageContents(projectDetail);
-                    }
-                })
-            })
-            .catch(function () {
-                console.log("An error occurred while fetching the JSON file.");
-            });
-    });
+        try {
+            const response = await fetch('/jsonData/project-detail.json');
+            if (!response.ok) throw new Error(`HTTP error ${response.status}`);
 
+            const data = await response.json();
+            const projectDetail = data.project_details.find(project => project.title === title);
+
+            if (projectDetail) {
+                createProjectDetails(projectDetail);
+                createPageContents(projectDetail);
+            }
+        } catch (error) {
+            console.error("An error occurred while fetching the JSON file:", error);
+        }
+    });
 </script>

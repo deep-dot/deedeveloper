@@ -1,5 +1,8 @@
-section {
-    margin: 2em 0;
+#portfolioPage {
+    max-width: 1400px;
+    width: 100%;
+    margin: var(--navheight) auto;
+    padding: 10px;
 }
 
 .main-section {
@@ -472,6 +475,10 @@ section {
 @media (max-width: 768px) {
 
     /* index */
+    #portfolioPage {
+        margin: var(--navheight) auto;
+    }
+
     .index-section {
         text-align: center;
         flex-direction: row-reverse;
