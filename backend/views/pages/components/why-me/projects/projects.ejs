@@ -2,9 +2,8 @@
   <div class="project-sub-section">
 
     <h2 class="h2">Here are my projects. 😎</h2>
-
-    <div class="project-grid">
-
+    <h3>Projects Including Video</h3>
+    <div class="project-grid">      
     </div>
 
   </div>
@@ -22,29 +21,17 @@
     })
   }
 
-  // function goToPage2(title) {
-  //   const projectTitles = document.querySelectorAll('.project-title');
-
-  //   projectTitles.forEach(projecttitle => {
-  //     if (projecttitle.textContent === "DESIGN & IMPLEMENTATION") {
-  //       window.location.href = 'http://localhost:5000/post/6732ca00d1b79e53ffc9f9c3';
-  //     } else if (projecttitle.textContent === title) {
-  //       localStorage.setItem('title', projecttitle.textContent);
-  //       window.location.href = '/project-detail';
-  //     }
-  //   });
-  // }
-
   function displayProjects(projects) {
     const projectDetail = document.querySelector('.project-grid');
     const detailRender = [];
     var html = " ";
     // Select the first two items and then items from the 5th to the end
-    const selectedProjects = projects.slice(0, 2).concat(projects.slice(4));
+    // const selectedProjects = projects.slice(0, 3).concat(projects.slice(4));
 
     // Now, loop over the selected projects
-    selectedProjects.forEach(detail => {
+    // selectedProjects.forEach(detail => {
       // projects.slice(0,2).forEach(detail => {
+      projects.forEach(detail => {
       html += `<div class='project-grid-item'>`;
       html += `<div class='project-detail'>`
       html += `<h3 class='project-subtitle'> ${detail.subtitle} </h3>`
