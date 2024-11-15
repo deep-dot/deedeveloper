@@ -81,6 +81,10 @@
     order: 1;
 }
 
+.project-grid-item .hidden {
+    display: none;
+}
+
 .project-detail {
     position: relative;
     /* background-color:blueviolet; */

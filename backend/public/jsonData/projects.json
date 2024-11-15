@@ -3,12 +3,13 @@
         {
             "subtitle": "WEBSITE DEVELOPMENT & DESIGN",
             "title": "DEEDEVELOPER.COM",
-            "content": "Deedeveloper.com is a meticulously designed, professional freelance development platform showcasing the expertise and services of a seasoned developer. The website serves as an interactive portfolio, detailing the developer's projects, personal profile, offered services, and much more. Notably, it features a comprehensive blog section along with an accessible feedback system for seamless communication and engagement with potential clients.",
+            "content": "Deedeveloper.com is a well-crafted, professional freelance development platform that highlights the skills and services of mine. This website acts as a freelancer's website including  interactive portfolio, presenting my projects, personal profile, and available services. It includes a blog with full CRUD (create, read, update, delete) operations, allowing users to comment with similar CRUD functionality. The site also features a testimonial section where users can write reviews and add comments, both with full CRUD capabilities. In addition, there's a quote form where users can submit their email, name, and message, along with a login system offering full registration, password reset, email authentication, and CAPTCHA verification. A FAQ accordion answers common questions, and a contact form is provided that pre-fills information for logged-in users, simplifying message submission. The blog and feedback system make it easy to communicate and engage with potential clients.",
             "technologies": [
                 "Java Script",
                 "Express",
                 "EJS",
-                "MongoDb"
+                "MongoDb",
+                "React"
             ],
             "images": [
                 {

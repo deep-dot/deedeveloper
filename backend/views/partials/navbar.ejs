@@ -13,12 +13,15 @@
 
         <li class="navAbout" onclick="toggleAboutMenu(event)">
           <a href="#">
-            About
+            Portfolio
             <span class="toggle-icon">+</span>
           </a>
           <ul class="about-menu">
             <li>
-              <a href="/portfolio">Portfolio</a>
+              <a href="/portfolio">About Me</a>
+            </li>
+            <li>
+              <a href="/blogs">Work Showcase</a>
             </li>
             <li>
               <a href="/#servicesSection">
@@ -28,17 +31,20 @@
           </ul>
         </li>
 
-        <li id="Testimonial">
+        <!-- <li id="Testimonial">
           <a href="/#testimonial">
             <i class="fas fa-comment"></i>Testimonial
           </a>
-        </li>
+        </li> -->
         <li>
           <a href="/#contactSection">
             <i class="fas fa-phone"></i>Contact
           </a>
         </li>
-        <li class="blog" onclick="toggleBlogMenu(event)">
+        <li class='write-review'>
+          <a href="/posts/new">Blog</a>
+        </li>
+        <!-- <li class="blog" onclick="toggleBlogMenu(event)">
           <a href="#">
             Blog
             <span class="toggle-icon">+</span>
@@ -48,10 +54,10 @@
               <a href="/blogs">Home</a>
             </li>
             <li class='write-review'>
-              <a href="/posts/new">Write blog</a>
+              <a href="/posts/new">Post</a>
             </li>
           </ul>
-        </li>
+        </li> -->
         <% if(!isAuthenticated) {%>
           <li id="loggedIn">
             <a href="/auth/login">

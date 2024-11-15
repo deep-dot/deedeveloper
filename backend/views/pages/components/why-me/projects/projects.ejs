@@ -4,7 +4,7 @@
     <h2 class="h2">Here are my projects. 😎</h2>
 
     <div class="project-grid">
-  
+
     </div>
 
   </div>
@@ -14,7 +14,7 @@
   function goToPage2(title) {
     const projectTitles = document.querySelectorAll('.project-title')
     projectTitles.forEach(projecttitle => {
-     // console.log('project titles==', projecttitle.textContent, title);
+      // console.log('project titles==', projecttitle.textContent, title);
       if (projecttitle.textContent === title) {
         localStorage.setItem('title', projecttitle.textContent);
         window.location.href = '/project-detail';
@@ -22,18 +22,42 @@
     })
   }
 
+  // function goToPage2(title) {
+  //   const projectTitles = document.querySelectorAll('.project-title');
+
+  //   projectTitles.forEach(projecttitle => {
+  //     if (projecttitle.textContent === "DESIGN & IMPLEMENTATION") {
+  //       window.location.href = 'http://localhost:5000/post/6732ca00d1b79e53ffc9f9c3';
+  //     } else if (projecttitle.textContent === title) {
+  //       localStorage.setItem('title', projecttitle.textContent);
+  //       window.location.href = '/project-detail';
+  //     }
+  //   });
+  // }
+
   function displayProjects(projects) {
     const projectDetail = document.querySelector('.project-grid');
     const detailRender = [];
     var html = " ";
-    projects.forEach(detail => {
+    // Select the first two items and then items from the 5th to the end
+    const selectedProjects = projects.slice(0, 2).concat(projects.slice(4));
+
+    // Now, loop over the selected projects
+    selectedProjects.forEach(detail => {
+      // projects.slice(0,2).forEach(detail => {
       html += `<div class='project-grid-item'>`;
       html += `<div class='project-detail'>`
       html += `<h3 class='project-subtitle'> ${detail.subtitle} </h3>`
       html += `<h1 class='project-title'>${detail.title}</h1>`
-      html += `<div class='project-content'>`
-      html += `<p>${detail.content}</p>`
-      html += `</div>`
+
+      // Display only part of the content with a 'Read More' toggle
+      const shortContent = detail.content.slice(0, 100); // Adjust number of characters as needed
+      const fullContent = detail.content;
+      html += `<div class='project-content'>
+                  <p class="short-content">${shortContent}...</p>
+                  <p class="full-content hidden">${fullContent}</p>
+                  <a href="javascript:void(0)" class="read-more-toggle" onclick="toggleReadMore(this)">Read More</a>
+               </div>`
 
       html += `<div class="project-technologies">`
       detail.technologies.forEach(tech => {
@@ -45,6 +69,8 @@
 
       html += `<div class='project-url'>`
       html += `<button data-title="${detail.title}" onclick='goToPage2(this.dataset.title)'>[View Project]</button>`
+      //html += `<button onclick="window.location.href='http://localhost:5000/post/6732ca00d1b79e53ffc9f9c3'">[View Project]</button>`;
+
       html += `</div>`
       html += `</div>`
 
@@ -59,6 +85,22 @@
     });
     detailRender.push(html);
     projectDetail.innerHTML = detailRender.join('');
+  }
+
+  function toggleReadMore(link) {
+    const projectContent = link.parentElement;
+    const shortContent = projectContent.querySelector(".short-content");
+    const fullContent = projectContent.querySelector(".full-content");
+
+    if (fullContent.classList.contains("hidden")) {
+      shortContent.classList.add("hidden");
+      fullContent.classList.remove("hidden");
+      link.textContent = "Read Less";
+    } else {
+      shortContent.classList.remove("hidden");
+      fullContent.classList.add("hidden");
+      link.textContent = "Read More";
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function () {

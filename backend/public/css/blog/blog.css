@@ -1,4 +1,8 @@
 
+.blogPage {
+  padding-top: var(--navheight);
+}
+
 .search-box {
   margin-top: 5rem;
   margin-bottom: 4rem;

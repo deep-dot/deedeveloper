@@ -7,10 +7,15 @@
     width: 100%;
   }
   
+  .H h1 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+
   .H h1,
   .H h2 {
     text-align: center;
-    text-transform: uppercase;
+    text-transform:capitalize
   }
   
   .quote-me-box {

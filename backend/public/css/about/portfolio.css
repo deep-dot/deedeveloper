@@ -1,7 +1,7 @@
 #portfolioPage {
     max-width: 1400px;
     width: 100%;
-    margin: var(--navheight) auto;
+    margin: calc(var(--navheight)/2) auto;
     padding: 10px;
 }
 
@@ -530,6 +530,11 @@
 @media (max-width: 480px) {
 
 /* Index */
+    #portfolioPage {
+        padding: 5px;
+        
+    }
+
     .content, .text-content {
         width: 100%; 
     }
@@ -547,6 +552,10 @@
         flex-direction: column;
         width: 100%;
     }
+
+   .company1,.company2,.company3 {
+    padding: 0;
+   }
 
 }
 
