@@ -2,11 +2,9 @@
   <div class="blogMainImg">
     <!-- <img src="/img/blog.svg" alt="Blog Image" /> -->
     <picture>
-      <source srcset="/img/blog.svg"
-          type="Blog Image">
-      <img src="/img/blog.svg"
-         title="blog.svg" alt="Blog Image" loading="lazy">
-  </picture>
+      <source srcset="/img/blog.svg" type="Blog Image">
+      <img src="/img/blog.svg" title="blog.svg" alt="Blog Image" loading="lazy">
+    </picture>
   </div>
 
   <div class="search-box">
@@ -14,69 +12,77 @@
       <input type="text" placeholder="Search..." name="title" id="title" required>
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
+    <a href="#">
+      <span>Add New Project</span> 👉 <i id="scroll-icon" class="fas fa-pencil-alt"></i>
+    </a>
   </div>
 
   <link rel="stylesheet" href="/css/home/why-me.css">
   <%- include('../components/why-me/projects/projects') %>
 
 
-  <% if(error) { %>
-    <p style="text-align: center; font-size:12px; color:red">
-      <%= error %>
-    </p>
-    <% } %>
-      <% if(success) { %>
-        <p style="text-align: center; font-size:12px; color:green">
-          <%= success %>
-        </p>
-        <% } %>
-        <h3>Projects Without Video</h3>
-          <div class="blog-container">            
-            <input type="hidden" blogs-length="<%= blogposts.length %>">
-            <% for(var i=0; i < blogposts.length; i++) {%>
-              <div class="card-container">
-                <a href="/post/<%= blogposts[i]._id %>" class="blog-card">
-                  <img src="<%= blogposts[i].image %>" alt="Blog Photo">
-                  <h4>
-                    <%= blogposts[i].title %>
-                  </h4>
-                  <h6>Posted <%= blogposts[0].createdAt.toDateString() %> by <%= blogposts[i].username
-                        %>
-                  </h6>
-                </a>
-              </div>
-              <% } %>
-          </div>
-          <!-- <a id="see-more-button"></a> -->
-          <button id="see-more-button">Show More</button>
-        </section>
+    <% if(error) { %>
+      <p style="text-align: center; font-size:12px; color:red">
+        <%= error %>
+      </p>
+      <% } %>
+        <% if(success) { %>
+          <p style="text-align: center; font-size:12px; color:green">
+            <%= success %>
+          </p>
+          <% } %>
+            <h3>Projects Without Video</h3>
+            <div class="blog-container">
+              <input type="hidden" blogs-length="<%= blogposts.length %>">
+              <% for(var i=0; i < blogposts.length; i++) {%>
+                <div class="card-container">
+                  <a href="/post/<%= blogposts[i]._id %>" class="blog-card">
+                    <img src="<%= blogposts[i].image %>" alt="Blog Photo">
+                    <h4>
+                      <%= blogposts[i].title %>
+                    </h4>
+                    <h6>Posted <%= blogposts[0].createdAt.toDateString() %> by <%= blogposts[i].username %>
+                    </h6>
+                  </a>
+                </div>
+                <% } %>
+            </div>
+            <!-- <a id="see-more-button"></a> -->
+            <button id="see-more-button">Show More</button>
+</section>
 
-<!-- <script>
-  $(document).ready(function() {
-    const numOfBlogs = parseInt($('input[blogs-length]').attr('blogs-length')) > 0 ? parseInt($('input[blogs-length]').attr('blogs-length')) : 0;
-    seeNumOfCardsLessOrMore(numOfBlogs);
-});
-</script> -->
 <script>
-  $(document).ready(function() {
+  window.addEventListener('scroll', function () {
+    const icon = document.getElementById('scroll-icon');
+    const originalPosition = icon.offsetTop; // Initial position of the icon
+
+    if (window.scrollY > originalPosition) {
+      icon.classList.add('fixed');
+    } else {
+      icon.classList.remove('fixed');
+    }
+  });
+</script>
+<script>
+  $(document).ready(function () {
     const cards = document.querySelectorAll('.card-container');
     const initialLimit = 3; // Initial number of cards to show
     let currentLimit = initialLimit; // Current limit, starts at initial limit
     const seeMoreButton = document.querySelector("#see-more-button");
     const totalCards = cards.length;
-  
+
     // Function to update card visibility based on the current limit
     function updateCardsVisibility() {
       cards.forEach((card, index) => {
         card.style.display = index < currentLimit ? '' : 'none';
       });
     }
-  
+
     // Initially update cards visibility and toggle the see more button
     updateCardsVisibility();
     seeMoreButton.style.display = totalCards > initialLimit ? 'block' : 'none';
-  
-    seeMoreButton.addEventListener("click", function() {
+
+    seeMoreButton.addEventListener("click", function () {
       if (this.textContent.includes("More")) {
         // Show more cards: set current limit to total cards or a specific increment
         currentLimit = totalCards; // or currentLimit += 3; for a fixed increment
@@ -86,10 +92,9 @@
         currentLimit = initialLimit;
         this.textContent = "Show More";
       }
-  
+
       // Update visibility of cards based on the current limit
       updateCardsVisibility();
     });
   });
-  </script>
-  
+</script>
