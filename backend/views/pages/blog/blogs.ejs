@@ -12,7 +12,7 @@
       <input type="text" placeholder="Search..." name="title" id="title" required>
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
-    <a href="#">
+    <a href="/posts/new">
       <span>Add New Project</span> 👉 <i id="scroll-icon" class="fas fa-pencil-alt"></i>
     </a>
   </div>
@@ -51,7 +51,7 @@
             <button id="see-more-button">Show More</button>
 </section>
 
-<script>
+<!-- <script>
   window.addEventListener('scroll', function () {
     const icon = document.getElementById('scroll-icon');
     const originalPosition = icon.offsetTop; // Initial position of the icon
@@ -62,7 +62,7 @@
       icon.classList.remove('fixed');
     }
   });
-</script>
+</script> -->
 <script>
   $(document).ready(function () {
     const cards = document.querySelectorAll('.card-container');
