@@ -1,7 +1,10 @@
 
  .quoteSection {
     padding: 30px 0;
-  }
+    max-width: 1000px;
+    width: 100%;
+    margin: auto 
+    }
   
  .quoteSection h1 {
     color: var(--background);
@@ -66,12 +69,13 @@
     border: none;
     border-bottom: 1px solid gray;
   }
-  .quote-form-container .next-button, .quote-form-container .previous-button{
+  .quote-form-container .next-button, .quote-form-container .previous-button,
+  .quote-form-container .next-button, .quote-form-container .next-button{
     display: block;
     margin: 10px auto;
     padding: 10px 20px;
     background-color: #333333;
-    color: #2a4657;
+    color: #fff;
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -117,8 +121,7 @@
   @media (max-width: 480px) {
 
     .quoteSection {
-      width: 100vw;
-      margin: auto;
+     padding: auto;
     }
 
    .quoteSection h1 {

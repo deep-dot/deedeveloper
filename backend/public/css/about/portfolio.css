@@ -15,9 +15,10 @@
 
 
 /* Index */
-.index-section {
+#portfolioPage .index-section {
     display: inline-flex;
     flex-grow: 1;    
+    min-height: 100vh;
 }
 
 .index-section::before {
@@ -190,7 +191,8 @@
     position: relative;
     overflow: hidden;
     width: auto;
-    background-color: var(--backgroundwithopacity);
+    /* background-color: var(--backgroundwithopacity); */
+    border: solid var(--background) 1px;
     padding: 2em 0;
 }
 

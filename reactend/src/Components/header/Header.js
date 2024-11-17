@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import './Header.css';
 
 const Header = () => {
@@ -39,9 +40,9 @@ const Header = () => {
     setAboutMenuOpen(prevState => !prevState);
   };
 
-  const toggleBlogMenu = () => {
-    setBlogMenuOpen(prevState => !prevState);
-  };
+  // const toggleBlogMenu = () => {
+  //   setBlogMenuOpen(prevState => !prevState);
+  // };
 
   const handleHamburgerMenuToggle = () => {
     setNavBarActive(prevState => !prevState);
@@ -77,29 +78,29 @@ const Header = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (isBlogMenuOpen) {
-      blogMenuRef.current.style.maxHeight = blogMenuRef.current.scrollHeight + 'px';
-      if (window.matchMedia('(max-width: 768px)').matches) {
-        loggedInRef.current.style.marginTop = blogMenuRef.current.scrollHeight + 'px';
-      }
-    } else {
-      blogMenuRef.current.style.maxHeight = null;
-      loggedInRef.current.style.marginTop = null;
-    }
-  }, [isBlogMenuOpen]);
+  // useEffect(() => {
+  //   if (isBlogMenuOpen) {
+  //     blogMenuRef.current.style.maxHeight = blogMenuRef.current.scrollHeight + 'px';
+  //     if (window.matchMedia('(max-width: 768px)').matches) {
+  //       loggedInRef.current.style.marginTop = blogMenuRef.current.scrollHeight + 'px';
+  //     }
+  //   } else {
+  //     blogMenuRef.current.style.maxHeight = null;
+  //     loggedInRef.current.style.marginTop = null;
+  //   }
+  // }, [isBlogMenuOpen]);
 
-  useEffect(() => {
-    if (isAboutMenuOpen) {
-      aboutMenuRef.current.style.maxHeight = aboutMenuRef.current.scrollHeight + 'px';
-      if (window.matchMedia('(max-width: 768px)').matches) {
-        testimonialRef.current.style.marginTop = aboutMenuRef.current.scrollHeight + 'px';
-      }
-    } else {
-      aboutMenuRef.current.style.maxHeight = null;
-      testimonialRef.current.style.marginTop = null;
-    }
-  }, [isAboutMenuOpen]);
+  // useEffect(() => {
+  //   if (isAboutMenuOpen) {
+  //     aboutMenuRef.current.style.maxHeight = aboutMenuRef.current.scrollHeight + 'px';
+  //     if (window.matchMedia('(max-width: 768px)').matches) {
+  //       testimonialRef.current.style.marginTop = aboutMenuRef.current.scrollHeight + 'px';
+  //     }
+  //   } else {
+  //     aboutMenuRef.current.style.maxHeight = null;
+  //     testimonialRef.current.style.marginTop = null;
+  //   }
+  // }, [isAboutMenuOpen]);
 
   return (
     <header>
@@ -116,31 +117,34 @@ const Header = () => {
               </a>
             </li>
             <li className={`navAbout ${isAboutMenuOpen ? 'open' : ''}`} onClick={toggleAboutMenu}>
-              <a href="#">
-                About
+              <a href='#/'>
+              Portfolio
                 <span className="toggle-icon">{isAboutMenuOpen ? '-' : '+'}</span>
               </a>
               <ul className="about-menu" ref={aboutMenuRef} style={{ maxHeight: isAboutMenuOpen ? '200px' : '0' }}>
                 <li>
-                  <a href="/portfolio">Portfolio</a>
+                  <a href="/portfolio">About Me</a>
+                </li>
+                <li>
+                  <a href="/blogs">My Work</a>
                 </li>
                 <li>
                   <a href="/#servicesSection">Services</a>
                 </li>
               </ul>
             </li>
-            <li id="Testimonial" ref={testimonialRef}>
+            {/* <li id="Testimonial" ref={testimonialRef}>
               <a href="/#testimonial">
                 <i className="fas fa-comment"></i>Testimonial
               </a>
-            </li>
+            </li> */}
             <li>
               <a href="/#contactSection">
                 <i className="fas fa-phone"></i>Contact
               </a>
             </li>
-            <li className={`blog ${isBlogMenuOpen ? 'open' : ''}`} onClick={toggleBlogMenu}>
-              <a href="#">
+            {/* <li className={`blog ${isBlogMenuOpen ? 'open' : ''}`} onClick={toggleBlogMenu}>
+              <a>
                 Blog
                 <span className="toggle-icon">{isBlogMenuOpen ? '-' : '+'}</span>
               </a>
@@ -152,7 +156,7 @@ const Header = () => {
                   <a href="/posts/new">Write blog</a>
                 </li>
               </ul>
-            </li>
+            </li> */}
             {!isAuthenticated ? (
               <>
                 <li id="loggedIn" ref={loggedInRef}>
@@ -184,8 +188,8 @@ const Header = () => {
         </nav>
 
         <button className="toggle-btn" onClick={() => window.handleDarkModeToggle()}>
-          <FontAwesomeIcon className="fa-icon" icon={'faMoon'} />
-          <FontAwesomeIcon className="fa-icon" icon={'faSun'} />
+          <FontAwesomeIcon className="fa-icon" icon={faMoon} />
+          <FontAwesomeIcon className="fa-icon" icon={faSun} />
         </button>
 
         <div className="hamburger-menu" onClick={handleHamburgerMenuToggle}>

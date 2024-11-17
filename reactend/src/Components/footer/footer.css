@@ -43,6 +43,7 @@ align-items: center;
 .footer .footer-container .cell:nth-child(1) p {
   font: 500 0.8em "Roboto";
   color: var(--colorOnBackgroundColor);
+  text-align: center;
 }
 
 .footer .footer-container .webMain,

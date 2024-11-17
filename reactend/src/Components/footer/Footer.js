@@ -42,11 +42,12 @@ const Footer = () => {
           <img className="logo_image" id="footer-dark-logo" src={`${process.env.PUBLIC_URL}/images/logoDeeDev.svg`} alt="dark logo" />
 
           <p>
-            Dee Dhillon - Freelance Software Developer
+            Dee Dhillon <br />
+            Freelance Software Developer & Consultant
           </p>
-          <p>
+          {/* <p>
             High Quality is our first priority
-          </p>
+          </p> */}
           <div className="social-icons">
             <div>
               <a href="https://www.facebook.com/">
@@ -89,11 +90,11 @@ const Footer = () => {
           <div className="contactLinks">
             <div className="contactMain">Contact</div>
             <div>
-              <FontAwesomeIcon icon="envelope" /> info@deedeveloper.com
+              <FontAwesomeIcon icon="envelope" /> Drop A Thought
             </div>
-            <div>
+            {/* <div>
               <FontAwesomeIcon icon="phone" /> +61432000123
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
