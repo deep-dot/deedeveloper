@@ -19,7 +19,10 @@ function renderReview(review, userid, reviewIndex) {
     let isLiked = review.likers.some(liker => liker.userid === userid);
     let canEdit = JSON.stringify(review.userid) === JSON.stringify(userid);
     let commentsHtml = renderCommentsHtml(review.comments, reviewIndex);
-    
+    const shortContent = review.review.slice(0, 150); // Adjust number of characters as needed
+    const fullContent = review.review;
+    const readMoreToggle = fullContent.length > 150;
+
     return `
     <div class="card-container">
         <div class="card">
@@ -30,7 +33,13 @@ function renderReview(review, userid, reviewIndex) {
                 <p>${new Date(review.createdAt).toLocaleDateString()}</p>
             </div>
             <div class="contents">
-                <blockquote>${review.review}</blockquote>
+                  <blockquote class="short-content">${shortContent}...</blockquote>
+                  <blockquote class="full-content hidden">${fullContent}</blockquote>
+                  ${
+                    readMoreToggle
+                        ? `<a href="javascript:void(0)" class="read-more-toggle" onclick="toggleReadMore(this)">Read More</a>`
+                        : ''
+                  }
             </div>
             <div class="cardbtns">
                 ${renderReviewButtons(review, isLiked, canEdit)}
@@ -38,6 +47,23 @@ function renderReview(review, userid, reviewIndex) {
         </div>
         ${commentsHtml}
     </div>`;
+}
+
+// button for contents in renderReview function above
+function toggleReadMore(link) {
+    const projectContent = link.parentElement;
+    const shortContent = projectContent.querySelector(".short-content");
+    const fullContent = projectContent.querySelector(".full-content");
+
+    if (fullContent.classList.contains("hidden")) {
+        shortContent.classList.add("hidden");
+        fullContent.classList.remove("hidden");
+        link.textContent = "Read Less";
+    } else {
+        shortContent.classList.remove("hidden");
+        fullContent.classList.add("hidden");
+        link.textContent = "Read More";
+    }
 }
 
 function renderStars(stars) {
@@ -68,7 +94,7 @@ function renderReviewButtons(review, isLiked, canEdit) {
 function attachSeeMoreCommentsListeners() {
     document.querySelectorAll('.see-more-comments').forEach(button => {
         const reviewIndex = button.getAttribute('data-review-index');
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             toggleCommentsDisplay(reviewIndex, button);
         });
     });
@@ -77,7 +103,7 @@ function attachSeeMoreCommentsListeners() {
 function toggleCommentsDisplay(reviewIndex, button) {
     const commentsContainer = document.querySelectorAll('.comments-container')[reviewIndex];
     const comments = commentsContainer.querySelectorAll('.comment');
-    const initiallyVisibleComments = 2; 
+    const initiallyVisibleComments = 2;
     const isShowingMore = button.getAttribute('data-showing-more') === 'true';
 
     if (isShowingMore) {
@@ -98,7 +124,7 @@ function toggleCommentsDisplay(reviewIndex, button) {
 function renderCommentsHtml(comments, reviewIndex) {
     let commentsHtml = comments.map(comment => renderCommentHtml(comment)).join('');
     commentsHtml = comments.map((comment, index) => {
-        const displayStyle = index < 2 ? '' : ' style="display:none;"'; 
+        const displayStyle = index < 2 ? '' : ' style="display:none;"';
         return renderCommentHtml(comment, displayStyle);
     }).join('');
 

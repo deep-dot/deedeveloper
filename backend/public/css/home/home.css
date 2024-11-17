@@ -38,9 +38,9 @@
   
   .quote-me-box .quote-button {
     background: var(--background);
-    font: 500 clamp(14px, 3vw, 28px) 'Roboto';
+    font: 500 clamp(12px, 4vw, 20px) 'Roboto';
     height: auto;
-    padding: 7.5px 30px;
+    padding: 10px 10px;
     text-transform: uppercase;
     user-select: none;
     color: var(--text);

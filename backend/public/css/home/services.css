@@ -27,11 +27,12 @@
     color: var(--textColor);
   }
   
-  .S .services .services-div1 .contact-button {
+  .S .services .services-div1 .contact-button,
+  .contact-me-box .contact-button {
     align-self: flex-start;
     background: var(--background);
-    font: 500 clamp(14px, 3vw, 24px) 'Roboto';
-    padding: 7.5px 30px;
+    font: 500 clamp(12px, 4vw, 20px) 'Roboto';
+    padding: 10px 10px;
     text-transform: uppercase;
     user-select: none;
     border-radius: 5px;
@@ -84,18 +85,8 @@
   }
   
   .contact-me-box .contact-button {
-    align-self: flex-start;
     background: var(--backgroundColor);
-    font: 500 clamp(14px, 3vw, 24px) 'Roboto';
-    padding: 7.5px 30px;
-    text-transform: uppercase;
-    user-select: none;
-    border-radius: 5px;
     color: var(--textColor);
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
   }
   
   .contact-me-box .contact-button:hover {

@@ -3,9 +3,9 @@
         <form class="comment-form" action="/review/<%= review._id %>/comment" method="POST"
             content-type='application/json'>
             <div>
-                <p class="title">Review</p>
-                <p>Created on: <%- review.createdAt %></p>
-                <p>"<%= review.review %>"</p>
+                <p class="title">Review<br>
+                Created on: <%- review.createdAt %><br>
+                "<%= review.review %>"</p>
                 <textarea id="summernote" type="text" name="comment"></textarea>
             </div>
             <div class="comment-form-btns">

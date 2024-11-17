@@ -106,62 +106,18 @@
   }
   
   /* .card .morelessmore { */
-  
-  .contents {
-    max-height: 300px;
-    overflow: hidden;
-    position: relative;
-    transition: max-height 0.3s ease-in-out;
-    margin-bottom: 20px;
-  }
-  
-  .contents.active {
-    max-height: 100%;
-  }
-  
-  .card blockquote {
-    position: relative;
-    padding: 10px;
-    font: 200 clamp(14px, 2vw, 22px) 'Roboto';
-    line-height: 1.5;
-    margin: 20px 0;
-    color: var(--textColor);
-  }
-  
-  blockquote::before {
-    content: '“';
-    opacity: 0.2;
-    position: absolute;
-    font: 800 6em 'Roboto';
-    top: -20px;
-    left: 0px;
-  }
-    .contents .morelessmore {
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 40%;
-    padding: 3px 5px;
-    background: var(--background);
-    cursor: pointer;
-    font-size: 8px;
-    letter-spacing: 2px;
+
+  .card-container .contents a {
+    
+    background-color: var(--background);
     color: var(--text);
-    text-transform: uppercase;
-    border-radius: 5px;  
+    font-size: clamp(8px, 2vw, 14px);
+    border-radius: 5px;
+    padding: 4px;
   }
-  
-  .contents .morelessmore::before {
-    content: 'Read more';
-  }
-  
-  .contents.active .morelessmore {
-    background: #bd4033;
-    color: var(--textColor);
-  }
-  
-  .contents.active .morelessmore::before {
-    content: 'Read less';
+
+  .card-container .contents .hidden {
+    display: none;
   }
   
   #see-more-button {
@@ -172,7 +128,7 @@
     color: var(--text);
     border: none;
     border-radius: 5px;
-    font-size: clamp(14px, 2vw, 24px);
+    font-size: clamp(12px, 4vw, 20px);
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
@@ -220,7 +176,7 @@
   
   .Modal-content .close {
     position: relative;
-    font-size: clamp(20px, 2vw, 28px);
+    font-size: clamp(14px, 2vw, 20px);
     font-weight: bold;
     color: var(--textColor);
     padding: 5px;
@@ -382,14 +338,18 @@
 }
 
 .comment {
-  background-color:var(--backgroundwithopacity);
+  max-width: 500px;
+  width: 100%;
   border-radius: 5px; 
+  border: solid var(--textColor) 1px;
   padding: 10px; 
-  margin-bottom: 10px; 
+  margin: 10px auto; 
+  color: var(--textColor);
+  font-size: clamp(8px, 2vw, 14px);
 }
 
 .comment p {
-  color: var(--text);
+  font-size: clamp(10px, 2vw, 16px);
 }
 
 .comment:last-child {

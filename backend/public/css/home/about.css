@@ -42,7 +42,8 @@
 
   .about-me-social-icons i{
     font-size: clamp(20px, 2vw, 30px);
-    color: var(--textColor);
+    /* color: var(--textColor); */
+    color: #fff;
   }
   
   .about-me-social-icons i:hover {
