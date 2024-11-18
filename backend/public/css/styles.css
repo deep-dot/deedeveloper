@@ -1,17 +1,4 @@
 
-/* Base styles that apply globally */
-
-/* Header/Footer Background: #2a4657 (Primary Base Color)
-Primary Buttons: #d9534f (Soft Red)
-Secondary Buttons: #5bc0de (Sky Blue)
-Links: #5bc0de (Sky Blue)
-Hover Effects: Slightly darker or lighter shades of the accent colors, for instance, #c9302c for red and #31b0d5 for blue.
-Backgrounds:
-Main Content Background: #f5f5f5 (Light Gray)
-Sidebar/Secondary Content Background: #1c2a36 (Darker Blue-Gray)
-Text Colors:
-On dark backgrounds: #ffffff (White)
-On light backgrounds: #333333 (Dark Gray) */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
 :root {

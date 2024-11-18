@@ -24,10 +24,11 @@ header {
 
 .nav_bar{
   max-width: 1440px;
-  margin: auto;  
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
   height: inherit;  
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
@@ -35,43 +36,26 @@ header {
 .nav_bar .logo_image {
   height: inherit;
   width: clamp(150px, 2vw, 175px);
-  padding: 0;
 }
 
-nav {
+.nav_bar nav {
   display: flex;  
-  padding: 0 20px 0 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
   height: inherit;
   transition: all 0.3s ease-in-out;
   background: var(--background);
-}
-
-nav ul {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   list-style: none;
-  gap: 1.5em;
+  gap: 1em;
 }
 
-
-nav ul li {
-  font: 400 0.8em "Roboto";
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-nav ul a{
+.nav_bar nav a{
   color: var(--text);
   display: block;
+  padding: 10px;
 }
 
-nav ul i {
-  margin-right: 2px;
-  color: var(--mainColor);
-}
-
-.nav_bar .blog-menu,
 .nav_bar .about-menu {
   display: block;
   max-height: 0;
@@ -83,40 +67,21 @@ nav ul i {
   box-shadow: var(--boxshadowwithopacity);
 }
 
-.nav_bar .blog-menu li a,
-.nav_bar .about-menu li a {  
-  padding: 10px;
-  text-align: left;
-  color: var(--text);
-  border-bottom: 1px dotted var(--backgroundColor);
-  border-radius: 0;
-}
-
-.nav_bar .blog-menu li:last-child {
-  border-bottom: none;
-}
-
-nav ul #loggedIn a,
-nav ul #loggedOut a,
-nav ul #reg a{
+.nav_bar nav #loggedIn,
+.nav_bar nav #loggedOut,
+.nav_bar nav #reg {
   background-color: var(--backgroundColor);
   color: var(--textColor);
   border:none;
   border-radius: 20px;
-  padding: 0.5em 1em;
+  padding: 0px 5px;
 }
 
-nav ul #loggedIn a:hover,
-nav ul #loggedOut a:hover,
-nav ul #reg a:hover,
+.nav_bar nav #loggedIn:hover,
+.nav_bar nav #loggedOut:hover,
+.nav_bar nav #reg:hover,
 .toggle-btn:hover{
   background-color: var(--hoverColor);
-}
-
-nav ul .fa-user-plus,
-nav ul .fa-sign-in-alt,
-nav ul .fa-sign-out-alt {
-  color: var(--textColor);
 }
 
 .toggle-btn {
@@ -148,13 +113,17 @@ nav ul .fa-sign-out-alt {
 }
 
 @media screen and (max-width: 768px) {
+
+  .nav_bar {
+    top: 0;
+    width: 100%;
+  }
   
   .nav_bar .logo_image {
     flex: 1;
     margin: auto;
     height: var(--navheight);
   }
-
 
 .nav_bar nav {
   display: none;
@@ -167,50 +136,9 @@ nav ul .fa-sign-out-alt {
   top: var(--navheight);  
   padding: 0; 
   width: 100%;
+  transition: all 0.3s ease-in-out ;
 }
 
-nav ul{
-  display: flex;
-  flex-direction: column;
-  margin: 2em 0; 
-}
-
- nav ul li{       
-  padding: 5px 10px;
-  width: 100%;
- }
-
-nav ul li i:not(.toggle-icon) {
-display: none;
-}
-
-.nav_bar .blog a,
-.nav_bar .navAbout a {
-  display: flex;
-  flex: 1;
-  align-items: center;  
-  justify-content: space-between;
-}
-
-nav ul #loggedIn a,
-nav ul #loggedOut a,
-nav ul #reg a{
-  text-align: center;
-}
-
-nav ul li:not(:first-child), 
-nav ul .blog-menu li:not(:first-child),
-nav ul .about-menu li:not(:first-child) {
-  border-top: 0.5px dotted var(--textColor);  
-}
-
-.nav_bar .blog,
-.nav_bar .navAbout {
-  max-height: 2em;
-  box-shadow: none;
-}
-
-.nav_bar .blog-menu,
 .nav_bar .about-menu {
   max-height: 0;
   top: 0;
@@ -218,15 +146,13 @@ nav ul .about-menu li:not(:first-child) {
   overflow: hidden;
 }
 
- .nav_bar .blog-menu,
- .nav_bar .about-menu {
-  width: 100%;
-  box-shadow: var(--boxshadowwithopacity);
-}
 
-.nav_bar .blog-menu li a,
-.nav_bar .about-menu li a{
-  color: var(--text);
+.nav_bar nav #loggedIn,
+.nav_bar nav #loggedOut,
+.nav_bar nav #reg {
+  max-width: 120px;
+  text-align: center;
+  margin: 10px 0;
 }
 
   .nav_bar .hamburger-menu {
@@ -294,9 +220,5 @@ nav ul .about-menu li:not(:first-child) {
 }
 
 @media screen and (max-width: 480px) {
-
-    .nav_bar ul .profileImage {
-      right:30%;
-    }
 
 }

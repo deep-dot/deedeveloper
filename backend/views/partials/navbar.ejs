@@ -1,90 +1,55 @@
 <header>
   <div class="nav_bar">
-    <img class="logo_image" id="light-logo" src="/img/light-logoDeeDev.svg" alt="Light Logo">
-    <img class="logo_image" id="dark-logo" src="/img/logoDeeDev.svg" alt="Dark Logo" style="display: none;">
+    <img class="logo_image" id="light-logo" src="/img/light-logoDeeDev.svg" alt="Light Logo" style="display: none;">
+    <img class="logo_image" id="dark-logo" src="/img/logoDeeDev.svg" alt="Dark Logo">
 
     <nav>
-      <ul>
-        <li>
-          <a href="/">
-            <i class="fas fa-home in_navBar"></i>Home
-          </a>
+      <a href="/">
+        <i class="fas fa-home in_navBar"></i>Home
+      </a>
+      <a class="navAbout" onclick="toggleAboutMenu(event)" href="#">
+        Portfolio
+        <span class="toggle-icon">+</span>
+        <li class="about-menu">
+          <a href="/portfolio">About Me</a>
+          <a href="/blogs">My Work</a>
+          <a href="/#servicesSection">Services</a>
         </li>
-
-        <li class="navAbout" onclick="toggleAboutMenu(event)">
-          <a href="#">
-            Portfolio
-            <span class="toggle-icon">+</span>
-          </a>
-          <ul class="about-menu">
-            <li>
-              <a href="/portfolio">About Me</a>
-            </li>
-            <li>
-              <a href="/blogs">My Work</a>
-            </li>
-            <li>
-              <a href="/#servicesSection">
-                Services
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <!-- <li id="Testimonial">
-          <a href="/#testimonial">
+      </a>
+      <!-- <a id="Testimonial" href="/#testimonial">
             <i class="fas fa-comment"></i>Testimonial
-          </a>
-        </li> -->
-        <li>
-          <a href="/#contactSection">
-            <i class="fas fa-phone"></i>Contact
-          </a>
-        </li>
-        <!-- <li class='write-review'>
-          <a href="/posts/new">Write a Blog</a>
-        </li> -->
-        
-        <!-- <li class="blog" onclick="toggleBlogMenu(event)">
-          <a href="#">
+          </a> -->
+      <a href="/#contactSection">
+        <i class="fas fa-phone"></i>Contact
+      </a>
+      <!-- <a class='write-review' href="/posts/new">Write a Blog</a> -->
+
+      <!-- <a class="blog" onclick="toggleBlogMenu(event)" href="#">
             Blog
             <span class="toggle-icon">+</span>
+            <li >
+              <a class="blog-menu" href="/blogs">Home</a>
+              <a class='write-review' href="/posts/new">Post</a>
+          </li>
           </a>
-          <ul class="blog-menu">
-            <li>
-              <a href="/blogs">Home</a>
-            </li>
-            <li class='write-review'>
-              <a href="/posts/new">Post</a>
-            </li>
-          </ul>
-        </li> -->
-        <% if(!isAuthenticated) {%>
-          <li id="loggedIn">
-            <a href="/auth/login">
-              <i class="fas fa-sign-in-alt"></i>
-              <span>Sign In</span>
-            </a>
-          </li>
-          <li id="reg">
-            <a href="/auth/newuser">
-              <i class="fas fa-user-plus"></i>Sign Up
-            </a>
-          </li>
-          <% } else{ %>
-            <li id="loggedOut">
-              <a href="/auth/logout">
-                <i class="fas fa-sign-out-alt"></i>Sign Out
-              </a>
-            </li>
-            <li class="profileImage">
-              <a href="/auth/profile">
-                <img src="<%= user && user.image ? user.image : '/img/person.png' %>" alt=" " 
-                 style="width:40px; border-radius: 100%;" />
-              </a>
-            </li>
-            <% } %>
-      </ul>
+           -->
+      <% if(!isAuthenticated) {%>
+        <a id="loggedIn" href="/auth/login">
+          <i class="fas fa-sign-in-alt"></i>
+          <span>Sign In</span>
+        </a>
+        <a id="reg" href="/auth/newuser">
+          <i class="fas fa-user-plus"></i>Sign Up
+        </a>
+        <% } else{ %>
+          <a id="loggedOut" href="/auth/logout">
+            <i class="fas fa-sign-out-alt"></i>Sign Out
+          </a>
+          <a class="profileImage" href="/auth/profile">
+            <img src="<%= user && user.image ? user.image : '/img/person.png' %>" alt=" "
+              style="width:40px; border-radius: 100%;" />
+          </a>
+          <% } %>
     </nav>
 
     <button class="toggle-btn">
@@ -99,35 +64,13 @@
 </header>
 
 <script>
-  function toggleBlogMenu(event) {
-    const blog = event.currentTarget;
-    // const blogMenu = blog.nextElementSibling;
-    const blogMenu = document.querySelector('.blog-menu');
-    const toggleIcon = blog.querySelector(".toggle-icon");
-    const loggedInElement = document.getElementById('loggedIn');
-    
-    if (blogMenu.style.maxHeight) {
-      blogMenu.style.maxHeight = null;
-      loggedInElement.style.marginTop = null;
-      blog.style.maxHeight = '2em';
-    } else {
-      blog.style.maxHeight = blogMenu.scrollHeight + "px";
-      blogMenu.style.maxHeight = blogMenu.scrollHeight + "px";
-      if (window.matchMedia("(max-width: 768px)").matches) { // Mobile break at 768px
-        loggedInElement.style.marginTop = blogMenu.scrollHeight + "px";
-      }
-    }
-    toggleIcon.classList.toggle("open");
-    toggleIcon.textContent = blogMenu.style.maxHeight ? "-" : "+";
-  }
 
   function toggleAboutMenu(event) {
     const about = event.currentTarget;
-    // const blogMenu = blog.nextElementSibling;
     const aboutMenu = document.querySelector('.about-menu');
     const toggleIcon = about.querySelector(".toggle-icon");
     const TestimonialElement = document.getElementById('Testimonial');
-    
+
     if (aboutMenu.style.maxHeight) {
       aboutMenu.style.maxHeight = null;
       TestimonialElement.style.marginTop = null;
