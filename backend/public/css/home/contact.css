@@ -69,8 +69,8 @@
  .contact > div > form #verify-code-button{
    align-self: flex-end;
    background-color: var(--background);
-   /* color: var(--text); */
-   color: white;
+   font-size: clamp(12px, 2vw, 16px);
+   color: var(--text);
    padding: 5px 10px;
    border: none;
    border-radius: 5px;

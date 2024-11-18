@@ -34,7 +34,7 @@ header {
 
 .nav_bar .logo_image {
   height: inherit;
-  width: 175px;
+  width: clamp(150px, 2vw, 175px);
   padding: 0;
 }
 

@@ -1,25 +1,21 @@
 
 /* Footer */
 .footer {  
-  /* background-color: var(--backgroundwithopacity); */
-  margin-top: 4rem;
+ min-height: 50vh; 
 }
 
 .footer .footer-container {
-  max-width: var(--pageWidth);
-  margin: auto;
   display: flex;
-  flex-direction: row;  
-  align-items:stretch;
-  justify-content: space-between;
+  justify-content: space-around;
+  padding: auto 2rem;
 }
 
 /* background image opacity */
 .footer-container::before {
   content: "";
   position: absolute;
-  top: 15%;
-  left: 0;
+  /* top: 15%;
+  left: 0; */
   width: 100%;
   height: 100%;
   background-image: url("../img/shape1.svg");

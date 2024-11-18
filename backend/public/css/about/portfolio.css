@@ -1,7 +1,6 @@
 #portfolioPage {
     max-width: 1400px;
     width: 100%;
-    margin: calc(var(--navheight)/2) auto;
     padding: 10px;
 }
 
@@ -16,8 +15,9 @@
 
 /* Index */
 #portfolioPage .index-section {
-    display: inline-flex;
-    flex-grow: 1;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
 }
 
@@ -39,25 +39,19 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
 .left-section .about-me-icons {
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.left-section .about-me-icons div {
-    padding: 0 4px;
-    color: var(--text);
-    background-color: var(--background);
+    display: flex;
+    font-size: clamp(20px, 4vw, 28px);
+    gap: 4rem;
 }
 
 .right-section img {
-    width: 60%;
-    height: auto;
+    width: 250px;
+    height: 350px;
 }
 
 
@@ -457,8 +451,9 @@
 @media (max-width: 768px) {
 
     /* index */
+
     #portfolioPage {
-        margin: var(--navheight) auto;
+        margin: calc(var(--navheight)/2) auto;
     }
 
     .index-section {
@@ -513,8 +508,7 @@
 
 /* Index */
     #portfolioPage {
-        padding: 5px;
-        
+        padding: 5px;        
     }
 
     .content, .text-content {
