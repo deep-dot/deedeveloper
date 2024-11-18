@@ -8,20 +8,23 @@
     position: relative;
     margin-inline: auto;
     padding: clamp(0, 2vw, 1em);
-    max-width: 1200px;
+    max-width: 1400px;
 }
 
 .project-grid {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;    
   }
   
   .project-grid-item {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: space-between;
+    align-items: center;
     grid-gap: clamp(1rem,calc(3vw + 1vh), 3rem);
     margin: 2rem 0;
+    padding: 10px;
+    border: solid var(--background) 1px;
   }
 
 .project-img {
@@ -81,6 +84,10 @@
     order: 1;
 }
 
+.project-grid-item .read-more-toggle {
+    font-size: 12px;
+}
+
 .project-grid-item .hidden {
     display: none;
 }
@@ -102,11 +109,12 @@
 .project-technologies div { 
     border-radius: 4px;    
     background-color: var(--background);
-    padding: 0 10px;
+    padding: 0 5px;
 }
 
 .project-technologies div p { 
     color: var(--text);
+    font-size: 10px;
 }
 
 .project-url {

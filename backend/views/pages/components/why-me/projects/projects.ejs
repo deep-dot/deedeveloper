@@ -2,7 +2,6 @@
   <div class="project-sub-section">
 
     <h2 class="h2">Here are my projects. 😎</h2>
-    <h3>Projects Including Video</h3>
     <div class="project-grid">      
     </div>
 
@@ -54,19 +53,22 @@
       });
       html += `</div>`
 
-      html += `<div class='project-url'>`
-      html += `<button data-title="${detail.title}" onclick='goToPage2(this.dataset.title)'>[View Project]</button>`
-      //html += `<button onclick="window.location.href='http://localhost:5000/post/6732ca00d1b79e53ffc9f9c3'">[View Project]</button>`;
-
-      html += `</div>`
+      // html += `<button data-title="${detail.title}" onclick='goToPage2(this.dataset.title)'>[View Project]</button>`
+      
+      if (detail.type != "") {
+      html += `<a href='${detail.url}'>[View Online]</a>`
+      }
+    
       html += `</div>`
 
       html += `<div class='project-img'>`
-      if (detail.images && Array.isArray(detail.images)) {
-        detail.images.forEach(image => {
-          html += `<img src="${image.image_src}" width="${image.width}" height="${image.height}" style="position: ${image['position']}" alt="">`
-        });
-      }
+      // if (detail.images && Array.isArray(detail.images)) {
+      //   detail.images.forEach(image => {
+      //     html += `<img src="${image.image_src}" width="${image.width}" height="${image.height}" style="position: ${image['position']}" alt="">`
+      //   });
+      // }
+          html += detail.video
+       
       html += `</div>`
       html += `</div>`
     });
