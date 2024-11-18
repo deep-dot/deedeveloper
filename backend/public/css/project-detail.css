@@ -66,34 +66,6 @@
         border-radius: 10px;
     }
 
-   .project-detail .image-container:nth-child(n) {
-        width: 50%;
-    }
-
-   .project-detail .image-container img:nth-child(1) {
-        position:absolute;
-        top:10%;
-        left:0;
-        width: 100%;
-        box-shadow: var(--boxshadowwithopacity);
-        padding:0.5rem;
-    }
-   .project-detail .image-container img:nth-child(2) {
-        position:absolute;
-        top:45%;
-        width: 50%;
-        height: 30%;
-        transform: rotate(0deg);
-    }
-   .project-detail .image-container img:nth-child(3) {
-        position:absolute;
-        top:65%;
-        left:50%;
-        width: 50%;
-        height: 30%;
-        transform: rotate(0deg);
-    }
-
     .project-detail .contents:nth-child(n) {
         height: auto;
         width: 100%;

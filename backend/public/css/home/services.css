@@ -64,29 +64,22 @@
   }
   
   .contact-me-box {
-    background: var(--backgroundwithopacity);
+    /* background: var(--backgroundwithopacity); */
     max-width: 850px;
     border-radius: 5px;
+    /* border: solid var(--background) 1px; */
     box-shadow: var(--boxshadowwithopacity);
     margin: 8rem 0;
-  }
-
-  .contact-me-box p,
-  .contact-me-box h2 {
-    color: var(--text);
-  }
-  
-  .sub-contact-me-box {
-    display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-    padding: 2rem;
+    color: var(--textColor);
+    padding: 1rem;
+    text-align: center;
   }
   
   .contact-me-box .contact-button {
-    background: var(--backgroundColor);
-    color: var(--textColor);
+    background: var(--background);
+    color: var(--text);
+    font-size: clamp(12px, 2vw, 16px);
+    padding: 4px;
   }
   
   .contact-me-box .contact-button:hover {

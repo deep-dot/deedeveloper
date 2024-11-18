@@ -12,8 +12,8 @@
   }
   
   #reviewCard .card-container {
-    grid-gap: 10px;
-    min-height: 300px;
+    gap: 50px;
+    min-height: 200px;
     align-self:center ;
   }
   
@@ -23,6 +23,7 @@
     padding: 20px;
     box-sizing: border-box;
     height: auto;  
+    color: var(--textColor);
   }
   
   .card::before {
@@ -122,13 +123,13 @@
   
   #see-more-button {
     display: none;
-    margin: 10px auto;
-    padding: 10px 20px;
-    background-color: var(--background);
+    margin: auto;
+    padding: 5px;
+    background-color: var(--backgroundColor);
     color: var(--text);
     border: none;
     border-radius: 5px;
-    font-size: clamp(12px, 4vw, 20px);
+    font-size: clamp(12px, 4vw, 16px);
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
@@ -141,13 +142,12 @@
   #write-review-button {
     background-color: var(--background);
     display: block;
-    margin: 4rem auto;
-    padding: 10px 20px;
+    margin: auto;
+    padding: 5px;
     color: var(--text);
     border: none;
     border-radius: 5px;
     font-size: clamp(10px, 1vw, 16px);
-    font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
   }
@@ -326,15 +326,12 @@
     }
 }
 
-
-
 /* for comments container */
 .comments-container {  
   padding: 15px; 
-  margin-top: 20px; 
   max-width: 90%; 
-  margin-left: auto; 
-  margin-right: auto; 
+  width: 100%;
+  margin: auto;
 }
 
 .comment {
@@ -367,15 +364,15 @@
 .see-more-comments {
   display: block; 
   width: auto; 
-  padding: 10px 20px; 
-  background-color: var(--backgroundColor);
-  color: var(--textColor); 
+  padding: 5px; 
+  background-color: var(--background);
+  color: var(--text); 
   text-align: center; 
   border-radius: 5px; 
-  margin: 20px auto 0; 
+  margin: 20px auto; 
   cursor: pointer; 
   border: none; 
-  font-size: 16px; 
+  font-size: clamp(12px, 2vw, 16px); 
 }
 
 .see-more-comments:hover {

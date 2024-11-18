@@ -25,7 +25,6 @@
     border-radius: 10px;
     text-align: center;
     box-shadow: 
-    var(--boxshadowwithopacity),
     0px 0px 0px 4px rgb(255, 0, 0),   /* red */
     0px 0px 0px 6px rgba(0, 255, 0, 0.5), /* semi-transparent green */
     0px 0px 0px 8px rgb(0, 0, 255),  /* blue */
