@@ -41,64 +41,52 @@ const Footer = () => {
           <img className="logo_image" id="footer-light-logo" src={`${process.env.PUBLIC_URL}/images/light-logoDeeDev.svg`} alt="light logo" style={{ display: 'none' }} />
           <img className="logo_image" id="footer-dark-logo" src={`${process.env.PUBLIC_URL}/images/logoDeeDev.svg`} alt="dark logo" />
 
-          <p>
+          <h4>
             Dee Dhillon <br />
             Freelance Software Developer & Consultant
-          </p>
-          {/* <p>
-            High Quality is our first priority
-          </p> */}
-          <div className="social-icons">
-            <div>
+          </h4>
+          <div>
               <a href="https://www.facebook.com/">
                 <FontAwesomeIcon icon={['fab', 'facebook']} />
               </a>
-            </div>
-            <div>
               <a href="https://www.linkedin.com/">
                 <FontAwesomeIcon icon={['fab', 'linkedin']} />
               </a>
-            </div>
-            <div>
               <a href="https://www.instagram.com/">
                 <FontAwesomeIcon icon={['fab', 'instagram']} />
               </a>
-            </div>
           </div>
         </div>
         <div className="cell">
-          <div className="webLinks">
-            <div className="webMain">Website Links</div>
+          <h3>Website Links</h3>
             <a href="/quote">Quote</a>
             <a href="/process">Process</a>
             <a href="/privacy">Privacy Policy</a>
             <a href="/faq">FAQs</a>
-          </div>
         </div>
-        <div className="cell">
-          <div className="servicesLinks">
-            <div className="serviceMain">Services</div>
-            <div>Mobile app development for IOS and Android</div>
-            <div>Website design and development</div>
-            {/* <div>Search Engine Optimisation</div>
-            <div>Google Ads Management</div> */}
-            <div>Logo design</div>
-            <div>Future maintenance</div>
-          </div>
-        </div>
-        <div className="cell">
-          <div className="contactLinks">
-            <div className="contactMain">Contact</div>
-            <div>
-              <FontAwesomeIcon icon="envelope" /> Drop A Thought
-            </div>
-            {/* <div>
-              <FontAwesomeIcon icon="phone" /> +61432000123
-            </div> */}
-          </div>
-        </div>
-      </section>
-      <p className="copyrights">Copyrights 2024 &copy; deedeveloper.com</p>
+        <div class="cell">
+          <h3>Services</h3>
+          <a href="#">
+            Mobile app development for IOS and Android
+          </a>
+          <a href="#">
+            Website design and development
+          </a>
+          <a href="">
+            Logo design
+          </a>
+          <a>
+            Future maintenance
+          </a>          
+      </div>
+      <div class="cell">
+          <h3>Contact</h3>
+          <a href="/#contactSection">
+            <i class="fa fa-envelope"></i> Drop A Thought
+          </a>
+      </div>
+  </section>
+    <p style={{font: "12px"}}>All rights reserved &copy; 2024</p>
       <button
         className={`back-to-top ${isVisible ? 'visible' : ''}`}
         onClick={scrollToTop}

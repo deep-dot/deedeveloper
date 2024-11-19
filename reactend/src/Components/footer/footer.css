@@ -1,135 +1,77 @@
 
 /* Footer */
-
-.footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer .footer-container {
-  display: flex;
-  flex-direction: row;  
-  padding: 1em 0 0 0;
-  align-items:flex-start;
-  justify-content: space-between;
-  gap: 2em;
-}
-
-/* background image opacity */
-.footer-container::before {
-  content: "";
-  position: absolute;
-  background-image: url('../../../public/images/shape1.svg'); 
-  background-repeat: no-repeat;
-  background-size: contain;  
-  background-position: center;
-  opacity: 0.1;
-}
-
-.footer .footer-container .cell:nth-child(1){
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-}
-
-.footer .footer-container .cell:nth-child(1) img {
-  width: 20em;
-  height: 4em;
-}
-
-.footer .footer-container .cell:nth-child(1) p {
-  font: 500 0.8em "Roboto";
-  color: var(--colorOnBackgroundColor);
-  text-align: center;
-}
-
-.footer .footer-container .webMain,
-.footer .footer-container .serviceMain,
-.footer .footer-container .contactMain {
-  font: 600 1em "Roboto";
-  margin: 1em 0;
-  color: var(--colorOnBackgroundColor);
-}
-
-.footer .footer-container .webLinks a,
-.footer .footer-container .servicesLinks div:not(.serviceMain),
-.footer .footer-container .contactLinks div:not(.contactMain) {
-  font: 500 0.8em "Roboto";
-  margin-bottom: 0.6em;
-  color: var(--colorOnBackgroundColor);
-  text-decoration: none;
-}
-
-.footer .footer-container .cell:nth-child(1) .social-icons {
-  display: inline-flex;
-  gap: 2em;
-}
-
-.footer .footer-container .cell:nth-child(1) .social-icons a,
-.footer .footer-container .contactLinks i {
-  color: var(--background);
-  background: var(--backround);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.footer .footer-container .webLinks a:hover,
-.footer .footer-container .cell:nth-child(1) .social-icons a:hover {
-  color: #17a2b8;
-}
-
-.footer .footer-container .cell:nth-child(1) .social-icons i {
-  font-size: 2em;
-  margin: 1.5rem
-}
-
-.footer .footer-container .webLinks,
-.footer .footer-container .servicesLinks,
-.footer .footer-container .contactLinks {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.copyrights {
-  font-size: 0.5em;
-  align-self: center;
-  color: var(--colorOnBackgroundColor);
-}
-
-@media screen and (max-width: 768px) {
-
-  .footer .logo_image {
-    height: 1em;
-  }
-
-  .footer .footer-container {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2em 0 0 0;
-  }
-
-  .footer .footer-container .cell:nth-child(1) p {
-    font: 500 0.8 "Roboto";
-  }
-  
-  .footer .footer-container .webMain,
-  .footer .footer-container .serviceMain,
-  .footer .footer-container .contactMain {
-    font: 600 1em "Roboto";
-  }
-  
-  .footer .footer-container .webLinks a,
-  .footer .footer-container .servicesLinks div:not(.serviceMain),
-  .footer .footer-container .contactLinks div:not(.contactMain) {
-    font: 500 0.8em "Roboto";
-  }
-
-  .footer .footer-container .cell:not(:first-child) {
-    width:60%;
-  }
-}
+.footer {  
+  min-height: 50vh; 
+ }
+ 
+ .footer .footer-container {
+   display: flex;
+   justify-content: space-around;
+   padding: auto 2rem;
+ }
+ 
+ /* background image opacity */
+ .footer-container::before {
+   content: "";
+   position: absolute;
+   /* top: 15%;
+   left: 0; */
+   width: 100%;
+   height: 100%;
+   /* background-image: url("../img/shape1.svg"); */
+   background-repeat: no-repeat;
+   background-size: contain;  
+   background-position: center;
+   opacity: 0.1;
+   z-index: -1;
+ }
+ 
+ .footer .footer-container .cell {
+   display: flex;
+   flex-direction: column;
+ }
+ 
+ .footer .footer-container .cell:nth-child(1){
+ align-items: center;
+ justify-content: center;
+ text-align: center;
+ }
+ 
+ .footer .footer-container .cell:nth-child(1) img {
+   width: 250px;
+   height: 80px;
+ }
+ 
+ .footer .footer-container .cell a {
+   margin-bottom: 0.6rem;  
+ }
+ 
+ .footer .footer-container .cell,
+ .footer .footer-container .cell a,
+ .footer .footer-container .cell p,
+ .footer .footer-container .cell i {
+   color: var(--textColor);
+   font-size: calc(var(--textSize) - 2px);
+ }
+ 
+ 
+ .footer p {
+   text-align: center;
+ }
+ 
+ @media screen and (max-width: 768px) {
+ 
+   .footer {
+     margin-top: 2rem;
+   }
+ 
+   .footer .footer-container {
+     flex-direction: column;    
+   }
+ 
+   .footer .footer-container .cell {
+     padding: 1em;
+   }
+ 
+ }
+ 
