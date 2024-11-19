@@ -12,21 +12,21 @@
   /* --buttonBackGround: #9EBDFF;
   --buttonHover: #ffe09e; */
 
-  --headingSize: clamp(1.5rem, 2vw, 2rem);
+  --headingSize: clamp(18px, 2vw, 24px);
   --headingFamily: 'Raleway', sans-serif;
   --headingWeight: 600;
 
-  --heading2Size: clamp(1rem, 2vw, 1.75rem);
+  --heading2Size: clamp(16px, 2vw, 22px);
   --heading2Family: 'Raleway', sans-serif;
   /* --heading2Color: #0462A6; */
   --heading2Weight: 500;
 
-  --heading3Size: clamp(0.8rem, 2vw, 1.5rem);
+  --heading3Size: clamp(14px, 2vw, 20px);
   --heading3Family: 'Raleway', sans-serif;
   /* --heading3Color: #0462A6; */
   --heading3Weight: 600;
 
-  --textSize: clamp(0.8rem, 2vw, 1.4rem);
+  --textSize: clamp(12px, 2vw, 18px);
   --textFamily: Georgia, 'Times New Roman', Times, serif;
   /* --textColor: #000000; */
   --textWeight: 300;

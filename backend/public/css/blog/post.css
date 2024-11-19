@@ -5,38 +5,37 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  max-width: 100%;
+  max-width: 1200;
+  width: 100%;
   margin: auto;
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   border-radius: 8px;
-  background-color: #fff;
 }
 
-h1, h2 {
-  color: #333;
+.main_post h1, .main_post h2 {
+  color: var(--textColor);
   text-align: center;
 }
 
-.showPost {
+.main_post .postDetail {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 }
 
-.postDetail {
+.main_post .postDetail {
   width: 100%;
   height: auto;
   max-width: 800px; /* Adjust based on your preference */
   margin: 10px;
   padding: 10px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  background-color: #f9f9f9;
+  box-shadow: var(--boxshadowwithopacity);
+  background-color: var(--backgroundColor);
 }
 
-.writer, .postContent {
+.main_post .writer {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -44,38 +43,186 @@ h1, h2 {
   margin-top: 20px;
 }
 
-.postContent {
-  height: 100vh;
-}
-
-.userImg {
-  width: 80px; /* Adjust based on your preference */
-  height: 80px; /* Adjust based on your preference */
+.main_post .userImg {
+  width: 80px; 
+  height: 80px; 
   border-radius: 50%;
   object-fit: cover;
 }
 
-.postImg {
+.main_post .postImg {
   width: 100%;
   height: auto;
   margin: 20px 0;
   border-radius: 8px;
 }
 
-.p {
+.main_post .p {
   font-size: 1rem; /* Adjust based on your preference */
   line-height: 1.6;
-  color: #444;
+  color: var(--text);
   text-align: justify;
 }
 
+
+/* side buttons  */
+
+.btns .button-container {
+  position: fixed;
+  top: 20%;
+  left: 5%;
+  width: 100px;
+  height: 400px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btns button {
+  border: none;
+}
+
+.btns .go-back,
+.btns .like,
+.btns .unlike,
+.btns .fa-edit,
+.btns .fa-trash {
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.btns .button-container .go-back,
+.btns .button-container .like,
+.btns .button-container .unlike,
+.btns .button-container .fa-edit,
+.btns .button-container .fa-trash {
+  color: var(--textColor); 
+}
+
+@media screen and (max-width:1370px) {
+
+  .btns {
+      align-items: center;
+  }
+
+  .btns .button-container {
+      top: 90%;
+      width: 100%;
+      height: 10vh;
+      flex-direction: row;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+
+
+  .btns {
+      align-items: center;
+  }
+
+  .btns .button-container {
+      top: 90%;
+      width: 100%;
+      height: 10vh;
+      flex-direction: row;
+  }
+
+}
+
+/* #comments on post */
+.commentsOnPost {
+  display: block;
+  overflow: scroll;
+  border-radius: 5px;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.commentsOnPost {
+  border: solid var(--background) 1px;
+}
+
+.commentsOnPost #writeCommentOnPost {
+  width: 100%;
+  max-height: 300px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: var(--background);
+  border-radius: 5px;
+  font-size: 1em;
+  color: var(--text);
+}
+
+.commentsOnPost #submitButton {
+  display: block;
+  margin: 10px auto;
+  padding: 5px 10px;
+  background-color: var(--background);
+  color: var(--text);
+  border: none;
+  border-radius: 5px;
+  font-size: clamp(12px, 1vw, 16px);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.commentsOnPost #submitButton:hover {
+  background-color: #f6d365;
+}
+
+.commentsOnPost img {
+  border-radius: 50%;
+  width: clamp(25px, 4vw, 35px);
+  height: clamp(25px, 4vw, 35px);
+  margin-right: 10px;
+}
+
+
+.commentsOnPost #editButton,
+.commentsOnPost form button[type="submit"] {
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: clamp(14px, 2vw, 18px);
+  background-color: var(--background);
+  transition: background-color 0.3s ease;
+}
+
+.commentsOnPost #editButton:hover,
+.commentsOnPost form button[type="submit"]:hover {
+  background-color: #bbb;
+}
+
+
+.commentsOnPost .fa-trash {
+  color: #dc3545;
+  font-size: clamp(14px, 1vw, 18px);
+  background-color: none;
+}
+
+@media screen and (max-width: 768px) {
+
+   .commentsOnPost {
+      margin: 2rem auto;
+      width: 100%;
+  }
+
+}
 @media screen and (max-width: 480px) {
 
   .main_post {
     padding: 5px;
   }
 
-  .showPost, .postDetail {
+  .postDetail {
     flex-direction: column;
     align-items: center;
   }

@@ -75,26 +75,22 @@
 /* contact */
 
 .contact-me-box {
-    background: var(--backgroundwithopacity);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background: var(--backgroundColor);
     max-width: 850px;
     border-radius: 5px;
     box-shadow: var(--boxshadowwithopacity);
     margin: 4em auto;
-  }
-  
-  .sub-contact-me-box {
-    display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-    padding: 2rem;
+    color: var(--text);
+    padding: 1rem;
   }
   
   .contact-me-box .contact-button {
-    align-self: flex-start;
     background: var(--background);
-    font: 500 clamp(14px, 3vw, 24px) 'Roboto';
-    padding: 7.5px 30px;
+    font-size: clamp(12px, 2vw, 18px);
+    padding: 5px;
     text-transform: uppercase;
     user-select: none;
     border-radius: 5px;

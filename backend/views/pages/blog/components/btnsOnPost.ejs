@@ -1,86 +1,6 @@
-<style>
-    .showPost .btns .button-container {
-        position: fixed;
-        top: 20%;
-        left: 5%;
-        width: 100px;
-        height: 400px;
-        z-index: 100;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-    }
+<link rel="stylesheet" href="/css/btnsOnPost.css">
 
-    .showPost button {
-        border: none;
-    }
-
-    .go-back,
-    .like,
-    .unlike,
-    .fa-edit,
-    .fa-trash {
-        font-size: 20px;
-        cursor: pointer;
-        border: none;
-        background-color: transparent;
-    }
-
-    .showPost .btns .button-container .go-back {
-    color: #555; 
-    }
-
-    .showPost .btns .button-container .like {
-        color: green;
-    }
-
-    .showPost .btns .button-container .unlike {
-        color: blue;
-    }
-
-    .showPost .btns .button-container .fa-edit {
-        color: #007bff;
-    }
-
-    .showPost .btns .button-container .fa-trash {
-        color: #dc3545;
-    }
-
-
-    @media screen and (max-width:1370px) {
-
-        .showPost .btns {
-            align-items: center;
-        }
-
-        .showPost .btns .button-container {
-            top: 90%;
-            width: 100%;
-            height: 10vh;
-            flex-direction: row;
-        }
-
-    }
-
-    @media screen and (max-width: 867px) {
-
-
-        .showPost .btns {
-            align-items: center;
-        }
-
-        .showPost .btns .button-container {
-            top: 90%;
-            width: 100%;
-            height: 10vh;
-            flex-direction: row;
-        }
-
-    }
-</style>
-
-<div class="btns">
+<section class="btns">
     <div class="button-container">
         <a onclick="window.location.href='/blogs'" class="go-back">
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
@@ -107,4 +27,4 @@
           </a> -->
                 </div>
     </div>
-</div>
+</section>

@@ -32,7 +32,7 @@
   transition: position 0.3s ease-in-out;
 }
 
-.fixed {
+.blogPage .fixed {
   position: fixed;
   top: 10px;
   left: 10px; /* Adjust as needed */
@@ -40,34 +40,34 @@
 }
 
 
-.blogMainImg {
+.blogPage .blogMainImg {
   width: 100%; 
   max-width: 600px; 
   margin: 0 auto; 
 }
 
-.blogMainImg img {
+.blogPage .blogMainImg img {
   width: 100%; 
   height: auto; 
   display: block; 
 }
 
-form {
+.blogPage form {
   display: flex;
   align-items: center;
 }
 
-input[type="text"] {
+.blogPage input[type="text"] {
   padding: 10px;
   border: none;
   border-radius: 5px 0 0 5px;
   width: 50vw;
 }
 
-button[type="submit"] {
+.blogPage button[type="submit"] {
   padding: 10px;
-  background-color: #333;
-  color: #fff;
+  background-color: var(--background);
+  color: var(--text);
   border: none;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
@@ -75,7 +75,7 @@ button[type="submit"] {
 
 /* blog card */
 
-.blog-container {
+.blogPage .blog-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -84,49 +84,50 @@ button[type="submit"] {
   gap: 4rem;
 }
 
-.blog-container .card-container .blog-card{
+.blogPage .blog-container .card-container .blog-card{
   display: block;
   width: 300px;
   height: 350px;
-  background-color: #fff;
+  background-color: var(--background);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   text-decoration: none;
+  /* transition: transform 0.2s ease-out, box-shadow 0.2s ease-out; */
+  box-shadow: var(--boxshadowwithopacity);
   transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  color: var(--text);
   padding: 15px;
 }
 
-.blog-container .card-container img {
+.blogPage .blog-container .card-container img {
   width: 100%; 
   height: 60%; 
   display: block; /* Remove any extra space below the image */
 }
 
 
-.blog-card:hover {
+.blogPage .blog-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
  /* see more button functionality */
- #see-more-button {
+ .blogPage #see-more-button {
   display: block;
   margin: 5rem auto;
-  padding: 5px 10px;
-  background-color: #333333;
-  color: #ffffff;
+  padding: 5px 5px;
+  background-color: var(--background);
+  color: var(--text);
   border: none;
   width: 7.5rem;
   border-radius: 5px;
-  font-size: 16px;
-  font-weight: bold;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
 }
 
- #see-more-button:hover {
-  background-color: #555555;
+.blogPage #see-more-button:hover {
+  background-color: var(--hoverColor);
 }
 
 

@@ -9,13 +9,13 @@
       </a>
       <a class="navAbout" onclick="toggleAboutMenu(event)" href="#">
         Portfolio
-        <span class="toggle-icon">+</span>
-        <li class="about-menu">
-          <a href="/portfolio">About Me</a>
-          <a href="/blogs">My Work</a>
-          <a href="/#servicesSection">Services</a>
-        </li>
+        <span class="toggle-icon open">+</span>
       </a>
+      <li class="about-menu">
+        <a href="/portfolio">About Me</a>
+        <a href="/blogs">My Work</a>
+        <a href="/#servicesSection">Services</a>
+      </li>
       <!-- <a id="Testimonial" href="/#testimonial">
             <i class="fas fa-comment"></i>Testimonial
           </a> -->
@@ -33,23 +33,25 @@
           </li>
           </a>
            -->
-      <% if(!isAuthenticated) {%>
-        <a id="loggedIn" href="/auth/login">
-          <i class="fas fa-sign-in-alt"></i>
-          <span>Sign In</span>
-        </a>
-        <a id="reg" href="/auth/newuser">
-          <i class="fas fa-user-plus"></i>Sign Up
-        </a>
-        <% } else{ %>
-          <a id="loggedOut" href="/auth/logout">
-            <i class="fas fa-sign-out-alt"></i>Sign Out
+      <div class="navRego">
+        <% if(!isAuthenticated) {%>
+          <a id="loggedIn" href="/auth/login">
+            <i class="fas fa-sign-in-alt"></i>
+            <span>Sign In</span>
           </a>
-          <a class="profileImage" href="/auth/profile">
-            <img src="<%= user && user.image ? user.image : '/img/person.png' %>" alt=" "
-              style="width:40px; border-radius: 100%;" />
+          <a id="reg" href="/auth/newuser">
+            <i class="fas fa-user-plus"></i>Sign Up
           </a>
-          <% } %>
+          <% } else{ %>
+            <a id="loggedOut" href="/auth/logout">
+              <i class="fas fa-sign-out-alt"></i>Sign Out
+            </a>
+            <a class="profileImage" href="/auth/profile">
+              <img src="<%= user && user.image ? user.image : '/img/person.png' %>" alt=" "
+                style="width:40px; border-radius: 100%;" />
+            </a>
+            <% } %>
+      </div>
     </nav>
 
     <button class="toggle-btn">
@@ -69,20 +71,143 @@
     const about = event.currentTarget;
     const aboutMenu = document.querySelector('.about-menu');
     const toggleIcon = about.querySelector(".toggle-icon");
-    const TestimonialElement = document.getElementById('Testimonial');
 
     if (aboutMenu.style.maxHeight) {
       aboutMenu.style.maxHeight = null;
-      TestimonialElement.style.marginTop = null;
-      about.style.maxHeight = '2em';
     } else {
-      about.style.maxHeight = aboutMenu.scrollHeight + "px";
       aboutMenu.style.maxHeight = aboutMenu.scrollHeight + "px";
-      if (window.matchMedia("(max-width: 768px)").matches) { // Mobile break at 768px
-        TestimonialElement.style.marginTop = aboutMenu.scrollHeight + "px";
-      }
     }
     toggleIcon.classList.toggle("open");
     toggleIcon.textContent = aboutMenu.style.maxHeight ? "-" : "+";
   }
+</script>
+
+
+<script>
+  var toggle_btn;
+  var main_wrapper;
+  var hamburger_menu;
+  var main;
+  let dark = false,
+    cards,
+    blog,
+    blog_menu,
+    hiddenElements,
+    obsever,
+    currentLocation,
+    menuItems,
+    overlay,
+    navBar,
+    nav;
+
+  function declare() {
+    main = document.querySelector("main");
+    toggle_btn = document.querySelector(".toggle-btn");
+    main_wrapper = document.querySelector(".main-wrapper");
+    navBar = document.querySelector('.nav_bar');
+    nav = document.querySelector('nav');
+    hamburger_menu = document.querySelector(".hamburger-menu");
+    blog = document.querySelector("nav .blog");
+    blog_menu = document.querySelector(".blog-menu");
+    currentLocation = window.location.pathname;
+    menuItems = document.querySelectorAll("nav > ul > li > a");
+    overlay = document.querySelector('.overlay');
+  }
+  declare();
+
+  function smoothScroll() {
+    const menuLinks = document.querySelectorAll('.nav li a[href^="/#"]');
+    //console.log('menuLinks===', menuLinks);
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const targetId = link.getAttribute("href").substring(1);
+        const targetSection = document.querySelector(`${targetId}`);
+        if (targetSection) {
+          targetSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      });
+    });
+  }
+  window.smoothScroll = smoothScroll;
+
+  function events() {
+    // dark and light mode
+    if (toggle_btn) {
+      toggle_btn.addEventListener("click", () => {
+        dark = !dark;
+        if (dark) {
+          main_wrapper.classList.remove("light");
+          main_wrapper.classList.add("dark");
+          document.getElementById('light-logo').style.display = 'none';
+          document.getElementById('dark-logo').style.display = 'block';
+          document.getElementById('footer-light-logo').style.display = 'block';
+          document.getElementById('footer-dark-logo').style.display = 'none';
+        } else {
+          main_wrapper.classList.remove("dark");
+          main_wrapper.classList.add("light");
+          document.getElementById('light-logo').style.display = 'block';
+          document.getElementById('dark-logo').style.display = 'none';
+          document.getElementById('footer-light-logo').style.display = 'none';
+          document.getElementById('footer-dark-logo').style.display = 'block';
+        }
+      });
+    } else {
+      console.log("toggle_btn is null");
+    }
+
+
+    //menu
+    if (hamburger_menu) {
+      hamburger_menu.addEventListener("click", () => {
+        navBar.classList.toggle('active');
+      });
+      overlay.addEventListener('click', function () {
+        navBar.classList.remove('active');
+      });
+    } else {
+      console.log("hamburger_menu is null");
+    }
+
+    // hightlight menu button
+    menuItems.forEach((item) => {
+      if (item.getAttribute("href") === currentLocation) {
+        item.style.color = "tomato";
+      }
+    });
+
+    // scroll animation
+    hiddenElements = document.querySelectorAll(".hidden");
+    obsever = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        // console.log('entry===',entry);
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        } else {
+          entry.target.classList.remove("show");
+        }
+      });
+    });
+    hiddenElements.forEach((el) => obsever.observe(el));
+
+    //hide navbar while scrolling down
+    const header = document.querySelector("header");
+    const main_wrapper_active_nav_list = document.querySelector(
+      ".main-wrapper.active .nav_list"
+    );
+    let lastScroll = 0;
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll < lastScroll) {
+        header.classList.remove("hidden");
+      } else {
+        header.classList.add("hidden");
+      }
+      lastScroll = currentScroll;
+    });
+  }
+  events();
 </script>

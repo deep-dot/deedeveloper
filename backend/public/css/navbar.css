@@ -50,10 +50,11 @@ header {
   gap: 1em;
 }
 
-.nav_bar nav a{
+.nav_bar nav a {
   color: var(--text);
-  display: block;
-  padding: 10px;
+  font-weight: 500;
+  display: block; 
+  padding: 10px;  
 }
 
 .nav_bar .about-menu {
@@ -67,6 +68,18 @@ header {
   box-shadow: var(--boxshadowwithopacity);
 }
 
+.nav_bar .about-menu a {
+  border-bottom: solid var(--backgroundColor) 1px;
+}
+
+.nav_bar nav .navRego {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+}
+
 .nav_bar nav #loggedIn,
 .nav_bar nav #loggedOut,
 .nav_bar nav #reg {
@@ -74,7 +87,7 @@ header {
   color: var(--textColor);
   border:none;
   border-radius: 20px;
-  padding: 0px 5px;
+  padding: 0px 10px;
 }
 
 .nav_bar nav #loggedIn:hover,
@@ -134,25 +147,34 @@ header {
   position: absolute;   
   height: auto;
   top: var(--navheight);  
-  padding: 0; 
+  padding: 20px; 
   width: 100%;
   transition: all 0.3s ease-in-out ;
 }
 
-.nav_bar .about-menu {
+.nav_bar nav a {
+  border-bottom: solid var(--backgroundColor) 1px;
+}
+
+.nav_bar nav .about-menu {
   max-height: 0;
   top: 0;
   position: relative;  
-  overflow: hidden;
+  overflow: hidden;    
 }
 
+.nav_bar .about-menu a {
+  width: 80%;
+  margin: 0 auto;
+  color: var(--background);
+  background-color: var(--backgroundColor);
+  border-bottom: solid var(--background) 1px;
+  box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.2),
+              inset -5px -5px 15px rgba(255, 255, 255, 0.5);
+}
 
-.nav_bar nav #loggedIn,
-.nav_bar nav #loggedOut,
-.nav_bar nav #reg {
-  max-width: 120px;
-  text-align: center;
-  margin: 10px 0;
+.nav_bar nav .navRego {
+  margin: 40px 0 20px 0;
 }
 
   .nav_bar .hamburger-menu {
@@ -165,7 +187,7 @@ header {
   position: relative;
   margin-left: auto;
   height: 3px;
-  width: 8vw;
+  width: 30px;
   background-color: var(--backgroundColor);
   border-radius: 3px;
 }

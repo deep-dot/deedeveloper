@@ -1,112 +1,105 @@
-<div class="main_post">
-  <div class="showPost">
-    <%- include('./components/btnsOnPost.ejs') -%>
+<section class="main_post">
+  <%- include('./components/btnsOnPost.ejs') -%>
     <div class="postDetail hidden">
       <h1>
         <%= blogpost.title %>
       </h1>
-      <div class="writer">
-        <img class="userImg" src="https://lh3.googleusercontent.com/a/AGNmyxYKP7KlSgpMYZ1EngEaDDBvDyjCH97coxhOrCmiaA=s96-c" alt=" ">
+        <picture class="writer">
+        <img class="userImg"
+          src="https://lh3.googleusercontent.com/a/AGNmyxYKP7KlSgpMYZ1EngEaDDBvDyjCH97coxhOrCmiaA=s96-c" alt=" ">
         <p style="margin-top: 1rem;">
-          Creater name: <%= blogpost.username %> <br><br>
+          Creater name: <%= blogpost.username %> <br>
             Posted on: <%= blogpost.createdAt.toDateString() %> <br>
               Updated on: <%= blogpost.updatedAt.toDateString() %> <br>
         </p>
-      </div>
+      </picture>
       <img class="postImg" src="<%= blogpost.image %>" alt=" ">
-      <div class="postContent">
-          <%- blogpost.post.replace(/\n/g, '<br>' ) %>
-      </div>
-      <%- include('./components/commentsOnPost.ejs') -%>
-      <%- include('../components/writer-detail.ejs') -%>
+      <%- blogpost.post.replace(/\n/g, '<br>' ) %>
     </div>
-   
-  </div>
-  
-</div>
+    <%- include('./components/commentsOnPost.ejs') -%>
+      <%- include('../components/writer-detail.ejs') -%>
+</section>
 
 
 
-  <script>
-    var postCard = document.getElementById('postCard')
-    var id = postCard.getAttribute('blog-post-id');
-    //console.log('id===', id);
-    axios.get('/getPostLikes/' + id).then(res => {
-      // console.log("e=====", res.data.post)
-      var User = res.data.user;
-      var post = res.data.post;
+<script>
+  var postCard = document.getElementById('postCard')
+  var id = postCard.getAttribute('blog-post-id');
+  //console.log('id===', id);
+  axios.get('/getPostLikes/' + id).then(res => {
+    // console.log("e=====", res.data.post)
+    var User = res.data.user;
+    var post = res.data.post;
 
-      var likers = post.likers;
-      // console.log('likers===', likers);
-      var isLiked = false;
-      for (var j = 0; j < post.likers.length; j++) {
-        if (post.likers[j].userid == User._id) {
-          isLiked = true;
-          break;
-        }
+    var likers = post.likers;
+    // console.log('likers===', likers);
+    var isLiked = false;
+    for (var j = 0; j < post.likers.length; j++) {
+      if (post.likers[j].userid == User._id) {
+        isLiked = true;
+        break;
       }
-      //console.log('isLiked', isLiked);
-      var className = "";
-      if (isLiked) {
-        className = "like";
-      } else {
-        className = "unlike";
-      }
-      var html = ''
-      html += '<span class="' + className + ' " onclick="toggleLikePost(this)" id="' + post._id + '">'
-      html += '<i class=" mr-1 fa fa-thumbs-up"></i>'
-      html += '<ins>' + post.likers.length + '</ins>'
-      html += '</span>'
-      //  console.log(html)
-      document.getElementById('postCard').innerHTML = html;
-    });
-  </script>
-  <script>
-    function toggleLikePost(self) {
-      //  console.log(self.id);
-      axios.post('/toggleLikePost/' + self.id).then(res => {
-        //    console.log(res.data)
-        if (res.data.status == 'success') {
-          self.className = "like";
-          var likes = parseInt(self.querySelector("ins").innerHTML);
-          likes++;
-          self.querySelector("ins").innerHTML = likes;
-        }
-        if (res.data.status == 'unliked') {
-          self.className = "unlike";
-          var likes = parseInt(self.querySelector("ins").innerHTML);
-          likes--;
-          self.querySelector("ins").innerHTML = likes;
-        }
-        if (res.data.status == 'error') {
-          //alert(res.message);
-        }
-      });
     }
-  </script>
-
-  <script>
-    const section = document.querySelector('.showPost .commentsOnPost');
-    const sectionPosition = section.offsetTop;
-    // console.log('sectionPosition', sectionPosition);
-    const buttons = document.querySelectorAll('.showPost .btns .button-container');
-    // console.log('sectionPosition', buttons);
-    window.addEventListener('scroll', function () {
-      if (window.matchMedia('(max-width: 867px)').matches) {
-        const scrollPosition = window.scrollY;
-        if (scrollPosition >= sectionPosition) {
-          buttons.forEach(function (button) {
-            button.style.transition = 'opacity 0.3s ease-in-out';
-            button.style.opacity = '0';
-          });
-        } else {
-          buttons.forEach(function (button) {
-            button.style.transition = 'opacity 0.3s ease-in-out';
-            button.style.opacity = '1';
-          });
-        }
+    //console.log('isLiked', isLiked);
+    var className = "";
+    if (isLiked) {
+      className = "like";
+    } else {
+      className = "unlike";
+    }
+    var html = ''
+    html += '<span class="' + className + ' " onclick="toggleLikePost(this)" id="' + post._id + '">'
+    html += '<i class=" mr-1 fa fa-thumbs-up"></i>'
+    html += '<ins>' + post.likers.length + '</ins>'
+    html += '</span>'
+    //  console.log(html)
+    document.getElementById('postCard').innerHTML = html;
+  });
+</script>
+<script>
+  function toggleLikePost(self) {
+    //  console.log(self.id);
+    axios.post('/toggleLikePost/' + self.id).then(res => {
+      //    console.log(res.data)
+      if (res.data.status == 'success') {
+        self.className = "like";
+        var likes = parseInt(self.querySelector("ins").innerHTML);
+        likes++;
+        self.querySelector("ins").innerHTML = likes;
+      }
+      if (res.data.status == 'unliked') {
+        self.className = "unlike";
+        var likes = parseInt(self.querySelector("ins").innerHTML);
+        likes--;
+        self.querySelector("ins").innerHTML = likes;
+      }
+      if (res.data.status == 'error') {
+        //alert(res.message);
       }
     });
-  </script>
+  }
+</script>
 
-  
+<script>
+  const section = document.querySelector('.showPost .commentsOnPost');
+  const sectionPosition = section.offsetTop;
+  // console.log('sectionPosition', sectionPosition);
+  const buttons = document.querySelectorAll('.showPost .btns .button-container');
+  // console.log('sectionPosition', buttons);
+  window.addEventListener('scroll', function () {
+    if (window.matchMedia('(max-width: 867px)').matches) {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition >= sectionPosition) {
+        buttons.forEach(function (button) {
+          button.style.transition = 'opacity 0.3s ease-in-out';
+          button.style.opacity = '0';
+        });
+      } else {
+        buttons.forEach(function (button) {
+          button.style.transition = 'opacity 0.3s ease-in-out';
+          button.style.opacity = '1';
+        });
+      }
+    }
+  });
+</script>

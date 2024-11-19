@@ -1,0 +1,37 @@
+
+.written-by {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: var(--boxshadowwithopacity);
+    padding: 1em;
+  }
+  
+  .written-by picture img {
+    border-radius: 50%;
+    width: clamp(80px, 2vw, 100px);
+    height: clamp(80px, 2vh, 100px);
+  }
+  
+  .written-by .contact-me {
+    display: inline-block;
+    margin-top: 10px;
+    background: transparent;
+    border: 2px solid tomato;
+    border-radius: 5px;
+    color: var(--textColor);
+    padding: 10px 25px;
+    cursor: pointer;
+    vertical-align: top;
+    margin-right: 10px;
+    text-decoration: none;
+  }
+  
+  @media screen and (max-width: 480px) {
+  
+    .written-by {
+      flex-direction: column;
+      padding: 10px;
+  }
+  }
