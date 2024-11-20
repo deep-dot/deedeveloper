@@ -1,28 +1,37 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
-import './navbar.css';
+import React, { useState, useEffect, useRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faFolder, faPhone, faSignInAlt,
+  faSignOutAlt,
+  faUserPlus, 
+  faUser, 
+  faBriefcase,
+  faCogs , faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import "./navbar.css";
 
-
-const Navbar = () => {
+const Navbar = ({ isDarkMode, handleDarkModeToggle }) => {
   const [isAboutMenuOpen, setAboutMenuOpen] = useState(false);
-  // const [isBlogMenuOpen, setBlogMenuOpen] = useState(false);
   const [isNavBarActive, setNavBarActive] = useState(false);
-
-  // const blogMenuRef = useRef(null);
-  const aboutMenuRef = useRef(null);
-  const loggedInRef = useRef(null);
-  // const testimonialRef = useRef(null);
-
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userImage, setUserImage] = useState(null);
 
-  // Function to check authentication status
+  const aboutMenuRef = useRef(null);
+
+  console.log("isDarkMode:", isDarkMode);
+console.log("handleDarkModeToggle:", handleDarkModeToggle);
+
+  const toggleAboutMenu = () => {
+    setAboutMenuOpen((prevState) => !prevState);
+  };
+
+  const handleHamburgerMenuToggle = () => {
+    setNavBarActive((prevState) => !prevState);
+  };
+
   const checkAuthStatus = async () => {
     try {
-      const response = await fetch('/api/auth/status', {
-        method: 'GET',
-        credentials: 'include', // Include cookies if needed for session
+      const response = await fetch("/api/auth/status", {
+        method: "GET",
+        credentials: "include", // Include cookies for session handling
       });
 
       if (response.ok) {
@@ -30,113 +39,84 @@ const Navbar = () => {
         setIsAuthenticated(data.isAuthenticated);
         setUserImage(data.userImage);
       } else {
-        console.error('Failed to fetch auth status');
+        console.error("Failed to fetch auth status");
       }
     } catch (error) {
-      console.error('Error fetching auth status:', error);
+      console.error("Error fetching auth status:", error);
     }
-  };
-
-  const toggleAboutMenu = () => {
-    setAboutMenuOpen(prevState => !prevState);
-  };
-
-  const handleHamburgerMenuToggle = () => {
-    setNavBarActive(prevState => !prevState);
   };
 
   useEffect(() => {
     checkAuthStatus();
-    const menuItems = document.querySelectorAll('nav > a');
-    const currentLocation = window.location.pathname;
-
-    menuItems.forEach((item) => {
-      if (item.getAttribute('href') === currentLocation) {
-        item.style.color = 'tomato';
-      }
-    });
-
-    const handleScroll = () => {
-      const header = document.querySelector('header');
-      const currentScroll = window.pageYOffset;
-      if (currentScroll < lastScroll) {
-        header.classList.remove('hidden');
-      } else {
-        header.classList.add('hidden');
-      }
-      lastScroll = currentScroll;
-    };
-
-    let lastScroll = 0;
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
   }, []);
-
 
   return (
     <header>
-      <div className={`nav_bar ${isNavBarActive ? 'active' : ''}`}>
-        <img className="logo_image" id="light-logo" src={`${process.env.PUBLIC_URL}/images/light-logoDeeDev.svg`} alt="Light Logo" style={{ display: 'none' }} />
-        <img className="logo_image" id="dark-logo" src={`${process.env.PUBLIC_URL}/images/logoDeeDev.svg`} alt="Dark Logo" />
+      <div className={`nav_bar ${isNavBarActive ? "active" : ""}`}>
+        <img
+          className="logo_image"
+          id="light-logo"
+          src={`${process.env.PUBLIC_URL}/images/light-logoDeeDev.svg`}
+          alt="Light Logo"
+          style={{ display: isDarkMode ? "none" : "block" }}
+        />
+        <img
+          className="logo_image"
+          id="dark-logo"
+          src={`${process.env.PUBLIC_URL}/images/logoDeeDev.svg`}
+          alt="Dark Logo"
+          style={{ display: isDarkMode ? "block" : "none" }}
+        />
 
         <nav>
-          <a href="/">
-            <i className="fas fa-home"></i>Home
-            <FontAwesomeIcon className="fa-icon" icon={['far', 'moon']} />
+          <a href="/"> <FontAwesomeIcon icon={faHome} />  Home </a>
+          
+          <a href="#" className={`navAbout ${isAboutMenuOpen ? "open" : ""}`} onClick={toggleAboutMenu}>
+          <FontAwesomeIcon icon={faFolder} />  Portfolio <span className="toggle-icon">{isAboutMenuOpen ? "-" : "+"}</span>
           </a>
-          <a className={`navAbout ${isAboutMenuOpen ? 'open' : ''}`} onClick={toggleAboutMenu} href='#/'>
-            Portfolio
-            <span className="toggle-icon">{isAboutMenuOpen ? '-' : '+'}</span>
-          </a>
-          <li className="about-menu" ref={aboutMenuRef} style={{ maxHeight: isAboutMenuOpen ? '200px' : '0' }}>
-            <a href="/portfolio">About Me</a>
-            <a href="/blogs">My Work</a>
-            <a href="/#servicesSection">Services</a>
+          <li
+            className="about-menu"
+            ref={aboutMenuRef}
+            style={{ maxHeight: isAboutMenuOpen ? "200px" : "0" }}
+          >
+            <a href="/portfolio"> <FontAwesomeIcon icon={faUser} /> About Me</a>
+            <a href="/blogs"> <FontAwesomeIcon icon={faBriefcase} /> My Work</a>
+            <a href="/#servicesSection"> <FontAwesomeIcon icon={faCogs} /> Services</a>
           </li>
-         
-          <a href="/#contactSection">
-            <i className="fas fa-phone"></i>Contact
-          </a>
-         
-          {!isAuthenticated ? (
-            <>
-              <div className="navRego">
-                <a id="loggedIn" ref={loggedInRef} href="/auth/login">
-                  <i className="fas fa-sign-in-alt"></i>Sign In
-                </a>
-                <a id="reg" href="/auth/newuser">
-                  <i className="fas fa-user-plus"></i>Sign Up
-                </a>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="navRego">
-                <a id="loggedOut" href="/auth/logout">
-                  <i className="fas fa-sign-out-alt"></i>Sign Out
-                </a>
-                <a className="profileImage" href="/auth/profile">
-                  <img src={userImage} alt="" style={{ width: '40px', borderRadius: '100%' }} />
-                </a>
-              </div>
-            </>
-          )}
+          <a href="/#contactSection"> <FontAwesomeIcon icon={faPhone} /> Contact</a>
 
+          {!isAuthenticated ? (
+            <div className="navRego">
+              <a className="#loggedIn" href="/auth/login"> <FontAwesomeIcon icon={faSignInAlt} /> Sign In</a>
+              <a className="#reg" href="/auth/newuser"> <FontAwesomeIcon icon={faUserPlus} /> Sign Up</a>
+            </div>
+          ) : (
+            <div className="navRego">
+              <a className="#loggedOut" href="/auth/logout"> <FontAwesomeIcon icon={faSignOutAlt} /> Sign Out</a>
+              <a className="profileImage" href="/auth/profile">
+                <img
+                  src={userImage}
+                  alt="User Profile"
+                  style={{ width: "40px", borderRadius: "100%" }}
+                />
+              </a>
+            </div>
+          )}
         </nav>
 
-        <button className="toggle-btn" onClick={() => window.handleDarkModeToggle()}>
-          <FontAwesomeIcon className="fa-icon" icon={faMoon} />
-          <FontAwesomeIcon className="fa-icon" icon={faSun} />
+        <button className="toggle-btn" onClick={handleDarkModeToggle}>
+          {isDarkMode ? (
+            <FontAwesomeIcon className="fa-icon" icon={faSun} />
+          ) : (
+            <FontAwesomeIcon className="fa-icon" icon={faMoon} />
+          )}
         </button>
 
         <div className="hamburger-menu" onClick={handleHamburgerMenuToggle}>
           <div className="bar"></div>
         </div>
       </div>
-    </header >
+    </header>
   );
 };
 

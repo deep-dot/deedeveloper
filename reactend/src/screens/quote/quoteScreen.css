@@ -1,59 +1,53 @@
 
  .quoteSection {
-    padding: 30px 0;
+    padding: var(--navheight) 5px;
     max-width: 1000px;
     width: 100%;
     margin: auto 
     }
   
  .quoteSection h1 {
-    color: var(--background);
-    font-size: 2.5rem;
+    color: var(--textColor);
     margin-bottom: 20px;
     text-align: center;
   }
   
  .quoteSection p {
-    font-size: 1em;
     margin-bottom: 20px;
     text-align: justify;
-    color: var(--background);
+    color: var(--textColor);
   }
   
   .quote-form-container {
     position: relative;
-    background-color: #fff;
-    padding: 30px;
+    background-color: var(--background);        
+    padding: 10px;
     border-radius: 5px;
     width: 50vw;
     margin: auto;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--boxshadowwithopacity);
   }
   
   .quote-form-container h1 {
-    font-size: 1.5rem;
     text-align: center;
-    color: #333333;
+    color: var(--text);
   }
   
   .form-container {
     position: relative;
-    background-color: #fff;
-    padding: 30px;
+    background-color: var(--backgroundColor);
+    padding: 10px;
     border-radius: 5px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--boxshadowwithopacity);
   }
   
   .form-container h1 {
-    font-size: 1.5rem;
     text-align: center;
   }
 
   .question-label {
     display: block;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #333;
+    color: var(--textColor);
     margin-bottom: 0.5rem;
   }
 
@@ -62,7 +56,6 @@
     margin-bottom: 1rem;
     padding: 0.5rem;    
     border-radius: 4px;
-    font-size: 1rem;
   }
 
   .form-container input {
@@ -73,13 +66,11 @@
   .quote-form-container .next-button, .quote-form-container .next-button{
     display: block;
     margin: 10px auto;
-    padding: 10px 20px;
-    background-color: #333333;
-    color: #fff;
+    padding: 5px;
+    background-color: var(--backgroundColor);
+    color: var(--textColor);
     border: none;
     border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
   }
@@ -92,8 +83,6 @@
     color: #ffffff;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
 }
@@ -113,42 +102,17 @@
     }
 
     .quote-form-container button {
-      padding: 8px 15px;
-      font-size: 12px;
+      padding: 5px;
     }
   }
   
   @media (max-width: 480px) {
-
-    .quoteSection {
-     padding: auto;
+    .signUpContainer {
+      width: 80%;
     }
 
-   .quoteSection h1 {
-      font-size: 0.8em;
-    }
-  
-   .quoteSection p {
-      font-size: 0.6em;
-    }
-  
-    .form-container,
     .quote-form-container {
       width: 100%;
-      padding: 1em;
-    }
-  
-    .form-container h1 {
-      font-size: 0.8em;
-    }
-
-    .signUpContainer {
-      width: 100%;
-    }
-
-    .quote-form-container button {
-      padding: 5px 10px;
-      font-size: 0.5em;
     }
   }
   

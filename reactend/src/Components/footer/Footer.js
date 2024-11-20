@@ -36,33 +36,32 @@ const Footer = () => {
 
   return (
     <footer className="footer" >
-      <section className="footer-container">
+      <div className="footer-container">
         <div className="cell">
-          <img className="logo_image" id="footer-light-logo" src={`${process.env.PUBLIC_URL}/images/light-logoDeeDev.svg`} alt="light logo" style={{ display: 'none' }} />
-          <img className="logo_image" id="footer-dark-logo" src={`${process.env.PUBLIC_URL}/images/logoDeeDev.svg`} alt="dark logo" />
-
+          <img className="logo_image" id="footer-light-logo" src={`${process.env.PUBLIC_URL}/images/light-logoDeeDev.svg`} alt="light logo" />
+          <img className="logo_image" id="footer-dark-logo" src={`${process.env.PUBLIC_URL}/images/logoDeeDev.svg`} alt="dark logo" style={{ display: 'none' }} />
           <h4>
             Dee Dhillon <br />
             Freelance Software Developer & Consultant
           </h4>
           <div>
-              <a href="https://www.facebook.com/">
-                <FontAwesomeIcon icon={['fab', 'facebook']} />
-              </a>
-              <a href="https://www.linkedin.com/">
-                <FontAwesomeIcon icon={['fab', 'linkedin']} />
-              </a>
-              <a href="https://www.instagram.com/">
-                <FontAwesomeIcon icon={['fab', 'instagram']} />
-              </a>
+            <a href="https://www.facebook.com/">
+              <FontAwesomeIcon icon={['fab', 'facebook']} />
+            </a>
+            <a href="https://www.linkedin.com/">
+              <FontAwesomeIcon icon={['fab', 'linkedin']} />
+            </a>
+            <a href="https://www.instagram.com/">
+              <FontAwesomeIcon icon={['fab', 'instagram']} />
+            </a>
           </div>
         </div>
         <div className="cell">
           <h3>Website Links</h3>
-            <a href="/quote">Quote</a>
-            <a href="/process">Process</a>
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/faq">FAQs</a>
+          <a href="/quote">Quote</a>
+          <a href="/process">Process</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/faq">FAQs</a>
         </div>
         <div class="cell">
           <h3>Services</h3>
@@ -77,16 +76,16 @@ const Footer = () => {
           </a>
           <a>
             Future maintenance
-          </a>          
-      </div>
-      <div class="cell">
+          </a>
+        </div>
+        <div class="cell">
           <h3>Contact</h3>
           <a href="/#contactSection">
             <i class="fa fa-envelope"></i> Drop A Thought
           </a>
+        </div>
       </div>
-  </section>
-    <p style={{font: "12px"}}>All rights reserved &copy; 2024</p>
+      <p style={{ font: "12px" }}>All rights reserved &copy; 2024</p>
       <button
         className={`back-to-top ${isVisible ? 'visible' : ''}`}
         onClick={scrollToTop}

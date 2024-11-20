@@ -4,56 +4,68 @@
     <img class="logo_image" id="dark-logo" src="/img/logoDeeDev.svg" alt="Dark Logo">
 
     <nav>
+      <!-- Home Link -->
       <a href="/">
-        <i class="fas fa-home in_navBar"></i>Home
+        <i class="fas fa-home in_navBar"></i> Home
       </a>
+    
+      <!-- Portfolio with Toggle -->
       <a class="navAbout" onclick="toggleAboutMenu(event)" href="#">
-        <i class="fas fa-folder"></i>Portfolio
+        <i class="fas fa-folder"></i> Portfolio
         <span class="toggle-icon open">+</span>
       </a>
       <li class="about-menu">
-        <a href="/portfolio">About Me</a>
-        <a href="/blogs">My Work</a>
-        <a href="/#servicesSection">Services</a>
+        <!-- About Me -->
+        <a href="/portfolio">
+          <i class="fas fa-user"></i> About Me
+        </a>
+    
+        <!-- My Work -->
+        <a href="/blogs">
+          <i class="fas fa-briefcase"></i> My Work
+        </a>
+    
+        <!-- Services -->
+        <a href="/#servicesSection">
+          <i class="fas fa-cogs"></i> Services
+        </a>
       </li>
-      <!-- <a id="Testimonial" href="/#testimonial">
-            <i class="fas fa-comment"></i>Testimonial
-          </a> -->
+    
+      <!-- Contact Link -->
       <a href="/#contactSection">
-        <i class="fas fa-phone"></i>Contact
+        <i class="fas fa-phone"></i> Contact
       </a>
-      <!-- <a class='write-review' href="/posts/new">Write a Blog</a> -->
-
-      <!-- <a class="blog" onclick="toggleBlogMenu(event)" href="#">
-            Blog
-            <span class="toggle-icon">+</span>
-            <li >
-              <a class="blog-menu" href="/blogs">Home</a>
-              <a class='write-review' href="/posts/new">Post</a>
-          </li>
-          </a>
-           -->
+    
+      <!-- Authentication Links -->
       <div class="navRego">
-        <% if(!isAuthenticated) {%>
+        <% if (!isAuthenticated) { %>
+          <!-- Sign In -->
           <a id="loggedIn" href="/auth/login">
-            <i class="fas fa-sign-in-alt"></i>
-            <span>Sign In</span>
+            <i class="fas fa-sign-in-alt"></i> Sign In
           </a>
+    
+          <!-- Sign Up -->
           <a id="reg" href="/auth/newuser">
-            <i class="fas fa-user-plus"></i>Sign Up
+            <i class="fas fa-user-plus"></i> Sign Up
           </a>
-          <% } else{ %>
-            <a id="loggedOut" href="/auth/logout">
-              <i class="fas fa-sign-out-alt"></i>Sign Out
-            </a>
-            <a class="profileImage" href="/auth/profile">
-              <img src="<%= user && user.image ? user.image : '/img/person.png' %>" alt=" "
-                style="width:40px; border-radius: 100%;" />
-            </a>
-            <% } %>
+        <% } else { %>
+          <!-- Sign Out -->
+          <a id="loggedOut" href="/auth/logout">
+            <i class="fas fa-sign-out-alt"></i> Sign Out
+          </a>
+    
+          <!-- User Profile -->
+          <a class="profileImage" href="/auth/profile">
+            <img
+              src="<%= user && user.image ? user.image : '/img/person.png' %>"
+              alt="User Profile"
+              style="width: 40px; border-radius: 100%;"
+            />
+          </a>
+        <% } %>
       </div>
     </nav>
-
+    
     <button class="toggle-btn">
       <i class="far fa-moon"></i>
       <i class="far fa-sun"></i>

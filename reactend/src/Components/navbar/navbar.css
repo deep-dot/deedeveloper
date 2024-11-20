@@ -83,7 +83,7 @@ header {
 .nav_bar nav #loggedIn,
 .nav_bar nav #loggedOut,
 .nav_bar nav #reg {
-  background-color: var(--backgroundColor);
+  background-color: var(--background);
   color: var(--textColor);
   border:none;
   border-radius: 20px;
