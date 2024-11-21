@@ -1,23 +1,15 @@
 <div class="review-show">
-    <div class="review">
-        <form class="comment-form" action="/review/<%= review._id %>/comment" method="POST"
-            content-type='application/json'>
-            <div>
-                <p class="title">Review<br>
-                Created on: <%- review.createdAt %><br>
-                "<%= review.review %>"</p>
-                <textarea id="summernote" type="text" name="comment"></textarea>
-            </div>
-            <div class="comment-form-btns">
-                <div>
-                    <button type="submit">Save</button>
-                </div>
-                <div class="cancel">
-                    <a href="/#testimonial">Back</a>
-                </div>
-            </div>
-        </form>
-    </div>
+    <form action="/review/<%= review._id %>/comment" method="POST" content-type='application/json'>
+        <p class="title">Review<br>
+            Created on: <%- review.createdAt %><br> <br>
+                "<%= review.review %>" <br>
+                    <textarea id="summernote" type="text" name="comment"></textarea>
+        </p>
+        <div>
+            <button type="submit">Save</button>
+            <a href="/#testimonial">Back</a>
+        </div>
+    </form>
 
     <div class="comment">
         <p class="title">Total comments: <%- review.comments.length %></p>
@@ -43,8 +35,8 @@
 <script>
     $(document).ready(function () {
         $('#summernote').summernote({
-            height: 200, 
-        width: '100%',
+            height: 200,
+            width: '100%',
         });
     });
 </script>

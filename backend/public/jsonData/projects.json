@@ -4,7 +4,7 @@
             "subtitle": "WEBSITE DEVELOPMENT & DESIGN",
             "title": "DEEDEVELOPER.COM",
             "content": "Deedeveloper.com is a well-crafted, professional freelance development platform that highlights the skills and services of mine. This website acts as a freelancer's website including  interactive portfolio, presenting my projects, personal profile, and available services. It includes a blog with full CRUD (create, read, update, delete) operations, allowing users to comment with similar CRUD functionality. The site also features a testimonial section where users can write reviews and add comments, both with full CRUD capabilities. In addition, there's a quote form where users can submit their email, name, and message, along with a login system offering full registration, password reset, email authentication, and CAPTCHA verification. A FAQ accordion answers common questions, and a contact form is provided that pre-fills information for logged-in users, simplifying message submission. The blog and feedback system make it easy to communicate and engage with potential clients.",
-            "video": "<iframe src=\"https://www.youtube.com/embed/pjUR1l61Pwo\" width=\"100%\" height=\"100%\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+            "video": "",
             "url": "http://deedeveloper.herrokuapp.com/",
             "type": "website",
             "technologies": [
@@ -51,7 +51,7 @@
             "subtitle": "MOBILE APP DEVELOPMENT for 🍏 & 🤖",
             "title": "WAGEFIGURER",
             "content": "WageFigurer is a mobile application designed for cabbies, by allowing them to easily calculate and save mileage records, expenses, and net-paying reports.",
-            "video": "<iframe src=\"https://www.youtube.com/watch?v=eOmY3OoWxOI\" width=\"100%\" height=\"100%\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+            "video": "<iframe src=\"https://www.youtube.com/embed/eOmY3OoWxOI\" width=\"100%\" height=\"100%\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
             "url": "",
             "type": "mobileApp",
             "technologies": [

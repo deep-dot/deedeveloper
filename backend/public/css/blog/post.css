@@ -22,17 +22,22 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-}
-
-.main_post .postDetail {
-  width: 100%;
-  height: auto;
+  min-height: 100vh;
   max-width: 800px; /* Adjust based on your preference */
-  margin: 10px;
   padding: 10px;
   border-radius: 8px;
   box-shadow: var(--boxshadowwithopacity);
   background-color: var(--backgroundColor);
+}
+
+.main_post .postDetail .content { 
+  width: 100%;
+  height: 100vh;
+}
+
+.main_post .postDetail .content-video { 
+  width: 100%;
+  height: 50vh;
 }
 
 .main_post .writer {
@@ -102,8 +107,8 @@
 .btns .button-container .fa-trash {
   color: var(--textColor); 
 }
-
-@media screen and (max-width:1370px) {
+/* 
+@media screen and (max-width:768px) {
 
   .btns {
       align-items: center;
@@ -116,7 +121,7 @@
       flex-direction: row;
   }
 
-}
+} */
 
 @media screen and (max-width: 768px) {
 

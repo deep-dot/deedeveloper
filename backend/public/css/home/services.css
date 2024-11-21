@@ -24,7 +24,6 @@
   .services-div1 ul li {
     margin-bottom: 20px;
     line-height: 1.5;
-    font: 500 clamp(14px, 3vw, 20px) 'Roboto';
     color: var(--textColor);
   }
   
@@ -32,8 +31,8 @@
   .contact-me-box .contact-button {
     align-self: flex-start;
     background: var(--background);
-    font: 500 clamp(12px, 4vw, 20px) 'Roboto';
-    padding: 10px 10px;
+    font: 500 clamp(10px, 4vw, 16px) 'Roboto';
+    padding: 5px;
     text-transform: uppercase;
     user-select: none;
     border-radius: 5px;
@@ -72,7 +71,7 @@
     box-shadow: var(--boxshadowwithopacity);
     margin: 8rem 0;
     color: var(--textColor);
-    padding: 1rem;
+    padding: 40px 20px;
     text-align: center;
   }
   

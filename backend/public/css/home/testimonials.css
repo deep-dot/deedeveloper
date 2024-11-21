@@ -17,7 +17,7 @@
     align-self:center ;
   }
   
-  .card {
+  #reviewCard .card-container .card {
     display: block;
     position: relative;
     padding: 20px;
@@ -26,7 +26,7 @@
     color: var(--textColor);
   }
   
-  .card::before {
+  #reviewCard .card-container .card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -37,13 +37,13 @@
     border-right: 20px solid var(--background);
   }
   
-  .card.active::before {
+  #reviewCard .card-container .card.active::before {
     border-top: 5px solid #bd4033;
     border-right: 10px solid #bd4033;
   }
   
   
-  .cardRow {
+  #reviewCard .card-container .cardRow {
     display: flex;
     flex-grow: 1;
     flex-direction: row;
@@ -52,59 +52,59 @@
     max-height: 85px;
   }
   
-  .cardRow img {
+  #reviewCard .card-container .cardRow img {
     margin-right: 20px;
     height: 80px;
     width: 100px;
     border-radius: 50%;
   }
   
-  .cardRow .stars {
+  #reviewCard .card-container .cardRow .stars {
     margin-left: auto;
     margin-right: 20px;
   }
   
-  .stars {
+  #reviewCard .card-container .stars {
     display: flex;
     list-style: none;
     color: grey;
   }
 
-  .star {
+  #reviewCard .card-container .star {
     margin-left: 7px;
   }
   
-  .orange {
+  #reviewCard .card-container .orange {
     color: orange;
   }
   
-  .clicked {
+  #reviewCard .card-container .clicked {
     color: orange;
   }
   
-  .cardbtns {
+  #reviewCard .card-container .cardbtns {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-top: 1rem;
   }
   
-  .like {
+  #reviewCard .card-container .like {
     color: blue;
     font-size: 15px;
     cursor: pointer;
   }
   
-  .unlike {
+  #reviewCard .card-container .unlike {
     color: green;
     font-size: 15px;
     cursor: pointer;
   }
-  
-  .btnn {
-    font-size: clamp(14px, 2vw, 22px);
+/*   
+  #reviewCard .card-container .btnn {
+    font-size: clamp(12px, 2vw, 18px);
     cursor: pointer;
-  }
+  } */
   
   /* .card .morelessmore { */
 
@@ -121,7 +121,7 @@
     display: none;
   }
   
-  #see-more-button {
+  #reviewCard .card-container #see-more-button {
     display: none;
     margin: auto;
     padding: 5px;
@@ -135,11 +135,11 @@
     transition: background-color 0.2s ease-in-out;
   }
   
-  #see-more-button:hover {
+  #reviewCard .card-container #see-more-button:hover {
     background-color: var(--hoverColor);
   }
   
-  #write-review-button {
+   #write-review-button {
     background-color: var(--background);
     display: block;
     margin: auto;
@@ -152,19 +152,20 @@
     transition: background-color 0.2s ease-in-out;
   }
   
-  #write-review-button:hover {
+   #write-review-button:hover {
     background-color: var(--hoverColor);
   }
   
-  #write-review-button i {
+   #write-review-button i {
     display: none;
   }
   
-  .Modal-content {    
-    background-color: #fff;
+   .Modal-content {    
+    background: #2a4657;
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
+    box-shadow: 0px 0px 15px 2px rgb(241, 248, 252, 0.6);
+    /* border: 1px solid #888; */
     max-width: 700px;
     width: 95%;
     text-align: center;
@@ -174,72 +175,72 @@
     transform: translate(-50%, -50%);
   }
   
-  .Modal-content .close {
+   .Modal-content .close {
     position: relative;
     font-size: clamp(14px, 2vw, 20px);
     font-weight: bold;
-    color: var(--textColor);
+    color:  #f1f8fc;
     padding: 5px;
     cursor: pointer;
   }
   
-  .close:hover {
-    color: var(--hoverColor);
+   .close:hover {
+    color: rgb(91, 172, 223);
   }
   
-  .Modal-content form {
+   .Modal-content form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
   
-  .Modal-content label {
+   .Modal-content label {
     margin-top: 10px;
     font-size: clamp(16px, 2vw, 28px);
     display: block;
   }
   
-  .Modal-content select,
-  .Modal-content textarea {
+   .Modal-content select,
+   .Modal-content textarea {
     margin-top: 5px;
     font-size: clamp(14px, 2vw, 22px);
     padding: 5px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #f1f8fc;
     width: 100%;
     box-sizing: border-box;
     resize: none;
   }
   
-  .Modal-content button {
+   .Modal-content button {
     margin-top: 10px;
-    font-size: clamp(14px, 2vw, 22px);
-    background-color: var(--background);
-    color: var(--text);
+    font-size: clamp(10px, 2vw, 16px);
+    background-color: #f1f8fc;
+    color: #f1f8fc;;
     border: none;
     border-radius: 5px;
-    padding: 10px;
+    padding: 5px;
     cursor: pointer;
   }
   
-  .Modal-content button:hover {
-    background-color: var(--hoverColor);
+   .Modal-content button:hover {
+    background-color: rgb(91, 172, 223);
   }
   
   
-  .Modal-content ul {
+   .Modal-content ul {
     display: flex;
     list-style: none;
     color: gray;
   }
   
-  .Modal-content ul li i {
+   .Modal-content ul li i {
     font-size: clamp(12px, 1vw, 16px);
     line-height: 3.5;
   }
   
-  .Modal-content ul li {
+   .Modal-content ul li {
     margin-left: 7px;
   }
   
@@ -261,7 +262,7 @@
       padding: 5px 10px;
     }
   
-    .card {
+    #reviewCard .card-container .card {
       padding: 10px;
     }
   
@@ -269,11 +270,11 @@
       top: -20px;
     }
   
-    #write-review-button span {
+    #reviewCard .card-container #write-review-button span {
       display: none;
     }
   
-    #write-review-button i {
+    #reviewCard .card-container #write-review-button i {
       display: block;
     }
   
@@ -292,49 +293,49 @@
       width: 100%;
     }
 
-    .card {
+    #reviewCard .card-container .card {
       width: 100%;
       padding: 15px 5px;
     }
   
-    .cardRow .stars {
+    #reviewCard .card-container .cardRow .stars {
       margin-right: 5px;
     }
   
-    .star {
+    #reviewCard .card-container .star {
     margin-left: 4px;
   }
   
-    .cardRow img {
+  #reviewCard .card-container .cardRow img {
       margin-right: 10px;
       height: 60px;
       width: 60px;    
     }
   
-    .card blockquote {
+    #reviewCard .card-container .card blockquote {
       line-height: 1.2;
       margin: 10px 0;
       text-align: center;
     }
   
-    blockquote::before {
+    #reviewCard .card-container blockquote::before {
       top: -10px;
     }
   
-    #see-more-button {
+    #reviewCard .card-container #see-more-button {
       padding: 6px 10px;
     }
 }
 
 /* for comments container */
-.comments-container {  
+/* .comments-container {  
   padding: 15px; 
   max-width: 90%; 
   width: 100%;
   margin: auto;
-}
+} */
 
-.comment {
+.comments-container .comment {
   max-width: 500px;
   width: 100%;
   border-radius: 5px; 
@@ -342,26 +343,17 @@
   padding: 10px; 
   margin: 10px auto; 
   color: var(--textColor);
-  font-size: clamp(8px, 2vw, 14px);
 }
 
-.comment p {
-  font-size: clamp(10px, 2vw, 16px);
-}
-
-.comment:last-child {
+.comments-container .comment:last-child {
   margin-bottom: 0; 
 }
 
-.comment-author {
-  font-weight: bold; 
-}
-
-.comment-content {
+.comments-container .comment-content {
   margin-top: 5px; 
 }
 
-.see-more-comments {
+ .see-more-comments {
   display: block; 
   width: auto; 
   padding: 5px; 
