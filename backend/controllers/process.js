@@ -1,13 +1,7 @@
-// module.exports = async(req, res) => {
-//     res.render('pages/process/agile-process.ejs', {
-//         style: 'process.css',
-//         bodyId: 'ProcessPage'
-//     });
-// }
 
 module.exports = async(req, res) => {
-    res.render('pages/process/dev-process.ejs', {
+    res.render('pages/process.ejs', {
         style: 'process.css',
-        bodyId: 'ProcessPage'
+        bodyId: 'processPage'
     });
 }

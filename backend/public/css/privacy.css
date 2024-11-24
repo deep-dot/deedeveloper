@@ -1,0 +1,15 @@
+#privacyPage {
+    padding: var(--navheight);
+}
+
+#privacyPage ul {
+    color: var(--textColor);
+    list-style-type: disc;
+    margin-left: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+    #privacyPage {
+        padding: calc(var(--navheight)/2) 5px;
+    }
+}
