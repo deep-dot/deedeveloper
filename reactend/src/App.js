@@ -18,6 +18,7 @@ const App = () => {
   return (
     <div className={`main-wrapper ${isDarkMode ? "dark" : "light"}`}>
       <Navbar isDarkMode={isDarkMode} handleDarkModeToggle={handleDarkModeToggle} />
+      {/* <Quote /> */}
       <Router>
         <Routes>
           <Route

@@ -34,6 +34,9 @@
   }
   
   .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     position: relative;
     background-color: var(--backgroundColor);
     padding: 10px;
@@ -53,9 +56,11 @@
 
   .form-container input,
   .form-container textarea {
+    width: 100%;
     margin-bottom: 1rem;
     padding: 0.5rem;    
     border-radius: 4px;
+    box-sizing: border-box;
   }
 
   .form-container input {

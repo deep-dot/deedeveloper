@@ -95,7 +95,7 @@ function SignUp({ quoteFormData }) {
     const fullMessage = `${message}\n\nHi,\nI am ${name}.\nQuote Form Data:\n${quoteFormDataString}`;
 
     const senddatatoserver = { name, email, verificationCode: inputVerificationCode, message: fullMessage, formId: 'contact-form-reactend' }
-    console.log('senddatatoserver==', senddatatoserver);
+  //  console.log('senddatatoserver==', senddatatoserver);
     try {
       const response = await fetch('/UserEmail', {
         method: 'POST',

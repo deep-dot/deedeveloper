@@ -231,8 +231,8 @@ header {
 .nav_bar.active .bar::after {
   transform: translateY(0) rotate(45deg);
 }
-
-  .overlay {
+/* 
+  .nav_bar .overlay {
     display: block;
     position: fixed;
     top: 0;
@@ -248,7 +248,7 @@ header {
   .nav_bar.active .overlay {
     pointer-events: all;
     opacity: 1;
-  }
+  } */
 }
 
 @media screen and (max-width: 480px) {

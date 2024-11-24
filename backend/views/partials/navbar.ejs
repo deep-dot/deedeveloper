@@ -123,7 +123,7 @@
     blog_menu = document.querySelector(".blog-menu");
     currentLocation = window.location.pathname;
     menuItems = document.querySelectorAll("nav > ul > li > a");
-    overlay = document.querySelector('.overlay');
+    // overlay = document.querySelector('.overlay');
   }
   declare();
 
@@ -177,9 +177,9 @@
       hamburger_menu.addEventListener("click", () => {
         navBar.classList.toggle('active');
       });
-      overlay.addEventListener('click', function () {
-        navBar.classList.remove('active');
-      });
+      // overlay.addEventListener('click', function () {
+      //   navBar.classList.remove('active');
+      // });
     } else {
       console.log("hamburger_menu is null");
     }

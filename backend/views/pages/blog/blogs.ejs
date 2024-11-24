@@ -32,11 +32,11 @@
           </p>
           <% } %>
             <div class="blog-container">
-              <input type="hidden" blogs-length="<%= blogposts.length %>">
+              <input id="" type="hidden" blogs-length="<%= blogposts.length %>">
               <% for(var i=0; i < blogposts.length; i++) {%>
                 <div class="card-container">
                   <a href="/post/<%= blogposts[i]._id %>" class="blog-card">
-                    <img src="<%= blogposts[i].image %>" alt="Blog Photo">
+                    <img src="<%= blogposts[i].image %>" alt=" ">
                     <h4>
                       <%= blogposts[i].title %>
                     </h4>
@@ -50,18 +50,6 @@
             <button id="see-more-button">Show More</button>
 </section>
 
-<!-- <script>
-  window.addEventListener('scroll', function () {
-    const icon = document.getElementById('scroll-icon');
-    const originalPosition = icon.offsetTop; // Initial position of the icon
-
-    if (window.scrollY > originalPosition) {
-      icon.classList.add('fixed');
-    } else {
-      icon.classList.remove('fixed');
-    }
-  });
-</script> -->
 <script>
   $(document).ready(function () {
     const cards = document.querySelectorAll('.card-container');
