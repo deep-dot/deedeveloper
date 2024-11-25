@@ -1,4 +1,51 @@
 
+/* @keyframes  */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px); /* Start slightly below */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Settle into place */
+  }
+}
+
+
+@keyframes grow {
+  0% {
+    transform: scale(0); /* Start very small */
+    opacity: 0; /* Optional: Start invisible */
+  }
+  50% {
+    transform: scale(1.1); /* Slightly larger than full size for a bounce effect */
+    opacity: 1; /* Fade in during the animation */
+  }
+  100% {
+    transform: scale(1); /* Settle at the normal size */
+  }
+}
+
+
+@keyframes slideAndVibrate {
+  0% {
+    transform: translateX(-100vw); 
+  }
+  70% {
+    transform: translateX(0); 
+  }
+  80% {
+    transform: translateX(-5px); 
+  }
+  90% {
+    transform: translateX(5px); 
+  }
+  100% {
+    transform: translateX(0); 
+  }
+}
+
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
 :root {

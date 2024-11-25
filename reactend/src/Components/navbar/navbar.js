@@ -87,8 +87,8 @@ console.log("handleDarkModeToggle:", handleDarkModeToggle);
 
           {!isAuthenticated ? (
             <div className="navRego">
-              <a className="#loggedIn" href="/auth/login"> <FontAwesomeIcon icon={faSignInAlt} /> Sign In</a>
-              <a className="#reg" href="/auth/newuser"> <FontAwesomeIcon icon={faUserPlus} /> Sign Up</a>
+              {/* <a className="#loggedIn" href="/auth/login"> <FontAwesomeIcon icon={faSignInAlt} /> Sign In</a>
+              <a className="#reg" href="/auth/newuser"> <FontAwesomeIcon icon={faUserPlus} /> Sign Up</a> */}
             </div>
           ) : (
             <div className="navRego">

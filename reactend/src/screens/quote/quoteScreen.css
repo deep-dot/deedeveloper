@@ -1,6 +1,6 @@
 
  .quoteSection {
-    padding: var(--navheight) 5px;
+  padding: calc(var(--navheight)/2) 5px;
     max-width: 1000px;
     width: 100%;
     margin: auto 
@@ -90,6 +90,9 @@
   
   @media (max-width: 768px) {
 
+ .quoteSection {
+  padding: calc(var(--navheight)/4) 5px;
+  }
     .signUpContainer {
       width: 80%;
     }

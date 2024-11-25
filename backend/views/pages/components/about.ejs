@@ -1,17 +1,32 @@
 <section class="A hidden" id="aboutSection">
-  <div class="about">
+  <div class="about animate-on-scroll">
     <picture>
-      <source media="(min-width:768px)" srcset="../img/hello.svg" loading="lazy">
-      <source media="(min-width:480px)" srcset="../img/hello.svg" loading="lazy">
-      <img src="../img/hello.svg" alt="About Me" loading="lazy">
+      <!-- <source media="(min-width:768px)" srcset="../img/hello.svg" loading="lazy">
+      <source media="(min-width:480px)" srcset="../img/hello.svg" loading="lazy"> -->
+      <!-- <img src="../img/hello.svg" alt=" " loading="lazy"> -->
+      <img src="../img/profile.png" alt=" " loading="lazy">
     </picture>
     <div>
-      <h1>About me</h1>
-      <h2>Dee Dhillon - Freelance Full Stack Developer and Consultant</h2>
-      <p>
-        <!-- As a professional software developer, I create full stack applications for both mobile and desktop to help your
-        business grow. -->
-        <br>Wanna know more about me? <span> 👉 <a href="/portfolio"> Click here</a></span>
+      <div class="shortContent">
+        <h1>Hi, my name is Dee.</h1>
+        <h2>I am freelance Full Stack Developer and Consultant</h2>
+        <p>
+          <!-- <br><span> 👉 <a href="/portfolio"> more about me</a></span> -->
+          <br><span> 👉 <a href="javascript:void(0)" class="read-more-toggle" onclick="toggleReadMoreOrLess(this)">More
+              About
+              Me</a></span>
+        </p>
+      </div>
+      <p class="fullContent hidden">
+        Hello, my name is Dee. I am a Developer & Consultant from Melbourne, Australia.<br>
+        I specilize in website and cross platform application design and development.
+        with over 4 years of experience. As a professional software developer, I create full stack
+        applications for both mobile and desktop to help your business grow.
+        My services aim to delivering tailored solutions to meet your specific needs and achieve your
+        business goals.<br>
+        You can send me a message <a href="#contactSection"> 👉 here</a>
+        <br><br>
+        <a href="javascript:void(0)" class="read-more-toggle" onclick="toggleReadMoreOrLess(this)">Read Less</a>
       </p>
       <div class="about-me-social-icons">
         <!-- <a href="https://www.facebook.com/">
@@ -21,7 +36,7 @@
           <i class="fab fa-linkedin"></i>
         </a>
         <a href="https://github.com/deep-dot">
-          <i class="fab fa-git-alt"></i>
+          <i class="fab fa-git"></i>
         </a>
         <a href="#contactSection">
           <i class="fas fa-envelope"></i>
@@ -30,3 +45,37 @@
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, {
+      threshold: 0.1, // Adjusts how much of the element must be visible to trigger
+    });
+
+    animatedElements.forEach(el => observer.observe(el));
+  });
+
+  function toggleReadMoreOrLess(link) {
+    const shortContent = document.querySelector("#aboutSection .shortContent");
+    const fullContent = document.querySelector("#aboutSection .fullContent");
+
+    if (fullContent.classList.contains("hidden")) {
+      shortContent.classList.add("hidden");
+      fullContent.classList.remove("hidden");
+      // link.textContent = "Read Less";
+    } else {
+      shortContent.classList.remove("hidden");
+      fullContent.classList.add("hidden");
+      // link.textContent = "More About Me ";
+    }
+  }
+
+</script>

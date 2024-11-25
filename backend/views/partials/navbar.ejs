@@ -36,25 +36,18 @@
         <i class="fas fa-phone"></i> Contact
       </a>
     
-      <!-- Authentication Links -->
       <div class="navRego">
         <% if (!isAuthenticated) { %>
-          <!-- Sign In -->
-          <a id="loggedIn" href="/auth/login">
+          <!-- <a id="loggedIn" href="/auth/login">
             <i class="fas fa-sign-in-alt"></i> Sign In
           </a>
-    
-          <!-- Sign Up -->
           <a id="reg" href="/auth/newuser">
             <i class="fas fa-user-plus"></i> Sign Up
-          </a>
+          </a> -->
         <% } else { %>
-          <!-- Sign Out -->
           <a id="loggedOut" href="/auth/logout">
             <i class="fas fa-sign-out-alt"></i> Sign Out
           </a>
-    
-          <!-- User Profile -->
           <a class="profileImage" href="/auth/profile">
             <img
               src="<%= user && user.image ? user.image : '/img/person.png' %>"
