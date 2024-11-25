@@ -4,6 +4,7 @@ const { ensureAuth, ensureGuest, checkSessionExpiration } = require('../middlewa
 
 const homeController = require('../controllers/home')
 const whyme = require('../controllers/whyme');
+const hireme = require('../controllers/hireme');
 const portfolioController = require('../controllers/portfolio')
 const newPostController = require('../controllers/blog/newPost')
 const storePostController = require('../controllers/blog/storePost')
@@ -55,6 +56,7 @@ const upload = multer({
 
 router.get('/', homeController);
 router.get('/whyme', whyme);
+router.get('/hireme', hireme);
 // router.get('/portfolio', portfolioController);
 
 router.get('/blogs', blogsController);
