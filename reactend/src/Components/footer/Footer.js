@@ -79,7 +79,7 @@ const Footer = () => {
           </a>
         </div>
         <div class="cell">
-          <h3>Contact</h3>
+          <h3>Hire Me</h3>
           <a href="/#contactSection">
             <i class="fa fa-envelope"></i> Drop A Thought
           </a>

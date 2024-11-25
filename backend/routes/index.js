@@ -3,6 +3,7 @@ const router = express.Router()
 const { ensureAuth, ensureGuest, checkSessionExpiration } = require('../middleware/auth')
 
 const homeController = require('../controllers/home')
+const whyme = require('../controllers/whyme');
 const portfolioController = require('../controllers/portfolio')
 const newPostController = require('../controllers/blog/newPost')
 const storePostController = require('../controllers/blog/storePost')
@@ -53,8 +54,8 @@ const upload = multer({
 }).single('image');
 
 router.get('/', homeController);
-// router.get('/portfolio',ensureAuth, portfolioController);
-router.get('/portfolio', portfolioController);
+router.get('/whyme', whyme);
+// router.get('/portfolio', portfolioController);
 
 router.get('/blogs', blogsController);
 router.post('/searchPost', searchPostController);

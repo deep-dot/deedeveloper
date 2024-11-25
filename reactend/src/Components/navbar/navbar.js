@@ -83,7 +83,7 @@ console.log("handleDarkModeToggle:", handleDarkModeToggle);
             <a href="/blogs"> <FontAwesomeIcon icon={faBriefcase} /> My Work</a>
             <a href="/#servicesSection"> <FontAwesomeIcon icon={faCogs} /> Services</a>
           </li>
-          <a href="/#contactSection"> <FontAwesomeIcon icon={faPhone} /> Contact</a>
+          <a href="/#contactSection"> <FontAwesomeIcon icon={faPhone} /> Hire Me</a>
 
           {!isAuthenticated ? (
             <div className="navRego">

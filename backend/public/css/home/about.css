@@ -69,9 +69,10 @@
 
   .about-me-social-icons {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;          
-    gap: 20px;     
+    gap: 40px;    
+    margin-top: 20px; 
   }
 
   .about-me-social-icons i {

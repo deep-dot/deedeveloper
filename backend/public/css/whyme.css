@@ -1,0 +1,546 @@
+/* services */
+
+.S {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0.5rem;
+  }
+  
+  .services {
+   display: flex;
+   justify-content: space-around;
+    align-items: center;  
+  }
+  
+  .services-div1 {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    width: 100%;
+  }
+  
+  .services-div1 ul li {
+    margin-bottom: 20px;
+    line-height: 1.5;
+    color: var(--textColor);
+  }
+  
+  .S .services .services-div1 .contact-button,
+  .contact-me-box .contact-button {
+    align-self: flex-start;
+    background: var(--background);
+    font: 500 clamp(10px, 4vw, 16px) 'Roboto';
+    padding: 5px;
+    text-transform: uppercase;
+    user-select: none;
+    border-radius: 5px;
+    color: var(--text);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .services-div1 .contact-button:hover {
+    background: var(--hoverColor);
+  }
+  
+  .services-div1 .services-icons {
+    display: inline-flex;
+    gap: 50px;  
+  }
+  
+  .services-div1 .services-icons i {
+    font-size: 4rem;
+    opacity: 0.3;
+    color: var(--textColor);
+    line-height: 1.5;
+  }
+  
+  .services img {
+    width: 100%;
+  }
+  
+  .contact-me-box {
+    /* background: var(--backgroundwithopacity); */
+    max-width: 850px;
+    border-radius: 5px;
+    /* border: solid var(--background) 1px; */
+    box-shadow: var(--boxshadowwithopacity);
+    margin: 8rem 0;
+    color: var(--textColor);
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .contact-me-box .contact-button {
+    background: var(--background);
+    color: var(--text);
+    font-size: clamp(12px, 2vw, 16px);
+    padding: 4px;
+  }
+  
+  .contact-me-box .contact-button:hover {
+    background: var(--hoverColor);
+  }
+  
+  .skill {
+    display: block;
+  }
+  
+  .skill-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 20px;
+    width: 100%;
+    min-height: 40vh;
+  }
+  
+  .skill-box .child {
+    border: 1px dotted var(--background);
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+  }
+  
+  .skill-box .sub-child h3,
+  .skill-box .sub-child p {
+    text-align: left;
+  }
+  
+
+@media screen and (max-width: 768px) {
+  
+    .services {
+     flex-direction: column;
+    }
+  
+    .services-div1 {
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .skill-box {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+    }
+
+    .services-div1 .services-icons i {
+      font-size: 3rem; 
+    }
+  
+    .contact-me-box .sub-contact-me-box{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+    }
+  
+    .contact-me-box .sub-contact-me-box h2,
+    .contact-me-box .sub-contact-me-box p {      
+      text-align: center;
+    } 
+  
+    .contact-me-box .contact-button {
+      padding: 4.5px 20px;
+      align-self: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .S .services .services-div1 .contact-button,
+    .contact-me-box .sub-contact-me-box .contact-button {      
+      align-self: center;
+    }
+  
+    .services-div1 .services-icons i {
+      font-size: 2rem; 
+    }
+    .skill-box {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(6, 1fr);
+    }
+  
+}
+
+
+
+
+
+
+
+.testimonial {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+  }
+  
+  #reviewCard {
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+  }
+  
+  #reviewCard .card-container {
+    gap: 50px;
+    min-height: 200px;
+    align-self:center ;
+  }
+  
+  #reviewCard .card-container .card {
+    display: block;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+    height: auto;  
+    color: var(--textColor);
+  }
+  
+  #reviewCard .card-container .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    border: 20px solid transparent;
+    border-top: 5px solid var(--background);
+    border-right: 20px solid var(--background);
+  }
+  
+  #reviewCard .card-container .card.active::before {
+    border-top: 5px solid #bd4033;
+    border-right: 10px solid #bd4033;
+  }
+  
+  
+  #reviewCard .card-container .cardRow {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    max-height: 85px;
+  }
+  
+  #reviewCard .card-container .cardRow img {
+    margin-right: 20px;
+    height: 80px;
+    width: 100px;
+    border-radius: 50%;
+  }
+  
+  #reviewCard .card-container .cardRow .stars {
+    margin-left: auto;
+    margin-right: 20px;
+  }
+  
+  #reviewCard .card-container .stars {
+    display: flex;
+    list-style: none;
+    color: grey;
+  }
+
+  #reviewCard .card-container .star {
+    margin-left: 7px;
+  }
+  
+  #reviewCard .card-container .orange {
+    color: orange;
+  }
+  
+  #reviewCard .card-container .clicked {
+    color: orange;
+  }
+  
+  #reviewCard .card-container .cardbtns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 1rem;
+  }
+  
+  #reviewCard .card-container .like {
+    color: blue;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  
+  #reviewCard .card-container .unlike {
+    color: green;
+    font-size: 15px;
+    cursor: pointer;
+  }
+/*   
+  #reviewCard .card-container .btnn {
+    font-size: clamp(12px, 2vw, 18px);
+    cursor: pointer;
+  } */
+  
+  /* .card .morelessmore { */
+
+  .card-container .contents a {
+    
+    background-color: var(--background);
+    color: var(--text);
+    font-size: clamp(8px, 2vw, 14px);
+    border-radius: 5px;
+    padding: 4px;
+  }
+
+  .card-container .contents .hidden {
+    display: none;
+  }
+  
+  #reviewCard .card-container #see-more-button {
+    display: none;
+    margin: auto;
+    padding: 5px;
+    background-color: var(--backgroundColor);
+    color: var(--text);
+    border: none;
+    border-radius: 5px;
+    font-size: clamp(12px, 4vw, 16px);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  #reviewCard .card-container #see-more-button:hover {
+    background-color: var(--hoverColor);
+  }
+  
+   #write-review-button {
+    background-color: var(--background);
+    display: block;
+    margin: auto;
+    padding: 5px;
+    color: var(--text);
+    border: none;
+    border-radius: 5px;
+    font-size: clamp(10px, 1vw, 16px);
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+   #write-review-button:hover {
+    background-color: var(--hoverColor);
+  }
+  
+   #write-review-button i {
+    display: none;
+  }
+  
+   .Modal-content {    
+    background: #2a4657;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0px 0px 15px 2px rgb(241, 248, 252, 0.6);
+    /* border: 1px solid #888; */
+    max-width: 700px;
+    width: 95%;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+   .Modal-content .close {
+    position: relative;
+    font-size: clamp(14px, 2vw, 20px);
+    font-weight: bold;
+    color:  #f1f8fc;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+   .close:hover {
+    color: rgb(91, 172, 223);
+  }
+  
+   .Modal-content form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+   .Modal-content label {
+    margin-top: 10px;
+    font-size: clamp(16px, 2vw, 28px);
+    display: block;
+  }
+  
+   .Modal-content select,
+   .Modal-content textarea {
+    margin-top: 5px;
+    font-size: clamp(14px, 2vw, 22px);
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #f1f8fc;
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+  }
+  
+   .Modal-content button {
+    margin-top: 10px;
+    font-size: clamp(10px, 2vw, 16px);
+    background-color: #f1f8fc;
+    color: #f1f8fc;;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+   .Modal-content button:hover {
+    background-color: rgb(91, 172, 223);
+  }
+  
+  
+   .Modal-content ul {
+    display: flex;
+    list-style: none;
+    color: gray;
+  }
+  
+   .Modal-content ul li i {
+    font-size: clamp(12px, 1vw, 16px);
+    line-height: 3.5;
+  }
+  
+   .Modal-content ul li {
+    margin-left: 7px;
+  }
+  
+  .orange {
+    color: orange;
+  }
+  
+  .clicked {
+    color: orange;
+  }
+  
+  .Modal-content .Output {
+    color: gray;
+  }
+
+  @media screen and (max-width: 768px) {
+  
+    .testimonial #write-review-button {
+      padding: 5px 10px;
+    }
+  
+    #reviewCard .card-container .card {
+      padding: 10px;
+    }
+  
+    blockquote::before {
+      top: -20px;
+    }
+  
+    #reviewCard .card-container #write-review-button span {
+      display: none;
+    }
+  
+    #reviewCard .card-container #write-review-button i {
+      display: block;
+    }
+  
+    button[type="submit"] {
+      background-color: #f6d365;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+    }
+  }  
+
+  @media screen and (max-width: 480px) {
+
+    #reviewCard .card-container {
+      width: 100%;
+    }
+
+    #reviewCard .card-container .card {
+      width: 100%;
+      padding: 15px 5px;
+    }
+  
+    #reviewCard .card-container .cardRow .stars {
+      margin-right: 5px;
+    }
+  
+    #reviewCard .card-container .star {
+    margin-left: 4px;
+  }
+  
+  #reviewCard .card-container .cardRow img {
+      margin-right: 10px;
+      height: 60px;
+      width: 60px;    
+    }
+  
+    #reviewCard .card-container .card blockquote {
+      line-height: 1.2;
+      margin: 10px 0;
+      text-align: center;
+    }
+  
+    #reviewCard .card-container blockquote::before {
+      top: -10px;
+    }
+  
+    #reviewCard .card-container #see-more-button {
+      padding: 6px 10px;
+    }
+}
+
+/* for comments container */
+/* .comments-container {  
+  padding: 15px; 
+  max-width: 90%; 
+  width: 100%;
+  margin: auto;
+} */
+
+.comments-container .comment {
+  max-width: 500px;
+  width: 100%;
+  border-radius: 5px; 
+  border: solid var(--textColor) 1px;
+  padding: 10px; 
+  margin: 10px auto; 
+  color: var(--textColor);
+}
+
+.comments-container .comment:last-child {
+  margin-bottom: 0; 
+}
+
+.comments-container .comment-content {
+  margin-top: 5px; 
+}
+
+ .see-more-comments {
+  display: block; 
+  width: auto; 
+  padding: 5px; 
+  background-color: var(--background);
+  color: var(--text); 
+  text-align: center; 
+  border-radius: 5px; 
+  margin: 20px auto; 
+  cursor: pointer; 
+  border: none; 
+  font-size: clamp(12px, 2vw, 16px); 
+}
+
+.see-more-comments:hover {
+  background-color: var(--hoverColor);
+}
