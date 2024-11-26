@@ -10,7 +10,7 @@ const readAllController = require('../controllers/projects/readAll');
 const createController = require('../controllers/projects/create');
 const likeController = require('../controllers/projects/readProject/like');
 const readLikesController = require('../controllers/projects/readProject/readLikes');
-const readController = require('../controllers/projects/readproject');
+const readController = require('../controllers/projects/readProject/readProject');
 const deleteController = require('../controllers/projects/delete');
 const editController = require('../controllers/projects/edit');
 const searchController = require('../controllers/projects/search');
@@ -61,7 +61,7 @@ router.get('/hireme', hireme);
 router.get('/readAll', readAllController);
 router.post('/search', searchController);
 router.get('/create', ensureAuth, createController)
-router.post('/like/:id', likeController);
+router.post('/like/:id', ensureAuth, likeController);
 router.get('/readLikes/:id', readLikesController);
 router.get('/project/:id',  readController);
 router.delete('/project/:id', ensureAuth, deleteController);

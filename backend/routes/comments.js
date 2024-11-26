@@ -67,7 +67,7 @@ router.delete('/deleteComment/:id', ensureAuth, async (req, res) => {
 
 
 // Create and post comments,
-router.put('/post/:id/comment', ensureAuth, async (req, res) => {
+router.put('/project/:id/comment', ensureAuth, async (req, res) => {
   console.log(req.body, req.params.id);
   const new_comment = {
     postId: req.params.id,
@@ -87,7 +87,7 @@ router.put('/post/:id/comment', ensureAuth, async (req, res) => {
 });
 
 // edit comment,
-router.put('/post/:id/commentEdit', ensureAuth, async (req, res) => {
+router.put('/project/:id/commentEdit', ensureAuth, async (req, res) => {
   //console.log(req.body.commentId, req.params.id);
   await BlogPost.updateOne({ _id: req.params.id, 'comments._id': req.body.commentId }, { $set: { 'comments.$.content': req.body.content } })
   //return res.json({success: true})
@@ -105,7 +105,7 @@ router.put('/post/:id/commentEdit', ensureAuth, async (req, res) => {
 // });
 
 // DELETE
-router.delete('/post/:id/comment', ensureAuth, async (req, res) => {
+router.delete('/project/:id/comment', ensureAuth, async (req, res) => {
   console.log(req.params.id, req.body.postId)
   await BlogPost.updateOne(
     { _id: req.body.postId },

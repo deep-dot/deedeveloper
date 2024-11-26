@@ -1,6 +1,5 @@
 <section class="hidden blogPage">
   <div class="blogMainImg">
-    <!-- <img src="/img/blog.svg" alt="Blog Image" /> -->
     <picture>
       <source srcset="/img/blog.svg" type="Blog Image">
       <img src="/img/blog.svg" title="blog.svg" alt="Blog Image" loading="lazy">
@@ -24,7 +23,7 @@
       <input id="" type="hidden" blogs-length="<%= blogposts.length %>">
       <% for(var i=0; i < blogposts.length; i++) {%>
         <div class="card-container">
-          <a href="/post/<%= blogposts[i]._id %>" class="blog-card">
+          <a href="/project/<%= blogposts[i]._id %>" class="blog-card">
             <img src="<%= blogposts[i].image %>" alt=" ">
             <h4>
               <%= blogposts[i].title %>

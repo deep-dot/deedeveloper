@@ -1,5 +1,5 @@
 <section class="main_post">
-  <%- include('./components/btnsOnPost.ejs') -%>
+  <%- include('btnsOnPost.ejs') -%>
     <div class="postDetail hidden">
       <h1>
         <%= blogpost.title %>
@@ -19,8 +19,8 @@
         <%- blogpost.post.replace(/\n/g, '<br>' ) %>
       </div>                
     </div>     
-    <%- include('./components/commentsOnPost.ejs') -%>
-    <%- include('../components/writer-detail.ejs') -%>     
+    <%- include('commentsOnPost.ejs') -%>
+    <%- include('../../components/writer-detail.ejs') -%>     
 </section>
 
 

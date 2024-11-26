@@ -1,10 +1,10 @@
 
-const BlogPost = require('../../models/BlogPost.js')
-const User = require('../../models/User.js')
+const BlogPost = require('../../../models/BlogPost.js')
+const User = require('../../../models/User.js')
 
 module.exports = async (req, res) => {
     await BlogPost.findById(req.params.id).then(post => {
-        // console.log(post)
+         console.log('like on project', post)
         if (post == null) {
             res.json({
                 "status": 'error',

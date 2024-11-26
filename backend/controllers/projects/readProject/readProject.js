@@ -1,6 +1,6 @@
 
-const BlogPost = require('../../models/BlogPost.js')
-const User = require('../../models/User.js')
+const BlogPost = require('../../../models/BlogPost.js')
+const User = require('../../../models/User.js')
 
 module.exports = async(req, res) => {
     var userid = "";
@@ -14,8 +14,8 @@ module.exports = async(req, res) => {
             userExist = true; 
             userid = req.user._id;
         }        
-        res.render('pages/blog/post.ejs', {
-            style: 'blog/post.css',
+        res.render('pages/projects/post/post.ejs', {
+            style: 'projects/post.css',
             bodyId: 'BlogPage',
             blogpost,  
             userExist,          

@@ -58,7 +58,7 @@ const ensureAuth = catchAsyncErrors(async (req, res, next) => {
   if (!token) {
     console.log('Please login to access this resource');
     req.flash('error', 'Please login to access this resource');
-    return destroySessionAndRedirect(req, res);
+    // return destroySessionAndRedirect(req, res);
   }
 
   try {
