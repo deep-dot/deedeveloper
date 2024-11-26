@@ -1,16 +1,18 @@
-
-
 <section id="#comment" class="commentsOnPost hidden">
     <p>Comments (<%= blogpost.comments.length %>)</p>
-    <form method="POST" action="/project/<%= blogpost._id %>/comment?_method=PUT">
+    <!-- <form method="POST" action="/project/<%= blogpost._id %>/comment?_method=PUT">
+        <textarea id="writeCommentOnPost" type="text" name="content" placeholder="What are your thoughts?"></textarea>
+        <button id="submitButton" type="submit">Submit</button>
+    </form> -->
+
+    <form id="commentForm" method="POST">
         <textarea id="writeCommentOnPost" type="text" name="content" placeholder="What are your thoughts?"></textarea>
         <button id="submitButton" type="submit">Submit</button>
     </form>
     <% for(var i=0; i < blogpost.comments.length; i++) {%>
         <div class="card">
             <picture>
-                <source srcset="<%= blogpost.comments[i].commenterImage %>"
-                    type="image/cloudinary">
+                <source srcset="<%= blogpost.comments[i].commenterImage %>" type="image/cloudinary">
                 <img src="<%= blogpost.comments[i].commenterImage %>" alt=" " style=" border-radius:50%" width="50px"
                     height="50%" />
                 <p>
@@ -35,6 +37,36 @@
                 <button id="showLessComments" style="display: none;">Show Less</button>
                 <% } %>
 </section>
+
+<script>
+    document.getElementById('commentForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const content = document.getElementById('writeCommentOnPost').value; // Get comment content
+        const blogPostId = '<%= blogpost._id %>'; // Get the blog post ID
+
+        axios({
+            method: 'PUT',
+            url: `/project/${blogPostId}/comment`, // Endpoint for comment submission
+            data: { content } // Send the comment data
+        }).then(res => {
+            if (res.data.status === 'success') {
+                alert('Comment submitted successfully!');
+                location.reload(); // Reload the page to show the new comment
+            } else if (res.data.status === 'error') {
+                alert(res.data.message); // Show error message
+                if (res.data.redirect) {
+                    const currentUrl = window.location.href; // Get current page URL
+                    window.location.href = res.data.redirect + `?redirect=${encodeURIComponent(currentUrl)}`;
+                }
+            }
+        }).catch(err => {
+            console.error('Error submitting comment:', err);
+            alert('An error occurred. Please try again.');
+        });
+    });
+</script>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {

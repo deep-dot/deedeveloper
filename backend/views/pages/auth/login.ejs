@@ -1,61 +1,66 @@
 <section class="loginPage">
     <div class="login_wrapper">
-    <div class="sub_login_wrapper">
-        <h1>SIGN IN</h1>
-        <div class="login_wrapper_grid">
-            <div class="facebook">
-                <a href="/auth/facebook">
-                    <i class="fab fa-facebook"></i>
-                </a>
-            </div>
-            <div class="google">
-                <a href="/auth/google">
-                    <i class="fab fa-google"></i>
-                </a>
-            </div>
-        </div>
-
-        <h2>or</h2>
-        <div class="login-error" id="loginError">
-            <p></p>
-        </div>
-        <div class="login-success" id="loginSuccess">
-            <p></p>
-        </div>
-
-        <form id="loginForm">
-            <div class="email">
-                <i class="fas fa-envelope"></i>
-                <input name="email" type="email" required id="email" placeholder="Email Address *" />
-            </div>
-            <div class="password">
-                <i class="fas fa-lock"></i>
-                <i class="fas fa-unlock" style="display: none;"></i>
-                <input name="password" id="password" type="password" required placeholder="Password" />
-            </div>
-            <div class="showPass">
-                <div>
-                    <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
-                    <label for="showPassword">Show Password</label>
+        <div class="sub_login_wrapper">
+            <h1>SIGN IN</h1>
+            <div class="login_wrapper_grid">
+                <div class="facebook">
+                    <a href="/auth/facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
                 </div>
-                <div>
-                    <input type="checkbox" id="rememberme" name="rememberme" onclick="saveUserCredentials()" />
-                    <label for="rememberme">Remember me</label>
+                <div class="google">
+                    <a href="/auth/google">
+                        <i class="fab fa-google"></i>
+                    </a>
                 </div>
-                <a class="forgotPass" href="/auth/passwordforgot">Forgot password</a>
             </div>
-            <div class="recaptcha-container">
-                <div class="g-recaptcha" data-size="compact" data-sitekey="<%= sitekey %>"></div>
+
+            <h2>or</h2>
+            <div class="login-error" id="loginError">
+                <p></p>
             </div>
-            <button class="login-btn" type="button" onclick="loginUser()">Login</button>
-            <div class="login-register">
-                <p>Don't have an account? <a href="/auth/newuser">Register</a></p>
+            <div class="login-success" id="loginSuccess">
+                <p></p>
             </div>
-        </form>
-    </div>
+
+            <form id="loginForm">
+                <div class="email">
+                    <i class="fas fa-envelope"></i>
+                    <input name="email" type="email" required id="email" placeholder="Email Address *" />
+                </div>
+                <div class="password">
+                    <i class="fas fa-lock"></i>
+                    <i class="fas fa-unlock" style="display: none;"></i>
+                    <input name="password" id="password" type="password" required placeholder="Password" />
+                </div>
+                <div class="showPass">
+                    <div>
+                        <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
+                        <label for="showPassword">Show Password</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="rememberme" name="rememberme" onclick="saveUserCredentials()" />
+                        <label for="rememberme">Remember me</label>
+                    </div>
+                    <a class="forgotPass" href="/auth/passwordforgot">Forgot password</a>
+                </div>
+                <div class="recaptcha-container">
+                    <div class="g-recaptcha" data-size="compact" data-sitekey="<%= sitekey %>"></div>
+                </div>
+                <button class="login-btn" type="button" onclick="loginUser()">Login</button>
+                <div class="login-register">
+                    <p>Don't have an account? <a href="/auth/newuser">Register</a></p>
+                </div>
+            </form>
+        </div>
 </section>
 
 <script type="text/javascript">
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectUrl = urlParams.get('redirect'); // Extract redirect URL
+    console.log('login.ejs===', redirectUrl);
+
     async function loginUser() {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
@@ -82,7 +87,7 @@
             if (result.success) {
                 document.getElementById('loginSuccess').querySelector('p').textContent = result.message;
                 setTimeout(() => {
-                    window.location.href = result.redirectUrl || '/';
+                    window.location.href = redirectUrl || '/';
                 }, 2000); // Redirect after a short delay
             } else {
                 document.getElementById('loginError').querySelector('p').textContent = result.message;
@@ -127,7 +132,7 @@
         }
     }
 
-    window.onload = function() {
+    window.onload = function () {
         const userEmail = getCookie('useremail');
         if (userEmail) {
             document.getElementById('email').value = userEmail;

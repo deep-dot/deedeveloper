@@ -9,14 +9,14 @@ module.exports = async(req, res) => {
         userid = req.user._id;
     }
     BlogPost.findById(req.params.id).lean().then(blogpost => {       
-        console.log('blogpost useid and userid==', blogpost.userid, userid);
+        console.log('readproject.js ==', blogpost.userid, userid);
         if(blogpost.userid.toString() === userid.toString()) {
             userExist = true; 
             userid = req.user._id;
         }        
         res.render('pages/projects/post/post.ejs', {
             style: 'projects/post.css',
-            bodyId: 'BlogPage',
+            bodyId: 'projectPage',
             blogpost,  
             userExist,          
             userid,
@@ -26,6 +26,4 @@ module.exports = async(req, res) => {
     }).catch((err) => {
         console.log(err.message)
     });
-
-
 }

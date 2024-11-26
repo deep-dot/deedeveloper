@@ -3,8 +3,11 @@ const BlogPost = require('../../../models/BlogPost.js')
 const User = require('../../../models/User.js')
 
 module.exports = async (req, res) => {
+    if (!req.isAuthenticated()) { // Check if the user is logged in
+        return res.json({ status: 'error', message: 'Please login to access this resource', redirect: '/auth/login' });
+    }
     await BlogPost.findById(req.params.id).then(post => {
-         console.log('like on project', post)
+      //   console.log('like on project', post)
         if (post == null) {
             res.json({
                 "status": 'error',

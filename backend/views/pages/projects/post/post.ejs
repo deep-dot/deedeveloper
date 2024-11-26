@@ -1,4 +1,4 @@
-<section class="main_post">
+<section class="main_post" id="projectPage">
   <%- include('btnsOnPost.ejs') -%>
     <div class="postDetail hidden">
       <h1>
@@ -23,66 +23,7 @@
     <%- include('../../components/writer-detail.ejs') -%>     
 </section>
 
-
-
-<script>
-  var postCard = document.getElementById('postCard')
-  var id = postCard.getAttribute('blog-post-id');
-  //console.log('id===', id);
-  axios.get('/readLikes/' + id).then(res => {
-    // console.log("e=====", res.data.post)
-    var User = res.data.user;
-    var post = res.data.post;
-
-    var likers = post.likers;
-    // console.log('likers===', likers);
-    var isLiked = false;
-    for (var j = 0; j < post.likers.length; j++) {
-      if (post.likers[j].userid == User._id) {
-        isLiked = true;
-        break;
-      }
-    }
-    //console.log('isLiked', isLiked);
-    var className = "";
-    if (isLiked) {
-      className = "like";
-    } else {
-      className = "unlike";
-    }
-    var html = ''
-    html += '<span class="' + className + ' " onclick="toggleLikePost(this)" id="' + post._id + '">'
-    html += '<i class=" mr-1 fa fa-thumbs-up"></i>'
-    html += '<ins>' + post.likers.length + '</ins>'
-    html += '</span>'
-    //  console.log(html)
-    document.getElementById('postCard').innerHTML = html;
-  });
-</script>
-<script>
-  function toggleLikePost(self) {
-    //  console.log(self.id);
-    axios.post('/like/' + self.id).then(res => {
-      //    console.log(res.data)
-      if (res.data.status == 'success') {
-        self.className = "like";
-        var likes = parseInt(self.querySelector("ins").innerHTML);
-        likes++;
-        self.querySelector("ins").innerHTML = likes;
-      }
-      if (res.data.status == 'unliked') {
-        self.className = "unlike";
-        var likes = parseInt(self.querySelector("ins").innerHTML);
-        likes--;
-        self.querySelector("ins").innerHTML = likes;
-      }
-      if (res.data.status == 'error') {
-        //alert(res.message);
-      }
-    });
-  }
-</script>
-
+<!-- 
 <script>
   const section = document.querySelector('.showPost .commentsOnPost');
   const sectionPosition = section.offsetTop;
@@ -105,4 +46,4 @@
       }
     }
   });
-</script>
+</script> -->
