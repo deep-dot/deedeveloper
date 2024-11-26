@@ -3,20 +3,6 @@ const path = require('path');
 const cloudinary = require("cloudinary").v2;
 
 module.exports = async (req, res) => {
-  // console.log("req.file=",req.file, loggedIn);
-  // if (req.body.post === "" || req.body.post === undefined || !req.body.post || req.body.post == null) {
-  //   //return res.json({success: 'write message'});
-  //   error = `Please write post`;
-  //   req.flash('error', error);
-  //   return res.redirect('/posts/new');
-  // }
-  // if (req.file === "" || req.file === undefined || !req.file || req.file == null) {
-  //   //return res.json({success: 'select image'});
-  //   error = `Please select image`;
-  //   req.flash('error', error);
-  //   return res.redirect('/posts/new');
-  // }
-  //var path = "/" + req.file.path.split('/').slice(1).join('/');
   var path = '';
   if (req.file) {
      path = req.file.path;
@@ -33,12 +19,12 @@ module.exports = async (req, res) => {
     //return res.json({success: 'created successfully'});
     success = `Post has been created successfully`;
     req.flash('success', success);
-    return res.redirect('/blogs');
+    return res.redirect('/readAll');
   } else {
     //return res.json({error: err});
     await cloudinary.uploader.destroy(req.file.filename);
     error = `Post unsuccessful`;
     req.flash('error', error);
-    return res.redirect('/posts/new');
+    return res.redirect('/create');
   }
 }

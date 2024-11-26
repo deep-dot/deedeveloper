@@ -17,37 +17,25 @@
     </a>
   </div>
 
-  <link rel="stylesheet" href="/css/home/why-me.css">
-  <%- include('../components/why-me/projects/projects') %>
+  <link rel="stylesheet" href="/css/mywork.css">
+  <%- include('./components/mywork') %>
 
-
-    <% if(error) { %>
-      <p style="text-align: center; font-size:12px; color:red">
-        <%= error %>
-      </p>
-      <% } %>
-        <% if(success) { %>
-          <p style="text-align: center; font-size:12px; color:green">
-            <%= success %>
-          </p>
-          <% } %>
-            <div class="blog-container">
-              <input id="" type="hidden" blogs-length="<%= blogposts.length %>">
-              <% for(var i=0; i < blogposts.length; i++) {%>
-                <div class="card-container">
-                  <a href="/post/<%= blogposts[i]._id %>" class="blog-card">
-                    <img src="<%= blogposts[i].image %>" alt=" ">
-                    <h4>
-                      <%= blogposts[i].title %>
-                    </h4>
-                    <h6>Posted <%= blogposts[0].createdAt.toDateString() %> by <%= blogposts[i].username %>
-                    </h6>
-                  </a>
-                </div>
-                <% } %>
-            </div>
-            <!-- <a id="see-more-button"></a> -->
-            <button id="see-more-button">Show More</button>
+    <div class="blog-container">
+      <input id="" type="hidden" blogs-length="<%= blogposts.length %>">
+      <% for(var i=0; i < blogposts.length; i++) {%>
+        <div class="card-container">
+          <a href="/post/<%= blogposts[i]._id %>" class="blog-card">
+            <img src="<%= blogposts[i].image %>" alt=" ">
+            <h4>
+              <%= blogposts[i].title %>
+            </h4>
+            <h6>Posted <%= blogposts[0].createdAt.toDateString() %> by <%= blogposts[i].username %>
+            </h6>
+          </a>
+        </div>
+        <% } %>
+    </div>
+    <button id="see-more-button">Show More</button>
 </section>
 
 <script>
@@ -75,12 +63,9 @@
         currentLimit = totalCards; // or currentLimit += 3; for a fixed increment
         this.textContent = "Show Less";
       } else {
-        // Show less: reset to initial limit
         currentLimit = initialLimit;
         this.textContent = "Show More";
       }
-
-      // Update visibility of cards based on the current limit
       updateCardsVisibility();
     });
   });

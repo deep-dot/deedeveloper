@@ -14,9 +14,9 @@ module.exports = async (req, res) => {
             userExist = true;
         } 
         if (searchedpost) {
-            console.log('searchpostId===', searchedpost._id);
-            res.render('pages/blog/post.ejs', {
-                style: 'blog/post.css',
+           // console.log('searchpostId===', searchedpost._id);
+            res.render('pages/projects/post/post.ejs', {
+                style: 'projects/post.css',
                 bodyId: 'SearchPost',
                 blogpost: searchedpost,
                 user,
@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
         } else {
             error = `Sorry, Blog does not exist under this title.`;
             req.flash('error', error);
-            return res.redirect('/blogs');
+            return res.redirect('/projects');
         }
     }).catch(err => {
         console.log(err.message)

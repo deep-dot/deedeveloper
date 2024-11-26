@@ -30,7 +30,7 @@ router.get('/review/:id/comment', ensureAuth, async (req, res) => {
   try {
     console.log('comment under review id===', req.params.id);
     const review = await Review.findById(req.params.id).lean();
-    res.render('pages/components/why-me/testimonial/review_comments', {
+    res.render('pages/components/review_comments', {
       review: review,
       style: 'review_comments.css',
       bodyId: 'review_comments',

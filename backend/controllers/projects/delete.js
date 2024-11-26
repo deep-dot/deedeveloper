@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
   BlogPost.findById(req.params.id, (err, post) => {    
       if (post.userid.toString().trim() === req.user._id.toString().trim()) {
       BlogPost.deleteOne(post).then(() => {
-        return res.redirect('/blogs');
+        return res.redirect('/readAll');
       });
     } else {      
       error = `Sorry, this post does not belong to you.`;

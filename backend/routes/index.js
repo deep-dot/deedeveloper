@@ -1,26 +1,26 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router()
-const { ensureAuth, ensureGuest, checkSessionExpiration } = require('../middleware/auth')
+const { ensureAuth, ensureGuest, checkSessionExpiration } = require('../middleware/auth');
 
-const homeController = require('../controllers/home')
+const homeController = require('../controllers/home'); 
 const whyme = require('../controllers/whyme');
 const hireme = require('../controllers/hireme');
-const portfolioController = require('../controllers/portfolio')
-const newPostController = require('../controllers/blog/newPost')
-const storePostController = require('../controllers/blog/storePost')
-const toggleLikePostController = require('../controllers/blog/likePost')
-const getPostLikesController = require('../controllers/blog/getPostLikes')
-const blogsController = require('../controllers/blog/blogs')
-const getPostController = require('../controllers/blog/getPost')
-const deletepostController = require('../controllers/blog/deletePost')
-const editpostController = require('../controllers/blog/editPost')
-const updatePostController = require('../controllers/blog/updatePost')
-const searchPostController = require('../controllers/blog/searchPost')
-const processController = require('../controllers/process')
-const privacyPostController = require('../controllers/privacy')
-const faqPostController = require('../controllers/faq')
-const projectDetail = require('../controllers/projects/project-detail');
+
+const readAllController = require('../controllers/projects/readAll');
+const createController = require('../controllers/projects/create');
+const likeController = require('../controllers/projects/readProject/like');
+const readLikesController = require('../controllers/projects/readProject/readLikes');
+const readController = require('../controllers/projects/readproject');
+const deleteController = require('../controllers/projects/delete');
+const editController = require('../controllers/projects/edit');
+const searchController = require('../controllers/projects/search');
+
+const processController = require('../controllers/process');
+const privacyController = require('../controllers/privacy');
+const faqController = require('../controllers/faq');
 const sitemap = require('../controllers/sitemap');
+
+const projectDetail = require('../controllers/project-detail');
 
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const cloudinary = require("cloudinary").v2;
@@ -57,22 +57,19 @@ const upload = multer({
 router.get('/', homeController);
 router.get('/whyme', whyme);
 router.get('/hireme', hireme);
-// router.get('/portfolio', portfolioController);
 
-router.get('/blogs', blogsController);
-router.post('/searchPost', searchPostController);
-router.get('/posts/new', ensureAuth, newPostController)
-router.post('/posts/store', upload, storePostController);
-router.post('/toggleLikePost/:id', toggleLikePostController);
-router.get('/getPostLikes/:id', getPostLikesController);
-router.get('/post/:id',  getPostController);
-router.delete('/post/:id', ensureAuth, deletepostController);
-router.get('/post/:id/edit',ensureAuth, editpostController);
-router.put('/post/:id', ensureAuth, upload, updatePostController);
+router.get('/readAll', readAllController);
+router.post('/search', searchController);
+router.get('/create', ensureAuth, createController)
+router.post('/like/:id', likeController);
+router.get('/readLikes/:id', readLikesController);
+router.get('/project/:id',  readController);
+router.delete('/project/:id', ensureAuth, deleteController);
+router.get('/project/:id/edit',ensureAuth,upload, editController);
 
-router.get('/privacy', privacyPostController);
+router.get('/privacy', privacyController);
 router.get('/process', processController);
-router.get('/faq', faqPostController);
+router.get('/faq', faqController);
 router.get('/sitemap', sitemap);
 
 router.get('/project-detail', projectDetail);

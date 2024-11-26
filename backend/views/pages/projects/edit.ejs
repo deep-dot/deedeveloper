@@ -1,7 +1,7 @@
 
 <section class="edit-post hidden">
     <p>Edit Post</p>
-    <form method="POST" action="/post/<%- blogpost._id %>?_method=PUT" enctype="multipart/form-data">
+    <form method="POST" action="/project/<%- blogpost._id %>?_method=PUT" enctype="multipart/form-data">
         <input type="text" name="title" id="title" value="<%- blogpost.title %>" placeholder="Title" />
         <textarea id="summernote" name="post"><%- blogpost.post %></textarea>
         <img src="<%- blogpost.image %>" alt="Post image" />

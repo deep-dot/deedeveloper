@@ -29,7 +29,7 @@
   var postCard = document.getElementById('postCard')
   var id = postCard.getAttribute('blog-post-id');
   //console.log('id===', id);
-  axios.get('/getPostLikes/' + id).then(res => {
+  axios.get('/readLikes/' + id).then(res => {
     // console.log("e=====", res.data.post)
     var User = res.data.user;
     var post = res.data.post;
@@ -62,7 +62,7 @@
 <script>
   function toggleLikePost(self) {
     //  console.log(self.id);
-    axios.post('/toggleLikePost/' + self.id).then(res => {
+    axios.post('/like/' + self.id).then(res => {
       //    console.log(res.data)
       if (res.data.status == 'success') {
         self.className = "like";

@@ -6,10 +6,10 @@
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
         </a>
         <% if(userExist) { %>
-            <a class="" href="/post/<%= blogpost._id %>/edit">
+            <a class="" href="/project/<%= blogpost._id %>/edit">
                 <i class="fa fa-edit" aria-hidden="true"></i>
             </a>
-            <form method="POST" action="/post/<%= blogpost._id %>?_method=DELETE">
+            <form method="POST" action="/project/<%= blogpost._id %>?_method=DELETE">
                 <button type="submit" class="btn">
                     <i class="fa fa-trash" aria-hidden="true"></i>
                 </button>
