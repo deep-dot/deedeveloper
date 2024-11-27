@@ -1,14 +1,14 @@
 <section id="#comment" class="commentsOnPost hidden">
     <p>Comments (<%= blogpost.comments.length %>)</p>
-    <!-- <form method="POST" action="/project/<%= blogpost._id %>/comment?_method=PUT">
-        <textarea id="writeCommentOnPost" type="text" name="content" placeholder="What are your thoughts?"></textarea>
-        <button id="submitButton" type="submit">Submit</button>
-    </form> -->
-
-    <form id="commentForm" method="POST">
+    <form method="POST" action="/project/<%= blogpost._id %>/comment?_method=PUT">
         <textarea id="writeCommentOnPost" type="text" name="content" placeholder="What are your thoughts?"></textarea>
         <button id="submitButton" type="submit">Submit</button>
     </form>
+
+    <!-- <form id="commentForm" method="POST">
+        <textarea id="writeCommentOnPost" type="text" name="content" placeholder="What are your thoughts?"></textarea>
+        <button id="submitButton" type="submit">Submit</button>
+    </form> -->
     <% for(var i=0; i < blogpost.comments.length; i++) {%>
         <div class="card">
             <picture>
@@ -37,7 +37,7 @@
                 <button id="showLessComments" style="display: none;">Show Less</button>
                 <% } %>
 </section>
-
+<!-- 
 <script>
     document.getElementById('commentForm').addEventListener('submit', function (event) {
         event.preventDefault(); // Prevent the default form submission
@@ -47,7 +47,8 @@
 
         axios({
             method: 'PUT',
-            url: `/project/${blogPostId}/comment`, // Endpoint for comment submission
+            // url: `/project/${blogPostId}/comment`, // Endpoint for comment submission
+            postId: blogPostId, // Endpoint for comment submission
             data: { content } // Send the comment data
         }).then(res => {
             if (res.data.status === 'success') {
@@ -65,7 +66,7 @@
             alert('An error occurred. Please try again.');
         });
     });
-</script>
+</script> -->
 
 
 <script>

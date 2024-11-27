@@ -294,10 +294,16 @@ router.post('/login', async (req, res) => {
     user.status = "active";
     user.token = undefined;
     user.tokenExpires = undefined;
-    await user.save();
-    delete req.session.returnTo;
 
-    res.json({ success: true, message: 'Logged in successfully.', redirectUrl: req.session.returnTo || '/' });
+    await user.save();
+
+    console.log('login route in auth.js req.session.returnTo == ', req.session.returnTo);
+     // Handle redirect back to the stored URL or default route
+     const redirectUrl = req.session.returnTo || '/';
+     delete req.session.returnTo; // Clear the returnTo URL from the session
+ 
+     return res.json({ success: true, message: 'Logged in successfully.', redirectUrl });
+
   } catch (err) {
     res.status(500).json({ success: false, message: 'An error occurred. Please try again.' });
   }

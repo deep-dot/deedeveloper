@@ -57,12 +57,14 @@ const ensureAuth = catchAsyncErrors(async (req, res, next) => {
 
   if (!token) {
     console.log('Please login to access this resource');
+    req.session.returnTo = req.originalUrl;
    // req.flash('error', 'Please login to access this resource');
    //destroySessionAndRedirect(req, res);
-    return res.status(401).json({
-    status: 'error',
-    message: 'Please login to access this resource'
-    });
+   return res.redirect('/auth/login');
+    // return res.status(401).json({
+    // status: 'error',
+    // message: 'Please login to access this resource'
+    // });
   }
 
   try {
@@ -95,7 +97,9 @@ const ensureAuth = catchAsyncErrors(async (req, res, next) => {
     });
 
   } catch (error) {
-    // console.error('Authentication Error:', error);
+
+    req.session.returnTo = req.originalUrl;
+
     if (error.name === 'TokenExpiredError') {
       req.flash('error', 'Your session has expired. Please log in again.');
     } else {

@@ -5,7 +5,7 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    padding: 0.5rem;
+    padding: var(--navheight);
   }
   
   .services {
@@ -31,7 +31,7 @@
   .contact-me-box .contact-button {
     align-self: flex-start;
     background: var(--background);
-    font: 500 clamp(10px, 4vw, 16px) 'Roboto';
+    font: 500 clamp(10px, 2vw, 12px) 'Roboto';
     padding: 5px;
     text-transform: uppercase;
     user-select: none;
@@ -151,6 +151,10 @@
 }
 
 @media screen and (max-width: 480px) {
+
+  .S {
+    padding-top: var(--navheight) 0;
+  }
 
     .S .services .services-div1 .contact-button,
     .contact-me-box .sub-contact-me-box .contact-button {      

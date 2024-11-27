@@ -69,7 +69,7 @@ router.get('/project/:id',  readController);
 
 router.get('/readLikes/:id', readLikesController);
 router.post('/like/:id', likeController);
-router.put('/project/:id/comment', createCommentOnProject);
+router.put('/project/:id/comment', ensureAuth, createCommentOnProject);
 router.put('/project/:id/commentEdit', editCommentOnProject);
 router.delete('/project/:id/comment', deleteCommentOnProject);
 

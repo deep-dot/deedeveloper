@@ -83,26 +83,14 @@ iframe:nth-child(2) {
   align-items: center;
 }
 
-.btns button {
-  border: none;
-}
-
-.btns .go-back,
-.btns .like,
-.btns .unlike,
-.btns .fa-edit,
-.btns .fa-trash {
-  font-size: 20px;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
+.btns .button-container .fa-trash {
+  color: red;
 }
 
 .btns .button-container .go-back,
 .btns .button-container .like,
 .btns .button-container .unlike,
-.btns .button-container .fa-edit,
-.btns .button-container .fa-trash {
+.btns .button-container .fa-edit {
   color: var(--textColor); 
 }
 

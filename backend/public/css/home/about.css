@@ -102,5 +102,10 @@
       text-align: center;
     }
     
+
+  .about-me-social-icons {
+    justify-content: center;
+  }
+
   }
   
