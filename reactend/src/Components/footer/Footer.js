@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './footer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 // const footerImageStyle = {
 //   backgroundImage: `url(${process.env.PUBLIC_URL}/images/shape1.svg)`,
@@ -44,15 +43,15 @@ const Footer = () => {
             Dee Dhillon <br />
             Freelance Software Developer & Consultant
           </h4>
-          <div>
-            <a href="https://www.facebook.com/">
-              <FontAwesomeIcon icon={['fab', 'facebook']} />
-            </a>
-            <a href="https://www.linkedin.com/">
+          <div class="social-icons">
+            <a href="https://www.linkedin.com/in/dee-dhillon-15b8b3259/" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon icon={['fab', 'linkedin']} />
             </a>
-            <a href="https://www.instagram.com/">
-              <FontAwesomeIcon icon={['fab', 'instagram']} />
+            <a href="https://github.com/deep-dot" target="_blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={['fab', 'github']} />
+            </a>
+            <a href="#contactSection">
+              <FontAwesomeIcon icon={['fas', 'envelope']} />
             </a>
           </div>
         </div>
@@ -65,18 +64,18 @@ const Footer = () => {
         </div>
         <div class="cell">
           <h3>Services</h3>
-          <a href="#">
+          <p>
             Mobile app development for IOS and Android
-          </a>
-          <a href="#">
+          </p>
+          <p>
             Website design and development
-          </a>
-          <a href="">
+          </p>
+          <p>
             Logo design
-          </a>
-          <a>
+          </p>
+          <p>
             Future maintenance
-          </a>
+          </p>
         </div>
         <div class="cell">
           <h3>Hire Me</h3>
@@ -85,11 +84,11 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <p style={{ font: "12px" }}>All rights reserved &copy; 2024</p>
+      <p style={{ font: "12px" }}>All rights reserved &copy; 2024-2025</p>
       <button
         className={`back-to-top ${isVisible ? 'visible' : ''}`}
         onClick={scrollToTop}
-      > <FontAwesomeIcon icon={faArrowUp} />
+      > <FontAwesomeIcon icon={['faArrowUp']} />
       </button>
     </footer>
   );
