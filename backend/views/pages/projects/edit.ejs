@@ -1,16 +1,27 @@
 
-<section class="edit-post hidden">
-    <p>Edit Post</p>
-    <form method="POST" action="/project/<%- blogpost._id %>?_method=PUT" enctype="multipart/form-data">
-        <input type="text" name="title" id="title" value="<%- blogpost.title %>" placeholder="Title" />
-        <textarea id="summernote" name="post"><%- blogpost.post %></textarea>
-        <img src="<%- blogpost.image %>" alt="Post image" />
-        <input type="file" id="image" name="image" placeholder="Image" />
-        <div class="button-container">
-            <button type="submit">Update</button>
-            <button type="button" onclick="window.history.back();">Cancel</button>
-        </div>        
-    </form>
+
+
+<section class="create-blog" id="editProject">
+    <div class="create-blog-img">
+        <picture>
+            <source srcset="/img/blog.svg" type="image/svg+xml">
+            <img src="/img/blog.svg" title="blog.svg" alt="Blog Image" loading="lazy">
+        </picture>
+    </div>
+    <div>
+        <h1>Update Post</h1>
+        <form method="POST" action="/project/<%- blogpost._id %>?_method=PUT" enctype="multipart/form-data">
+            <input type="text" name="title" id="title" value="<%- blogpost.title %>" placeholder="Title" />
+            <textarea id="summernote" name="post"><%- blogpost.post %></textarea>
+            <img src="<%- blogpost.image %>" alt="Post image" />
+            <input type="file" id="image" name="image" placeholder="Image" />
+            <br>                            
+            <div class="button-container">
+                <button type="submit">Update</button>
+                <button type="button" style="background-color: tomato;" onclick="window.history.back();">Cancel</button>
+            </div>  
+        </form>
+    </div>
 </section>
 
 <!-- Summernote Lite JS -->

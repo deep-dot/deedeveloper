@@ -153,7 +153,7 @@
 @media screen and (max-width: 480px) {
 
   .S {
-    padding-top: var(--navheight) 0;
+    padding: var(--navheight) 5px ;
   }
 
     .S .services .services-div1 .contact-button,

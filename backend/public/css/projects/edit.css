@@ -1,24 +1,19 @@
 
 
 .edit-post {
-    background-color: #f4f4f4;
+    background-color: var(--backgroud);
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: var(--boxshadowwithopacity);
     margin: var(--navheight) auto;
     padding: 20px;
     width: 80%;
     z-index: 100;
 }
 
-.edit-post p {
-    font-size: 24px;
-    text-align: center;
-    margin-bottom: 20px;
-}
 form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    box-shadow: var(--boxshadowwithopacity);
 }
 input[type="text"], textarea, input[type="file"] {
     border: 1px solid #ccc;

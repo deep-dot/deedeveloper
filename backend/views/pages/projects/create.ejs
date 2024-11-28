@@ -1,35 +1,33 @@
+
 <section class="create-blog">
-    <!-- <img src="/img/blog.svg" alt="Person Image" /> -->
-     <div class="create-blog-img">
-    <picture>
-        <source srcset="/img/blog.svg"
-            type="Blog Image">
-        <img src="/img/blog.svg"
-           title="blog.svg" alt="Blog Image" loading="lazy">
-    </picture>
-</div>
+    <div class="create-blog-img">
+        <picture>
+            <source srcset="/img/blog.svg" type="image/svg+xml">
+            <img src="/img/blog.svg" title="blog.svg" alt="Blog Image" loading="lazy">
+        </picture>
+    </div>
     <div>
         <h1>Write a post</h1>
-        <% if(error) {%>
-            <p>
+        <% if(error) { %>
+            <p style="color: red;">
                 <%= error %>
             </p>
-            <% } %>
-                <% if(success) {%>
-                    <p>
-                        <%= success %>
-                    </p>
-                    <% } %>
-                        <form method="POST" action="/create" enctype="multipart/form-data">
-                            <input type="text" placeholder="Title" name="title" id="title" required />
-                            <textarea id="summernote" type="text" name="post" required></textarea>
-                            <input type="file" placeholder="Image" id="image" name="image" />
-                            <br>                            
-                            <div class="button-container">
-                                <button id="submitButton" type="submit">Send</button>
-                                <button type="button" style="background-color: tomato;" onclick="window.location.href='/blogs'">Cancel</button>
-                            </div>  
-                        </form>
+        <% } %>
+        <% if(success) { %>
+            <p style="color: green;">
+                <%= success %>
+            </p>
+        <% } %>
+        <form method="POST" action="/create" enctype="multipart/form-data">
+            <input type="text" placeholder="Title" name="title" id="title" required />
+            <textarea id="summernote" type="text" name="post" required></textarea>
+            <input type="file" id="image" name="image" />
+            <br>                            
+            <div class="button-container">
+                <button id="submitButton" type="submit">Send</button>
+                <button type="button" style="background-color: tomato;" onclick="window.location.href='/readAll'">Cancel</button>
+            </div>  
+        </form>
     </div>
 </section>
 
@@ -41,31 +39,43 @@
     form.addEventListener('submit', (event) => {
         event.preventDefault();
 
+        let isValid = true;
+
+        titleInput.style.border = '';
+        titleInput.setAttribute('placeholder', 'Title');
+
+        postInput.style.border = '';
+        postInput.setAttribute('placeholder', 'Post');
+
         if (!titleInput.value) {
             titleInput.style.border = '1px solid red';
             titleInput.setAttribute('placeholder', 'Please enter a title');
             titleInput.focus();
-            return;
+            isValid = false;
         }
 
         if (!postInput.value) {
             postInput.style.border = '1px solid red';
             postInput.setAttribute('placeholder', 'Please enter a post');
             postInput.focus();
-            return;
+            isValid = false;
         }
 
-        form.submit();
+        if (isValid) {
+            form.submit();
+        }
     });
 </script>
 
-<!-- Summernote Lite JS -->
+<!-- Summernote CSS & JS -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#summernote').summernote({
             height: 200, 
-        width: '100%',
+            width: '100%',
         });
     });
 </script>

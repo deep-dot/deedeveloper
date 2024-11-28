@@ -297,7 +297,7 @@ router.post('/login', async (req, res) => {
 
     await user.save();
 
-    console.log('login route in auth.js req.session.returnTo == ', req.session.returnTo);
+  //  console.log('login route in auth.js req.session.returnTo == ', req.session.returnTo);
      // Handle redirect back to the stored URL or default route
      const redirectUrl = req.session.returnTo || '/';
      delete req.session.returnTo; // Clear the returnTo URL from the session

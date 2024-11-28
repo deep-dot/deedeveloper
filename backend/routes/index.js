@@ -7,6 +7,7 @@ const whyme = require('../controllers/whyme');
 const hireme = require('../controllers/hireme');
 
 const readAllController = require('../controllers/projects/readAll');
+const pageForCreation = require('../controllers/projects/pageForCreation');
 const createController = require('../controllers/projects/create');
 const likeController = require('../controllers/projects/readProject/like');
 const createCommentOnProject = require('../controllers/projects/readProject/commentsOnPost/create');
@@ -17,6 +18,7 @@ const readLikesController = require('../controllers/projects/readProject/readLik
 const readController = require('../controllers/projects/readProject/readProject');
 const deleteController = require('../controllers/projects/delete');
 const editController = require('../controllers/projects/edit');
+const updateProject = require('../controllers/projects/updateProject');
 const searchController = require('../controllers/projects/search');
 
 const processController = require('../controllers/process');
@@ -64,7 +66,8 @@ router.get('/hireme', hireme);
 
 router.get('/readAll', readAllController);
 router.post('/search', searchController);
-router.get('/create', ensureAuth, createController)
+router.get('/pageForCreation', ensureAuth, pageForCreation);
+router.post('/create', upload, createController)
 router.get('/project/:id',  readController);
 
 router.get('/readLikes/:id', readLikesController);
@@ -74,7 +77,8 @@ router.put('/project/:id/commentEdit', editCommentOnProject);
 router.delete('/project/:id/comment', deleteCommentOnProject);
 
 router.delete('/project/:id', ensureAuth, deleteController);
-router.get('/project/:id/edit',ensureAuth,upload, editController);
+router.get('/project/:id/edit',ensureAuth, editController);
+router.put('/project/:id', upload, updateProject);
 
 router.get('/privacy', privacyController);
 router.get('/process', processController);

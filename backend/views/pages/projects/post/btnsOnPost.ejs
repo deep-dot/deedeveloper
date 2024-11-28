@@ -1,29 +1,30 @@
 <link rel="stylesheet" href="/css/btnsOnPost.css">
 
 <section class="btns">
-    <div class="button-container">
-        <a onclick="window.location.href='/readAll'" class="go-back">
-            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+  <div class="button-container">
+    <a onclick="window.location.href='/readAll'" class="go-back">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    </a>
+    <a class="" href="/project/<%= blogpost._id %>/edit">
+      <i class="fa fa-edit" aria-hidden="true"></i>
+    </a>
+    <form method="POST" action="/project/<%= blogpost._id %>?_method=DELETE">
+      <button type="submit" class="btn">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
+    </form>
+    <% if(userExist) { %>
+
+      <% } %>
+        <a class="like" href="#writeCommentOnPost">
+          <i class="fa fa-comment" aria-hidden="true"></i>
+          <ins>
+            <%= blogpost.comments.length %>
+          </ins>
         </a>
-        <% if(userExist) { %>
-            <a class="" href="/project/<%= blogpost._id %>/edit">
-                <i class="fa fa-edit" aria-hidden="true"></i>
-            </a>
-            <form method="POST" action="/project/<%= blogpost._id %>?_method=DELETE">
-                <button type="submit" class="btn">
-                    <i class="fa fa-trash" aria-hidden="true"></i>
-                </button>
-            </form>
-            <% } %>
-                <a class="like" href="#writeCommentOnPost">
-                    <i class="fa fa-comment" aria-hidden="true"></i>
-                    <ins>
-                        <%= blogpost.comments.length %>
-                    </ins>
-                </a>
-                <div id="postCard" blog-post-id="<%= blogpost._id %>">
-                </div>
-    </div>
+        <div id="postCard" blog-post-id="<%= blogpost._id %>">
+        </div>
+  </div>
 </section>
 
 <script>
@@ -78,9 +79,9 @@
       }
       if (res.data.status == 'error') {
         if (res.data.redirect) {
-                const currentUrl = window.location.href; // Get the current URL
-                window.location.href = res.data.redirect + `?redirect=${encodeURIComponent(currentUrl)}`;
-            }
+          const currentUrl = window.location.href; // Get the current URL
+          window.location.href = res.data.redirect + `?redirect=${encodeURIComponent(currentUrl)}`;
+        }
       }
     });
   }

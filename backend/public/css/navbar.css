@@ -222,6 +222,7 @@ header {
 
 .nav_bar.active .hamburger-menu .bar {
   background-color: transparent;
+  max-width: 30px;
 }
 
 .nav_bar.active .bar::before {
