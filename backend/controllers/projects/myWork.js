@@ -6,9 +6,9 @@ module.exports = async (req, res) => {
         const blogposts = await BlogPost.find({}); 
 
         // Render the page with fetched blog posts
-        res.render('pages/projects/readAll.ejs', {
-            style: 'projects/readAll.css',
-            bodyId: 'BlogPage',
+        res.render('pages/projects/myWork.ejs', {
+            style: 'projects/myWork.css',
+            bodyId: 'myWork',
             blogposts, // Pass the blog posts to the view
             userExist: req.user ? true : false, // Example check for user authentication (update as needed)
             userid: req.user ? req.user._id : null, // Example user ID (update as needed)

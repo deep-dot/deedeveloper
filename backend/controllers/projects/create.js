@@ -4,7 +4,7 @@ const cloudinary = require("cloudinary").v2;
 
 module.exports = async (req, res) => {
 
-  console.log('created===',req.body);
+  // console.log('created===',req.body);
   var path = '';
   if (req.file) {
      path = req.file.path;
@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
     //return res.json({success: 'created successfully'});
     success = `Post has been created successfully`;
     req.flash('success', success);    
-    return res.redirect('/readAll');
+    return res.redirect('/myWork');
   } else {
     //return res.json({error: err});
     await cloudinary.uploader.destroy(req.file.filename);

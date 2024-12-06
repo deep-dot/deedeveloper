@@ -6,7 +6,7 @@ const homeController = require('../controllers/home');
 const whyme = require('../controllers/whyme');
 const hireme = require('../controllers/hireme');
 
-const readAllController = require('../controllers/projects/readAll');
+const myWorkController = require('../controllers/projects/myWork');
 const pageForCreation = require('../controllers/projects/pageForCreation');
 const createController = require('../controllers/projects/create');
 const likeController = require('../controllers/projects/readProject/like');
@@ -64,7 +64,7 @@ router.get('/', homeController);
 router.get('/whyme', whyme);
 router.get('/hireme', hireme);
 
-router.get('/readAll', readAllController);
+router.get('/myWork', myWorkController);
 router.post('/search', searchController);
 router.get('/pageForCreation', ensureAuth, pageForCreation);
 router.post('/create', upload, createController)

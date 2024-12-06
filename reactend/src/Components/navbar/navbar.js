@@ -80,8 +80,8 @@ console.log("handleDarkModeToggle:", handleDarkModeToggle);
             style={{ maxHeight: isAboutMenuOpen ? "200px" : "0" }}
           >
             {/* <a href="/portfolio"> <FontAwesomeIcon icon={faUser} /> About Me</a> */}
-            <a href="/blogs"> <FontAwesomeIcon icon={faBriefcase} /> My Work</a>
-            <a href="/#servicesSection"> <FontAwesomeIcon icon={faCogs} /> Services</a>
+            <a href="/whyme"> <FontAwesomeIcon icon={faBriefcase} /> Why Me</a>
+            <a href="/myWork"> <FontAwesomeIcon icon={faCogs} /> My Work</a>
           </li>
           <a href="/hireme"> <FontAwesomeIcon icon={faPhone} /> Hire Me</a>
 

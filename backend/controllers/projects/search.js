@@ -25,9 +25,9 @@ module.exports = async (req, res) => {
                 success: res.locals.success
             });
         } else {
-            error = `Sorry, Blog does not exist under this title.`;
+            error = `Sorry, Project does not exist under this title.`;
             req.flash('error', error);
-            return res.redirect('/projects');
+            return res.redirect('/myWork');
         }
     }).catch(err => {
         console.log(err.message)

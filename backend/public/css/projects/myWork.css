@@ -1,5 +1,5 @@
 
-.blogPage {
+.myWork {
   padding-top: var(--navheight);
 }
 
@@ -13,7 +13,7 @@
   gap: clamp(10px, 4vw, 20px);
 }
 
-.blogPage .search-box > a {
+.myWork .search-box > a {
   display: inline-flex;
   gap: clamp(10px, 4vw, 20px);
   color: var(--textColor);  
@@ -22,7 +22,7 @@
   z-index: 10;
 }
 
-.blogPage .search-box > a > i {
+.myWork .search-box > a > i {
   color: var(--text);
   display: block;
   padding: 5px;
@@ -32,7 +32,7 @@
   transition: position 0.3s ease-in-out;
 }
 
-.blogPage .fixed {
+.myWork .fixed {
   position: fixed;
   top: 10px;
   left: 10px; /* Adjust as needed */
@@ -40,31 +40,31 @@
 }
 
 
-.blogPage .blogMainImg {
+.myWork .blogMainImg {
   width: 100%; 
   max-width: 600px; 
   margin: 0 auto; 
 }
 
-.blogPage .blogMainImg img {
+.myWork .blogMainImg img {
   width: 100%; 
   height: auto; 
   display: block; 
 }
 
-.blogPage form {
+.myWork form {
   display: flex;
   align-items: center;
 }
 
-.blogPage input[type="text"] {
+.myWork input[type="text"] {
   padding: 10px;
   border: none;
   border-radius: 5px 0 0 5px;
   width: 50vw;
 }
 
-.blogPage button[type="submit"] {
+.myWork button[type="submit"] {
   padding: 10px;
   background-color: var(--background);
   color: var(--text);
@@ -75,7 +75,7 @@
 
 /* blog card */
 
-.blogPage .blog-container {
+.myWork .blog-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -84,7 +84,7 @@
   gap: 4rem;
 }
 
-.blogPage .blog-container .card-container .blog-card{
+.myWork .blog-container .card-container .blog-card{
   display: block;
   width: 300px;
   height: 350px;
@@ -100,20 +100,20 @@
   padding: 15px;
 }
 
-.blogPage .blog-container .card-container img {
+.myWork .blog-container .card-container img {
   width: 100%; 
   height: 60%; 
   display: block; /* Remove any extra space below the image */
 }
 
 
-.blogPage .blog-card:hover {
+.myWork .blog-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
  /* see more button functionality */
- .blogPage #see-more-button {
+ .myWork #see-more-button {
   display: block;
   margin: 5rem auto;
   padding: 5px 5px;
@@ -126,7 +126,7 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-.blogPage #see-more-button:hover {
+.myWork #see-more-button:hover {
   background-color: var(--hoverColor);
 }
 
